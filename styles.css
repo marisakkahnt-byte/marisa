@@ -531,6 +531,27 @@ input:focus, textarea:focus { outline: none; border-bottom: 2px solid var(--rose
 .form-status.error { color: var(--rose); }
 .form-status.success { color: #5f8a55; }
 
+.register { max-width: 860px; }
+.door-btns { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.4rem; margin: 2rem 0 1.6rem; }
+.door-btn {
+  --door: #3f5f87; display: grid; justify-items: center; gap: .35rem; text-decoration: none; color: var(--ink);
+  padding: 1.4rem 1rem 1.2rem; border: 1px solid var(--ink); border-radius: 14px; background: #fffdf9;
+  transition: transform .4s var(--bounce), box-shadow .4s;
+}
+.door-btn--stitches { --door: #2f4a3a; }
+.door-btn--ido { --door: #b7a097; }
+.door-btn:hover, .door-btn:focus-visible { transform: translateY(-5px); box-shadow: 0 14px 24px -14px rgba(31,26,28,.45); }
+.door-btn__door {
+  position: relative; width: 58px; height: 84px; border-radius: 29px 29px 3px 3px; margin-bottom: .5rem;
+  background: var(--door); border: 1.5px solid var(--ink); box-shadow: inset 0 0 0 6px var(--door), inset 0 0 0 7px rgba(255,255,255,.4);
+  transform-origin: left center; transition: transform .7s var(--ease);
+}
+.door-btn:hover .door-btn__door, .door-btn:focus-visible .door-btn__door { transform: perspective(300px) rotateY(-35deg); }
+.door-btn__knob { position: absolute; right: 9px; top: 50%; width: 7px; height: 7px; border-radius: 50%; background: #c9a24a; border: 1px solid var(--ink); }
+.door-btn strong { font: 600 1.15rem/1.25 var(--display); }
+.door-btn > span:last-child { font: 500 .66rem var(--caps); letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+.register__mail { margin: 0; font-size: 1rem; }
+
 /* ---------- Footer ---------- */
 .footer { text-align: center; padding: 3rem 16px 2.4rem; background: var(--ink); color: var(--paper); border-top: 3px double var(--paper); }
 .footer__crest { margin: 0 0 .6rem; font: 400 2.6rem/1.2 var(--script); }
