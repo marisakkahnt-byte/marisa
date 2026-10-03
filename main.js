@@ -522,6 +522,11 @@
       .observe(document.getElementById('top'));
   }
 
+  /* ---------- Window displays: tap to open the shutters ---------- */
+  document.querySelectorAll('.display').forEach(function (d) {
+    d.addEventListener('click', function () { d.classList.toggle('open'); });
+  });
+
   /* ---------- Suites: tap a door to peek in (touch screens) ---------- */
   if (window.matchMedia('(hover: none)').matches) {
     document.querySelectorAll('.suite').forEach(function (s) {
