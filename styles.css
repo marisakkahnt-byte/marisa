@@ -264,7 +264,8 @@ section { padding: clamp(4.5rem, 10vw, 8rem) 16px; scroll-margin-top: 64px; }
 .letter__hand { font: 700 1.8rem var(--hand); color: var(--rose); margin: 0 0 .6rem; }
 .letter p { margin: 0 0 1rem; }
 .letter__sign { margin-top: 1.6rem !important; font-style: italic; }
-.letter__sign span { font: 700 2.4rem var(--hand); color: var(--rose); }
+.letter__sign span { font: 400 3.2rem/1 "Pinyon Script", var(--hand); color: var(--rose); }
+.office__say { margin: .2rem 0 0; font: italic 400 1rem var(--serif); color: var(--muted); }
 
 /* ---------- Office: polished, professional ---------- */
 .office { background: var(--paper); }
