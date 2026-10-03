@@ -1,4 +1,4 @@
-// marisakahnt.com: The Marisa, a pen-and-ink hotel with curtains, birds, a dog walk and an elevator nav
+// marisakahnt.com: a colourful storybook street with curtains, birds, a dog walk and house-number nav
 
 (function () {
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -35,8 +35,8 @@
     return s;
   }
 
-  function scallopRoof(x0, x1, yTop, yBot, inset) {
-    var s = '<path d="M' + x0 + ' ' + yBot + ' L' + (x0 + inset) + ' ' + yTop + ' H' + (x1 - inset) + ' L' + x1 + ' ' + yBot + ' Z" fill="#d7dde4" class="ink"/>';
+  function scallopRoof(x0, x1, yTop, yBot, inset, fill) {
+    var s = '<path d="M' + x0 + ' ' + yBot + ' L' + (x0 + inset) + ' ' + yTop + ' H' + (x1 - inset) + ' L' + x1 + ' ' + yBot + ' Z" fill="' + (fill || '#d7dde4') + '" class="ink"/>';
     for (var y = yTop + 14; y < yBot - 4; y += 13) {
       var t = (y - yTop) / (yBot - yTop), left = x0 + inset * (1 - t) + 4, right = x1 - inset * (1 - t) - 4, d = 'M' + f(left) + ' ' + y;
       for (var x = left; x + 12 <= right; x += 12) d += ' a6 6 0 0 0 12 0';
@@ -87,63 +87,185 @@
       'd="M0 20 q-2 -16 16 -16 q6 -14 24 -8 q14 -10 26 4 q16 0 14 16 Z" fill="#fffdf9" class="line"/></g>';
   }
 
-  function hotel() {
-    var s = '';
-    // turrets
-    [[300, 380], [1060, 1140]].forEach(function (t) {
-      var cx = (t[0] + t[1]) / 2;
-      s += '<rect x="' + t[0] + '" y="230" width="80" height="' + (GROUND - 230) + '" fill="#fbe9ea" class="ink"/>' +
-        cone(cx, 230, 120, 50) + flag(cx, 74, '#f2a7bb') +
-        '<path d="M' + (t[0] - 6) + ' 230 h92" class="ink"/>';
-      [258, 352, 446].forEach(function (y) { s += win(cx, y, 30, 58); });
-      s += win(cx, 560, 34, 70);
+  // Brand colours for the two neighbouring businesses. Swap these for the real brand palettes.
+  var STITCHES = { wall: '#cfe4d6', trim: '#6f9c80', roof: '#a9cdb6', accent: '#f2a7bb' };
+  var IDO = { wall: '#f8eedc', trim: '#c39a50', roof: '#e8b9c6', accent: '#d9587b' };
+  var CLOCK = [140, 214];
+
+  function plaque(cx, y, w, text, color) {
+    return '<g class="plaque"><rect x="' + (cx - w / 2) + '" y="' + y + '" width="' + w + '" height="34" rx="17" fill="#fffdf9" class="ink"/>' +
+      '<rect x="' + (cx - w / 2 + 4) + '" y="' + (y + 4) + '" width="' + (w - 8) + '" height="26" rx="13" fill="none" stroke="' + color + '" stroke-width="1"/>' +
+      '<text x="' + cx + '" y="' + (y + 23) + '" text-anchor="middle" class="plaque-text" style="fill:' + color + '">' + text + '</text></g>';
+  }
+
+  function archDoor(cx, w, top, fill) {
+    var r = w / 2;
+    return '<path d="M' + (cx - r) + ' ' + GROUND + ' V' + (top + r) + ' A' + r + ' ' + r + ' 0 0 1 ' + (cx + r) + ' ' + (top + r) + ' V' + GROUND + ' Z" fill="' + fill + '" class="ink"/>' +
+      '<path d="M' + (cx - r + 7) + ' ' + (GROUND - 6) + ' V' + (top + r + 4) + ' A' + (r - 7) + ' ' + (r - 7) + ' 0 0 1 ' + (cx + r - 7) + ' ' + (top + r + 4) + ' V' + (GROUND - 6) + ' Z" fill="none" class="hair"/>' +
+      '<circle cx="' + (cx + r - 11) + '" cy="' + (top + (GROUND - top) * 0.6) + '" r="3" fill="#c39a50" class="hair"/>';
+  }
+
+  function cornice(x, w, y, fill) {
+    return '<rect x="' + (x - 8) + '" y="' + (y - 6) + '" width="' + (w + 16) + '" height="12" rx="4" fill="' + (fill || '#fffdf9') + '" class="ink"/>';
+  }
+
+  // No. 2: the office, a powder-blue townhouse with a clock in the dormer
+  function office() {
+    var x = 30, w = 220, top = 250, s = '';
+    s += scallopRoof(18, 262, 180, top, 26, '#dde3ee');
+    [80, 200].forEach(function (dx) { s += '<path d="M' + (dx - 18) + ' 236 V210 L' + dx + ' 192 L' + (dx + 18) + ' 210 V236 Z" fill="#bfd6ea" class="ink"/>' + win(dx, 210, 18, 24); });
+    s += '<path d="M116 240 V200 A24 24 0 0 1 164 200 V240 Z" fill="#bfd6ea" class="ink"/>' +
+      '<circle cx="140" cy="214" r="17" fill="#fffdf9" class="ink"/>' +
+      '<line id="hourHand" x1="140" y1="214" x2="140" y2="205" class="line" style="stroke-width:2.4"/>' +
+      '<line id="minuteHand" x1="140" y1="214" x2="140" y2="201" class="line"/>' +
+      '<circle cx="140" cy="214" r="2" fill="#d9587b"/>';
+    s += flag(46, 132, '#d9587b');
+    s += '<rect x="' + x + '" y="' + top + '" width="' + w + '" height="' + (GROUND - top) + '" fill="#bfd6ea" class="ink"/>' + cornice(x, w, top);
+    [272, 362, 452].forEach(function (y, i) { [75, 140, 205].forEach(function (cx) { s += win(cx, y, 34, 56, { flowers: i === 1 }); }); });
+    s += plaque(140, 528, 150, 'the office', '#3f5f87');
+    s += win(72, 592, 40, 60, { awning: true }) + win(208, 592, 40, 60, { awning: true }) + archDoor(140, 42, 580, '#3f5f87');
+    return '<a href="#office" class="bld-link" aria-label="No. 2, the office: my professional side">' + s + '</a>';
+  }
+
+  // No. 3: Marisa Stitches, with an embroidery-hoop window and spools in the shop window
+  function stitches() {
+    var x = 268, w = 190, top = 320, s = '';
+    s += '<rect x="' + x + '" y="' + top + '" width="' + w + '" height="' + (GROUND - top) + '" fill="' + STITCHES.wall + '" class="ink"/>' +
+      '<path d="M' + (x - 12) + ' ' + top + ' L363 206 L' + (x + w + 12) + ' ' + top + ' Z" fill="' + STITCHES.roof + '" class="ink"/>' +
+      '<circle cx="363" cy="276" r="25" fill="#fffdf9" class="ink"/>' +
+      '<circle cx="363" cy="276" r="19" fill="none" stroke="#c39a50" stroke-width="3"/>' +
+      '<rect x="384" y="252" width="8" height="10" rx="2" fill="#c39a50" class="hair"/>';
+    var xs = '';
+    for (var gx = -9; gx <= 9; gx += 6) for (var gy = -9; gy <= 9; gy += 6) {
+      if (Math.abs(gx) + Math.abs(gy) > 13) continue;
+      xs += 'M' + (360 + gx) + ' ' + (273 + gy) + ' l5 5 m0 -5 l-5 5 ';
+    }
+    s += '<path d="' + xs + '" stroke="' + STITCHES.accent + '" stroke-width="1.6" stroke-linecap="round"/>' + cornice(x, w, top, '#fffdf9');
+    [342, 428].forEach(function (y, i) { [318, 408].forEach(function (cx) { s += win(cx, y, 38, 56, { flowers: i === 0 }); }); });
+    s += plaque(363, 508, 170, 'marisa stitches', STITCHES.trim);
+    // shop window with spools of thread
+    s += awningRow(280, 92, 556, STITCHES.accent) +
+      '<rect x="284" y="572" width="84" height="74" rx="4" fill="#fffaf3" class="ink"/>';
+    ['#f2a7bb', '#6f9c80', '#c39a50', '#bfd6ea'].forEach(function (c, i) {
+      var sx = 294 + i * 18;
+      s += '<rect x="' + sx + '" y="612" width="14" height="4" fill="#fffdf9" class="hair"/><rect x="' + (sx + 2) + '" y="616" width="10" height="20" fill="' + c + '" class="hair"/><rect x="' + sx + '" y="636" width="14" height="4" fill="#fffdf9" class="hair"/>';
     });
+    s += '<path d="M292 600 q20 -18 40 0 t36 -4" fill="none" stroke="' + STITCHES.accent + '" stroke-width="1.6" stroke-dasharray="3 3"/>';
+    s += archDoor(412, 40, 584, STITCHES.trim);
+    return '<a href="#stitches" class="bld-link" aria-label="No. 3, Marisa Stitches">' + s + '</a>';
+  }
 
-    // main block + mansard roof with dormers
-    s += scallopRoof(372, 1068, 168, 262, 36);
-    [432, 520, 920, 1008].forEach(function (x) {
-      s += '<path d="M' + (x - 22) + ' 236 V206 L' + x + ' 186 L' + (x + 22) + ' 206 V236 Z" fill="#fbe9ea" class="ink"/>' + win(x, 206, 22, 28);
+  // scalloped striped awning
+  function awningRow(x, w, y, color) {
+    var n = Math.max(3, Math.round(w / 22)), step = w / n, sc = '';
+    for (var i = 0; i < n; i++) sc += '<path d="M' + f(x + i * step) + ' ' + (y + 14) + ' a' + f(step / 2) + ' ' + f(step / 2) + ' 0 0 0 ' + f(step) + ' 0" fill="' + (i % 2 ? '#fff' : color) + '" class="hair"/>';
+    var stripes = '';
+    for (var j = 0; j < n; j++) stripes += '<rect x="' + f(x + j * step) + '" y="' + y + '" width="' + f(step / 2) + '" height="14" fill="' + color + '"/>';
+    return '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="14" fill="#fff"/>' + stripes +
+      '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="14" fill="none" class="line"/>' + sc;
+  }
+
+  // No. 1: the pink wisteria shop in the middle of the street
+  function shop() {
+    var s = '<rect x="476" y="232" width="488" height="' + (GROUND - 232) + '" fill="#f7c2d1" class="ink"/>' +
+      '<rect x="460" y="214" width="520" height="24" rx="8" fill="#fffdf9" class="ink"/>' +
+      '<path d="M470 214 Q720 150 970 214" fill="#fbe1e8" class="ink"/>' +
+      '<rect x="540" y="262" width="360" height="72" rx="36" fill="#fffdf9" class="ink"/>' +
+      '<rect x="547" y="269" width="346" height="58" rx="29" fill="none" stroke="#c39a50" stroke-width="1.2"/>' +
+      '<text x="720" y="310" text-anchor="middle" class="shop-sign">Marisa Kahnt</text>';
+    [520, 640, 800, 920].forEach(function (cx) { s += win(cx, 352, 40, 62, { flowers: true }); });
+    // shop windows
+    s += awningRow(494, 150, 446, '#d9587b') + awningRow(796, 150, 446, '#d9587b') +
+      '<rect x="500" y="464" width="138" height="120" rx="6" fill="#fffaf3" class="ink"/>' +
+      '<path d="M500 524 H638 M569 464 V584" class="hair"/>' +
+      '<rect x="534" y="548" width="68" height="30" rx="3" fill="#fffdf9" class="line"/><rect x="544" y="528" width="48" height="22" rx="3" fill="#f2a7bb" class="line"/><circle cx="568" cy="522" r="6" fill="#d9587b" class="line"/>' +
+      '<rect x="802" y="464" width="138" height="120" rx="6" fill="#fffaf3" class="ink"/>' +
+      '<path d="M802 524 H940 M871 464 V584" class="hair"/>' +
+      '<path d="M836 576 h70 l-6 -30 h-58 z" fill="#c9d6bd" class="line"/><circle cx="852" cy="540" r="9" fill="#f2a7bb" class="line"/><circle cx="871" cy="534" r="10" fill="#d9587b" class="line"/><circle cx="890" cy="540" r="9" fill="#f2a7bb" class="line"/>' +
+      '<path d="M500 590 H638 M802 590 H940" class="ink"/>';
+    // arched door with fanlight; links to the lobby
+    s += '<a href="#lobby" class="bld-link door-link" aria-label="No. 1, come inside to the lobby">' +
+      '<path d="M662 ' + GROUND + ' V470 A58 58 0 0 1 778 470 V' + GROUND + ' Z" fill="#fffdf9" class="ink"/>' +
+      '<path d="M674 470 A46 46 0 0 1 766 470 Z" fill="#e3d4f0" class="line"/>';
+    for (var a = 1; a < 6; a++) {
+      var ang = Math.PI + a * Math.PI / 6;
+      s += '<line x1="720" y1="470" x2="' + f(720 + Math.cos(ang) * 46) + '" y2="' + f(470 + Math.sin(ang) * 46) + '" class="hair"/>';
+    }
+    s += '<rect x="676" y="474" width="88" height="' + (GROUND - 482) + '" fill="#d9587b" class="ink"/>' +
+      '<path d="M720 474 V' + (GROUND - 8) + '" class="line"/>' +
+      '<rect x="684" y="484" width="28" height="60" rx="3" fill="none" class="hair"/><rect x="728" y="484" width="28" height="60" rx="3" fill="none" class="hair"/>' +
+      '<rect x="684" y="556" width="28" height="86" rx="3" fill="none" class="hair"/><rect x="728" y="556" width="28" height="86" rx="3" fill="none" class="hair"/>' +
+      '<circle cx="712" cy="548" r="3" fill="#c39a50"/><circle cx="728" cy="548" r="3" fill="#c39a50"/></a>' +
+      '<rect x="650" y="' + (GROUND - 8) + '" width="140" height="8" fill="#fffdf9" class="hair"/>';
+    for (var h = 0; h < 3; h++) s += '<text x="' + (702 + h * 16) + '" y="460" class="heart" fill="#d9587b" font-size="20" style="animation-delay:' + (h * 0.9) + 's">♥</text>';
+    return s + topiary(646) + topiary(794) + wisteria();
+  }
+
+  function wisteria() {
+    var colours = ['#b79ce0', '#c9b6ec', '#9f84d6', '#ddd0f3'];
+    var s = '<path d="M466 236 Q 530 248 590 236 T 710 238 T 830 236 T 974 238" class="line" style="stroke:#6f9c62;stroke-width:3"/>';
+    for (var x = 484; x <= 956; x += 22) {
+      if (x > 532 && x < 908) { if (Math.random() < 0.5) continue; }
+      var len = Math.round(rand(2, 4)), bunch = '';
+      for (var i = 0; i < len; i++) bunch += '<circle cx="' + f(x + rand(-3, 3)) + '" cy="' + (242 + i * 7) + '" r="' + f(7 - i * 0.9) + '" fill="' + colours[Math.floor(Math.random() * 4)] + '"/>';
+      bunch += '<ellipse cx="' + (x + 7) + '" cy="240" rx="7" ry="4" fill="#9cc48a" transform="rotate(-25 ' + (x + 7) + ' 240)"/>';
+      s += '<g class="wisteria" style="animation-delay:-' + f(rand(0, 3.5)) + 's">' + bunch + '</g>';
+    }
+    [480, 960].forEach(function (x) {
+      var trail = '';
+      for (var y = 246; y < 470; y += 11) trail += '<circle cx="' + f(x + rand(-5, 5)) + '" cy="' + y + '" r="' + f(rand(5, 7.5)) + '" fill="' + colours[Math.floor(Math.random() * 4)] + '"/>';
+      s += '<g class="wisteria" style="animation-delay:-' + f(rand(0, 3)) + 's">' + trail + '</g>';
     });
-    s += '<rect x="380" y="262" width="680" height="' + (GROUND - 262) + '" fill="#fbe9ea" class="ink"/>';
-    [262, 372, 470, 562].forEach(function (y) { s += '<path d="M376 ' + y + ' H1064 M376 ' + (y + 6) + ' H1064" class="hair"/>'; });
+    return s;
+  }
 
-    // wing windows: three floors + ground floor shops with awnings
-    [420, 490, 560, 880, 950, 1020].forEach(function (x) {
-      s += win(x, 290, 40, 66) + win(x, 388, 40, 64, { flowers: true }) + win(x, 482, 40, 64) + win(x, 590, 42, 70, { awning: true });
-    });
+  // No. 4: I Do by Marisa, a little wedding chapel with a swinging bell
+  function ido() {
+    var x = 990, w = 200, top = 300, cx = 1090, s = '';
+    s += '<rect x="1068" y="150" width="44" height="90" fill="' + IDO.wall + '" class="ink"/>' +
+      '<path d="M1076 210 V180 A14 14 0 0 1 1104 180 V210 Z" fill="#3a2f34" class="line"/>' +
+      '<g class="bellswing"><path d="M1090 178 v4 M1080 202 q0 -18 10 -18 q10 0 10 18 z" fill="' + IDO.trim + '" class="line"/><circle cx="1090" cy="204" r="2.4" fill="' + IDO.trim + '" class="hair"/></g>' +
+      '<path d="M1062 150 L1090 98 L1118 150 Z" fill="' + IDO.roof + '" class="ink"/>' +
+      '<path d="M1090 98 V84 M1090 82 c-3 -5 -10 -2 -6 3 l6 6 l6 -6 c4 -5 -3 -8 -6 -3 z" fill="' + IDO.accent + '" class="line"/>';
+    s += '<rect x="' + x + '" y="' + top + '" width="' + w + '" height="' + (GROUND - top) + '" fill="' + IDO.wall + '" class="ink"/>' +
+      '<path d="M' + (x - 12) + ' ' + top + ' L' + cx + ' 204 L' + (x + w + 12) + ' ' + top + ' Z" fill="' + IDO.roof + '" class="ink"/>' +
+      cornice(x, w, top, '#fffdf9');
+    // rose window
+    var petals = '';
+    for (var p = 0; p < 8; p++) {
+      var a = p * Math.PI / 4;
+      petals += '<circle cx="' + f(cx + Math.cos(a) * 12) + '" cy="' + f(262 + Math.sin(a) * 12) + '" r="7" fill="' + (p % 2 ? '#fde7ed' : '#f2a7bb') + '" class="hair"/>';
+    }
+    s += '<circle cx="' + cx + '" cy="262" r="24" fill="#fffdf9" class="ink"/>' + petals + '<circle cx="' + cx + '" cy="262" r="5" fill="' + IDO.trim + '" class="hair"/>';
+    [1036, 1144].forEach(function (wx) { s += win(wx, 326, 36, 96); });
+    s += plaque(cx, 444, 170, 'i do by marisa', IDO.accent);
+    // garland and double doors
+    var garland = '';
+    for (var g = 0; g <= 10; g++) garland += '<circle cx="' + (1052 + g * 7.6) + '" cy="' + f(536 + Math.sin(g / 10 * Math.PI) * 12) + '" r="3.6" fill="' + (g % 2 ? '#fffdf9' : '#f2a7bb') + '" class="hair"/>';
+    s += archDoor(cx, 62, 548, '#f3dcc0') + '<path d="M' + cx + ' 580 V' + (GROUND - 4) + '" class="line"/>' + garland +
+      win(1024, 594, 30, 56) + win(1156, 594, 30, 56);
+    return '<a href="#ido" class="bld-link" aria-label="No. 4, I Do by Marisa">' + s + '</a>';
+  }
 
-    // centre pavilion with clock and grand flag
-    s += scallopRoof(604, 836, 104, 206, 34) +
-      '<rect x="616" y="206" width="208" height="' + (GROUND - 206) + '" fill="#fdf1ef" class="ink"/>' +
-      '<path d="M608 206 H832" class="ink"/>' +
-      flag(720, 18, '#d9587b') +
-      '<circle cx="720" cy="152" r="26" fill="#fffdf9" class="ink"/>' +
-      '<circle cx="720" cy="152" r="21" fill="none" class="hair"/>' +
-      '<line id="hourHand" x1="720" y1="152" x2="720" y2="139" class="line" style="stroke-width:2.6"/>' +
-      '<line id="minuteHand" x1="720" y1="152" x2="720" y2="134" class="line"/>' +
-      '<circle cx="720" cy="152" r="2.4" fill="#d9587b"/>';
-    [670, 720, 770].forEach(function (x) { s += win(x, 232, 36, 64) + win(x, 336, 36, 70); });
-    // balcony
-    var rails = '';
-    for (var bx = 640; bx <= 800; bx += 10) rails += 'M' + bx + ' 418 V436 ';
-    s += '<path d="M632 412 H808 M632 418 H808 M632 436 H808 ' + rails + '" class="hair"/>';
-    for (var px = 644; px <= 796; px += 19) s += '<circle cx="' + px + '" cy="410" r="4" fill="' + (px % 2 ? '#d9587b' : '#f2a7bb') + '" class="hair"/>';
-    s += '<path d="M630 412 h180" class="line"/>';
+  // the front desk: a peach house with a postbox out front
+  function desk() {
+    var x = 1208, w = 222, top = 292, s = '';
+    var posts = '';
+    for (var px = x + 6; px <= x + w - 6; px += 12) posts += 'M' + px + ' ' + (top - 18) + ' V' + (top - 4) + ' ';
+    s += '<path d="M' + (x - 4) + ' ' + (top - 20) + ' H' + (x + w + 4) + ' ' + posts + '" class="line"/>' +
+      '<rect x="' + x + '" y="' + top + '" width="' + w + '" height="' + (GROUND - top) + '" fill="#ffd3bd" class="ink"/>' + cornice(x, w, top);
+    [314, 400].forEach(function (y, i) { [1256, 1319, 1382].forEach(function (cx) { s += win(cx, y, 34, 56, { flowers: i === 1 }); }); });
+    s += plaque(1319, 486, 160, 'front desk ✉', '#b4573a') +
+      win(1256, 590, 40, 62, { awning: true }) + win(1382, 590, 40, 62, { awning: true }) + archDoor(1319, 42, 580, '#8fb8a6') +
+      '<rect x="1420" y="602" width="26" height="58" rx="4" fill="#d9587b" class="ink"/>' +
+      '<path d="M1420 612 q13 -18 26 0" fill="#d9587b" class="ink"/>' +
+      '<path d="M1425 620 h16" class="line"/>';
+    return '<a href="#desk" class="bld-link" aria-label="The front desk: say hello">' + s + '</a>';
+  }
 
-    // grand entrance: arch, revolving door, canopy (links to the lobby)
-    var revolve = '';
-    for (var k = 0; k < 3; k++) revolve += '<rect class="revolve" x="' + (696 + k * 16) + '" y="574" width="14" height="80" fill="#fffaf3" stroke="#1f1a1c" stroke-width="1.2" style="animation-delay:-' + k + 's"/>';
-    s += '<a href="#lobby" class="entrance" aria-label="Step into the lobby">' +
-      '<path d="M664 ' + GROUND + ' V520 A56 56 0 0 1 776 520 V' + GROUND + ' Z" fill="#3a2f34" class="ink"/>' +
-      '<path d="M676 ' + GROUND + ' V524 A44 44 0 0 1 764 524 V' + GROUND + '" fill="#f7e2c6" class="hair"/>' + revolve +
-      '<path d="M690 574 H752 M690 654 H752" class="line"/>' +
-      '<path class="canopy" d="M628 512 L650 490 H790 L812 512 Z" fill="#f2a7bb" style="transition:fill .3s" stroke="#1f1a1c" stroke-width="2.4" stroke-linejoin="round"/>' +
-      '<rect x="628" y="512" width="184" height="26" fill="#d9587b" class="ink"/>' +
-      '<text x="720" y="531" text-anchor="middle" class="canopy-text">THE MARISA</text>';
-    for (var sc = 0; sc < 8; sc++) s += '<path d="M' + (628 + sc * 23) + ' 538 a11.5 11.5 0 0 0 23 0" fill="' + (sc % 2 ? '#fff' : '#f2a7bb') + '" class="hair"/>';
-    s += '<path d="M636 540 V' + GROUND + ' M804 540 V' + GROUND + '" class="line"/></a>' +
-      '<rect x="652" y="' + (GROUND - 8) + '" width="136" height="8" fill="#fffaf3" class="hair"/>';
-    return s + topiary(612) + topiary(828) + lampPost(590) + lampPost(850);
+  function street() {
+    return office() + stitches() + shop() + ido() + desk() +
+      lampPost(262) + lampPost(470) + lampPost(978) + lampPost(1200);
   }
 
   function ground() {
@@ -224,13 +346,9 @@
       '</filter></defs>' +
       '<g filter="url(#wobble)">' +
         cloud(0, 60, 1.6, 120, -30) + cloud(0, 150, 1.1, 150, -95) + cloud(0, 230, 1.3, 135, -60) +
-        '<g opacity=".55">' +
-          '<rect x="-200" y="360" width="140" height="300" fill="#f3dfe2" class="hair"/><rect x="-40" y="420" width="110" height="240" fill="#f3dfe2" class="hair"/>' +
-          '<rect x="1340" y="380" width="120" height="280" fill="#f3dfe2" class="hair"/><rect x="1480" y="430" width="140" height="230" fill="#f3dfe2" class="hair"/>' +
-        '</g>' +
-        tree(120, GROUND, 82) + tree(230, GROUND, 64) + tree(1230, GROUND, 70) + tree(1345, GROUND, 86) + tree(-40, GROUND, 74) + tree(1500, GROUND, 70) +
-        hotel() +
-        perchedBird(480, 168, false, 0) + perchedBird(960, 168, true, 2.2) + perchedBird(342, 120, false, 3.6) +
+        tree(-60, GROUND, 80) + tree(1520, GROUND, 84) +
+        street() +
+        perchedBird(363, 206, false, 0) + perchedBird(560, 214, true, 2.2) + perchedBird(1090, 84, false, 3.6) + perchedBird(220, 182, true, 1.3) + perchedBird(1380, 272, false, 4.4) +
         ground() +
         walker() +
         birds +
@@ -238,19 +356,19 @@
 
     // windows warm up when you click them
     scene.querySelectorAll('.pane').forEach(function (p) {
-      p.addEventListener('click', function () { p.classList.toggle('lit'); });
+      p.addEventListener('click', function (e) { e.preventDefault(); p.classList.toggle('lit'); });
     });
 
-    // the clock on the pavilion tells the real time
+    // the clock on the office dormer tells the real time
     function setClock() {
       var now = new Date(), m = now.getMinutes(), h = now.getHours() % 12 + m / 60;
-      document.getElementById('minuteHand').setAttribute('transform', 'rotate(' + m * 6 + ' 720 152)');
-      document.getElementById('hourHand').setAttribute('transform', 'rotate(' + h * 30 + ' 720 152)');
+      document.getElementById('minuteHand').setAttribute('transform', 'rotate(' + m * 6 + ' ' + CLOCK.join(' ') + ')');
+      document.getElementById('hourHand').setAttribute('transform', 'rotate(' + h * 30 + ' ' + CLOCK.join(' ') + ')');
     }
     setClock();
     setInterval(setClock, 30000);
 
-    // keep the whole hotel in view on wide screens, crop to the centre on narrow ones
+    // keep the whole street in view on wide screens, crop to the centre on narrow ones
     var wrap = document.getElementById('sceneWrap');
     function fit() {
       var r = wrap.getBoundingClientRect();
@@ -296,14 +414,11 @@
   document.getElementById('checkIn').addEventListener('click', checkIn);
   document.querySelectorAll('.curtain').forEach(function (c) { c.addEventListener('click', checkIn); });
 
-  /* ---------- Elevator: light up the floor you're on ---------- */
+  /* ---------- Nav: light up the house you're at ---------- */
   var floorLinks = document.querySelectorAll('.floors a');
-  var needle = document.getElementById('needle');
   var floors = ['lobby', 'office', 'stitches', 'ido', 'desk'];
   function setFloor(i) {
     floorLinks.forEach(function (a) { a.classList.toggle('active', +a.dataset.floor === i); });
-    var angle = i < 0 ? -90 : -64 + i * 32;
-    needle.style.setProperty('--needle', angle + 'deg');
   }
   setFloor(-1);
   if ('IntersectionObserver' in window) {

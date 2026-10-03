@@ -12,22 +12,16 @@
 </head>
 <body>
 
-  <!-- Elevator-style navigation -->
+  <!-- House-number navigation -->
   <header class="nav" id="nav">
     <a href="#top" class="crest" aria-label="Marisa Kahnt, back to the top">
       <span class="crest__mono" aria-hidden="true">MK</span>
       <span class="crest__name">Marisa Kahnt</span>
     </a>
     <div class="elevator">
-      <svg class="dial" viewBox="0 0 80 46" aria-hidden="true">
-        <path d="M6 42 A34 34 0 0 1 74 42" />
-        <g><line x1="8" y1="34" x2="12" y2="35" /><line x1="18" y1="18" x2="21" y2="21" /><line x1="40" y1="10" x2="40" y2="14" /><line x1="62" y1="18" x2="59" y2="21" /><line x1="72" y1="34" x2="68" y2="35" /></g>
-        <line class="dial__needle" id="needle" x1="40" y1="42" x2="40" y2="16" />
-        <circle cx="40" cy="42" r="3.5" />
-      </svg>
-      <nav aria-label="Floors">
+      <nav aria-label="Houses on the street">
         <ol class="floors">
-          <li><a href="#lobby" data-floor="0"><span class="floors__btn">L</span><span class="floors__label">Lobby</span></a></li>
+          <li><a href="#lobby" data-floor="0"><span class="floors__btn">1</span><span class="floors__label">Hello</span></a></li>
           <li><a href="#office" data-floor="1"><span class="floors__btn">2</span><span class="floors__label">Office</span></a></li>
           <li><a href="#stitches" data-floor="2"><span class="floors__btn">3</span><span class="floors__label">Stitches</span></a></li>
           <li><a href="#ido" data-floor="3"><span class="floors__btn">4</span><span class="floors__label">I Do</span></a></li>
@@ -38,7 +32,7 @@
   </header>
 
   <main>
-    <!-- Hero: the hotel façade behind silk curtains -->
+    <!-- Hero: a colourful storybook street behind silk curtains -->
     <section class="stage" id="top">
       <div class="hello">
         <p class="hello__eyebrow">Est. in Metro Detroit</p>
@@ -48,7 +42,7 @@
       </div>
 
       <div class="scene-wrap" id="sceneWrap">
-        <svg class="scene" id="scene" viewBox="90 0 1260 760" preserveAspectRatio="xMidYMax meet" aria-label="A pen-and-ink drawing of The Marisa, a grand pink hotel, with birds overhead and a lady walking her dog"></svg>
+        <svg class="scene" id="scene" viewBox="0 0 1440 760" preserveAspectRatio="xMidYMax meet" aria-label="A storybook street of colourful buildings. Each one links to part of the site: the office, Marisa Stitches, the pink shop, I Do by Marisa and the front desk"></svg>
       </div>
 
       <div class="valance" aria-hidden="true"></div>
@@ -57,8 +51,8 @@
       <button class="keytag" id="checkIn" type="button">
         <span class="keytag__ring" aria-hidden="true"></span>
         <span class="keytag__tag">
-          <small>The Marisa</small>
-          please check in
+          <small>Marisa Lane</small>
+          come on in
           <em>tap to enter</em>
         </span>
       </button>
@@ -71,13 +65,13 @@
       </div>
     </div>
 
-    <!-- L: Lobby -->
+    <!-- No. 1: Hello -->
     <section class="lobby" id="lobby">
-      <p class="floor-tag reveal">The Lobby</p>
+      <p class="floor-tag reveal">No. 1 · Hello</p>
       <article class="letter reveal">
         <header class="letter__head">
           <span class="letter__crest" aria-hidden="true">MK</span>
-          <p class="letter__hotel">The Marisa</p>
+          <p class="letter__hotel">No. 1 Marisa Lane</p>
           <p class="letter__place">Metro Detroit, Michigan</p>
         </header>
         <figure class="portrait">
@@ -85,14 +79,14 @@
         </figure>
         <p class="letter__hand">Dear guest,</p>
         <p>Welcome in! I'm <strong>Marisa Kahnt</strong>. By day I work in recruiting operations. The rest of the time I'm stitching monograms at <strong>Marisa Stitches</strong> and marrying lovely couples with <strong>I Do by Marisa</strong>.</p>
-        <p>Each of those has its own room in this little hotel. Take the elevator, have a wander, and do stop by the front desk to say hello.</p>
+        <p>Each of those has its own little house on this street. Wander up and down the lane, and do stop by the front desk to say hello.</p>
         <p class="letter__sign">With love,<br><span>Marisa</span></p>
       </article>
     </section>
 
-    <!-- 2: The Office (professional) -->
+    <!-- No. 2: The Office (professional) -->
     <section class="office" id="office">
-      <p class="floor-tag reveal">Floor 2 · The Office</p>
+      <p class="floor-tag reveal">No. 2 · The Office</p>
       <div class="office__frame reveal">
         <span class="perch" aria-hidden="true"></span>
         <div class="office__grid">
@@ -135,13 +129,13 @@
       </div>
     </section>
 
-    <!-- 3 & 4: The Suites -->
+    <!-- No. 3 & 4: next door -->
     <section class="suites" id="suites">
-      <p class="floor-tag reveal">Floors 3 &amp; 4 · The Suites</p>
+      <p class="floor-tag reveal">No. 3 &amp; 4 · Next Door</p>
       <h2 class="suites__title reveal">my other little businesses, each with a home of its own</h2>
 
       <div class="suites__row">
-        <article class="suite reveal" id="stitches">
+        <article class="suite reveal" id="stitches" style="--door:#a9cdb6;--door-ink:#6f9c80">
           <a class="door" href="https://www.marisastitches.com" target="_blank" rel="noopener" aria-label="Visit marisastitches.com">
             <span class="door__room" aria-hidden="true">
               <svg viewBox="0 0 120 120"><g class="ink-line">
@@ -165,7 +159,7 @@
           <a class="btn btn--pink" href="https://www.marisastitches.com" target="_blank" rel="noopener">visit marisastitches.com ↗</a>
         </article>
 
-        <article class="suite reveal" id="ido">
+        <article class="suite reveal" id="ido" style="--door:#e8b9c6;--door-ink:#c39a50">
           <a class="door" href="https://www.idobymarisa.com" target="_blank" rel="noopener" aria-label="Visit idobymarisa.com">
             <span class="door__room" aria-hidden="true">
               <svg viewBox="0 0 120 120"><g class="ink-line">
@@ -212,7 +206,7 @@
   </main>
 
   <footer class="footer">
-    <p class="footer__crest">The Marisa</p>
+    <p class="footer__crest">Marisa Lane</p>
     <p class="footer__links">
       <a href="https://www.marisastitches.com" target="_blank" rel="noopener">Marisa Stitches</a>
       <i>✦</i>
