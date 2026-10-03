@@ -279,7 +279,7 @@ section { padding: clamp(4.5rem, 10vw, 8rem) 16px; scroll-margin-top: 64px; }
 .office h2 { font-size: clamp(2.4rem, 5vw, 3.4rem); }
 .office__title { margin: .6rem 0 0; font: italic 400 1.3rem var(--display); color: var(--rose); }
 .office__loc { margin: .1rem 0 1.2rem; font: 500 .7rem var(--caps); letter-spacing: .28em; text-transform: uppercase; color: var(--muted); }
-.office__summary { margin: 0 0 .8rem; }
+.office__summary { margin: 0 0 .8rem; max-width: 30rem; }
 .office__ctas { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.6rem; }
 .career { list-style: none; margin: 0; padding: 0; }
 .career li { padding: 0 0 1.3rem 1.6rem; border-left: 1px solid var(--ink); position: relative; }
