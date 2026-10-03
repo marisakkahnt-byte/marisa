@@ -12,7 +12,7 @@
 </head>
 <body>
 
-  <!-- House-number navigation -->
+  <!-- Pick-a-door navigation -->
   <header class="nav" id="nav">
     <a href="#top" class="crest" aria-label="Marisa Kahnt, back to the top">
       <span class="crest__mono" aria-hidden="true">MK</span>
@@ -25,7 +25,7 @@
           <li><a href="#office" data-floor="1"><span class="floors__btn">2</span><span class="floors__label">Office</span></a></li>
           <li><a href="#stitches" data-floor="2"><span class="floors__btn">3</span><span class="floors__label">Stitches</span></a></li>
           <li><a href="#ido" data-floor="3"><span class="floors__btn">4</span><span class="floors__label">I Do</span></a></li>
-          <li><a href="#desk" data-floor="4"><span class="floors__btn">✉</span><span class="floors__label">Desk</span></a></li>
+          <li><a href="#desk" data-floor="4"><span class="floors__btn">✉</span><span class="floors__label">Say hi</span></a></li>
         </ol>
       </nav>
     </div>
@@ -35,14 +35,14 @@
     <!-- Hero: a colourful storybook street behind silk curtains -->
     <section class="stage" id="top">
       <div class="hello">
-        <p class="hello__eyebrow">Est. in Metro Detroit</p>
-        <p class="hello__script">welcome to the home of</p>
-        <h1 class="hello__name">Marisa Kahnt</h1>
-        <p class="hello__roles">recruiting operations <i>·</i> embroidery <i>·</i> wedding ceremonies</p>
+        <p class="hello__eyebrow">Marisa Kahnt · Metro Detroit</p>
+        <p class="hello__script" id="onceUpon">once upon a time…</p>
+        <h1 class="hello__name">Hi, I'm Marisa!</h1>
+        <p class="hello__roles">welcome to my brain <i>✦</i> pick a door, any door</p>
       </div>
 
       <div class="scene-wrap" id="sceneWrap">
-        <svg class="scene" id="scene" viewBox="0 0 1440 760" preserveAspectRatio="xMidYMax meet" aria-label="A storybook street of colourful buildings. Each one links to part of the site: the office, Marisa Stitches, the pink shop, I Do by Marisa and the front desk"></svg>
+        <svg class="scene" id="scene" viewBox="0 0 1440 760" preserveAspectRatio="xMidYMax meet" aria-label="A storybook street of colourful buildings. Each one links to part of the site: the office, Marisa Stitches, the pink shop, I Do by Marisa and a say-hi house"></svg>
       </div>
 
       <div class="valance" aria-hidden="true"></div>
@@ -51,9 +51,9 @@
       <button class="keytag" id="checkIn" type="button">
         <span class="keytag__ring" aria-hidden="true"></span>
         <span class="keytag__tag">
-          <small>Marisa Lane</small>
-          come on in
-          <em>tap to enter</em>
+          <small>Marisa Kahnt</small>
+          once upon a time
+          <em>tap to begin</em>
         </span>
       </button>
     </section>
@@ -67,26 +67,26 @@
 
     <!-- No. 1: Hello -->
     <section class="lobby" id="lobby">
-      <p class="floor-tag reveal">No. 1 · Hello</p>
+      <p class="floor-tag reveal">Chapter One · Hello</p>
       <article class="letter reveal">
         <header class="letter__head">
           <span class="letter__crest" aria-hidden="true">MK</span>
-          <p class="letter__hotel">No. 1 Marisa Lane</p>
+          <p class="letter__name">Marisa Kahnt</p>
           <p class="letter__place">Metro Detroit, Michigan</p>
         </header>
         <figure class="portrait">
           <div class="portrait__frame"><span>your portrait<br>here</span></div>
         </figure>
-        <p class="letter__hand">Dear guest,</p>
-        <p>Welcome in! I'm <strong>Marisa Kahnt</strong>. By day I work in recruiting operations. The rest of the time I'm stitching monograms at <strong>Marisa Stitches</strong> and marrying lovely couples with <strong>I Do by Marisa</strong>.</p>
-        <p>Each of those has its own little house on this street. Wander up and down the lane, and do stop by the front desk to say hello.</p>
+        <p class="letter__hand">Hi, friend!</p>
+        <p>Welcome to my brain! I'm <strong>Marisa Kahnt</strong>. By day I work in recruiting operations. The rest of the time I'm running my Brother embroidery machine at <strong>Marisa Stitches</strong> and marrying lovely couples as a wedding officiant with <strong>I Do by Marisa</strong>.</p>
+        <p>Every door on this little street opens into a different part of my world. Pick a door, any door, and come say hi when you're done.</p>
         <p class="letter__sign">With love,<br><span>Marisa</span></p>
       </article>
     </section>
 
     <!-- No. 2: The Office (professional) -->
     <section class="office" id="office">
-      <p class="floor-tag reveal">No. 2 · The Office</p>
+      <p class="floor-tag reveal">Chapter Two · The Office</p>
       <div class="office__frame reveal">
         <span class="perch" aria-hidden="true"></span>
         <div class="office__grid">
@@ -98,8 +98,6 @@
             <p class="office__summary todo">[Add a few more sentences from your current marisakahnt.com here.]</p>
             <div class="office__ctas">
               <a href="https://www.linkedin.com/in/mkahnt/" target="_blank" rel="noopener" class="btn btn--ink">LinkedIn ↗</a>
-              <!-- TODO: add resume.pdf to the site, or remove this button -->
-              <a href="resume.pdf" class="btn btn--line">Résumé</a>
             </div>
           </div>
 
@@ -131,7 +129,7 @@
 
     <!-- No. 3 & 4: next door -->
     <section class="suites" id="suites">
-      <p class="floor-tag reveal">No. 3 &amp; 4 · Next Door</p>
+      <p class="floor-tag reveal">Chapters Three &amp; Four · Next Door</p>
       <h2 class="suites__title reveal">my other little businesses, each with a home of its own</h2>
 
       <div class="suites__row">
@@ -155,8 +153,11 @@
           </a>
           <h3>Marisa Stitches</h3>
           <p class="suite__kind">Custom machine embroidery studio</p>
-          <p>Monograms, names, baby gifts, pouches, towels, cocktail napkins, shirts and hats. Stitched in Clinton Township and shipped everywhere.</p>
-          <a class="btn btn--pink" href="https://www.marisastitches.com" target="_blank" rel="noopener">visit marisastitches.com ↗</a>
+          <p>Monograms, names, baby gifts, pouches, towels, cocktail napkins, shirts and hats, all machine embroidered on my Brother in Clinton Township and shipped everywhere.</p>
+          <div class="suite__links">
+            <a class="btn btn--pink" href="https://www.marisastitches.com" target="_blank" rel="noopener">marisastitches.com ↗</a>
+            <a class="btn btn--line" href="https://www.instagram.com/marisastitches/" target="_blank" rel="noopener">@marisastitches</a>
+          </div>
         </article>
 
         <article class="suite reveal" id="ido" style="--door:#e8b9c6;--door-ink:#c39a50">
@@ -177,27 +178,30 @@
           </a>
           <h3>I Do by Marisa</h3>
           <p class="suite__kind">Wedding officiant</p>
-          <p class="todo">[A sentence or two about your ceremonies: your style, where you officiate and what couples can expect.]</p>
-          <a class="btn btn--pink" href="https://www.idobymarisa.com" target="_blank" rel="noopener">visit idobymarisa.com ↗</a>
+          <p>Your wedding officiant for a ceremony that feels just like the two of you. Let's make your "I do" one for the storybooks.</p>
+          <div class="suite__links">
+            <a class="btn btn--pink" href="https://www.idobymarisa.com" target="_blank" rel="noopener">idobymarisa.com ↗</a>
+            <a class="btn btn--line" href="https://www.instagram.com/idobymarisa/" target="_blank" rel="noopener">@idobymarisa</a>
+          </div>
         </article>
       </div>
     </section>
 
-    <!-- ✉: Front desk (contact) -->
+    <!-- ✉: Say hi (contact) -->
     <section class="desk" id="desk">
-      <p class="floor-tag reveal">The Front Desk</p>
+      <p class="floor-tag reveal">The End · Say Hi</p>
       <div class="register reveal">
-        <h2>Guest Register</h2>
-        <p class="register__note">for work, stitches, ceremonies, or simply to say hello</p>
+        <h2>Say hi!</h2>
+        <p class="register__note">for work, stitches, ceremonies, or just to say hello</p>
         <form id="customOrderForm" novalidate>
           <label>Name<input type="text" id="name" name="name" autocomplete="name"></label>
           <label>Email<input type="email" id="email" name="email" autocomplete="email"></label>
           <label>Message<textarea id="orderDetails" name="orderDetails" rows="4"></textarea></label>
           <button type="submit" class="bell-btn" id="bellBtn">
             <svg class="bell" viewBox="0 0 60 44" aria-hidden="true">
-              <circle cx="30" cy="6" r="3" /><path d="M8 34 a22 22 0 0 1 44 0 z" /><rect x="3" y="34" width="54" height="6" rx="2" />
+              <rect x="4" y="6" width="52" height="34" rx="3" /><path d="M4 8 L30 26 L56 8" fill="none" /><path d="M30 31 c-3 -4 -9 -2 -6 2 l6 5 l6 -5 c3 -4 -3 -6 -6 -2 z" class="seal" />
             </svg>
-            ring for service
+            send it with love
           </button>
           <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
         </form>
@@ -206,7 +210,7 @@
   </main>
 
   <footer class="footer">
-    <p class="footer__crest">Marisa Lane</p>
+    <p class="footer__crest">Marisa Kahnt</p>
     <p class="footer__links">
       <a href="https://www.marisastitches.com" target="_blank" rel="noopener">Marisa Stitches</a>
       <i>✦</i>
@@ -214,6 +218,12 @@
       <i>✦</i>
       <a href="https://www.linkedin.com/in/mkahnt/" target="_blank" rel="noopener">LinkedIn</a>
     </p>
+    <p class="footer__links footer__links--small">
+      <a href="https://www.instagram.com/marisastitches/" target="_blank" rel="noopener">@marisastitches</a>
+      <i>✦</i>
+      <a href="https://www.instagram.com/idobymarisa/" target="_blank" rel="noopener">@idobymarisa</a>
+    </p>
+    <p class="footer__end">and they all lived happily ever after</p>
     <p class="footer__small">© <span id="year"></span> Marisa Kahnt</p>
   </footer>
 

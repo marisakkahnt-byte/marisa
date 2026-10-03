@@ -9,7 +9,7 @@
   function rand(min, max) { return min + Math.random() * (max - min); }
   function f(n) { return (+n).toFixed(1); }
 
-  /* ---------- Hotel drawing (viewBox 1440 x 760) ---------- */
+  /* ---------- Street drawing (viewBox 1440 x 760) ---------- */
 
   // arched window with mullions; some get little pink curtains
   function win(cx, top, w, h, opts) {
@@ -247,7 +247,7 @@
     return '<a href="#ido" class="bld-link" aria-label="No. 4, I Do by Marisa">' + s + '</a>';
   }
 
-  // the front desk: a peach house with a postbox out front
+  // say hi: a peach house with a postbox out front
   function desk() {
     var x = 1208, w = 222, top = 292, s = '';
     var posts = '';
@@ -255,12 +255,12 @@
     s += '<path d="M' + (x - 4) + ' ' + (top - 20) + ' H' + (x + w + 4) + ' ' + posts + '" class="line"/>' +
       '<rect x="' + x + '" y="' + top + '" width="' + w + '" height="' + (GROUND - top) + '" fill="#ffd3bd" class="ink"/>' + cornice(x, w, top);
     [314, 400].forEach(function (y, i) { [1256, 1319, 1382].forEach(function (cx) { s += win(cx, y, 34, 56, { flowers: i === 1 }); }); });
-    s += plaque(1319, 486, 160, 'front desk ✉', '#b4573a') +
+    s += plaque(1319, 486, 160, 'say hi ✉', '#b4573a') +
       win(1256, 590, 40, 62, { awning: true }) + win(1382, 590, 40, 62, { awning: true }) + archDoor(1319, 42, 580, '#8fb8a6') +
       '<rect x="1420" y="602" width="26" height="58" rx="4" fill="#d9587b" class="ink"/>' +
       '<path d="M1420 612 q13 -18 26 0" fill="#d9587b" class="ink"/>' +
       '<path d="M1425 620 h16" class="line"/>';
-    return '<a href="#desk" class="bld-link" aria-label="The front desk: say hello">' + s + '</a>';
+    return '<a href="#desk" class="bld-link" aria-label="Say hi: contact me">' + s + '</a>';
   }
 
   function street() {
@@ -281,10 +281,11 @@
   }
 
   /* ---------- Birds ---------- */
-  function flyingBird(y, scale, dur, delay, pink) {
+  function flyingBird(y, scale, dur, delay, colour) {
+    var pink = colour === true ? '#f2a7bb' : colour || '#fffdf9';
     return '<g class="flyer" style="animation-duration:' + dur + 's;animation-delay:' + delay + 's"><g transform="translate(0 ' + y + ') scale(' + scale + ')"><g class="bob" style="animation-delay:' + f(rand(-1, 0)) + 's">' +
-      '<ellipse cx="0" cy="0" rx="9" ry="4.5" fill="' + (pink ? '#f2a7bb' : '#fffdf9') + '" stroke="#1f1a1c" stroke-width="1.6"/>' +
-      '<circle cx="9" cy="-2" r="3.6" fill="' + (pink ? '#f2a7bb' : '#fffdf9') + '" stroke="#1f1a1c" stroke-width="1.6"/>' +
+      '<ellipse cx="0" cy="0" rx="9" ry="4.5" fill="' + pink + '" stroke="#1f1a1c" stroke-width="1.6"/>' +
+      '<circle cx="9" cy="-2" r="3.6" fill="' + pink + '" stroke="#1f1a1c" stroke-width="1.6"/>' +
       '<path d="M12 -2 l5 1.5 l-5 1.5" fill="#c39a50" stroke="#1f1a1c" stroke-width="1"/>' +
       '<path d="M-9 0 l-7 -4 l2 4 l-2 4 z" fill="#fffdf9" stroke="#1f1a1c" stroke-width="1.4" stroke-linejoin="round"/>' +
       '<g class="flap" style="animation-delay:' + f(rand(-.3, 0)) + 's"><path d="M-2 -2 Q-8 -18 6 -22 Q4 -10 4 -2 Z" fill="#fffdf9" stroke="#1f1a1c" stroke-width="1.6" stroke-linejoin="round"/></g>' +
@@ -336,21 +337,53 @@
     return '<g class="walker">' + leash + dog + person + '</g>';
   }
 
+  /* ---------- Storybook magic: singing birds, butterflies, twinkles ---------- */
+  var PERCHES = [[363, 206], [560, 214], [1090, 84], [220, 182], [1380, 272]];
+
+  function notes() {
+    var s = '', glyphs = ['♪', '♫', '♪', '♬'];
+    PERCHES.forEach(function (p, i) {
+      for (var k = 0; k < 2; k++) {
+        s += '<text x="' + (p[0] + 8 + k * 8) + '" y="' + (p[1] - 22) + '" class="note" fill="' + (k ? '#d9587b' : '#6f9c80') + '" font-size="' + (16 + k * 4) + '" style="animation-delay:' + f(i * 1.3 + k * 0.9) + 's">' + glyphs[(i + k) % 4] + '</text>';
+      }
+    });
+    return s;
+  }
+
+  function butterfly(x, y, colour, dur, delay) {
+    return '<g transform="translate(' + x + ' ' + y + ')"><g class="flit" style="animation-duration:' + dur + 's;animation-delay:' + delay + 's">' +
+      '<g class="wing"><path d="M0 0 C-14 -16 -20 -2 -8 4 C-16 10 -6 16 0 4 Z" fill="' + colour + '" stroke="#1f1a1c" stroke-width="1.2" stroke-linejoin="round"/></g>' +
+      '<g class="wing wing--r"><path d="M0 0 C14 -16 20 -2 8 4 C16 10 6 16 0 4 Z" fill="' + colour + '" stroke="#1f1a1c" stroke-width="1.2" stroke-linejoin="round"/></g>' +
+      '<path d="M0 -4 V8 M0 -4 l-3 -5 M0 -4 l3 -5" stroke="#1f1a1c" stroke-width="1.2" fill="none" stroke-linecap="round"/></g></g>';
+  }
+
+  function twinkles() {
+    var s = '';
+    for (var i = 0; i < 16; i++) {
+      s += '<text x="' + f(rand(40, 1400)) + '" y="' + f(rand(30, 190)) + '" class="twinkle" fill="' + (i % 3 ? '#c39a50' : '#f2a7bb') + '" font-size="' + f(rand(10, 20)) + '" style="animation-delay:' + f(rand(0, 4)) + 's;animation-duration:' + f(rand(2.4, 4)) + 's">✦</text>';
+    }
+    return s;
+  }
+
   function buildScene() {
     var scene = document.getElementById('scene');
-    var birds = flyingBird(110, 1, 26, -4, false) + flyingBird(70, .8, 32, -18, true) + flyingBird(150, .7, 29, -11, false) + flyingBird(96, .65, 36, -27, true);
+    var birds = flyingBird(110, 1, 26, -4, '#9cc3e6') + flyingBird(70, .8, 32, -18, true) + flyingBird(150, .7, 29, -11, '#9cc3e6') +
+      flyingBird(96, .65, 36, -27, true) + flyingBird(180, .55, 40, -8, false);
+    var flutter = butterfly(520, 330, '#c9b6ec', 9, 0) + butterfly(930, 360, '#f2a7bb', 11, -3) + butterfly(330, 470, '#ffe39a', 10, -6) + butterfly(1150, 420, '#9cc3e6', 12, -2);
     scene.innerHTML =
       '<defs><filter id="wobble" filterUnits="userSpaceOnUse" x="-700" y="-60" width="2840" height="1600">' +
         '<feTurbulence id="wobbleNoise" type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="1" result="noise"/>' +
         '<feDisplacementMap in="SourceGraphic" in2="noise" scale="2.6" xChannelSelector="R" yChannelSelector="G"/>' +
       '</filter></defs>' +
       '<g filter="url(#wobble)">' +
+        twinkles() +
         cloud(0, 60, 1.6, 120, -30) + cloud(0, 150, 1.1, 150, -95) + cloud(0, 230, 1.3, 135, -60) +
         tree(-60, GROUND, 80) + tree(1520, GROUND, 84) +
         street() +
         perchedBird(363, 206, false, 0) + perchedBird(560, 214, true, 2.2) + perchedBird(1090, 84, false, 3.6) + perchedBird(220, 182, true, 1.3) + perchedBird(1380, 272, false, 4.4) +
         ground() +
         walker() +
+        notes() + flutter +
         birds +
       '</g>';
 
@@ -401,6 +434,58 @@
     opened = true;
     document.body.classList.add('show');
     document.body.classList.remove('locked');
+    if (!reduceMotion) sparkleBurst(window.innerWidth / 2, window.innerHeight * 0.4, 36);
+  }
+
+  // a puff of fairy dust, used when the curtains open
+  function sparkleBurst(x, y, count) {
+    var tints = ['#f2a7bb', '#c39a50', '#c9b6ec', '#9cc3e6', '#d9587b'];
+    for (var i = 0; i < count; i++) {
+      var s = document.createElement('span');
+      var a = Math.random() * Math.PI * 2, d = 80 + Math.random() * 260;
+      s.className = 'dust dust--burst';
+      s.textContent = Math.random() < 0.7 ? '✦' : '♡';
+      s.style.left = x + 'px';
+      s.style.top = y + 'px';
+      s.style.color = tints[i % tints.length];
+      s.style.setProperty('--dx', Math.cos(a) * d + 'px');
+      s.style.setProperty('--dy', Math.sin(a) * d + 'px');
+      s.style.animationDelay = Math.random() * 0.4 + 's';
+      document.body.appendChild(s);
+      setTimeout(function (el) { el.remove(); }.bind(null, s), 2200);
+    }
+  }
+
+  // "once upon a time…" writes itself in, letter by letter
+  var once = document.getElementById('onceUpon');
+  var onceText = once.textContent;
+  once.setAttribute('aria-label', onceText);
+  once.textContent = '';
+  onceText.split('').forEach(function (ch, i) {
+    var sp = document.createElement('span');
+    sp.className = 'ink-letter';
+    sp.setAttribute('aria-hidden', 'true');
+    sp.textContent = ch;
+    sp.style.transitionDelay = (0.9 + i * 0.07) + 's';
+    once.appendChild(sp);
+  });
+
+  // fairy dust follows the mouse
+  if (!reduceMotion && window.matchMedia('(pointer: fine)').matches) {
+    var lastDust = 0;
+    window.addEventListener('pointermove', function (e) {
+      var now = Date.now();
+      if (now - lastDust < 60) return;
+      lastDust = now;
+      var s = document.createElement('span');
+      s.className = 'dust';
+      s.textContent = Math.random() < 0.8 ? '✦' : '♡';
+      s.style.left = e.clientX + rand(-6, 6) + 'px';
+      s.style.top = e.clientY + rand(-6, 6) + 'px';
+      s.style.color = ['#f2a7bb', '#c39a50', '#c9b6ec', '#9cc3e6'][Math.floor(Math.random() * 4)];
+      document.body.appendChild(s);
+      setTimeout(function () { s.remove(); }, 1000);
+    });
   }
   var seen = false;
   try { seen = !!sessionStorage.getItem('mk-checked-in'); sessionStorage.setItem('mk-checked-in', '1'); } catch (e) {}
@@ -442,7 +527,7 @@
     });
   }
 
-  /* ---------- Front desk bell ---------- */
+  /* ---------- Send button wiggle ---------- */
   var bell = document.getElementById('bellBtn');
   bell.addEventListener('click', function () {
     bell.classList.remove('ding');

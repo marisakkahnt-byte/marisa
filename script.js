@@ -1,4 +1,4 @@
-// JavaScript for form validation and submission functionality for the front desk contact form
+// JavaScript for form validation and submission functionality for the say hi contact form
 
 // Show a message under the form instead of a pop-up alert
 function showStatus(message, type) {
@@ -34,7 +34,7 @@ function submitForm(event) {
     
     if (validateForm()) {
         // Code to submit the form (e.g., AJAX request)
-        showStatus('Thank you! Your note has been left at the front desk.', 'success');
+        showStatus('Thank you! Your note is on its way ♡', 'success');
         // Implement AJAX submission here
     }
 }
