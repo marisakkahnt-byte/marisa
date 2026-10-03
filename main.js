@@ -516,7 +516,7 @@
     }
   }
 
-  // "once upon a time…" writes itself in, letter by letter
+  // the welcome line writes itself in, letter by letter
   var once = document.getElementById('onceUpon');
   var onceText = once.textContent;
   once.setAttribute('aria-label', onceText);
