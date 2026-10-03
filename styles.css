@@ -123,6 +123,19 @@ button { font: inherit; color: inherit; }
 
 /* street extras */
 .scene .plaque-text { font: italic 600 19px var(--display); }
+.scene .plaque-text--stitches { font: 700 12.5px var(--display); letter-spacing: .1em; text-transform: uppercase; }
+.scene .plaque-script { font: 400 26px "Pinyon Script", var(--hand); }
+.suite .script-title { font: 400 2.6rem "Pinyon Script", var(--hand); }
+.suite__tagline { font: 600 1.6rem/1.15 var(--display); color: #2f4a3a; margin: 0 auto .2rem !important; }
+.suite__tagline em { display: block; color: #1f2a44; font-weight: 400; }
+.suite__script { font: 700 1.6rem var(--hand); color: #c9a24a; margin: 0 auto .8rem !important; }
+.suite__quote { font-style: italic; color: var(--ink-soft); border-block: 1px solid currentColor; padding: .6rem 0; max-width: 20rem !important; }
+#stitches .door__leaf {
+  background:
+    linear-gradient(var(--ink), var(--ink)) 50% 64px / 1px calc(100% - 92px) no-repeat,
+    radial-gradient(ellipse 7px 5px, rgba(201,162,74,.55) 96%, transparent) 0 0 / 34px 30px,
+    var(--door);
+}
 .scene .shop-sign { font: italic 600 40px var(--display); fill: #c2456b; }
 .scene .bld-link { cursor: pointer; }
 .scene .bld-link .plaque { transform-box: fill-box; transform-origin: center; transition: transform .4s var(--bounce); }

@@ -87,15 +87,15 @@
       'd="M0 20 q-2 -16 16 -16 q6 -14 24 -8 q14 -10 26 4 q16 0 14 16 Z" fill="#fffdf9" class="line"/></g>';
   }
 
-  // Brand colours for the two neighbouring businesses. Swap these for the real brand palettes.
-  var STITCHES = { wall: '#cfe4d6', trim: '#6f9c80', roof: '#a9cdb6', accent: '#f2a7bb' };
-  var IDO = { wall: '#f8eedc', trim: '#c39a50', roof: '#e8b9c6', accent: '#d9587b' };
+  // Brand colours, taken from marisastitches.com and idobymarisa.com
+  var STITCHES = { wall: '#f1e6cc', trim: '#2f4a3a', roof: '#2f4a3a', accent: '#c9a24a', navy: '#1f2a44', spot: '#bdb7ad' };
+  var IDO = { wall: '#f3ece2', trim: '#2c2825', roof: '#b7a097', accent: '#a3847b', bell: '#c2a67c' };
   var CLOCK = [140, 214];
 
-  function plaque(cx, y, w, text, color) {
+  function plaque(cx, y, w, text, color, cls) {
     return '<g class="plaque"><rect x="' + (cx - w / 2) + '" y="' + y + '" width="' + w + '" height="34" rx="17" fill="#fffdf9" class="ink"/>' +
       '<rect x="' + (cx - w / 2 + 4) + '" y="' + (y + 4) + '" width="' + (w - 8) + '" height="26" rx="13" fill="none" stroke="' + color + '" stroke-width="1"/>' +
-      '<text x="' + cx + '" y="' + (y + 23) + '" text-anchor="middle" class="plaque-text" style="fill:' + color + '">' + text + '</text></g>';
+      '<text x="' + cx + '" y="' + (y + 23) + '" text-anchor="middle" class="' + (cls || 'plaque-text') + '" style="fill:' + color + '">' + text + '</text></g>';
   }
 
   function archDoor(cx, w, top, fill) {
@@ -133,25 +133,30 @@
     s += '<rect x="' + x + '" y="' + top + '" width="' + w + '" height="' + (GROUND - top) + '" fill="' + STITCHES.wall + '" class="ink"/>' +
       '<path d="M' + (x - 12) + ' ' + top + ' L363 206 L' + (x + w + 12) + ' ' + top + ' Z" fill="' + STITCHES.roof + '" class="ink"/>' +
       '<circle cx="363" cy="276" r="25" fill="#fffdf9" class="ink"/>' +
-      '<circle cx="363" cy="276" r="19" fill="none" stroke="#c39a50" stroke-width="3"/>' +
+      '<circle cx="363" cy="276" r="19" fill="none" stroke="' + STITCHES.accent + '" stroke-width="3"/>' +
       '<rect x="384" y="252" width="8" height="10" rx="2" fill="#c39a50" class="hair"/>';
     var xs = '';
     for (var gx = -9; gx <= 9; gx += 6) for (var gy = -9; gy <= 9; gy += 6) {
       if (Math.abs(gx) + Math.abs(gy) > 13) continue;
       xs += 'M' + (360 + gx) + ' ' + (273 + gy) + ' l5 5 m0 -5 l-5 5 ';
     }
-    s += '<path d="' + xs + '" stroke="' + STITCHES.accent + '" stroke-width="1.6" stroke-linecap="round"/>' + cornice(x, w, top, '#fffdf9');
+    s += '<path d="' + xs + '" stroke="' + STITCHES.trim + '" stroke-width="1.6" stroke-linecap="round"/>' + cornice(x, w, top, STITCHES.accent);
+    // leopard spots, like the Marisa Stitches brand
+    var spots = [[284, 336], [446, 352], [300, 410], [442, 418], [362, 392], [286, 486], [448, 486], [362, 470], [292, 548], [446, 552], [362, 540]];
+    spots.forEach(function (p) {
+      s += '<ellipse cx="' + p[0] + '" cy="' + p[1] + '" rx="' + f(rand(5, 8)) + '" ry="' + f(rand(3.5, 5.5)) + '" fill="' + STITCHES.spot + '" transform="rotate(' + f(rand(-30, 30)) + ' ' + p[0] + ' ' + p[1] + ')"/>';
+    });
     [342, 428].forEach(function (y, i) { [318, 408].forEach(function (cx) { s += win(cx, y, 38, 56, { flowers: i === 0 }); }); });
-    s += plaque(363, 508, 170, 'marisa stitches', STITCHES.trim);
+    s += plaque(363, 508, 170, 'marisa stitches', STITCHES.trim, 'plaque-text plaque-text--stitches');
     // shop window with spools of thread
-    s += awningRow(280, 92, 556, STITCHES.accent) +
+    s += awningRow(280, 92, 556, STITCHES.trim) +
       '<rect x="284" y="572" width="84" height="74" rx="4" fill="#fffaf3" class="ink"/>';
-    ['#f2a7bb', '#6f9c80', '#c39a50', '#bfd6ea'].forEach(function (c, i) {
+    [STITCHES.trim, STITCHES.accent, STITCHES.navy, '#f2a7bb'].forEach(function (c, i) {
       var sx = 294 + i * 18;
       s += '<rect x="' + sx + '" y="612" width="14" height="4" fill="#fffdf9" class="hair"/><rect x="' + (sx + 2) + '" y="616" width="10" height="20" fill="' + c + '" class="hair"/><rect x="' + sx + '" y="636" width="14" height="4" fill="#fffdf9" class="hair"/>';
     });
-    s += '<path d="M292 600 q20 -18 40 0 t36 -4" fill="none" stroke="' + STITCHES.accent + '" stroke-width="1.6" stroke-dasharray="3 3"/>';
-    s += archDoor(412, 40, 584, STITCHES.trim);
+    s += '<path d="M292 600 q20 -18 40 0 t36 -4" fill="none" stroke="' + STITCHES.navy + '" stroke-width="1.6" stroke-dasharray="3 3"/>';
+    s += archDoor(412, 40, 584, STITCHES.navy);
     return '<a href="#stitches" class="bld-link" aria-label="No. 3, Marisa Stitches">' + s + '</a>';
   }
 
@@ -224,7 +229,7 @@
     var x = 990, w = 200, top = 300, cx = 1090, s = '';
     s += '<rect x="1068" y="150" width="44" height="90" fill="' + IDO.wall + '" class="ink"/>' +
       '<path d="M1076 210 V180 A14 14 0 0 1 1104 180 V210 Z" fill="#3a2f34" class="line"/>' +
-      '<g class="bellswing"><path d="M1090 178 v4 M1080 202 q0 -18 10 -18 q10 0 10 18 z" fill="' + IDO.trim + '" class="line"/><circle cx="1090" cy="204" r="2.4" fill="' + IDO.trim + '" class="hair"/></g>' +
+      '<g class="bellswing"><path d="M1090 178 v4 M1080 202 q0 -18 10 -18 q10 0 10 18 z" fill="' + IDO.bell + '" class="line"/><circle cx="1090" cy="204" r="2.4" fill="' + IDO.bell + '" class="hair"/></g>' +
       '<path d="M1062 150 L1090 98 L1118 150 Z" fill="' + IDO.roof + '" class="ink"/>' +
       '<path d="M1090 98 V84 M1090 82 c-3 -5 -10 -2 -6 3 l6 6 l6 -6 c4 -5 -3 -8 -6 -3 z" fill="' + IDO.accent + '" class="line"/>';
     s += '<rect x="' + x + '" y="' + top + '" width="' + w + '" height="' + (GROUND - top) + '" fill="' + IDO.wall + '" class="ink"/>' +
@@ -234,15 +239,15 @@
     var petals = '';
     for (var p = 0; p < 8; p++) {
       var a = p * Math.PI / 4;
-      petals += '<circle cx="' + f(cx + Math.cos(a) * 12) + '" cy="' + f(262 + Math.sin(a) * 12) + '" r="7" fill="' + (p % 2 ? '#fde7ed' : '#f2a7bb') + '" class="hair"/>';
+      petals += '<circle cx="' + f(cx + Math.cos(a) * 12) + '" cy="' + f(262 + Math.sin(a) * 12) + '" r="7" fill="' + (p % 2 ? '#fbf6ee' : '#e6d6cc') + '" class="hair"/>';
     }
-    s += '<circle cx="' + cx + '" cy="262" r="24" fill="#fffdf9" class="ink"/>' + petals + '<circle cx="' + cx + '" cy="262" r="5" fill="' + IDO.trim + '" class="hair"/>';
+    s += '<circle cx="' + cx + '" cy="262" r="24" fill="#fffdf9" class="ink"/>' + petals + '<circle cx="' + cx + '" cy="262" r="5" fill="' + IDO.accent + '" class="hair"/>';
     [1036, 1144].forEach(function (wx) { s += win(wx, 326, 36, 96); });
-    s += plaque(cx, 444, 170, 'i do by marisa', IDO.accent);
+    s += plaque(cx, 444, 176, 'I Do by Marisa', IDO.trim, 'plaque-script');
     // garland and double doors
     var garland = '';
-    for (var g = 0; g <= 10; g++) garland += '<circle cx="' + (1052 + g * 7.6) + '" cy="' + f(536 + Math.sin(g / 10 * Math.PI) * 12) + '" r="3.6" fill="' + (g % 2 ? '#fffdf9' : '#f2a7bb') + '" class="hair"/>';
-    s += archDoor(cx, 62, 548, '#f3dcc0') + '<path d="M' + cx + ' 580 V' + (GROUND - 4) + '" class="line"/>' + garland +
+    for (var g = 0; g <= 10; g++) garland += '<circle cx="' + (1052 + g * 7.6) + '" cy="' + f(536 + Math.sin(g / 10 * Math.PI) * 12) + '" r="3.6" fill="' + (g % 2 ? '#fffdf9' : '#d9c6bc') + '" class="hair"/>';
+    s += archDoor(cx, 62, 548, '#4a433f') + '<path d="M' + cx + ' 580 V' + (GROUND - 4) + '" stroke="#c2a67c" stroke-width="1.6"/>' + garland +
       win(1024, 594, 30, 56) + win(1156, 594, 30, 56);
     return '<a href="#ido" class="bld-link" aria-label="No. 4, I Do by Marisa">' + s + '</a>';
   }
