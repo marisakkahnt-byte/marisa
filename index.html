@@ -4,230 +4,207 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Marisa Kahnt</title>
-  <meta name="description" content="Marisa Kahnt: the professional side, the creative side, Marisa Stitches and I Do by Marisa.">
+  <meta name="description" content="Marisa Kahnt: recruiting operations by day, custom embroidery at Marisa Stitches, and wedding ceremonies with I Do by Marisa. Metro Detroit.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Gaegu:wght@400;700&family=Pixelify+Sans:wght@400;600&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Caveat:wght@500;700&family=Jost:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
+  <!-- Elevator-style navigation -->
   <header class="nav" id="nav">
-    <a href="#top" class="nav__logo">marisa kahnt <span aria-hidden="true">♡</span></a>
-    <nav class="nav__tabs" aria-label="Main">
-      <a href="#about">about</a>
-      <a href="#work">work</a>
-      <a href="#neighbourhood">shops</a>
-      <a href="#services">creative</a>
-      <a href="#contact" class="tab--hot">say hi</a>
-    </nav>
+    <a href="#top" class="crest" aria-label="Marisa Kahnt, back to the top">
+      <span class="crest__mono" aria-hidden="true">MK</span>
+      <span class="crest__name">Marisa Kahnt</span>
+    </a>
+    <div class="elevator">
+      <svg class="dial" viewBox="0 0 80 46" aria-hidden="true">
+        <path d="M6 42 A34 34 0 0 1 74 42" />
+        <g><line x1="8" y1="34" x2="12" y2="35" /><line x1="18" y1="18" x2="21" y2="21" /><line x1="40" y1="10" x2="40" y2="14" /><line x1="62" y1="18" x2="59" y2="21" /><line x1="72" y1="34" x2="68" y2="35" /></g>
+        <line class="dial__needle" id="needle" x1="40" y1="42" x2="40" y2="16" />
+        <circle cx="40" cy="42" r="3.5" />
+      </svg>
+      <nav aria-label="Floors">
+        <ol class="floors">
+          <li><a href="#lobby" data-floor="0"><span class="floors__btn">L</span><span class="floors__label">Lobby</span></a></li>
+          <li><a href="#office" data-floor="1"><span class="floors__btn">2</span><span class="floors__label">Office</span></a></li>
+          <li><a href="#stitches" data-floor="2"><span class="floors__btn">3</span><span class="floors__label">Stitches</span></a></li>
+          <li><a href="#ido" data-floor="3"><span class="floors__btn">4</span><span class="floors__label">I Do</span></a></li>
+          <li><a href="#desk" data-floor="4"><span class="floors__btn">✉</span><span class="floors__label">Desk</span></a></li>
+        </ol>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <!-- Hero: a hand-drawn street behind velvet curtains -->
+    <!-- Hero: the hotel façade behind silk curtains -->
     <section class="stage" id="top">
-      <svg class="scene" id="scene" viewBox="0 0 1440 700" preserveAspectRatio="xMidYMax slice" aria-label="An illustrated street. Each building links to part of the site: the office, Marisa Stitches, I Do by Marisa and contact"></svg>
-
-      <div class="hello" id="hello">
-        <h1 class="hello__title" aria-label="Marisa Kahnt says hello!">
-          <span>h</span><span>e</span><span>l</span><span>l</span><span>o</span><span>!</span>
-        </h1>
-        <p class="hello__tag">i'm marisa! pick a door, any door ♡</p>
+      <div class="hello">
+        <p class="hello__eyebrow">Est. in Metro Detroit</p>
+        <p class="hello__script">welcome to the home of</p>
+        <h1 class="hello__name">Marisa Kahnt</h1>
+        <p class="hello__roles">recruiting operations <i>·</i> embroidery <i>·</i> wedding ceremonies</p>
       </div>
 
-      <a href="#about" class="scroll-hint" aria-label="Scroll down">
-        <span>knock knock, come in</span>
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7" /></svg>
-      </a>
+      <div class="scene-wrap" id="sceneWrap">
+        <svg class="scene" id="scene" viewBox="90 0 1260 760" preserveAspectRatio="xMidYMax meet" aria-label="A pen-and-ink drawing of The Marisa, a grand pink hotel, with birds overhead and a lady walking her dog"></svg>
+      </div>
 
       <div class="valance" aria-hidden="true"></div>
-      <div class="curtain curtain--left" aria-hidden="true"><i class="tieback"></i></div>
-      <div class="curtain curtain--right" aria-hidden="true"><i class="tieback"></i></div>
-      <button class="showtime" id="showtime" type="button">
-        <span class="showtime__string" aria-hidden="true"></span>
-        <span class="showtime__card">✦ tap to open ✦<small>the show's about to start</small></span>
+      <div class="curtain curtain--left" aria-hidden="true"><i class="tassel"></i></div>
+      <div class="curtain curtain--right" aria-hidden="true"><i class="tassel"></i></div>
+      <button class="keytag" id="checkIn" type="button">
+        <span class="keytag__ring" aria-hidden="true"></span>
+        <span class="keytag__tag">
+          <small>The Marisa</small>
+          please check in
+          <em>tap to enter</em>
+        </span>
       </button>
     </section>
 
-    <div class="ticker" aria-hidden="true">
-      <div class="ticker__track">
-        <span>♡ marisa kahnt</span><span>✿ the office</span><span>✂ marisa stitches</span><span>❀ i do by marisa</span><span>☆ animations &amp; art</span>
-        <span>♡ marisa kahnt</span><span>✿ the office</span><span>✂ marisa stitches</span><span>❀ i do by marisa</span><span>☆ animations &amp; art</span>
+    <div class="ribbon" aria-hidden="true">
+      <div class="ribbon__track">
+        <span>Recruiting Operations</span><span>✦</span><span>Custom Embroidery</span><span>✦</span><span>Wedding Ceremonies</span><span>✦</span><span>Metro Detroit</span><span>✦</span>
+        <span>Recruiting Operations</span><span>✦</span><span>Custom Embroidery</span><span>✦</span><span>Wedding Ceremonies</span><span>✦</span><span>Metro Detroit</span><span>✦</span>
       </div>
     </div>
 
-    <!-- About: y2k blog vibes -->
-    <section class="wallpaper about" id="about">
-      <div class="about__side reveal">
-        <div class="bubble">i'm from ____ ♡</div>
-        <figure class="polaroid">
-          <span class="tape" aria-hidden="true"></span>
-          <div class="polaroid__photo">your<br>photo<br>here</div>
-          <figcaption>that's me!</figcaption>
+    <!-- L: Lobby -->
+    <section class="lobby" id="lobby">
+      <p class="floor-tag reveal">The Lobby</p>
+      <article class="letter reveal">
+        <header class="letter__head">
+          <span class="letter__crest" aria-hidden="true">MK</span>
+          <p class="letter__hotel">The Marisa</p>
+          <p class="letter__place">Metro Detroit, Michigan</p>
+        </header>
+        <figure class="portrait">
+          <div class="portrait__frame"><span>your portrait<br>here</span></div>
         </figure>
-        <button class="pixel-bubble" id="funFact" type="button">me! click me to learn a little more about me! ♡</button>
-        <span class="online"><span class="online__star">★</span> ONLINE</span>
-      </div>
-
-      <article class="notebook reveal">
-        <p class="notebook__date">today ♡</p>
-        <h2>hi, i'm marisa!</h2>
-        <p>Welcome to my little corner of the internet. By day I'm in <mark>the office</mark> doing the professional thing. The rest of the time I'm running <mark>Marisa Stitches</mark>, dreaming up weddings at <mark>I Do by Marisa</mark>, and making cute animations and art.</p>
-        <p>Every building on this street is a different part of me. Have a wander!</p>
-        <p class="notebook__sign">xoxo, marisa</p>
+        <p class="letter__hand">Dear guest,</p>
+        <p>Welcome in! I'm <strong>Marisa Kahnt</strong>. By day I work in recruiting operations. The rest of the time I'm stitching monograms at <strong>Marisa Stitches</strong> and marrying lovely couples with <strong>I Do by Marisa</strong>.</p>
+        <p>Each of those has its own room in this little hotel. Take the elevator, have a wander, and do stop by the front desk to say hello.</p>
+        <p class="letter__sign">With love,<br><span>Marisa</span></p>
       </article>
     </section>
 
-    <!-- The office: professional / corporate -->
-    <section class="office" id="work">
-      <div class="office__inner">
-        <div class="office__intro reveal">
-          <p class="office__eyebrow">the office <span aria-hidden="true">✦</span> professional</p>
-          <h2>Marisa Kahnt</h2>
-          <p class="office__title">[Your job title] · [Industry or company]</p>
-          <p>[Two or three sentences about what you do professionally, the kind of problems you solve and what you're known for. Keep it warm but polished.]</p>
-          <div class="office__ctas">
-            <a href="resume.pdf" class="pill pill--dark">download résumé</a>
-            <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="pill pill--ghost">LinkedIn ↗</a>
+    <!-- 2: The Office (professional) -->
+    <section class="office" id="office">
+      <p class="floor-tag reveal">Floor 2 · The Office</p>
+      <div class="office__frame reveal">
+        <span class="perch" aria-hidden="true"></span>
+        <div class="office__grid">
+          <div class="office__intro">
+            <h2>Marisa Kahnt</h2>
+            <p class="office__title">Recruiting Operations Specialist at Block</p>
+            <p class="office__loc">Detroit Metropolitan Area</p>
+            <p class="office__summary">Adaptable, solutions-oriented and detail-obsessed, with expertise in program management, data analysis and operations.</p>
+            <p class="office__summary todo">[Add a few more sentences from your current marisakahnt.com here.]</p>
+            <div class="office__ctas">
+              <a href="https://www.linkedin.com/in/mkahnt/" target="_blank" rel="noopener" class="btn btn--ink">LinkedIn ↗</a>
+              <!-- TODO: add resume.pdf to the site, or remove this button -->
+              <a href="resume.pdf" class="btn btn--line">Résumé</a>
+            </div>
           </div>
+
+          <ol class="career" aria-label="Experience">
+            <li>
+              <span class="career__dates">[dates] – present</span>
+              <h3>Recruiting Operations Specialist</h3>
+              <p class="career__org">Block</p>
+              <p class="todo">[One line about your work here.]</p>
+            </li>
+            <li>
+              <span class="career__dates">[dates]</span>
+              <h3>[Previous role]</h3>
+              <p class="career__org">[Company]</p>
+              <p class="todo">[One line about your work here.]</p>
+            </li>
+            <li>
+              <span class="career__dates">[year]</span>
+              <h3>[Degree or certification]</h3>
+              <p class="career__org">[School]</p>
+            </li>
+          </ol>
         </div>
-
-        <ol class="timeline reveal" aria-label="Experience">
-          <li>
-            <span class="timeline__dates">[2023 – now]</span>
-            <h3>[Role title]</h3>
-            <p class="timeline__org">[Company]</p>
-            <p>[One line about what you did or achieved.]</p>
-          </li>
-          <li>
-            <span class="timeline__dates">[2020 – 2023]</span>
-            <h3>[Role title]</h3>
-            <p class="timeline__org">[Company]</p>
-            <p>[One line about what you did or achieved.]</p>
-          </li>
-          <li>
-            <span class="timeline__dates">[Year – year]</span>
-            <h3>[Degree or certification]</h3>
-            <p class="timeline__org">[School]</p>
-          </li>
-        </ol>
+        <ul class="skills" aria-label="Skills">
+          <li>Recruiting Operations</li><li>Program Management</li><li>Data Analysis</li><li>Operations</li><li class="todo">[skill]</li><li class="todo">[skill]</li>
+        </ul>
       </div>
-
-      <ul class="skills reveal" aria-label="Skills">
-        <li>[skill]</li><li>[skill]</li><li>[skill]</li><li>[skill]</li><li>[skill]</li><li>[skill]</li>
-      </ul>
     </section>
 
-    <!-- Around the neighbourhood: nods to Marisa Stitches and I Do by Marisa -->
-    <section class="wallpaper wallpaper--pink neighbourhood" id="neighbourhood">
-      <div class="section-head reveal">
-        <h2>around the neighbourhood <span class="wiggle">✿</span></h2>
-        <p>my other little shops, each with a home of its own</p>
-      </div>
+    <!-- 3 & 4: The Suites -->
+    <section class="suites" id="suites">
+      <p class="floor-tag reveal">Floors 3 &amp; 4 · The Suites</p>
+      <h2 class="suites__title reveal">my other little businesses, each with a home of its own</h2>
 
-      <div class="storefronts">
-        <article class="storefront reveal" id="stitches" style="--awning:#c9b6ec;--wall:#efe7fb;--accent:#7a5cc2">
-          <div class="storefront__awning" aria-hidden="true"></div>
-          <h3 class="storefront__sign">marisa stitches <span aria-hidden="true">✂</span></h3>
-          <div class="storefront__window">
-            <span class="storefront__icon" aria-hidden="true">🧵</span>
-            <p>[A sentence about Marisa Stitches: what you make and who it's for.]</p>
-          </div>
-          <!-- TODO: replace with the real Marisa Stitches URL -->
-          <a class="storefront__door" href="#stitches">visit marisa stitches →</a>
+      <div class="suites__row">
+        <article class="suite reveal" id="stitches">
+          <a class="door" href="https://www.marisastitches.com" target="_blank" rel="noopener" aria-label="Visit marisastitches.com">
+            <span class="door__room" aria-hidden="true">
+              <svg viewBox="0 0 120 120"><g class="ink-line">
+                <rect x="38" y="30" width="44" height="10" rx="3" /><rect x="38" y="80" width="44" height="10" rx="3" />
+                <rect x="44" y="40" width="32" height="40" class="pink-fill" />
+                <path d="M44 48 h32 M44 56 h32 M44 64 h32 M44 72 h32" />
+                <path d="M82 50 q20 10 4 30 q-12 14 6 26" />
+                <path d="M98 14 L88 46" /><ellipse cx="97" cy="17" rx="2" ry="4" transform="rotate(18 97 17)" />
+              </g></svg>
+              <span>monograms &amp; more</span>
+            </span>
+            <span class="door__leaf" aria-hidden="true">
+              <span class="door__plate">3</span>
+              <span class="door__knob"></span>
+              <span class="door__sign">stitching<br>in progress</span>
+            </span>
+          </a>
+          <h3>Marisa Stitches</h3>
+          <p class="suite__kind">Custom machine embroidery studio</p>
+          <p>Monograms, names, baby gifts, pouches, towels, cocktail napkins, shirts and hats. Stitched in Clinton Township and shipped everywhere.</p>
+          <a class="btn btn--pink" href="https://www.marisastitches.com" target="_blank" rel="noopener">visit marisastitches.com ↗</a>
         </article>
 
-        <article class="storefront reveal" id="ido" style="--awning:#f7a8c4;--wall:#fff0f5;--accent:#e5527f">
-          <div class="storefront__awning" aria-hidden="true"></div>
-          <h3 class="storefront__sign">i do by marisa <span aria-hidden="true">♡</span></h3>
-          <div class="storefront__window">
-            <span class="storefront__icon" aria-hidden="true">💍</span>
-            <p>[A sentence about I Do by Marisa: what you offer couples and why it's special.]</p>
-          </div>
-          <!-- TODO: replace with the real I Do by Marisa URL -->
-          <a class="storefront__door" href="#ido">visit i do by marisa →</a>
+        <article class="suite reveal" id="ido">
+          <a class="door" href="https://www.idobymarisa.com" target="_blank" rel="noopener" aria-label="Visit idobymarisa.com">
+            <span class="door__room" aria-hidden="true">
+              <svg viewBox="0 0 120 120"><g class="ink-line">
+                <circle cx="48" cy="72" r="22" /><circle cx="72" cy="72" r="22" />
+                <path d="M66 40 l6 -10 l6 10 l-6 6 z" class="pink-fill" />
+                <path d="M60 18 c-6 -8 -18 -2 -12 8 l12 10 l12 -10 c6 -10 -6 -16 -12 -8 z" class="pink-fill" />
+              </g></svg>
+              <span>happily ever after</span>
+            </span>
+            <span class="door__leaf" aria-hidden="true">
+              <span class="door__plate">4</span>
+              <span class="door__knob"></span>
+              <span class="door__sign">just<br>married</span>
+            </span>
+          </a>
+          <h3>I Do by Marisa</h3>
+          <p class="suite__kind">Wedding officiant</p>
+          <p class="todo">[A sentence or two about your ceremonies: your style, where you officiate and what couples can expect.]</p>
+          <a class="btn btn--pink" href="https://www.idobymarisa.com" target="_blank" rel="noopener">visit idobymarisa.com ↗</a>
         </article>
       </div>
     </section>
 
-    <!-- Creative: windows with shutters -->
-    <section class="services" id="services">
-      <div class="section-head reveal">
-        <h2>the creative side <span class="wiggle">✿</span></h2>
-        <p>hover over (or tap) a window to peek inside</p>
-      </div>
-      <div class="windows">
-        <button class="window reveal" type="button" style="--shutter:#f7a8c4">
-          <span class="window__inside">
-            <span class="window__icon">🎬</span>
-            <strong>animated brand intros</strong>
-            <span>hand-drawn intros for your YouTube, TikTok or shop</span>
-          </span>
-          <span class="shutter shutter--l"></span><span class="shutter shutter--r"></span>
-          <span class="flowerbox" aria-hidden="true">✿ ❀ ✿ ❀</span>
-        </button>
-        <button class="window reveal" type="button" style="--shutter:#bcd8f2">
-          <span class="window__inside">
-            <span class="window__icon">🏠</span>
-            <strong>illustrated websites</strong>
-            <span>storybook sites with curtains, doors &amp; little surprises</span>
-          </span>
-          <span class="shutter shutter--l"></span><span class="shutter shutter--r"></span>
-          <span class="flowerbox" aria-hidden="true">❀ ✿ ❀ ✿</span>
-        </button>
-        <button class="window reveal" type="button" style="--shutter:#c9b6ec">
-          <span class="window__inside">
-            <span class="window__icon">💌</span>
-            <strong>wedding &amp; event sites</strong>
-            <span>RSVPs, schedules and your love story (see i do by marisa ♡)</span>
-          </span>
-          <span class="shutter shutter--l"></span><span class="shutter shutter--r"></span>
-          <span class="flowerbox" aria-hidden="true">✿ ❀ ✿ ❀</span>
-        </button>
-        <button class="window reveal" type="button" style="--shutter:#b8e6cf">
-          <span class="window__inside">
-            <span class="window__icon">🎨</span>
-            <strong>custom art &amp; stickers</strong>
-            <span>characters, wallpapers and doodles that feel like you</span>
-          </span>
-          <span class="shutter shutter--l"></span><span class="shutter shutter--r"></span>
-          <span class="flowerbox" aria-hidden="true">❀ ✿ ❀ ✿</span>
-        </button>
-      </div>
-    </section>
-
-    <!-- Showreel: retro TV -->
-    <section class="wallpaper wallpaper--pink reel" id="reel">
-      <div class="section-head reveal">
-        <h2>the showreel <span class="wiggle">☆</span></h2>
-        <p>a peek at what your brand could look like animated</p>
-      </div>
-      <div class="tv reveal">
-        <span class="tv__antenna" aria-hidden="true"></span>
-        <div class="tv__body">
-          <div class="tv__screen">
-            <!-- Swap this placeholder for <video src="reel.mp4" autoplay muted loop playsinline></video> -->
-            <div class="tv__static" aria-hidden="true"></div>
-            <p class="tv__msg">▶ showreel coming soon</p>
-          </div>
-          <div class="tv__knobs" aria-hidden="true"><i></i><i></i><b></b></div>
-        </div>
-        <div class="tv__legs" aria-hidden="true"><i></i><i></i></div>
-      </div>
-    </section>
-
-    <!-- Contact form -->
-    <section class="wallpaper order" id="contact">
-      <div class="notebook notebook--form reveal">
-        <span class="tape tape--l" aria-hidden="true"></span>
-        <span class="tape tape--r" aria-hidden="true"></span>
-        <h2>say hi!</h2>
-        <p>work, collabs, a custom piece or just to say hello, i'll get back to you ♡</p>
+    <!-- ✉: Front desk (contact) -->
+    <section class="desk" id="desk">
+      <p class="floor-tag reveal">The Front Desk</p>
+      <div class="register reveal">
+        <h2>Guest Register</h2>
+        <p class="register__note">for work, stitches, ceremonies, or simply to say hello</p>
         <form id="customOrderForm" novalidate>
-          <label>your name<input type="text" id="name" name="name" autocomplete="name"></label>
-          <label>email<input type="email" id="email" name="email" autocomplete="email"></label>
-          <label>what's on your mind?<textarea id="orderDetails" name="orderDetails" rows="4" placeholder="a job opportunity, a custom order, a wedding…"></textarea></label>
-          <button type="submit" class="pill">send it ♡</button>
+          <label>Name<input type="text" id="name" name="name" autocomplete="name"></label>
+          <label>Email<input type="email" id="email" name="email" autocomplete="email"></label>
+          <label>Message<textarea id="orderDetails" name="orderDetails" rows="4"></textarea></label>
+          <button type="submit" class="bell-btn" id="bellBtn">
+            <svg class="bell" viewBox="0 0 60 44" aria-hidden="true">
+              <circle cx="30" cy="6" r="3" /><path d="M8 34 a22 22 0 0 1 44 0 z" /><rect x="3" y="34" width="54" height="6" rx="2" />
+            </svg>
+            ring for service
+          </button>
           <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
         </form>
       </div>
@@ -235,15 +212,14 @@
   </main>
 
   <footer class="footer">
-    <div class="footer__flowers" aria-hidden="true"></div>
-    <p class="footer__logo">marisa kahnt ♡</p>
+    <p class="footer__crest">The Marisa</p>
     <p class="footer__links">
-      <a href="#work">the office</a> ·
-      <a href="#stitches">marisa stitches</a> ·
-      <a href="#ido">i do by marisa</a> ·
-      <a href="https://www.linkedin.com/" target="_blank" rel="noopener">linkedin</a>
+      <a href="https://www.marisastitches.com" target="_blank" rel="noopener">Marisa Stitches</a>
+      <i>✦</i>
+      <a href="https://www.idobymarisa.com" target="_blank" rel="noopener">I Do by Marisa</a>
+      <i>✦</i>
+      <a href="https://www.linkedin.com/in/mkahnt/" target="_blank" rel="noopener">LinkedIn</a>
     </p>
-    <p>made with love, glitter &amp; a little too much coffee</p>
     <p class="footer__small">© <span id="year"></span> Marisa Kahnt</p>
   </footer>
 
