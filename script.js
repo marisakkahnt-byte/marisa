@@ -40,7 +40,7 @@ function submitForm(event) {
         var body = message + '\n\n' + name + '\n' + email;
         window.location.href = 'mailto:marisakkahnt@gmail.com?subject=' +
             encodeURIComponent('Hello from ' + name) + '&body=' + encodeURIComponent(body);
-        showStatus('Your email app is opening with your note ready to send ♡', 'success');
+        showStatus('Thank you, angel!! Your email app is opening with your note ready to send ♡', 'success');
     }
 }
 
