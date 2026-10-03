@@ -3,149 +3,159 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Etano Designs</title>
-  <meta name="description" content="Editable wedding website templates and invitations with a vintage, romantic feel.">
+  <title>marisa's</title>
+  <meta name="description" content="Cute custom animations, illustrated websites and charming little designs.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Pinyon+Script&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Gaegu:wght@400;700&family=Pixelify+Sans:wght@400;600&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- Intro: envelope that opens to reveal the invitation -->
-  <div class="intro" id="intro" aria-hidden="true">
-    <div class="envelope" id="envelope">
-      <div class="envelope__back"></div>
-      <div class="envelope__card">
-        <span class="script">you're invited</span>
-        <strong>Etano Designs</strong>
-      </div>
-      <div class="envelope__front"></div>
-      <div class="envelope__flap"></div>
-      <button class="envelope__seal" id="openEnvelope" type="button" tabindex="-1">E</button>
-    </div>
-    <p class="intro__hint">tap the seal to open</p>
-  </div>
-
-  <div class="petals" id="petals" aria-hidden="true"></div>
-
   <header class="nav" id="nav">
-    <a href="#top" class="nav__logo">Etano <span class="script">Designs</span></a>
-    <nav class="nav__links" aria-label="Main">
-      <a href="#templates">Templates</a>
-      <a href="#process">How it works</a>
-      <a href="#order">Custom order</a>
-      <a href="https://www.etsy.com/shop/EtanoDesigns" target="_blank" rel="noopener" class="btn btn--small">Shop on Etsy</a>
+    <a href="#top" class="nav__logo">marisa's <span aria-hidden="true">♡</span></a>
+    <nav class="nav__tabs" aria-label="Main">
+      <a href="#top">home</a>
+      <a href="#about">about</a>
+      <a href="#services">services</a>
+      <a href="#reel">reel</a>
+      <a href="#order" class="tab--hot">order</a>
     </nav>
   </header>
 
-  <main id="top">
-    <section class="hero">
-      <p class="hero__eyebrow reveal">Wedding websites · Invitations · Save the dates</p>
-      <h1 class="hero__title">
-        <span class="line"><span>Your love story,</span></span>
-        <span class="line"><span class="script">beautifully</span></span>
-        <span class="line"><span>online.</span></span>
-      </h1>
-      <p class="hero__lede reveal">Editable Canva wedding website templates with a vintage, romantic soul. Add your names, your date and your story, then share one link with every guest.</p>
-      <div class="hero__ctas reveal">
-        <a href="#templates" class="btn">Browse templates</a>
-        <a href="#order" class="btn btn--ghost">Request a custom design</a>
+  <main>
+    <!-- Hero: a hand-drawn street behind velvet curtains -->
+    <section class="stage" id="top">
+      <svg class="scene" id="scene" viewBox="0 0 1440 700" preserveAspectRatio="xMidYMax slice" role="img" aria-label="An illustrated street with a pink shop called marisa's, a wisteria-covered door and a yellow taxi driving past"></svg>
+
+      <div class="hello" id="hello">
+        <h1 class="hello__title" aria-label="marisa's: hello!">
+          <span>h</span><span>e</span><span>l</span><span>l</span><span>o</span><span>!</span>
+        </h1>
+        <p class="hello__tag">cute animations &amp; charming little websites</p>
       </div>
-      <div class="hero__ornament" aria-hidden="true">
-        <svg viewBox="0 0 200 40"><path d="M2 20 H80 M120 20 H198 M100 6 C90 14 90 26 100 34 C110 26 110 14 100 6 Z" /></svg>
-      </div>
+
+      <a href="#about" class="scroll-hint" aria-label="Scroll down">
+        <span>knock knock, come in</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7" /></svg>
+      </a>
+
+      <div class="valance" aria-hidden="true"></div>
+      <div class="curtain curtain--left" aria-hidden="true"><i class="tieback"></i></div>
+      <div class="curtain curtain--right" aria-hidden="true"><i class="tieback"></i></div>
+      <button class="showtime" id="showtime" type="button">
+        <span class="showtime__string" aria-hidden="true"></span>
+        <span class="showtime__card">✦ tap to open ✦<small>the show's about to start</small></span>
+      </button>
     </section>
 
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee__track">
-        <span>Moody romantic</span><span>✦</span><span>Vintage florals</span><span>✦</span><span>Editable in Canva</span><span>✦</span><span>Instant download</span><span>✦</span><span>RSVP &amp; registry pages</span><span>✦</span>
-        <span>Moody romantic</span><span>✦</span><span>Vintage florals</span><span>✦</span><span>Editable in Canva</span><span>✦</span><span>Instant download</span><span>✦</span><span>RSVP &amp; registry pages</span><span>✦</span>
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track">
+        <span>♡ custom animations</span><span>✿ illustrated websites</span><span>☆ brand intros</span><span>❀ wedding sites</span><span>♡ cute stickers &amp; art</span>
+        <span>♡ custom animations</span><span>✿ illustrated websites</span><span>☆ brand intros</span><span>❀ wedding sites</span><span>♡ cute stickers &amp; art</span>
       </div>
     </div>
 
-    <section class="templates" id="templates">
+    <!-- About: y2k blog vibes -->
+    <section class="wallpaper about" id="about">
+      <div class="about__side reveal">
+        <div class="bubble">i'm from ____ ♡</div>
+        <figure class="polaroid">
+          <span class="tape" aria-hidden="true"></span>
+          <div class="polaroid__photo">your<br>photo<br>here</div>
+          <figcaption>that's me!</figcaption>
+        </figure>
+        <button class="pixel-bubble" id="funFact" type="button">me! click me to learn a little more about me! ♡</button>
+        <span class="online"><span class="online__star">★</span> ONLINE</span>
+      </div>
+
+      <article class="notebook reveal">
+        <p class="notebook__date">today ♡</p>
+        <h2>hi, i'm marisa!</h2>
+        <p>I make <mark>cute little animations</mark> and <mark>storybook websites</mark> for brands, small shops, creators and couples. Think hand-drawn streets, curtains that open, doors you can knock on and wallpaper you want to live in.</p>
+        <p>If your brand were a tiny illustrated world, what would it look like? Let's build it together.</p>
+        <p class="notebook__sign">xoxo, marisa</p>
+      </article>
+    </section>
+
+    <!-- Services: windows with shutters -->
+    <section class="services" id="services">
       <div class="section-head reveal">
-        <p class="eyebrow">The collection</p>
-        <h2>Templates that <span class="script">move</span></h2>
-        <p>Hover over (or tap) a template to scroll through it.</p>
+        <h2>what i make <span class="wiggle">✿</span></h2>
+        <p>hover over (or tap) a window to peek inside</p>
       </div>
-
-      <div class="grid">
-        <article class="card reveal" style="--bg:#2b1d22;--ink:#f3e6d8;--accent:#b8925a">
-          <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div>
-            <div class="browser__screen"><div class="page">
-              <div class="page__hero"><span class="script">Eleanor &amp; James</span><small>06 · 14 · 2027</small></div>
-              <div class="page__block"></div><div class="page__row"><b></b><b></b><b></b></div>
-              <div class="page__block page__block--short"></div><div class="page__rsvp">RSVP</div>
-            </div></div>
-          </div>
-          <h3>Swan Lake</h3><p>Moody romantic · deep plum &amp; gold</p>
-        </article>
-
-        <article class="card reveal" style="--bg:#f4ede1;--ink:#4a3a2c;--accent:#8a9a7b">
-          <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div>
-            <div class="browser__screen"><div class="page">
-              <div class="page__hero"><span class="script">Clara &amp; Theo</span><small>09 · 20 · 2027</small></div>
-              <div class="page__block"></div><div class="page__row"><b></b><b></b><b></b></div>
-              <div class="page__block page__block--short"></div><div class="page__rsvp">RSVP</div>
-            </div></div>
-          </div>
-          <h3>Garden Letter</h3><p>Vintage florals · sage &amp; linen</p>
-        </article>
-
-        <article class="card reveal" style="--bg:#e9dcd3;--ink:#5b2a32;--accent:#5b2a32">
-          <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div>
-            <div class="browser__screen"><div class="page">
-              <div class="page__hero"><span class="script">Sofia &amp; Mateo</span><small>05 · 02 · 2027</small></div>
-              <div class="page__block"></div><div class="page__row"><b></b><b></b><b></b></div>
-              <div class="page__block page__block--short"></div><div class="page__rsvp">RSVP</div>
-            </div></div>
-          </div>
-          <h3>Rosewater</h3><p>Soft blush · burgundy script</p>
-        </article>
-
-        <article class="card reveal" style="--bg:#1f2a2a;--ink:#e8e2d4;--accent:#c9a96e">
-          <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div>
-            <div class="browser__screen"><div class="page">
-              <div class="page__hero"><span class="script">Ada &amp; Felix</span><small>11 · 11 · 2027</small></div>
-              <div class="page__block"></div><div class="page__row"><b></b><b></b><b></b></div>
-              <div class="page__block page__block--short"></div><div class="page__rsvp">RSVP</div>
-            </div></div>
-          </div>
-          <h3>Evergreen Hall</h3><p>Candlelit · forest &amp; brass</p>
-        </article>
-      </div>
-
-      <div class="center reveal">
-        <a href="https://www.etsy.com/shop/EtanoDesigns" target="_blank" rel="noopener" class="btn">See every template on Etsy</a>
+      <div class="windows">
+        <button class="window reveal" type="button" style="--shutter:#f7a8c4">
+          <span class="window__inside">
+            <span class="window__icon">🎬</span>
+            <strong>animated brand intros</strong>
+            <span>hand-drawn intros for your YouTube, TikTok or shop</span>
+          </span>
+          <span class="shutter shutter--l"></span><span class="shutter shutter--r"></span>
+          <span class="flowerbox" aria-hidden="true">✿ ❀ ✿ ❀</span>
+        </button>
+        <button class="window reveal" type="button" style="--shutter:#bcd8f2">
+          <span class="window__inside">
+            <span class="window__icon">🏠</span>
+            <strong>illustrated websites</strong>
+            <span>storybook sites with curtains, doors &amp; little surprises</span>
+          </span>
+          <span class="shutter shutter--l"></span><span class="shutter shutter--r"></span>
+          <span class="flowerbox" aria-hidden="true">❀ ✿ ❀ ✿</span>
+        </button>
+        <button class="window reveal" type="button" style="--shutter:#c9b6ec">
+          <span class="window__inside">
+            <span class="window__icon">💌</span>
+            <strong>wedding &amp; event sites</strong>
+            <span>RSVPs, schedules and your love story, all in one link</span>
+          </span>
+          <span class="shutter shutter--l"></span><span class="shutter shutter--r"></span>
+          <span class="flowerbox" aria-hidden="true">✿ ❀ ✿ ❀</span>
+        </button>
+        <button class="window reveal" type="button" style="--shutter:#b8e6cf">
+          <span class="window__inside">
+            <span class="window__icon">🎨</span>
+            <strong>custom art &amp; stickers</strong>
+            <span>characters, wallpapers and doodles that feel like you</span>
+          </span>
+          <span class="shutter shutter--l"></span><span class="shutter shutter--r"></span>
+          <span class="flowerbox" aria-hidden="true">❀ ✿ ❀ ✿</span>
+        </button>
       </div>
     </section>
 
-    <section class="process" id="process">
+    <!-- Showreel: retro TV -->
+    <section class="wallpaper wallpaper--pink reel" id="reel">
       <div class="section-head reveal">
-        <p class="eyebrow">How it works</p>
-        <h2>Three steps to <span class="script">"I do"</span></h2>
+        <h2>the showreel <span class="wiggle">☆</span></h2>
+        <p>a peek at what your brand could look like animated</p>
       </div>
-      <ol class="steps">
-        <li class="step reveal"><span class="step__num">I</span><h3>Choose</h3><p>Pick the template that feels like you, and download it instantly from Etsy.</p></li>
-        <li class="step reveal"><span class="step__num">II</span><h3>Personalise</h3><p>Open it in Canva and edit your names, photos, schedule, RSVP and registry.</p></li>
-        <li class="step reveal"><span class="step__num">III</span><h3>Share</h3><p>Publish with one click and send the link to your guests. Update it anytime.</p></li>
-      </ol>
-    </section>
-
-    <section class="order" id="order">
-      <div class="order__card reveal">
-        <div class="section-head">
-          <p class="eyebrow">Made just for you</p>
-          <h2>Custom <span class="script">orders</span></h2>
-          <p>Want your own colours, a matching invitation suite, or something entirely new? Tell me about your day.</p>
+      <div class="tv reveal">
+        <span class="tv__antenna" aria-hidden="true"></span>
+        <div class="tv__body">
+          <div class="tv__screen">
+            <!-- Swap this placeholder for <video src="reel.mp4" autoplay muted loop playsinline></video> -->
+            <div class="tv__static" aria-hidden="true"></div>
+            <p class="tv__msg">▶ showreel coming soon</p>
+          </div>
+          <div class="tv__knobs" aria-hidden="true"><i></i><i></i><b></b></div>
         </div>
+        <div class="tv__legs" aria-hidden="true"><i></i><i></i></div>
+      </div>
+    </section>
+
+    <!-- Order form -->
+    <section class="wallpaper order" id="order">
+      <div class="notebook notebook--form reveal">
+        <span class="tape tape--l" aria-hidden="true"></span>
+        <span class="tape tape--r" aria-hidden="true"></span>
+        <h2>let's make something cute!</h2>
+        <p>tell me about your brand, your idea or your big day and i'll get back to you ♡</p>
         <form id="customOrderForm" novalidate>
-          <label>Your name<input type="text" id="name" name="name" autocomplete="name"></label>
-          <label>Email<input type="email" id="email" name="email" autocomplete="email"></label>
-          <label>Tell me about your vision<textarea id="orderDetails" name="orderDetails" rows="5" placeholder="Wedding date, colours, style, what you need…"></textarea></label>
-          <button type="submit" class="btn">Send request</button>
+          <label>your name<input type="text" id="name" name="name" autocomplete="name"></label>
+          <label>email<input type="email" id="email" name="email" autocomplete="email"></label>
+          <label>what are we making?<textarea id="orderDetails" name="orderDetails" rows="4" placeholder="an intro for my channel, a website for my shop…"></textarea></label>
+          <button type="submit" class="pill">send it ♡</button>
           <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
         </form>
       </div>
@@ -153,13 +163,10 @@
   </main>
 
   <footer class="footer">
-    <p class="footer__logo">Etano <span class="script">Designs</span></p>
-    <p>
-      <a href="https://www.etsy.com/shop/EtanoDesigns" target="_blank" rel="noopener">Etsy</a> ·
-      <a href="https://www.tiktok.com/@etanodesigns" target="_blank" rel="noopener">TikTok</a> ·
-      <a href="https://www.pinterest.com/etanodesigns/" target="_blank" rel="noopener">Pinterest</a>
-    </p>
-    <p class="footer__small">© <span id="year"></span> Etano Designs</p>
+    <div class="footer__flowers" aria-hidden="true"></div>
+    <p class="footer__logo">marisa's ♡</p>
+    <p>made with love, glitter &amp; a little too much coffee</p>
+    <p class="footer__small">© <span id="year"></span> marisa's</p>
   </footer>
 
   <script src="main.js"></script>
