@@ -1,4 +1,4 @@
-// marisa's: curtain intro, hand-drawn street scene, and all the little interactions
+// marisakahnt.com: curtain intro, hand-drawn street scene, and all the little interactions
 
 (function () {
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -66,6 +66,7 @@
 
     var margin = 22, gap = 18, ww = (o.w - margin * 2 - gap * (o.cols - 1)) / o.cols;
     for (var r = 0; r < o.rows; r++) {
+      if (r === o.signRow) continue;
       for (var c = 0; c < o.cols; c++) {
         var wx = o.x + margin + c * (ww + gap), wy = o.top + 34 + r * 62;
         var roll = Math.random();
@@ -78,6 +79,15 @@
     if (o.door) {
       var dx = o.x + o.w / 2 - 22;
       s += '<path d="M' + dx + ' ' + GROUND + ' V' + (GROUND - 56) + ' a22 22 0 0 1 44 0 V' + GROUND + ' Z" fill="' + o.door + '" class="ink" style="stroke-width:3"/>';
+    }
+    // each building is a little storefront for one part of the site
+    if (o.sign) {
+      var sy = o.top + 34 + o.signRow * 62 - 4;
+      s += '<g class="bld-sign"><rect x="' + (o.x + 14) + '" y="' + sy + '" width="' + (o.w - 28) + '" height="48" rx="24" fill="#fff8f0" class="ink" style="stroke-width:3"/>' +
+        '<text x="' + (o.x + o.w / 2) + '" y="' + (sy + 33) + '" text-anchor="middle" class="bld-text" style="fill:' + o.signInk + '">' + o.sign + '</text></g>';
+    }
+    if (o.href) {
+      s = '<a href="' + o.href + '" class="bld-link" aria-label="' + o.label + '">' + s + '</a>';
     }
     return s;
   }
@@ -127,8 +137,8 @@
   function shop() {
     var s = '<rect x="470" y="232" width="500" height="' + (GROUND - 232) + '" fill="#f7b5cc" class="ink"/>' +
       '<rect x="455" y="214" width="530" height="26" rx="8" fill="#fff0f5" class="ink"/>' +
-      '<rect x="575" y="266" width="290" height="70" rx="35" fill="#fff8f0" class="ink"/>' +
-      '<text x="720" y="316" text-anchor="middle" class="sign-text">marisa\'s</text>';
+      '<rect x="535" y="266" width="370" height="70" rx="35" fill="#fff8f0" class="ink"/>' +
+      '<text x="720" y="316" text-anchor="middle" class="sign-text">marisa kahnt</text>';
 
     // shop windows with little displays
     s += awning(488, 160) + awning(792, 160);
@@ -213,10 +223,14 @@
         sun() +
         cloud(0, 90, 1, 70, -10) + cloud(0, 160, .7, 90, -55) + cloud(0, 60, .8, 80, -35) +
         skyline() +
-        building({ x: 10, top: 170, w: 240, fill: '#ffe39a', cols: 3, rows: 5, roof: 'tower', door: '#e8a87c' }) +
-        building({ x: 262, top: 290, w: 190, fill: '#c9b6ec', cols: 2, rows: 3, roof: 'peak', door: '#ef6fa0' }) +
-        building({ x: 990, top: 240, w: 200, fill: '#b8e6cf', cols: 2, rows: 4, roof: 'dome', door: '#bcd8f2' }) +
-        building({ x: 1205, top: 280, w: 230, fill: '#ffc9a8', cols: 3, rows: 3, roof: 'flat', door: '#c9b6ec' }) +
+        building({ x: 10, top: 170, w: 240, fill: '#ffe39a', cols: 3, rows: 5, roof: 'tower', door: '#e8a87c',
+          sign: 'the office', signRow: 4, signInk: '#3b2a36', href: '#work', label: 'The office: my professional side' }) +
+        building({ x: 262, top: 290, w: 190, fill: '#c9b6ec', cols: 2, rows: 3, roof: 'peak', door: '#ef6fa0',
+          sign: 'stitches ✂', signRow: 2, signInk: '#7a5cc2', href: '#stitches', label: 'Marisa Stitches' }) +
+        building({ x: 990, top: 240, w: 200, fill: '#b8e6cf', cols: 2, rows: 4, roof: 'dome', door: '#bcd8f2',
+          sign: 'i do ♡', signRow: 3, signInk: '#e5527f', href: '#ido', label: 'I Do by Marisa' }) +
+        building({ x: 1205, top: 280, w: 230, fill: '#ffc9a8', cols: 3, rows: 3, roof: 'flat', door: '#c9b6ec',
+          sign: 'say hi ✉', signRow: 2, signInk: '#3b2a36', href: '#contact', label: 'Say hi: contact me' }) +
         shop() +
         street() +
         taxi() +
@@ -224,7 +238,7 @@
 
     // windows light up when you click them
     scene.querySelectorAll('.win').forEach(function (w) {
-      w.addEventListener('click', function () { w.classList.toggle('lit'); });
+      w.addEventListener('click', function (e) { e.preventDefault(); w.classList.toggle('lit'); });
     });
 
     // knock on the door to come in
@@ -264,7 +278,7 @@
   }
 
   var seen = false;
-  try { seen = !!sessionStorage.getItem('marisas-curtains'); sessionStorage.setItem('marisas-curtains', '1'); } catch (e) {}
+  try { seen = !!sessionStorage.getItem('mk-curtains'); sessionStorage.setItem('mk-curtains', '1'); } catch (e) {}
   if (reduceMotion || seen) {
     openCurtains();
   } else {
@@ -292,7 +306,7 @@
     'fun fact: my favourite colour is pink (shocker) ♡',
     'i can doodle a taxi in under two minutes ☆',
     'currently obsessed with: wisteria & tiny doors ✿',
-    'ok that\'s all for now, go order something cute! ♡'
+    'ok that\'s all for now, go say hi! ♡'
   ];
   var factIndex = 0;
   var funFact = document.getElementById('funFact');
