@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Etano Designs</title>
+  <meta name="description" content="Editable wedding website templates and invitations with a vintage, romantic feel.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Pinyon+Script&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Intro: envelope that opens to reveal the invitation -->
+  <div class="intro" id="intro" aria-hidden="true">
+    <div class="envelope" id="envelope">
+      <div class="envelope__back"></div>
+      <div class="envelope__card">
+        <span class="script">you're invited</span>
+        <strong>Etano Designs</strong>
+      </div>
+      <div class="envelope__front"></div>
+      <div class="envelope__flap"></div>
+      <button class="envelope__seal" id="openEnvelope" type="button" tabindex="-1">E</button>
+    </div>
+    <p class="intro__hint">tap the seal to open</p>
+  </div>
+
+  <div class="petals" id="petals" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <a href="#top" class="nav__logo">Etano <span class="script">Designs</span></a>
+    <nav class="nav__links" aria-label="Main">
+      <a href="#templates">Templates</a>
+      <a href="#process">How it works</a>
+      <a href="#order">Custom order</a>
+      <a href="https://www.etsy.com/shop/EtanoDesigns" target="_blank" rel="noopener" class="btn btn--small">Shop on Etsy</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <p class="hero__eyebrow reveal">Wedding websites · Invitations · Save the dates</p>
+      <h1 class="hero__title">
+        <span class="line"><span>Your love story,</span></span>
+        <span class="line"><span class="script">beautifully</span></span>
+        <span class="line"><span>online.</span></span>
+      </h1>
+      <p class="hero__lede reveal">Editable Canva wedding website templates with a vintage, romantic soul. Add your names, your date and your story, then share one link with every guest.</p>
+      <div class="hero__ctas reveal">
+        <a href="#templates" class="btn">Browse templates</a>
+        <a href="#order" class="btn btn--ghost">Request a custom design</a>
+      </div>
+      <div class="hero__ornament" aria-hidden="true">
+        <svg viewBox="0 0 200 40"><path d="M2 20 H80 M120 20 H198 M100 6 C90 14 90 26 100 34 C110 26 110 14 100 6 Z" /></svg>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Moody romantic</span><span>✦</span><span>Vintage florals</span><span>✦</span><span>Editable in Canva</span><span>✦</span><span>Instant download</span><span>✦</span><span>RSVP &amp; registry pages</span><span>✦</span>
+        <span>Moody romantic</span><span>✦</span><span>Vintage florals</span><span>✦</span><span>Editable in Canva</span><span>✦</span><span>Instant download</span><span>✦</span><span>RSVP &amp; registry pages</span><span>✦</span>
+      </div>
+    </div>
+
+    <section class="templates" id="templates">
+      <div class="section-head reveal">
+        <p class="eyebrow">The collection</p>
+        <h2>Templates that <span class="script">move</span></h2>
+        <p>Hover over (or tap) a template to scroll through it.</p>
+      </div>
+
+      <div class="grid">
+        <article class="card reveal" style="--bg:#2b1d22;--ink:#f3e6d8;--accent:#b8925a">
+          <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div>
+            <div class="browser__screen"><div class="page">
+              <div class="page__hero"><span class="script">Eleanor &amp; James</span><small>06 · 14 · 2027</small></div>
+              <div class="page__block"></div><div class="page__row"><b></b><b></b><b></b></div>
+              <div class="page__block page__block--short"></div><div class="page__rsvp">RSVP</div>
+            </div></div>
+          </div>
+          <h3>Swan Lake</h3><p>Moody romantic · deep plum &amp; gold</p>
+        </article>
+
+        <article class="card reveal" style="--bg:#f4ede1;--ink:#4a3a2c;--accent:#8a9a7b">
+          <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div>
+            <div class="browser__screen"><div class="page">
+              <div class="page__hero"><span class="script">Clara &amp; Theo</span><small>09 · 20 · 2027</small></div>
+              <div class="page__block"></div><div class="page__row"><b></b><b></b><b></b></div>
+              <div class="page__block page__block--short"></div><div class="page__rsvp">RSVP</div>
+            </div></div>
+          </div>
+          <h3>Garden Letter</h3><p>Vintage florals · sage &amp; linen</p>
+        </article>
+
+        <article class="card reveal" style="--bg:#e9dcd3;--ink:#5b2a32;--accent:#5b2a32">
+          <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div>
+            <div class="browser__screen"><div class="page">
+              <div class="page__hero"><span class="script">Sofia &amp; Mateo</span><small>05 · 02 · 2027</small></div>
+              <div class="page__block"></div><div class="page__row"><b></b><b></b><b></b></div>
+              <div class="page__block page__block--short"></div><div class="page__rsvp">RSVP</div>
+            </div></div>
+          </div>
+          <h3>Rosewater</h3><p>Soft blush · burgundy script</p>
+        </article>
+
+        <article class="card reveal" style="--bg:#1f2a2a;--ink:#e8e2d4;--accent:#c9a96e">
+          <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div>
+            <div class="browser__screen"><div class="page">
+              <div class="page__hero"><span class="script">Ada &amp; Felix</span><small>11 · 11 · 2027</small></div>
+              <div class="page__block"></div><div class="page__row"><b></b><b></b><b></b></div>
+              <div class="page__block page__block--short"></div><div class="page__rsvp">RSVP</div>
+            </div></div>
+          </div>
+          <h3>Evergreen Hall</h3><p>Candlelit · forest &amp; brass</p>
+        </article>
+      </div>
+
+      <div class="center reveal">
+        <a href="https://www.etsy.com/shop/EtanoDesigns" target="_blank" rel="noopener" class="btn">See every template on Etsy</a>
+      </div>
+    </section>
+
+    <section class="process" id="process">
+      <div class="section-head reveal">
+        <p class="eyebrow">How it works</p>
+        <h2>Three steps to <span class="script">"I do"</span></h2>
+      </div>
+      <ol class="steps">
+        <li class="step reveal"><span class="step__num">I</span><h3>Choose</h3><p>Pick the template that feels like you, and download it instantly from Etsy.</p></li>
+        <li class="step reveal"><span class="step__num">II</span><h3>Personalise</h3><p>Open it in Canva and edit your names, photos, schedule, RSVP and registry.</p></li>
+        <li class="step reveal"><span class="step__num">III</span><h3>Share</h3><p>Publish with one click and send the link to your guests. Update it anytime.</p></li>
+      </ol>
+    </section>
+
+    <section class="order" id="order">
+      <div class="order__card reveal">
+        <div class="section-head">
+          <p class="eyebrow">Made just for you</p>
+          <h2>Custom <span class="script">orders</span></h2>
+          <p>Want your own colours, a matching invitation suite, or something entirely new? Tell me about your day.</p>
+        </div>
+        <form id="customOrderForm" novalidate>
+          <label>Your name<input type="text" id="name" name="name" autocomplete="name"></label>
+          <label>Email<input type="email" id="email" name="email" autocomplete="email"></label>
+          <label>Tell me about your vision<textarea id="orderDetails" name="orderDetails" rows="5" placeholder="Wedding date, colours, style, what you need…"></textarea></label>
+          <button type="submit" class="btn">Send request</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__logo">Etano <span class="script">Designs</span></p>
+    <p>
+      <a href="https://www.etsy.com/shop/EtanoDesigns" target="_blank" rel="noopener">Etsy</a> ·
+      <a href="https://www.tiktok.com/@etanodesigns" target="_blank" rel="noopener">TikTok</a> ·
+      <a href="https://www.pinterest.com/etanodesigns/" target="_blank" rel="noopener">Pinterest</a>
+    </p>
+    <p class="footer__small">© <span id="year"></span> Etano Designs</p>
+  </footer>
+
+  <script src="main.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
