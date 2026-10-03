@@ -123,7 +123,11 @@
     s += '<rect x="' + x + '" y="' + top + '" width="' + w + '" height="' + (GROUND - top) + '" fill="#bfd6ea" class="ink"/>' + cornice(x, w, top);
     [272, 362, 452].forEach(function (y, i) { [75, 140, 205].forEach(function (cx) { s += win(cx, y, 34, 56, { flowers: i === 1 }); }); });
     s += plaque(140, 528, 150, 'the office', '#3f5f87');
-    s += win(72, 592, 40, 60, { awning: true }) + win(208, 592, 40, 60, { awning: true }) + archDoor(140, 42, 580, '#3f5f87');
+    s += displayWindow(38, 594, 76, 54, '#3f5f87',
+        '<rect x="50" y="618" width="14" height="22" fill="#d9587b" class="hair"/><rect x="64" y="614" width="12" height="26" fill="#3f5f87" class="hair"/><rect x="76" y="620" width="12" height="20" fill="#c9a24a" class="hair"/><path d="M90 640 l8 -24 l7 2 l-7 22 z" fill="#9cc3e6" class="hair"/>') +
+      displayWindow(166, 594, 76, 54, '#3f5f87',
+        '<rect x="180" y="604" width="44" height="32" fill="#ffe27a" class="hair" transform="rotate(-4 202 620)"/><path d="M186 614 h30 M186 620 h26 M186 626 h22" stroke="#1f1a1c" stroke-width="1" transform="rotate(-4 202 620)"/>') +
+      archDoor(140, 42, 580, '#3f5f87');
     return '<a href="#office" class="bld-link" aria-label="No. 2, the office: my professional side">' + s + '</a>';
   }
 
@@ -168,6 +172,18 @@
     for (var j = 0; j < n; j++) stripes += '<rect x="' + f(x + j * step) + '" y="' + y + '" width="' + f(step / 2) + '" height="14" fill="' + color + '"/>';
     return '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="14" fill="#fff"/>' + stripes +
       '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="14" fill="none" class="line"/>' + sc;
+  }
+
+  // a grand gilded shop window with a little display inside
+  function displayWindow(x, y, w, h, awning, inside) {
+    return awningRow(x - 4, w + 8, y - 22, awning) +
+      '<rect x="' + (x - 3) + '" y="' + (y - 3) + '" width="' + (w + 6) + '" height="' + (h + 6) + '" rx="3" fill="#c9a24a" class="ink"/>' +
+      '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" fill="#fff6e6" class="line"/>' +
+      '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + f(h * 0.45) + '" fill="#fffdf6" opacity=".8"/>' +
+      '<rect x="' + x + '" y="' + f(y + h - 10) + '" width="' + w + '" height="10" fill="#efe1d0" class="hair"/>' +
+      inside +
+      '<path d="M' + (x + 6) + ' ' + (y + 6) + ' l10 -0 M' + (x + 6) + ' ' + (y + 6) + ' l0 10" stroke="#fff" stroke-width="2" opacity=".9"/>' +
+      '<rect x="' + (x - 6) + '" y="' + (y + h + 3) + '" width="' + (w + 12) + '" height="6" rx="2" fill="#fffdf9" class="line"/>';
   }
 
   // No. 1: the pink wisteria shop in the middle of the street
@@ -248,7 +264,10 @@
     var garland = '';
     for (var g = 0; g <= 10; g++) garland += '<circle cx="' + (1052 + g * 7.6) + '" cy="' + f(536 + Math.sin(g / 10 * Math.PI) * 12) + '" r="3.6" fill="' + (g % 2 ? '#fffdf9' : '#d9c6bc') + '" class="hair"/>';
     s += archDoor(cx, 62, 548, '#4a433f') + '<path d="M' + cx + ' 580 V' + (GROUND - 4) + '" stroke="#c2a67c" stroke-width="1.6"/>' + garland +
-      win(1024, 594, 30, 56) + win(1156, 594, 30, 56);
+      displayWindow(998, 598, 52, 50, IDO.roof,
+        '<rect x="1012" y="626" width="24" height="12" fill="#fffdf9" class="hair"/><rect x="1016" y="616" width="16" height="10" fill="#fffdf9" class="hair"/><rect x="1019" y="608" width="10" height="8" fill="#fffdf9" class="hair"/><circle cx="1024" cy="606" r="2.4" fill="' + IDO.accent + '"/>') +
+      displayWindow(1130, 598, 52, 50, IDO.roof,
+        '<path d="M1142 638 v-16 a14 14 0 0 1 28 0 v16 z" fill="#ffffff" opacity=".5" class="hair"/><circle cx="1152" cy="630" r="5" fill="none" stroke="#c2a67c" stroke-width="1.8"/><circle cx="1160" cy="630" r="5" fill="none" stroke="#c2a67c" stroke-width="1.8"/><rect x="1140" y="638" width="32" height="3" fill="#2c2825"/>');
     return '<a href="#ido" class="bld-link" aria-label="No. 4, I Do by Marisa">' + s + '</a>';
   }
 
@@ -261,7 +280,11 @@
       '<rect x="' + x + '" y="' + top + '" width="' + w + '" height="' + (GROUND - top) + '" fill="#ffd3bd" class="ink"/>' + cornice(x, w, top);
     [314, 400].forEach(function (y, i) { [1256, 1319, 1382].forEach(function (cx) { s += win(cx, y, 34, 56, { flowers: i === 1 }); }); });
     s += plaque(1319, 486, 160, 'say hi ✉', '#b4573a') +
-      win(1256, 590, 40, 62, { awning: true }) + win(1382, 590, 40, 62, { awning: true }) + archDoor(1319, 42, 580, '#8fb8a6') +
+      displayWindow(1222, 596, 68, 52, '#d9587b',
+        '<rect x="1234" y="616" width="28" height="18" fill="#fffdf9" class="hair" transform="rotate(-8 1248 625)"/><path d="M1234 616 l14 10 l14 -10" fill="none" class="hair" transform="rotate(-8 1248 625)"/><rect x="1252" y="620" width="28" height="18" fill="#f2a7bb" class="hair" transform="rotate(6 1266 629)"/>') +
+      displayWindow(1348, 596, 62, 52, '#d9587b',
+        '<path d="M1379 636 c-14 -10 -14 -22 -5 -22 c3 0 5 2 5 5 c0 -3 2 -5 5 -5 c9 0 9 12 -5 22 z" fill="#d9587b" class="hair"/>') +
+      archDoor(1319, 42, 580, '#8fb8a6') +
       '<rect x="1420" y="602" width="26" height="58" rx="4" fill="#d9587b" class="ink"/>' +
       '<path d="M1420 612 q13 -18 26 0" fill="#d9587b" class="ink"/>' +
       '<path d="M1425 620 h16" class="line"/>';
@@ -306,40 +329,61 @@
   }
 
   /* ---------- A lady in a pink coat walking her dog ---------- */
-  function walker() {
-    var y = GROUND + 30;
+  /* ---------- Marisa walking her English bulldog ---------- */
+  function walkerParts() {
+    var y = GROUND + 30, HAIR = '#6b4430', SKIN = '#fdf0e8';
     var person =
-      '<g class="leg" ><path d="M-5 ' + (y - 46) + ' V' + (y - 3) + '" stroke="#1f1a1c" stroke-width="3.4" stroke-linecap="round"/><ellipse cx="-2" cy="' + (y - 2) + '" rx="6" ry="3" fill="#1f1a1c"/></g>' +
+      '<g class="leg"><path d="M-5 ' + (y - 46) + ' V' + (y - 3) + '" stroke="#1f1a1c" stroke-width="3.4" stroke-linecap="round"/><ellipse cx="-2" cy="' + (y - 2) + '" rx="6" ry="3" fill="#1f1a1c"/></g>' +
       '<g class="leg leg--b"><path d="M5 ' + (y - 46) + ' V' + (y - 3) + '" stroke="#1f1a1c" stroke-width="3.4" stroke-linecap="round"/><ellipse cx="8" cy="' + (y - 2) + '" rx="6" ry="3" fill="#1f1a1c"/></g>' +
       '<g class="stride">' +
+        // long dark hair, behind the shoulders
+        '<path d="M-13 ' + (y - 110) + ' Q-16 ' + (y - 131) + ' 0 ' + (y - 129) + ' Q16 ' + (y - 131) + ' 13 ' + (y - 110) + ' Q16 ' + (y - 96) + ' 13 ' + (y - 84) + ' Q6 ' + (y - 82) + ' 4 ' + (y - 92) + ' L-6 ' + (y - 92) + ' Q-8 ' + (y - 82) + ' -15 ' + (y - 84) + ' Q-17 ' + (y - 96) + ' -13 ' + (y - 110) + ' Z" fill="' + HAIR + '" class="line"/>' +
+        // pink coat
         '<path d="M-10 ' + (y - 100) + ' H10 L24 ' + (y - 44) + ' Q0 ' + (y - 38) + ' -24 ' + (y - 44) + ' Z" fill="#f2a7bb" class="ink"/>' +
-        '<path d="M-10 ' + (y - 100) + ' L0 ' + (y - 88) + ' L10 ' + (y - 100) + '" fill="#fffdf9" class="line"/>' +
+        '<path d="M-6 ' + (y - 100) + ' L0 ' + (y - 90) + ' L6 ' + (y - 100) + '" fill="#fffdf9" class="line"/>' +
         '<circle cx="0" cy="' + (y - 78) + '" r="1.8" fill="#1f1a1c"/><circle cx="0" cy="' + (y - 66) + '" r="1.8" fill="#1f1a1c"/>' +
         '<path d="M8 ' + (y - 94) + ' Q22 ' + (y - 78) + ' 30 ' + (y - 66) + '" class="ink" fill="none"/>' +
         '<path d="M-8 ' + (y - 94) + ' Q-16 ' + (y - 76) + ' -12 ' + (y - 62) + '" class="ink" fill="none"/>' +
-        '<circle cx="0" cy="' + (y - 113) + '" r="11" fill="#fff1e8" class="ink"/>' +
-        '<path d="M-12 ' + (y - 108) + ' Q-14 ' + (y - 128) + ' 0 ' + (y - 126) + ' Q14 ' + (y - 128) + ' 12 ' + (y - 108) + ' Q10 ' + (y - 118) + ' 0 ' + (y - 117) + ' Q-8 ' + (y - 118) + ' -12 ' + (y - 108) + ' Z" fill="#1f1a1c"/>' +
-        '<path d="M6 ' + (y - 126) + ' l8 -7 l1 9 z M6 ' + (y - 126) + ' l10 3 l-7 5 z" fill="#d9587b" stroke="#1f1a1c" stroke-width="1.2" stroke-linejoin="round"/>' +
-        '<circle cx="5" cy="' + (y - 113) + '" r="1.4" fill="#1f1a1c"/>' +
-        '<circle cx="7" cy="' + (y - 108) + '" r="2.4" fill="#f2a7bb" opacity=".8"/>' +
+        // face and side-parted hair on top
+        '<circle cx="0" cy="' + (y - 113) + '" r="11" fill="' + SKIN + '" class="ink"/>' +
+        '<path d="M-12 ' + (y - 109) + ' Q-11 ' + (y - 127) + ' 3 ' + (y - 125) + ' Q13 ' + (y - 123) + ' 12 ' + (y - 109) + ' Q8 ' + (y - 119) + ' -2 ' + (y - 118) + ' Q-9 ' + (y - 116) + ' -12 ' + (y - 109) + ' Z" fill="' + HAIR + '"/>' +
+        '<circle cx="5" cy="' + (y - 112) + '" r="2" fill="#5b8fd0"/><circle cx="5.4" cy="' + (y - 112) + '" r="1" fill="#1f1a1c"/>' +
+        '<path d="M3 ' + (y - 106) + ' q3 2 6 0" fill="none" stroke="#1f1a1c" stroke-width="1.2" stroke-linecap="round"/>' +
+        '<circle cx="8" cy="' + (y - 108) + '" r="2.3" fill="#f2a7bb" opacity=".8"/>' +
       '</g>';
-    var leash = '<path d="M30 ' + (y - 66) + ' Q56 ' + (y - 30) + ' 82 ' + (y - 30) + '" fill="none" stroke="#d9587b" stroke-width="1.8"/>';
+    person = '<g transform="translate(0 ' + y + ') scale(.86) translate(0 ' + (-y) + ')">' + person + '</g>';
+    var leash = '<path d="M26 ' + f(y - 66 * 0.86) + ' Q60 ' + (y - 34) + ' 94 ' + (y - 24) + '" fill="none" stroke="#d9587b" stroke-width="1.8"/>';
+    // a stocky English bulldog: wide body, short bowed legs, jowls and an underbite
+    var leg = function (x, cls) {
+      return '<g class="pup-leg' + cls + '"><path d="M' + x + ' ' + (y - 14) + ' q-2 7 0 12" fill="none" stroke="#1f1a1c" stroke-width="5" stroke-linecap="round"/>' +
+        '<path d="M' + x + ' ' + (y - 14) + ' q-2 7 0 12" fill="none" stroke="#f3e3cf" stroke-width="2.6" stroke-linecap="round"/></g>';
+    };
     var dog =
-      '<g class="pup-leg"><path d="M68 ' + (y - 16) + ' v15" stroke="#1f1a1c" stroke-width="3" stroke-linecap="round"/></g>' +
-      '<g class="pup-leg pup-leg--b"><path d="M74 ' + (y - 16) + ' v15" stroke="#1f1a1c" stroke-width="3" stroke-linecap="round"/></g>' +
-      '<g class="pup-leg pup-leg--b"><path d="M86 ' + (y - 16) + ' v15" stroke="#1f1a1c" stroke-width="3" stroke-linecap="round"/></g>' +
-      '<g class="pup-leg"><path d="M92 ' + (y - 16) + ' v15" stroke="#1f1a1c" stroke-width="3" stroke-linecap="round"/></g>' +
+      leg(68, '') + leg(75, ' pup-leg--b') + leg(90, ' pup-leg--b') + leg(97, '') +
       '<g class="stride">' +
-        '<g class="tail"><path d="M62 ' + (y - 24) + ' q-10 -4 -8 -14" fill="none" stroke="#1f1a1c" stroke-width="2.6" stroke-linecap="round"/></g>' +
-        '<ellipse cx="80" cy="' + (y - 22) + '" rx="19" ry="10" fill="#fffdf9" class="ink"/>' +
-        '<ellipse cx="72" cy="' + (y - 24) + '" rx="6" ry="5" fill="#1f1a1c"/>' +
-        '<circle cx="100" cy="' + (y - 32) + '" r="10" fill="#fffdf9" class="ink"/>' +
-        '<path d="M94 ' + (y - 40) + ' q-6 2 -4 12 q6 -2 6 -10 z" fill="#1f1a1c"/>' +
-        '<ellipse cx="109" cy="' + (y - 30) + '" rx="4" ry="3" fill="#fffdf9" class="line"/><circle cx="112" cy="' + (y - 31) + '" r="1.6" fill="#1f1a1c"/>' +
-        '<circle cx="102" cy="' + (y - 35) + '" r="1.5" fill="#1f1a1c"/>' +
-        '<path d="M90 ' + (y - 26) + ' l-5 -5 l1 9 z M90 ' + (y - 26) + ' l6 -5 l-1 9 z" fill="#d9587b" stroke="#1f1a1c" stroke-width="1" stroke-linejoin="round"/>' +
+        '<g class="tail"><path d="M60 ' + (y - 24) + ' q-5 -1 -5 -5" fill="none" stroke="#1f1a1c" stroke-width="3.4" stroke-linecap="round"/></g>' +
+        '<path d="M60 ' + (y - 22) + ' Q60 ' + (y - 34) + ' 76 ' + (y - 34) + ' H92 Q104 ' + (y - 34) + ' 104 ' + (y - 20) + ' Q104 ' + (y - 12) + ' 92 ' + (y - 12) + ' H70 Q60 ' + (y - 12) + ' 60 ' + (y - 22) + ' Z" fill="#f3e3cf" class="ink"/>' +
+        '<path d="M66 ' + (y - 32) + ' Q74 ' + (y - 36) + ' 82 ' + (y - 31) + ' Q80 ' + (y - 24) + ' 70 ' + (y - 25) + ' Q64 ' + (y - 27) + ' 66 ' + (y - 32) + ' Z" fill="#d9a877"/>' +
+        // big square head
+        '<path d="M96 ' + (y - 30) + ' Q95 ' + (y - 46) + ' 109 ' + (y - 46) + ' Q123 ' + (y - 46) + ' 122 ' + (y - 30) + ' Q122 ' + (y - 18) + ' 109 ' + (y - 18) + ' Q96 ' + (y - 18) + ' 96 ' + (y - 30) + ' Z" fill="#f3e3cf" class="ink"/>' +
+        '<path d="M97 ' + (y - 40) + ' q4 -10 11 -6 q-2 5 -11 6 z" fill="#d9a877"/>' +
+        '<path d="M98 ' + (y - 44) + ' l-6 -3 l3 8 z M119 ' + (y - 44) + ' l6 -3 l-3 8 z" fill="#8a5a3c" stroke="#1f1a1c" stroke-width="1.2" stroke-linejoin="round"/>' +
+        '<path d="M104 ' + (y - 40) + ' q5 -2 10 0 M105 ' + (y - 37) + ' q4 -1.5 8 0" fill="none" stroke="#1f1a1c" stroke-width="1"/>' +
+        '<circle cx="103" cy="' + (y - 33) + '" r="1.6" fill="#1f1a1c"/><circle cx="115" cy="' + (y - 33) + '" r="1.6" fill="#1f1a1c"/>' +
+        '<ellipse cx="109" cy="' + (y - 28.5) + '" rx="4" ry="2.6" fill="#1f1a1c"/>' +
+        // jowls, underbite and a little tongue
+        '<path d="M100 ' + (y - 26) + ' q-2 8 6 8 q3 -1 3 -5 q0 4 3 5 q8 0 6 -8" fill="#f3e3cf" stroke="#1f1a1c" stroke-width="1.4" stroke-linejoin="round"/>' +
+        '<path d="M104 ' + (y - 20) + ' h10" stroke="#1f1a1c" stroke-width="1.2"/><path d="M106 ' + (y - 20) + ' v-2 M112 ' + (y - 20) + ' v-2" stroke="#fffdf9" stroke-width="1.4"/>' +
+        '<path d="M108 ' + (y - 19) + ' q1 4 2.5 0" fill="#e87a95"/>' +
+        // pink collar with a bow
+        '<path d="M96 ' + (y - 24) + ' q2 6 6 8" fill="none" stroke="#d9587b" stroke-width="3"/>' +
+        '<path d="M98 ' + (y - 18) + ' l-5 -4 l0 8 z M98 ' + (y - 18) + ' l5 -4 l0 8 z" fill="#d9587b" stroke="#1f1a1c" stroke-width="1" stroke-linejoin="round"/>' +
       '</g>';
-    return '<g class="walker">' + leash + dog + person + '</g>';
+    return leash + dog + person;
+  }
+
+  function walker() {
+    return '<g class="walker">' + walkerParts() + '</g>';
   }
 
   /* ---------- Storybook magic: singing birds, butterflies, twinkles ---------- */
@@ -432,6 +476,17 @@
 
   buildScene();
 
+  // the welcome letter's portrait: Marisa and her bulldog walking on the spot
+  var portrait = document.getElementById('portraitScene');
+  if (portrait) {
+    portrait.innerHTML =
+      '<rect x="-60" y="560" width="260" height="130" fill="#fbe1e8"/>' +
+      '<circle cx="110" cy="586" r="12" fill="#fff3c4" class="lamp"/>' +
+      '<rect x="-60" y="' + (GROUND + 30) + '" width="260" height="40" fill="#f4e8e0"/>' +
+      '<path d="M-60 ' + (GROUND + 30) + ' H200" class="line"/>' +
+      walkerParts();
+  }
+
   /* ---------- Curtains + key tag ---------- */
   var opened = false;
   function checkIn() {
@@ -522,10 +577,24 @@
       .observe(document.getElementById('top'));
   }
 
-  /* ---------- Window displays: tap to open the shutters ---------- */
-  document.querySelectorAll('.display').forEach(function (d) {
+  /* ---------- Window displays: curtains part as they scroll into view, tap to toggle ---------- */
+  var displays = document.querySelectorAll('.display');
+  displays.forEach(function (d) {
     d.addEventListener('click', function () { d.classList.toggle('open'); });
   });
+  if ('IntersectionObserver' in window) {
+    var displayIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var i = Array.prototype.indexOf.call(e.target.parentNode.children, e.target);
+        setTimeout(function () { e.target.classList.add('open'); }, 400 + i * 350);
+        displayIO.unobserve(e.target);
+      });
+    }, { threshold: 0.5 });
+    displays.forEach(function (d) { displayIO.observe(d); });
+  } else {
+    displays.forEach(function (d) { d.classList.add('open'); });
+  }
 
   /* ---------- Suites: tap a door to peek in (touch screens) ---------- */
   if (window.matchMedia('(hover: none)').matches) {

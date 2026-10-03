@@ -75,7 +75,8 @@
           <p class="letter__place">Metro Detroit, Michigan</p>
         </header>
         <figure class="portrait">
-          <div class="portrait__frame"><span>your portrait<br>here</span></div>
+          <div class="portrait__frame"><svg class="scene portrait__scene" id="portraitScene" viewBox="-30 560 170 140" role="img" aria-label="Marisa walking her English bulldog"></svg></div>
+          <figcaption>me &amp; my bulldog</figcaption>
         </figure>
         <p class="letter__hand">Hi, friend!</p>
         <p>Welcome to my brain! I'm <strong>Marisa Kahnt</strong>. By day I work in recruiting operations. The rest of the time I'm running my Brother embroidery machine at <strong>Marisa Stitches</strong> and writing and officiating ceremonies (and coaching vows!) with <strong>I Do by Marisa</strong>.</p>
@@ -92,38 +93,58 @@
         <div class="office__grid">
           <div class="office__intro">
             <h2>Marisa Kahnt</h2>
-            <p class="office__title">Recruiting Operations Specialist at Block</p>
-            <p class="office__loc">Detroit Metropolitan Area</p>
-            <p class="office__summary">Adaptable, solutions-oriented and detail-obsessed, with expertise in program management, data analysis and operations.</p>
-            <p class="office__summary todo">[Add a few more sentences from your current marisakahnt.com here.]</p>
+            <p class="office__title">Sr. Recruiting Operations Specialist at Block</p>
+            <p class="office__loc">Recruiting Ops · People Tooling &amp; AI/Automation</p>
+            <blockquote class="office__note">I'd rather eliminate the problem than build a fix for it.</blockquote>
             <div class="office__ctas">
               <a href="https://www.linkedin.com/in/mkahnt/" target="_blank" rel="noopener" class="btn btn--ink">LinkedIn ↗</a>
+              <a href="#desk" class="btn btn--line">What can we eliminate?</a>
             </div>
           </div>
 
           <ol class="career" aria-label="Experience">
             <li>
-              <span class="career__dates">[dates] – present</span>
-              <h3>Recruiting Operations Specialist</h3>
+              <span class="career__dates">2024 – now</span>
+              <h3>Sr. Recruiting Operations Specialist</h3>
               <p class="career__org">Block</p>
-              <p class="todo">[One line about your work here.]</p>
             </li>
             <li>
-              <span class="career__dates">[dates]</span>
-              <h3>[Previous role]</h3>
-              <p class="career__org">[Company]</p>
-              <p class="todo">[One line about your work here.]</p>
+              <span class="career__dates">2022 – 2024</span>
+              <h3>Sr. Recruiting Coordinator</h3>
+              <p class="career__org">Block</p>
             </li>
             <li>
-              <span class="career__dates">[year]</span>
-              <h3>[Degree or certification]</h3>
-              <p class="career__org">[School]</p>
+              <span class="career__dates">2021</span>
+              <h3>Recruiting Coordinator</h3>
+              <p class="career__org">Twilio</p>
+            </li>
+            <li>
+              <span class="career__dates">2019 – 2020</span>
+              <h3>Leadership Consultant</h3>
+              <p class="career__org">Phi Mu HQ</p>
             </li>
           </ol>
         </div>
-        <ul class="skills" aria-label="Skills">
-          <li>Recruiting Operations</li><li>Program Management</li><li>Data Analysis</li><li>Operations</li><li class="todo">[skill]</li><li class="todo">[skill]</li>
+
+        <h3 class="office__sub">How I work</h3>
+        <ul class="traits">
+          <li><strong>Curious</strong>First question is always "why do we do it this way?" Second is usually "can we not?"</li>
+          <li><strong>Born with the gene</strong>The "how hard can it be" gene, specifically. If I don't know how to do something yet, that's just Tuesday. I ramp fast and figure it out.</li>
+          <li><strong>Leads with empathy</strong>People are usually doing their best with a broken process. I assume good intent first, always.</li>
+          <li><strong>"Yes, and"</strong>I treat work like improv: always looking for the "yes, and," not the reason it won't work. Failing just means I learned something before you had to.</li>
+          <li><strong>Allergic to extra steps</strong>If a process has more than five steps, I'm already redesigning it in my head. I promise I'm listening too.</li>
+          <li><strong>Knows the room</strong>I can tell you exactly who needs to be looped in, who doesn't, and who just wants the recap after.</li>
+          <li><strong>Doesn't gatekeep</strong>I'd rather teach you the fix than be the only one who can do it. When one of us shines, we all shine.</li>
+          <li><strong>Craft</strong>I sweat the details nobody asked for. The last 10% is the part people remember.</li>
         </ul>
+
+        <h3 class="office__sub">Toolkit</h3>
+        <div class="toolkit">
+          <div><h4>Process</h4><ul class="skills"><li>Process design</li><li>Platform architecture</li><li>Workflow automation</li><li>UAT</li><li>Program mgmt</li><li>Data integrity</li><li>People management</li></ul></div>
+          <div><h4>Systems</h4><ul class="skills"><li>Workday</li><li>Greenhouse</li><li>SmartRecruiters</li><li>LinkedIn Recruiter</li><li>Jira</li><li>Gem</li><li>BrightHire</li><li>Guide</li><li>DocuSign</li><li>Okta</li><li>Notion</li><li>Asana</li></ul></div>
+          <div><h4>AI &amp; Build</h4><ul class="skills"><li>Claude Code</li><li>Claude MCP</li><li>Goose</li><li>RAG design</li><li>Agent skills</li><li>Google Apps Script</li><li>Gemini</li><li>ChatGPT</li></ul></div>
+        </div>
+        <p class="office__built">This site? Claude Code, zero frameworks, and me. No engineers were involved in the making of this storybook.</p>
       </div>
     </section>
 
@@ -196,6 +217,7 @@
         <div class="facade__body">
           <h2 class="facade__sign">I Do by Marisa</h2>
           <p class="facade__kind">Metro Detroit · Officiant · Writer · Vow Coach</p>
+          <p class="facade__motto">Story is the signature.</p>
           <p class="facade__tagline"><em>Your story, told with intention. Timeless in feeling. Never templated.</em></p>
 
           <div class="displays displays--three">
@@ -242,7 +264,8 @@
       <p class="floor-tag reveal">The End · Say Hi</p>
       <div class="register reveal">
         <h2>Say hi!</h2>
-        <p class="register__note">for work, stitches, ceremonies, or just to say hello</p>
+        <p class="register__note">tell me what's broken, what you'd like stitched, or when you're saying "I do"</p>
+        <p class="register__mail">or write straight to <a href="mailto:marisakkahnt@gmail.com">marisakkahnt@gmail.com</a></p>
         <form id="customOrderForm" novalidate>
           <label>Name<input type="text" id="name" name="name" autocomplete="name"></label>
           <label>Email<input type="email" id="email" name="email" autocomplete="email"></label>

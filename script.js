@@ -33,9 +33,14 @@ function submitForm(event) {
     event.preventDefault(); // Prevents the default form submission behavior
     
     if (validateForm()) {
-        // Code to submit the form (e.g., AJAX request)
-        showStatus('Thank you! Your note is on its way ♡', 'success');
-        // Implement AJAX submission here
+        // Open the visitor's email app with the note ready to send to Marisa
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+        var message = document.getElementById('orderDetails').value;
+        var body = message + '\n\n' + name + '\n' + email;
+        window.location.href = 'mailto:marisakkahnt@gmail.com?subject=' +
+            encodeURIComponent('Hello from ' + name) + '&body=' + encodeURIComponent(body);
+        showStatus('Your email app is opening with your note ready to send ♡', 'success');
     }
 }
 
