@@ -1,4 +1,11 @@
-// JavaScript for form validation and submission functionality for the custom order form
+// JavaScript for form validation and submission functionality for the say hi contact form
+
+// Show a message under the form instead of a pop-up alert
+function showStatus(message, type) {
+    var status = document.getElementById('formStatus');
+    status.textContent = message;
+    status.className = 'form-status ' + type;
+}
 
 // Function to validate the form
 function validateForm() {
@@ -7,14 +14,14 @@ function validateForm() {
     var orderDetails = document.getElementById('orderDetails').value;
     
     if (name === '' || email === '' || orderDetails === '') {
-        alert('All fields are required!');
+        showStatus('All fields are required!', 'error');
         return false;
     }
     
     // Simple email validation
     var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email)) {
-        alert('Please enter a valid email address!');
+        showStatus('Please enter a valid email address!', 'error');
         return false;
     }
     
@@ -26,9 +33,14 @@ function submitForm(event) {
     event.preventDefault(); // Prevents the default form submission behavior
     
     if (validateForm()) {
-        // Code to submit the form (e.g., AJAX request)
-        alert('Form submitted successfully!');
-        // Implement AJAX submission here
+        // Open the visitor's email app with the note ready to send to Marisa
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+        var message = document.getElementById('orderDetails').value;
+        var body = message + '\n\n' + name + '\n' + email;
+        window.location.href = 'mailto:marisakkahnt@gmail.com?subject=' +
+            encodeURIComponent('Hello from ' + name) + '&body=' + encodeURIComponent(body);
+        showStatus('Thank you!! Your email app is opening with your note ready to send ♡', 'success');
     }
 }
 
