@@ -11,7 +11,8 @@
   --gold: #c39a50;
   --display: "Playfair Display", "Didot", Georgia, serif;
   --serif: "EB Garamond", Garamond, Georgia, serif;
-  --hand: "Caveat", "Bradley Hand", cursive;
+  --hand: "Playfair Display", Georgia, serif;
+  --script: "Parisienne", "Snell Roundhand", cursive;
   --caps: "Jost", "Futura", system-ui, sans-serif;
   --ease: cubic-bezier(.22, 1, .36, 1);
   --bounce: cubic-bezier(.34, 1.4, .64, 1);
@@ -47,7 +48,7 @@ button { font: inherit; color: inherit; }
 .crest__mono {
   display: grid; place-content: center; width: 42px; height: 42px; border-radius: 50%;
   border: 1px solid var(--ink); box-shadow: inset 0 0 0 3px var(--paper), inset 0 0 0 4px var(--rose);
-  font: 400 1.9rem/1 "Pinyon Script", var(--display); color: var(--rose); padding: 4px 0 0 2px;
+  font: italic 400 1.05rem var(--display); color: var(--ink); letter-spacing: -.02em;
 }
 .crest__name { font: 400 1.3rem var(--display); letter-spacing: .02em; }
 .elevator { display: flex; align-items: center; gap: 1rem; }
@@ -85,7 +86,7 @@ button { font: inherit; color: inherit; }
 .show .hello > :nth-child(4) { transition-delay: 1.25s; }
 .show .hello > :nth-child(1) { transition-delay: .75s; }
 .hello__eyebrow { margin: 0; font: 500 .72rem var(--caps); letter-spacing: .32em; text-transform: uppercase; color: var(--muted); }
-.hello__script { margin: .2rem 0 -.3rem; font: 500 clamp(1.4rem, 3vw, 1.9rem) var(--hand); color: var(--rose); }
+.hello__script { margin: .2rem 0 -.3rem; font: 400 clamp(1.4rem, 3vw, 1.9rem) var(--script); color: var(--rose); }
 .hello__name { font-size: clamp(2.6rem, 6.5vw, 4.4rem); letter-spacing: -.01em; }
 .hello__roles { margin: .5rem 0 0; font: italic 400 clamp(1rem, 2.2vw, 1.25rem) var(--serif); color: var(--ink-soft); }
 .hello__roles i { color: var(--rose); font-style: normal; padding: 0 .3em; }
@@ -129,11 +130,11 @@ button { font: inherit; color: inherit; }
 /* street extras */
 .scene .plaque-text { font: italic 600 19px var(--display); }
 .scene .plaque-text--stitches { font: 700 12.5px var(--display); letter-spacing: .1em; text-transform: uppercase; }
-.scene .plaque-script { font: 400 26px "Pinyon Script", var(--hand); }
-.suite .script-title { font: 400 2.6rem "Pinyon Script", var(--hand); }
+.scene .plaque-script { font: 400 26px var(--script); }
+.suite .script-title { font: 400 2.6rem var(--script); }
 .suite__tagline { font: 600 1.6rem/1.15 var(--display); color: #2f4a3a; margin: 0 auto .2rem !important; }
 .suite__tagline em { display: block; color: #1f2a44; font-weight: 400; }
-.suite__script { font: 700 1.6rem var(--hand); color: #c9a24a; margin: 0 auto .8rem !important; }
+.suite__script { font: italic 500 1.6rem var(--hand); color: #c9a24a; margin: 0 auto .8rem !important; }
 .suite__quote { font-style: italic; color: var(--ink-soft); border-block: 1px solid currentColor; padding: .6rem 0; max-width: 20rem !important; }
 #stitches .door__leaf {
   background:
@@ -163,7 +164,7 @@ button { font: inherit; color: inherit; }
 .dust--burst { font-size: 18px; animation: burst 2s var(--ease) forwards; }
 .suite__links { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem; }
 .footer__links--small { margin-top: .5rem; font-size: .95rem; }
-.footer__end { margin: 1.2rem 0 0; font: 500 1.5rem var(--hand); color: var(--pink); }
+.footer__end { margin: 1.2rem 0 0; font: 400 1.5rem var(--script); color: var(--pink); }
 .bell .seal { fill: var(--rose); stroke: none; }
 .bell { fill: #fffdf9; }
 
@@ -212,7 +213,7 @@ button { font: inherit; color: inherit; }
 }
 .keytag__tag::before { content: ""; position: absolute; top: 9px; width: 12px; height: 12px; border-radius: 50%; border: 1px solid var(--ink); background: var(--paper-2); }
 .keytag__tag small { font: 500 .62rem var(--caps); font-style: normal; letter-spacing: .3em; text-transform: uppercase; color: var(--rose); margin-top: .3rem; }
-.keytag__tag em { font: 700 1.2rem var(--hand); color: var(--rose); }
+.keytag__tag em { font: italic 500 1.2rem var(--hand); color: var(--rose); }
 
 /* ---------- Ribbon ---------- */
 .ribbon { overflow: hidden; background: var(--ink); color: var(--paper); padding: .7rem 0; border-block: 3px double var(--paper); }
@@ -250,7 +251,7 @@ section { padding: clamp(4.5rem, 10vw, 8rem) 16px; scroll-margin-top: 64px; }
 .letter__head { text-align: center; border-bottom: 1px solid var(--ink); padding-bottom: 1.1rem; margin-bottom: 1.6rem; }
 .letter__crest {
   display: inline-grid; place-content: center; width: 54px; height: 54px; border-radius: 50%;
-  border: 1px solid var(--ink); font: 400 2.3rem/1 "Pinyon Script", var(--display); color: var(--rose); padding: 6px 0 0 2px;
+  border: 1px solid var(--ink); font: italic 400 1.3rem var(--display); color: var(--ink); letter-spacing: -.02em;
 }
 .letter__name { margin: .5rem 0 0; font: 400 1.5rem var(--display); letter-spacing: .32em; text-transform: uppercase; }
 .letter__place { margin: 0; font: 500 .68rem var(--caps); letter-spacing: .3em; text-transform: uppercase; color: var(--muted); }
@@ -258,13 +259,13 @@ section { padding: clamp(4.5rem, 10vw, 8rem) 16px; scroll-margin-top: 64px; }
 .portrait__frame {
   width: 140px; height: 176px; border-radius: 50%; display: grid; place-content: center; text-align: center;
   border: 1px solid var(--ink); box-shadow: inset 0 0 0 6px #fffdf9, inset 0 0 0 7px var(--gold);
-  background: linear-gradient(160deg, var(--blush), #f6d3dd); font: 500 1.2rem/1.1 var(--hand); color: var(--rose);
+  background: linear-gradient(160deg, var(--blush), #f6d3dd); font: italic 500 1.2rem/1.1 var(--hand); color: var(--rose);
 }
 @media (max-width: 520px) { .portrait { float: none; margin: 0 auto 1.2rem; display: grid; justify-content: center; } }
-.letter__hand { font: 700 1.8rem var(--hand); color: var(--rose); margin: 0 0 .6rem; }
+.letter__hand { font: 400 1.8rem var(--script); color: var(--rose); margin: 0 0 .6rem; }
 .letter p { margin: 0 0 1rem; }
 .letter__sign { margin-top: 1.6rem !important; font-style: italic; }
-.letter__sign span { font: 400 3.2rem/1 "Pinyon Script", var(--hand); color: var(--rose); }
+.letter__sign span { font: 400 3.2rem/1 var(--script); color: var(--rose); }
 .office__say { margin: .2rem 0 0; font: italic 400 1rem var(--serif); color: var(--muted); }
 
 /* ---------- Office: polished, professional ---------- */
@@ -326,7 +327,7 @@ section { padding: clamp(4.5rem, 10vw, 8rem) 16px; scroll-margin-top: 64px; }
   position: absolute; inset: 0; border-radius: 100px 100px 0 0; overflow: hidden;
   display: grid; place-content: center; justify-items: center; gap: .3rem;
   background: radial-gradient(circle at 50% 40%, #fff6e2, var(--blush));
-  font: 700 1.3rem var(--hand); color: var(--rose);
+  font: italic 500 1.3rem var(--hand); color: var(--rose);
 }
 .door__room svg { width: 110px; }
 .ink-line { fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
@@ -351,7 +352,7 @@ section { padding: clamp(4.5rem, 10vw, 8rem) 16px; scroll-margin-top: 64px; }
 .door__sign {
   position: absolute; right: 8px; top: 60%; width: 74px; padding: .3rem .2rem; transform: rotate(-6deg);
   background: #fffdf9; border: 1px solid var(--ink); border-radius: 6px;
-  font: 700 .95rem/1 var(--hand); color: var(--rose); text-align: center;
+  font: italic 500 .95rem/1 var(--hand); color: var(--rose); text-align: center;
   transform-origin: top center; animation: dangle 3s ease-in-out infinite alternate;
 }
 .door__sign::before { content: ""; position: absolute; left: 50%; top: -14px; width: 1px; height: 14px; background: var(--ink); transform: rotate(-20deg); }
@@ -402,13 +403,13 @@ section { padding: clamp(4.5rem, 10vw, 8rem) 16px; scroll-margin-top: 64px; }
   box-shadow: inset 0 0 0 5px #fffdf9, inset 0 0 0 6px var(--trim);
   font: 700 clamp(1.4rem, 4vw, 2.1rem) var(--display); color: var(--brand); letter-spacing: .08em; text-transform: uppercase;
 }
-.house--ido .facade__sign { font: 400 clamp(2.2rem, 6vw, 3rem) "Pinyon Script", var(--hand); text-transform: none; letter-spacing: 0; padding: .1em 1.1em; }
+.house--ido .facade__sign { font: 400 clamp(2.2rem, 6vw, 3rem) var(--script); text-transform: none; letter-spacing: 0; padding: .1em 1.1em; }
 .facade__kind { margin: 1rem 0 .4rem; font: 500 .72rem var(--caps); letter-spacing: .26em; text-transform: uppercase; color: var(--brand-2); }
 .facade__tagline { margin: .2rem auto 0; max-width: 34rem; font: 600 clamp(1.4rem, 3.4vw, 1.9rem)/1.2 var(--display); color: var(--brand); }
 .facade__tagline em { color: var(--brand-2); font-weight: 400; }
 .house--stitches .facade__tagline em { display: block; }
 .house--ido .facade__tagline { font-size: clamp(1.2rem, 2.8vw, 1.5rem); }
-.facade__script { margin: .2rem 0 0; font: 700 1.8rem var(--hand); color: var(--trim); }
+.facade__script { margin: .2rem 0 0; font: 400 1.8rem var(--script); color: var(--trim); }
 .facade__note { margin: 1rem auto 0; max-width: 32rem; }
 .facade__quote { margin: 1rem auto 0; max-width: 26rem; font-style: italic; color: var(--ink-soft); border-block: 1px solid var(--trim); padding: .6rem 0; }
 .facade__door { display: flex; flex-wrap: wrap; justify-content: center; gap: .7rem; padding: 1.6rem 0 2.6rem; }
@@ -437,8 +438,8 @@ section { padding: clamp(4.5rem, 10vw, 8rem) 16px; scroll-margin-top: 64px; }
 .display__inside svg { width: 84px; filter: drop-shadow(0 6px 4px rgba(31,26,28,.18)); transition: transform .8s var(--bounce); }
 .display__inside svg::after { content: ""; }
 .display.open .display__inside svg, .display:hover .display__inside svg { transform: translateY(-4px) scale(1.06); }
-.display__inside strong { font: 600 1.05rem/1.2 var(--display); color: var(--brand); }
-.display__inside > span { font: 600 1.1rem/1.15 var(--hand); color: var(--brand-2); }
+.display__inside strong { font: 600 1.05rem/1.2 var(--display); color: var(--brand); padding: 0 1.4rem; }
+.display__inside > span { font: italic 500 .95rem/1.25 var(--hand); color: var(--brand-2); padding: 0 1.6rem; }
 .display__inside::after {
   content: ""; position: absolute; left: 50%; bottom: 14%; width: 96px; height: 18px; margin-left: -48px; z-index: -0;
   background: radial-gradient(ellipse at 50% 50%, rgba(31,26,28,.14), transparent 70%);
@@ -477,7 +478,8 @@ section { padding: clamp(4.5rem, 10vw, 8rem) 16px; scroll-margin-top: 64px; }
   .displays--three .display:last-child { grid-column: 1 / -1; justify-self: center; width: calc(50% - .45rem); }
   .display__inside svg { width: 52px; }
   .display__inside strong { font-size: .92rem; }
-  .display__inside > span { font-size: .95rem; }
+  .display__inside > span { font-size: .88rem; padding: 0 .9rem; }
+  .display__inside strong { padding: 0 .8rem; }
 }
 .house--ido .flowerbox::after {
   background:
@@ -485,9 +487,9 @@ section { padding: clamp(4.5rem, 10vw, 8rem) 16px; scroll-margin-top: 64px; }
     radial-gradient(circle, #b5c4a8 5px, transparent 6px) 11px 4px / 22px 14px;
 }
 
-.facade__motto { margin: -.2rem 0 .4rem; font: 400 2rem "Pinyon Script", var(--hand); color: var(--brand-2); }
+.facade__motto { margin: -.2rem 0 .4rem; font: 400 2rem var(--script); color: var(--brand-2); }
 .portrait__frame { position: relative; overflow: hidden; }
-.portrait figcaption { text-align: center; font: 700 1.2rem var(--hand); color: var(--rose); }
+.portrait figcaption { text-align: center; font: italic 500 1.2rem var(--hand); color: var(--rose); }
 .office__note { margin: 1.4rem 0 0; padding: 1rem 1.2rem; background: #ffe27a; transform: rotate(-1.5deg); box-shadow: 0 8px 16px -8px rgba(31,26,28,.4); font: 600 1.35rem/1.3 var(--display); max-width: 26rem; }
 .office__sub { margin: 2.6rem 0 1rem; padding-top: 1.6rem; border-top: 1px solid var(--ink); font: italic 400 1.8rem var(--display); }
 .traits { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .9rem; }
@@ -496,7 +498,7 @@ section { padding: clamp(4.5rem, 10vw, 8rem) 16px; scroll-margin-top: 64px; }
 .toolkit { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.4rem; }
 .toolkit h4 { margin: 0 0 .5rem; font: 500 .7rem var(--caps); letter-spacing: .26em; text-transform: uppercase; color: var(--muted); }
 .toolkit .skills { margin: 0; padding: 0; border: 0; }
-.office__built { margin: 2rem 0 0; font: 600 1.3rem var(--hand); color: var(--rose); text-align: center; }
+.office__built { margin: 2rem 0 0; font: italic 500 1.3rem var(--hand); color: var(--rose); text-align: center; }
 .register__mail { margin: -1.4rem 0 1.6rem; font-size: 1rem; }
 .register__mail a { color: var(--rose); }
 
@@ -508,7 +510,7 @@ section { padding: clamp(4.5rem, 10vw, 8rem) 16px; scroll-margin-top: 64px; }
   box-shadow: inset 0 0 0 8px #fffdf9, inset 0 0 0 9px var(--ink), 10px 10px 0 var(--pink);
 }
 .register h2 { font: italic 400 clamp(2.2rem, 5vw, 3rem) var(--display); }
-.register__note { margin: .3rem 0 2rem; font: 500 1.35rem var(--hand); color: var(--rose); }
+.register__note { margin: .3rem 0 2rem; font: italic 500 1.35rem var(--hand); color: var(--rose); }
 form { display: grid; gap: 1.3rem; text-align: left; }
 label { display: grid; gap: .2rem; font: 500 .68rem var(--caps); letter-spacing: .26em; text-transform: uppercase; color: var(--muted); }
 input, textarea {
@@ -525,13 +527,34 @@ input:focus, textarea:focus { outline: none; border-bottom: 2px solid var(--rose
 .bell { width: 64px; fill: var(--gold); stroke: var(--ink); stroke-width: 1.5; transform-origin: bottom center; transition: transform .3s var(--bounce); }
 .bell-btn:hover .bell { transform: rotate(-6deg) scale(1.05); }
 .bell-btn.ding .bell { animation: ding .6s ease-in-out; }
-.form-status { text-align: center; margin: 0; min-height: 1.6em; font: 700 1.35rem var(--hand); }
+.form-status { text-align: center; margin: 0; min-height: 1.6em; font: italic 500 1.35rem var(--hand); }
 .form-status.error { color: var(--rose); }
 .form-status.success { color: #5f8a55; }
 
+.register { max-width: 860px; }
+.door-btns { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.4rem; margin: 2rem 0 1.6rem; }
+.door-btn {
+  --door: #3f5f87; display: grid; justify-items: center; gap: .35rem; text-decoration: none; color: var(--ink);
+  padding: 1.4rem 1rem 1.2rem; border: 1px solid var(--ink); border-radius: 14px; background: #fffdf9;
+  transition: transform .4s var(--bounce), box-shadow .4s;
+}
+.door-btn--stitches { --door: #2f4a3a; }
+.door-btn--ido { --door: #b7a097; }
+.door-btn:hover, .door-btn:focus-visible { transform: translateY(-5px); box-shadow: 0 14px 24px -14px rgba(31,26,28,.45); }
+.door-btn__door {
+  position: relative; width: 58px; height: 84px; border-radius: 29px 29px 3px 3px; margin-bottom: .5rem;
+  background: var(--door); border: 1.5px solid var(--ink); box-shadow: inset 0 0 0 6px var(--door), inset 0 0 0 7px rgba(255,255,255,.4);
+  transform-origin: left center; transition: transform .7s var(--ease);
+}
+.door-btn:hover .door-btn__door, .door-btn:focus-visible .door-btn__door { transform: perspective(300px) rotateY(-35deg); }
+.door-btn__knob { position: absolute; right: 9px; top: 50%; width: 7px; height: 7px; border-radius: 50%; background: #c9a24a; border: 1px solid var(--ink); }
+.door-btn strong { font: 600 1.15rem/1.25 var(--display); }
+.door-btn > span:last-child { font: 500 .66rem var(--caps); letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+.register__mail { margin: 0; font-size: 1rem; }
+
 /* ---------- Footer ---------- */
 .footer { text-align: center; padding: 3rem 16px 2.4rem; background: var(--ink); color: var(--paper); border-top: 3px double var(--paper); }
-.footer__crest { margin: 0 0 .6rem; font: 400 2.6rem/1.2 "Pinyon Script", var(--display); }
+.footer__crest { margin: 0 0 .6rem; font: 400 2.6rem/1.2 var(--script); }
 .footer__links { margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem 1rem; font-style: italic; }
 .footer__links a { text-decoration: none; border-bottom: 1px solid transparent; transition: border-color .3s, color .3s; }
 .footer__links a:hover { color: var(--pink); border-color: var(--pink); }

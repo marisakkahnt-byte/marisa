@@ -626,14 +626,6 @@
     });
   }
 
-  /* ---------- Send button wiggle ---------- */
-  var bell = document.getElementById('bellBtn');
-  bell.addEventListener('click', function () {
-    bell.classList.remove('ding');
-    void bell.offsetWidth;
-    bell.classList.add('ding');
-  });
-
   /* ---------- Scroll reveals ---------- */
   var reveals = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
