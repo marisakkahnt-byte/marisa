@@ -119,6 +119,11 @@ button { font: inherit; color: inherit; }
 .scene .leg--b { animation-delay: -.45s; }
 .scene .pup-leg { transform-box: fill-box; transform-origin: top center; animation: trot .3s ease-in-out infinite alternate; }
 .scene .pup-leg--b { animation-delay: -.3s; }
+.scene .blink { transform-box: fill-box; transform-origin: center; animation: blink 4.2s infinite; }
+.scene .blink--pup { animation-delay: 1.7s; }
+.scene .tongue { transform-box: fill-box; transform-origin: top center; animation: pant .28s ease-in-out infinite alternate; }
+.scene .hairswish { transform-box: fill-box; transform-origin: top center; animation: swish .45s ease-in-out infinite alternate; }
+.scene .arm { transform-box: fill-box; transform-origin: top right; animation: armswing .45s ease-in-out infinite alternate; }
 .scene .tail { transform-box: fill-box; transform-origin: right bottom; animation: wag .25s ease-in-out infinite alternate; }
 
 /* street extras */
@@ -565,6 +570,10 @@ input:focus, textarea:focus { outline: none; border-bottom: 2px solid var(--rose
 @keyframes twinkle { 0%, 100% { opacity: .15; transform: scale(.6) rotate(0); } 50% { opacity: 1; transform: scale(1.15) rotate(20deg); } }
 @keyframes dust { to { transform: translate(-50%, 10px) scale(.2) rotate(120deg); opacity: 0; } }
 @keyframes burst { 0% { transform: translate(-50%, -50%) scale(.3); opacity: 1; } 100% { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy) + 60px)) scale(1) rotate(160deg); opacity: 0; } }
+@keyframes blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(.1); } }
+@keyframes pant { from { transform: scaleY(.7); } to { transform: scaleY(1.15); } }
+@keyframes swish { from { transform: rotate(-3deg); } to { transform: rotate(3deg); } }
+@keyframes armswing { from { transform: rotate(-14deg); } to { transform: rotate(12deg); } }
 @keyframes ding { 0%, 100% { transform: rotate(0); } 20% { transform: rotate(-14deg); } 40% { transform: rotate(10deg); } 60% { transform: rotate(-6deg); } 80% { transform: rotate(3deg); } }
 
 @media (prefers-reduced-motion: reduce) {

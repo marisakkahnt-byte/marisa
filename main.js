@@ -329,57 +329,77 @@
   }
 
   /* ---------- A lady in a pink coat walking her dog ---------- */
-  /* ---------- Marisa walking her English bulldog ---------- */
+  /* ---------- Marisa walking her English bulldog (cartoon style) ---------- */
   function walkerParts() {
-    var y = GROUND + 30, HAIR = '#6b4430', SKIN = '#fdf0e8';
-    var person =
-      '<g class="leg"><path d="M-5 ' + (y - 46) + ' V' + (y - 3) + '" stroke="#1f1a1c" stroke-width="3.4" stroke-linecap="round"/><ellipse cx="-2" cy="' + (y - 2) + '" rx="6" ry="3" fill="#1f1a1c"/></g>' +
-      '<g class="leg leg--b"><path d="M5 ' + (y - 46) + ' V' + (y - 3) + '" stroke="#1f1a1c" stroke-width="3.4" stroke-linecap="round"/><ellipse cx="8" cy="' + (y - 2) + '" rx="6" ry="3" fill="#1f1a1c"/></g>' +
+    var y = GROUND + 30, HAIR = '#7a4a2e', HAIR_DARK = '#5e3820', SKIN = '#fff0e8', COAT = '#f6a5bd', INK = '#1f1a1c';
+    var line = ' stroke="' + INK + '" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"';
+
+    var shoe = function (x) { return '<ellipse cx="' + (x + 2) + '" cy="' + (y - 2.5) + '" rx="6" ry="3.4" fill="#d9587b"' + line + '/>'; };
+    var girl =
+      '<g class="leg"><path d="M-5 ' + (y - 30) + ' V' + (y - 5) + '" stroke="' + INK + '" stroke-width="4.2" stroke-linecap="round"/>' + shoe(-5) + '</g>' +
+      '<g class="leg leg--b"><path d="M5 ' + (y - 30) + ' V' + (y - 5) + '" stroke="' + INK + '" stroke-width="4.2" stroke-linecap="round"/>' + shoe(5) + '</g>' +
       '<g class="stride">' +
-        // long dark hair, behind the shoulders
-        '<path d="M-13 ' + (y - 110) + ' Q-16 ' + (y - 131) + ' 0 ' + (y - 129) + ' Q16 ' + (y - 131) + ' 13 ' + (y - 110) + ' Q16 ' + (y - 96) + ' 13 ' + (y - 84) + ' Q6 ' + (y - 82) + ' 4 ' + (y - 92) + ' L-6 ' + (y - 92) + ' Q-8 ' + (y - 82) + ' -15 ' + (y - 84) + ' Q-17 ' + (y - 96) + ' -13 ' + (y - 110) + ' Z" fill="' + HAIR + '" class="line"/>' +
-        // pink coat
-        '<path d="M-10 ' + (y - 100) + ' H10 L24 ' + (y - 44) + ' Q0 ' + (y - 38) + ' -24 ' + (y - 44) + ' Z" fill="#f2a7bb" class="ink"/>' +
-        '<path d="M-6 ' + (y - 100) + ' L0 ' + (y - 90) + ' L6 ' + (y - 100) + '" fill="#fffdf9" class="line"/>' +
-        '<circle cx="0" cy="' + (y - 78) + '" r="1.8" fill="#1f1a1c"/><circle cx="0" cy="' + (y - 66) + '" r="1.8" fill="#1f1a1c"/>' +
-        '<path d="M8 ' + (y - 94) + ' Q22 ' + (y - 78) + ' 30 ' + (y - 66) + '" class="ink" fill="none"/>' +
-        '<path d="M-8 ' + (y - 94) + ' Q-16 ' + (y - 76) + ' -12 ' + (y - 62) + '" class="ink" fill="none"/>' +
-        // face and side-parted hair on top
-        '<circle cx="0" cy="' + (y - 113) + '" r="11" fill="' + SKIN + '" class="ink"/>' +
-        '<path d="M-12 ' + (y - 109) + ' Q-11 ' + (y - 127) + ' 3 ' + (y - 125) + ' Q13 ' + (y - 123) + ' 12 ' + (y - 109) + ' Q8 ' + (y - 119) + ' -2 ' + (y - 118) + ' Q-9 ' + (y - 116) + ' -12 ' + (y - 109) + ' Z" fill="' + HAIR + '"/>' +
-        '<circle cx="5" cy="' + (y - 112) + '" r="2" fill="#5b8fd0"/><circle cx="5.4" cy="' + (y - 112) + '" r="1" fill="#1f1a1c"/>' +
-        '<path d="M3 ' + (y - 106) + ' q3 2 6 0" fill="none" stroke="#1f1a1c" stroke-width="1.2" stroke-linecap="round"/>' +
-        '<circle cx="8" cy="' + (y - 108) + '" r="2.3" fill="#f2a7bb" opacity=".8"/>' +
+        // long, swishy brown hair behind
+        '<g class="hairswish"><path d="M-17 ' + (y - 96) + ' Q-22 ' + (y - 70) + ' -16 ' + (y - 58) + ' Q-10 ' + (y - 52) + ' -6 ' + (y - 60) + ' L8 ' + (y - 60) + ' Q14 ' + (y - 52) + ' 20 ' + (y - 58) + ' Q24 ' + (y - 72) + ' 18 ' + (y - 96) + ' Z" fill="' + HAIR + '"' + line + '/></g>' +
+        // coat
+        '<path d="M-9 ' + (y - 70) + ' H9 Q22 ' + (y - 44) + ' 21 ' + (y - 30) + ' Q0 ' + (y - 24) + ' -21 ' + (y - 30) + ' Q-22 ' + (y - 44) + ' -9 ' + (y - 70) + ' Z" fill="' + COAT + '"' + line + '/>' +
+        '<path d="M-7 ' + (y - 70) + ' q3.5 6 7 0 q3.5 6 7 0" fill="#fffdf9"' + line + '/>' +
+        '<circle cx="0" cy="' + (y - 54) + '" r="1.8" fill="#c9a24a"/><circle cx="0" cy="' + (y - 44) + '" r="1.8" fill="#c9a24a"/>' +
+        '<g class="arm"><path d="M-8 ' + (y - 64) + ' q-8 8 -7 18" fill="none" stroke="' + COAT + '" stroke-width="5" stroke-linecap="round"/><path d="M-8 ' + (y - 64) + ' q-8 8 -7 18" fill="none"' + line + ' stroke-width="1.2"/><circle cx="-15" cy="' + (y - 45) + '" r="3.4" fill="' + SKIN + '"' + line + ' stroke-width="1.4"/></g>' +
+        '<path d="M8 ' + (y - 64) + ' q10 4 16 14" fill="none" stroke="' + COAT + '" stroke-width="5" stroke-linecap="round"/>' +
+        '<circle cx="25" cy="' + (y - 49) + '" r="3.4" fill="' + SKIN + '"' + line + ' stroke-width="1.4"/>' +
+        // big round head
+        '<circle cx="1" cy="' + (y - 90) + '" r="19" fill="' + SKIN + '"' + line + '/>' +
+        // side-parted bangs
+        '<path d="M-18 ' + (y - 88) + ' Q-19 ' + (y - 112) + ' 2 ' + (y - 110) + ' Q20 ' + (y - 109) + ' 20 ' + (y - 88) + ' Q14 ' + (y - 100) + ' 4 ' + (y - 101) + ' Q-4 ' + (y - 96) + ' -10 ' + (y - 97) + ' Q-15 ' + (y - 94) + ' -18 ' + (y - 88) + ' Z" fill="' + HAIR + '"' + line + '/>' +
+        '<path d="M4 ' + (y - 109) + ' q-2 5 0 8" fill="none" stroke="' + HAIR_DARK + '" stroke-width="1.4" stroke-linecap="round"/>' +
+        // pink bow
+        '<path d="M-13 ' + (y - 104) + ' l-8 -6 l1 10 z M-13 ' + (y - 104) + ' l7 -8 l2 10 z" fill="#d9587b"' + line + ' stroke-width="1.4"/><circle cx="-13" cy="' + (y - 104) + '" r="2.2" fill="#f6a5bd"' + line + ' stroke-width="1.2"/>' +
+        // big sparkly blue eyes that blink
+        '<g class="blink">' +
+          '<ellipse cx="-4" cy="' + (y - 88) + '" rx="3.6" ry="4.6" fill="#2a3550"/><ellipse cx="-4" cy="' + (y - 86.6) + '" rx="2.4" ry="2.6" fill="#5b8fd0"/><circle cx="-2.8" cy="' + (y - 90) + '" r="1.4" fill="#fff"/>' +
+          '<ellipse cx="9" cy="' + (y - 88) + '" rx="3.6" ry="4.6" fill="#2a3550"/><ellipse cx="9" cy="' + (y - 86.6) + '" rx="2.4" ry="2.6" fill="#5b8fd0"/><circle cx="10.2" cy="' + (y - 90) + '" r="1.4" fill="#fff"/>' +
+        '</g>' +
+        '<ellipse cx="-9" cy="' + (y - 81) + '" rx="3.6" ry="2.4" fill="#f6a5bd" opacity=".8"/><ellipse cx="14" cy="' + (y - 81) + '" rx="3.6" ry="2.4" fill="#f6a5bd" opacity=".8"/>' +
+        '<path d="M1 ' + (y - 80) + ' q2.6 3 5.2 0" fill="none"' + line + ' stroke-width="1.5"/>' +
       '</g>';
-    person = '<g transform="translate(0 ' + y + ') scale(.86) translate(0 ' + (-y) + ')">' + person + '</g>';
-    var leash = '<path d="M26 ' + f(y - 66 * 0.86) + ' Q60 ' + (y - 34) + ' 94 ' + (y - 24) + '" fill="none" stroke="#d9587b" stroke-width="1.8"/>';
-    // a stocky English bulldog: wide body, short bowed legs, jowls and an underbite
-    var leg = function (x, cls) {
-      return '<g class="pup-leg' + cls + '"><path d="M' + x + ' ' + (y - 14) + ' q-2 7 0 12" fill="none" stroke="#1f1a1c" stroke-width="5" stroke-linecap="round"/>' +
-        '<path d="M' + x + ' ' + (y - 14) + ' q-2 7 0 12" fill="none" stroke="#f3e3cf" stroke-width="2.6" stroke-linecap="round"/></g>';
+
+    var leash = '<path d="M27 ' + (y - 49) + ' Q56 ' + (y - 22) + ' 84 ' + (y - 21) + '" fill="none" stroke="#d9587b" stroke-width="2"/>';
+
+    // a chunky, smiley English bulldog puppy
+    var FUR = '#f7e9d6', PATCH = '#e4b98b';
+    var paw = function (x, cls) {
+      return '<g class="pup-leg' + cls + '"><path d="M' + x + ' ' + (y - 12) + ' v8" stroke="' + INK + '" stroke-width="7.5" stroke-linecap="round"/><path d="M' + x + ' ' + (y - 12) + ' v8" stroke="' + FUR + '" stroke-width="4.5" stroke-linecap="round"/></g>';
     };
     var dog =
-      leg(68, '') + leg(75, ' pup-leg--b') + leg(90, ' pup-leg--b') + leg(97, '') +
+      paw(58, '') + paw(65, ' pup-leg--b') + paw(80, ' pup-leg--b') + paw(87, '') +
       '<g class="stride">' +
-        '<g class="tail"><path d="M60 ' + (y - 24) + ' q-5 -1 -5 -5" fill="none" stroke="#1f1a1c" stroke-width="3.4" stroke-linecap="round"/></g>' +
-        '<path d="M60 ' + (y - 22) + ' Q60 ' + (y - 34) + ' 76 ' + (y - 34) + ' H92 Q104 ' + (y - 34) + ' 104 ' + (y - 20) + ' Q104 ' + (y - 12) + ' 92 ' + (y - 12) + ' H70 Q60 ' + (y - 12) + ' 60 ' + (y - 22) + ' Z" fill="#f3e3cf" class="ink"/>' +
-        '<path d="M66 ' + (y - 32) + ' Q74 ' + (y - 36) + ' 82 ' + (y - 31) + ' Q80 ' + (y - 24) + ' 70 ' + (y - 25) + ' Q64 ' + (y - 27) + ' 66 ' + (y - 32) + ' Z" fill="#d9a877"/>' +
-        // big square head
-        '<path d="M96 ' + (y - 30) + ' Q95 ' + (y - 46) + ' 109 ' + (y - 46) + ' Q123 ' + (y - 46) + ' 122 ' + (y - 30) + ' Q122 ' + (y - 18) + ' 109 ' + (y - 18) + ' Q96 ' + (y - 18) + ' 96 ' + (y - 30) + ' Z" fill="#f3e3cf" class="ink"/>' +
-        '<path d="M97 ' + (y - 40) + ' q4 -10 11 -6 q-2 5 -11 6 z" fill="#d9a877"/>' +
-        '<path d="M98 ' + (y - 44) + ' l-6 -3 l3 8 z M119 ' + (y - 44) + ' l6 -3 l-3 8 z" fill="#8a5a3c" stroke="#1f1a1c" stroke-width="1.2" stroke-linejoin="round"/>' +
-        '<path d="M104 ' + (y - 40) + ' q5 -2 10 0 M105 ' + (y - 37) + ' q4 -1.5 8 0" fill="none" stroke="#1f1a1c" stroke-width="1"/>' +
-        '<circle cx="103" cy="' + (y - 33) + '" r="1.6" fill="#1f1a1c"/><circle cx="115" cy="' + (y - 33) + '" r="1.6" fill="#1f1a1c"/>' +
-        '<ellipse cx="109" cy="' + (y - 28.5) + '" rx="4" ry="2.6" fill="#1f1a1c"/>' +
-        // jowls, underbite and a little tongue
-        '<path d="M100 ' + (y - 26) + ' q-2 8 6 8 q3 -1 3 -5 q0 4 3 5 q8 0 6 -8" fill="#f3e3cf" stroke="#1f1a1c" stroke-width="1.4" stroke-linejoin="round"/>' +
-        '<path d="M104 ' + (y - 20) + ' h10" stroke="#1f1a1c" stroke-width="1.2"/><path d="M106 ' + (y - 20) + ' v-2 M112 ' + (y - 20) + ' v-2" stroke="#fffdf9" stroke-width="1.4"/>' +
-        '<path d="M108 ' + (y - 19) + ' q1 4 2.5 0" fill="#e87a95"/>' +
-        // pink collar with a bow
-        '<path d="M96 ' + (y - 24) + ' q2 6 6 8" fill="none" stroke="#d9587b" stroke-width="3"/>' +
-        '<path d="M98 ' + (y - 18) + ' l-5 -4 l0 8 z M98 ' + (y - 18) + ' l5 -4 l0 8 z" fill="#d9587b" stroke="#1f1a1c" stroke-width="1" stroke-linejoin="round"/>' +
-      '</g>';
-    return leash + dog + person;
+        '<g class="tail"><path d="M50 ' + (y - 22) + ' q-6 -2 -5 -7" fill="none" stroke="' + INK + '" stroke-width="4.5" stroke-linecap="round"/><path d="M50 ' + (y - 22) + ' q-6 -2 -5 -7" fill="none" stroke="' + FUR + '" stroke-width="2" stroke-linecap="round"/></g>' +
+        '<ellipse cx="70" cy="' + (y - 19) + '" rx="21" ry="13" fill="' + FUR + '"' + line + '/>' +
+        '<path d="M56 ' + (y - 26) + ' q8 -6 16 -2 q-2 8 -10 7 q-7 -1 -6 -5 z" fill="' + PATCH + '"/>' +
+        // big round head
+        '<path d="M80 ' + (y - 28) + ' Q79 ' + (y - 50) + ' 97 ' + (y - 50) + ' Q115 ' + (y - 50) + ' 114 ' + (y - 28) + ' Q114 ' + (y - 13) + ' 97 ' + (y - 13) + ' Q80 ' + (y - 13) + ' 80 ' + (y - 28) + ' Z" fill="' + FUR + '"' + line + '/>' +
+        '<path d="M82 ' + (y - 40) + ' q3 -10 12 -8 q-2 7 -12 8 z" fill="' + PATCH + '"/>' +
+        '<path d="M83 ' + (y - 46) + ' q-8 -2 -7 6 q4 1 8 -2 z M111 ' + (y - 46) + ' q8 -2 7 6 q-4 1 -8 -2 z" fill="' + PATCH + '"' + line + ' stroke-width="1.5"/>' +
+        '<path d="M93 ' + (y - 44) + ' q4 -1.5 8 0" fill="none"' + line + ' stroke-width="1.2"/>' +
+        // shiny eyes
+        '<g class="blink blink--pup"><circle cx="90" cy="' + (y - 34) + '" r="3.6" fill="' + INK + '"/><circle cx="91.2" cy="' + (y - 35.4) + '" r="1.3" fill="#fff"/>' +
+        '<circle cx="104" cy="' + (y - 34) + '" r="3.6" fill="' + INK + '"/><circle cx="105.2" cy="' + (y - 35.4) + '" r="1.3" fill="#fff"/></g>' +
+        // smushed muzzle, nose and a happy underbite
+        '<ellipse cx="97" cy="' + (y - 24) + '" rx="11" ry="7" fill="#fffdf9"' + line + ' stroke-width="1.5"/>' +
+        '<ellipse cx="97" cy="' + (y - 28) + '" rx="4.6" ry="3.2" fill="' + INK + '"/><ellipse cx="96" cy="' + (y - 29) + '" rx="1.4" ry=".8" fill="#fff" opacity=".8"/>' +
+        '<path d="M90 ' + (y - 23) + ' q7 6 14 0" fill="none"' + line + ' stroke-width="1.5"/>' +
+        '<path d="M93 ' + (y - 21.6) + ' v-2 M101 ' + (y - 21.6) + ' v-2" stroke="#fff" stroke-width="1.6"/>' +
+        '<g class="tongue"><path d="M95 ' + (y - 20) + ' q2 6 4 0 z" fill="#ef7f9c"' + line + ' stroke-width="1"/></g>' +
+        '<ellipse cx="86" cy="' + (y - 26) + '" rx="2.6" ry="1.8" fill="#f6a5bd" opacity=".8"/><ellipse cx="108" cy="' + (y - 26) + '" rx="2.6" ry="1.8" fill="#f6a5bd" opacity=".8"/>' +
+        // pink collar, bow and a little gold heart tag
+        '<path d="M82 ' + (y - 18) + ' q12 6 26 0" fill="none" stroke="#d9587b" stroke-width="3.4" stroke-linecap="round"/>' +
+        '<path d="M86 ' + (y - 17) + ' l-5 -4 l0 8 z M86 ' + (y - 17) + ' l5 -4 l0 8 z" fill="#d9587b"' + line + ' stroke-width="1.1"/>' +
+        '<path d="M100 ' + (y - 13) + ' c-2 -3 -5 -1 -3 1 l3 3 l3 -3 c2 -2 -1 -4 -3 -1 z" fill="#c9a24a"' + line + ' stroke-width=".8"/>' +
+      '</g>' +
+      '<text x="104" y="' + (y - 54) + '" class="heart" fill="#d9587b" font-size="12">♥</text>' +
+      '<text x="96" y="' + (y - 52) + '" class="heart" fill="#f6a5bd" font-size="9" style="animation-delay:1.4s">♥</text>';
+    return leash + dog + girl;
   }
 
   function walker() {
