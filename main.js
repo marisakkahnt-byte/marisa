@@ -423,7 +423,7 @@
     var s = '';
 
     if (kind === 'office') {
-      // work mode: pink blazer, charcoal skirt, laptop and a coffee
+      // the strategist: pink blazer, charcoal skirt, laptop and a coffee
       s += longHair +
         '<path d="M-5 112 V134 M5 112 V134" stroke="' + INK + '" stroke-width="4" stroke-linecap="round"/>' +
         '<path d="M-10 135 h8 l1 -4 h-8 z M2 135 h8 l1 -4 h-8 z" fill="' + INK + '"/>' +
@@ -443,7 +443,7 @@
         '<path class="steam steam--b" d="M-18 79 q-3 -4 0 -8 q3 -4 0 -8" fill="none" stroke="#c9b7b0" stroke-width="1.4" stroke-linecap="round"/>' +
         face + bangs;
     } else if (kind === 'stitches') {
-      // cozy mode: sweat set, messy bun, hoop in hand, lamp and a sleepy bulldog
+      // the maker: sweat set, messy bun, hoop in hand, lamp and a sleepy bulldog
       s += '<g class="lamp-glow"><circle cx="46" cy="72" r="18" fill="#fff1b8" opacity=".75"/></g>' +
         '<path d="M46 136 V72" stroke="' + INK + '" stroke-width="2.2"/><ellipse cx="46" cy="137" rx="9" ry="2.6" fill="#c9a24a"' + L + ' stroke-width="1.4"/>' +
         '<path d="M35 72 L57 72 L52 56 L40 56 Z" fill="#2f4a3a"' + L + ' stroke-width="1.5"/>' +
@@ -474,7 +474,7 @@
         hand(-11, 87) + hand(11, 87) +
         face + '<path d="M-19 44 Q-20 22 1 23 Q20 24 20 44 Q12 34 2 33 Q-8 34 -19 44 Z" fill="' + HAIR + '"' + L + '/>';
     } else {
-      // officiant mode: little black dress, pearls, a microphone and the ceremony script
+      // the storyteller: little black dress, pearls, a microphone and the ceremony script
       s += longHair +
         '<path d="M-5 118 V134 M5 118 V134" stroke="' + SKIN + '" stroke-width="4" stroke-linecap="round"/>' +
         '<path d="M-5 118 V134 M5 118 V134" stroke="' + INK + '" stroke-width="5.8" stroke-linecap="round" opacity=".18"/>' +
@@ -760,6 +760,43 @@
       door.addEventListener('click', function (e) {
         if (!s.classList.contains('peek')) { e.preventDefault(); s.classList.add('peek'); }
       });
+    });
+  }
+
+  /* ---------- Say hi: "Which Marisa are you looking for?" quiz ---------- */
+  var QUIZ = {
+    strategist: { title: 'the strategist', line: "Pull up a chair. Let's talk process, people and the problems worth eliminating. I'll bring the coffee.", cta: "Let's talk shop" },
+    maker: { title: 'the maker', line: "Monograms, baby gifts, cocktail napkins... if it holds still long enough, I'll stitch it.", cta: 'Start a custom order ↗', persona: 'stitches' },
+    storyteller: { title: 'the storyteller', line: "Congratulations!! Let's tell your love story, word for word.", cta: 'Officiate my wedding ↗', persona: 'ido' }
+  };
+  QUIZ.strategist.persona = 'office';
+  var quizQ = document.getElementById('quizQ'), quizResult = document.getElementById('quizResult');
+  if (quizQ) {
+    var cta = document.getElementById('quizCta');
+    quizQ.querySelectorAll('.quiz__a').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        var key = btn.dataset.result, r = QUIZ[key];
+        var link = document.querySelector('[data-quiz-link="' + key + '"]');
+        document.getElementById('quizPersona').innerHTML = '<path d="M-70 138 H70" stroke="#1f1a1c" stroke-width="1.4" opacity=".35"/>' + persona(r.persona);
+        document.getElementById('quizTitle').textContent = r.title + '!!';
+        document.getElementById('quizLine').textContent = r.line;
+        cta.textContent = r.cta;
+        cta.href = link.getAttribute('href');
+        if (link.target) { cta.target = '_blank'; cta.rel = 'noopener'; } else { cta.removeAttribute('target'); cta.removeAttribute('rel'); }
+        quizResult.className = 'quiz__result quiz__result--' + key;
+        quizQ.hidden = true;
+        quizResult.hidden = false;
+        if (!reduceMotion) {
+          var box = btn.getBoundingClientRect();
+          sparkleBurst(box.left + box.width / 2, box.top + box.height / 2, 24, 0.6);
+        }
+        cta.focus({ preventScroll: true });
+      });
+    });
+    document.getElementById('quizAgain').addEventListener('click', function () {
+      quizResult.hidden = true;
+      quizQ.hidden = false;
+      quizQ.querySelector('.quiz__a').focus();
     });
   }
 
