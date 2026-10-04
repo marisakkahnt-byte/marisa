@@ -480,7 +480,7 @@
     window.addEventListener('resize', fit);
 
     // gently "boiling" pen lines while the façade is on screen
-    if (!reduceMotion) {
+    if (!reduceMotion && !window.matchMedia('(hover: none)').matches) {
       var noise = document.getElementById('wobbleNoise');
       var seed = 1, visible = true;
       if ('IntersectionObserver' in window) {
@@ -610,7 +610,7 @@
         setTimeout(function () { e.target.classList.add('open'); }, 400 + i * 350);
         displayIO.unobserve(e.target);
       });
-    }, { threshold: 0.5 });
+    }, { threshold: 0, rootMargin: '0px 0px -30% 0px' });
     displays.forEach(function (d) { displayIO.observe(d); });
   } else {
     displays.forEach(function (d) { d.classList.add('open'); });
@@ -636,7 +636,7 @@
           io.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
     reveals.forEach(function (el, i) {
       el.style.transitionDelay = (i % 3) * 0.12 + 's';
       io.observe(el);
