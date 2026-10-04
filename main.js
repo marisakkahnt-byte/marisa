@@ -402,6 +402,103 @@
     return leash + dog + girl;
   }
 
+  /* ---------- Same girl, different hats: a little Marisa for each section ---------- */
+  function persona(kind) {
+    var INK = '#1f1a1c', SKIN = '#fff0e8', HAIR = '#7a4a2e', HAIR_D = '#5e3820';
+    var L = ' stroke="' + INK + '" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"';
+    var face =
+      '<circle cx="0" cy="44" r="19" fill="' + SKIN + '"' + L + '/>' +
+      '<g class="blink"><ellipse cx="-6" cy="45" rx="3.4" ry="4.4" fill="#2a3550"/><ellipse cx="-6" cy="46.4" rx="2.3" ry="2.5" fill="#5b8fd0"/><circle cx="-4.8" cy="43.2" r="1.3" fill="#fff"/>' +
+      '<ellipse cx="7" cy="45" rx="3.4" ry="4.4" fill="#2a3550"/><ellipse cx="7" cy="46.4" rx="2.3" ry="2.5" fill="#5b8fd0"/><circle cx="8.2" cy="43.2" r="1.3" fill="#fff"/></g>' +
+      '<ellipse cx="-11" cy="52" rx="3.4" ry="2.2" fill="#f6a5bd" opacity=".8"/><ellipse cx="12" cy="52" rx="3.4" ry="2.2" fill="#f6a5bd" opacity=".8"/>' +
+      '<path d="M-1 55 q2.6 3 5.2 0" fill="none"' + L + ' stroke-width="1.4"/>';
+    var bangs = '<path d="M-19 44 Q-20 20 1 22 Q20 23 20 44 Q14 32 4 31 Q-4 36 -10 35 Q-15 38 -19 44 Z" fill="' + HAIR + '"' + L + '/>' +
+      '<path d="M4 23 q-2 5 0 8" fill="none" stroke="' + HAIR_D + '" stroke-width="1.3" stroke-linecap="round"/>';
+    var longHair = '<g class="hairswish"><path d="M-18 38 Q-25 70 -17 86 Q-10 92 -6 82 L8 82 Q14 92 21 86 Q27 70 19 38 Z" fill="' + HAIR + '"' + L + '/></g>';
+    var arm = function (d, colour, w) {
+      return '<path d="' + d + '" fill="none" stroke="' + INK + '" stroke-width="' + (w + 3.4) + '" stroke-linecap="round"/>' +
+        '<path d="' + d + '" fill="none" stroke="' + colour + '" stroke-width="' + w + '" stroke-linecap="round"/>';
+    };
+    var hand = function (x, y) { return '<circle cx="' + x + '" cy="' + y + '" r="3.6" fill="' + SKIN + '"' + L + ' stroke-width="1.4"/>'; };
+    var s = '';
+
+    if (kind === 'office') {
+      // work mode: pink blazer, charcoal skirt, laptop and a coffee
+      s += longHair +
+        '<path d="M-5 112 V134 M5 112 V134" stroke="' + INK + '" stroke-width="4" stroke-linecap="round"/>' +
+        '<path d="M-10 135 h8 l1 -4 h-8 z M2 135 h8 l1 -4 h-8 z" fill="' + INK + '"/>' +
+        '<path d="M-13 96 H13 L15 114 H-15 Z" fill="#3a3f4f"' + L + '/>' +
+        '<path d="M-15 64 H15 Q19 82 17 100 H-17 Q-19 82 -15 64 Z" fill="#f2a7bb"' + L + '/>' +
+        '<path d="M-6 64 L0 79 L6 64 Z" fill="#fffdf9"' + L + ' stroke-width="1.4"/>' +
+        '<path d="M-6 64 L-2 84 M6 64 L2 84" fill="none"' + L + ' stroke-width="1.4"/><circle cx="0" cy="90" r="1.6" fill="#c9a24a"/>' +
+        // laptop tucked under her arm
+        '<g transform="rotate(-12 24 84)"><rect x="12" y="76" width="26" height="18" rx="2.5" fill="#e3e5ea"' + L + ' stroke-width="1.5"/>' +
+        '<path d="M25 82 c-2 -3 -6 -1 -3.5 1.6 l3.5 3.4 l3.5 -3.4 c2.5 -2.6 -1.5 -4.6 -3.5 -1.6 z" fill="#f2a7bb"/></g>' +
+        arm('M13 68 Q22 78 20 92', '#f2a7bb', 5.5) + hand(20, 94) +
+        // coffee
+        arm('M-13 68 Q-20 80 -21 90', '#f2a7bb', 5.5) +
+        '<path d="M-27 86 h12 l-1.5 14 h-9 z" fill="#d9587b"' + L + ' stroke-width="1.4"/><rect x="-28" y="83" width="14" height="4" rx="1.5" fill="#fffdf9"' + L + ' stroke-width="1.2"/>' +
+        hand(-21, 92) +
+        '<path class="steam" d="M-23 78 q-3 -4 0 -8 q3 -4 0 -8" fill="none" stroke="#c9b7b0" stroke-width="1.4" stroke-linecap="round"/>' +
+        '<path class="steam steam--b" d="M-18 79 q-3 -4 0 -8 q3 -4 0 -8" fill="none" stroke="#c9b7b0" stroke-width="1.4" stroke-linecap="round"/>' +
+        face + bangs;
+    } else if (kind === 'stitches') {
+      // cozy mode: sweat set, messy bun, hoop in hand, lamp and a sleepy bulldog
+      s += '<g class="lamp-glow"><circle cx="46" cy="72" r="18" fill="#fff1b8" opacity=".75"/></g>' +
+        '<path d="M46 136 V72" stroke="' + INK + '" stroke-width="2.2"/><ellipse cx="46" cy="137" rx="9" ry="2.6" fill="#c9a24a"' + L + ' stroke-width="1.4"/>' +
+        '<path d="M35 72 L57 72 L52 56 L40 56 Z" fill="#2f4a3a"' + L + ' stroke-width="1.5"/>' +
+        // sleepy bulldog
+        '<ellipse cx="-44" cy="131" rx="16" ry="8" fill="#f7e9d6"' + L + ' stroke-width="1.5"/><path d="M-52 127 q5 -4 10 -1 q-1 5 -6 5 q-4 0 -4 -4 z" fill="#e4b98b"/>' +
+        // big square bulldog head with floppy ears, jowls and a little underbite
+        '<path d="M-39 127 Q-39 118 -29 118 Q-19 118 -19 127 Q-19 135 -29 135 Q-39 135 -39 127 Z" fill="#f7e9d6"' + L + ' stroke-width="1.5"/>' +
+        '<path d="M-37 120 q-6 -1 -5 5 q3 0 5 -2 z M-21 120 q6 -1 5 5 q-3 0 -5 -2 z" fill="#e4b98b"' + L + ' stroke-width="1"/>' +
+        '<path d="M-34 124 q1.6 1.6 3.2 0 M-27 124 q1.6 1.6 3.2 0" fill="none"' + L + ' stroke-width="1.1"/>' +
+        '<ellipse cx="-29" cy="130.5" rx="6.5" ry="3.6" fill="#fffdf9"' + L + ' stroke-width="1"/><ellipse cx="-29" cy="128.4" rx="2.4" ry="1.6" fill="' + INK + '"/>' +
+        '<path d="M-32 132.5 h6" stroke="' + INK + '" stroke-width=".9"/><path d="M-31 132.5 v-1.2 M-27 132.5 v-1.2" stroke="#fff" stroke-width=".9"/>' +
+        '<text class="zz" x="-24" y="114" font-size="9" fill="#9b8f94" font-family="Georgia, serif">z</text>' +
+        '<text class="zz zz--b" x="-19" y="108" font-size="11" fill="#9b8f94" font-family="Georgia, serif">z</text>' +
+        // her: messy bun + short back hair
+        '<circle cx="5" cy="22" r="9" fill="' + HAIR + '"' + L + '/><rect x="-1" y="25" width="12" height="4" rx="2" fill="#f2a7bb"' + L + ' stroke-width="1.1"/>' +
+        '<path d="M-19 42 Q-22 60 -14 66 L15 66 Q22 60 19 42 Z" fill="' + HAIR + '"' + L + '/>' +
+        // joggers + fuzzy slippers
+        '<path d="M-13 98 H13 L12 130 H2 L0 106 L-2 130 H-12 Z" fill="#f6c4d2"' + L + '/>' +
+        '<ellipse cx="-7" cy="134" rx="8" ry="4" fill="#fffdf9"' + L + ' stroke-width="1.4"/><ellipse cx="7" cy="134" rx="8" ry="4" fill="#fffdf9"' + L + ' stroke-width="1.4"/>' +
+        '<circle cx="-11" cy="132" r="2" fill="#f2a7bb"/><circle cx="11" cy="132" r="2" fill="#f2a7bb"/>' +
+        // hoodie
+        '<path d="M-16 64 H16 Q21 84 17 102 H-17 Q-21 84 -16 64 Z" fill="#f6c4d2"' + L + '/>' +
+        '<path d="M-10 63 Q0 72 10 63" fill="#eeb1c3"' + L + ' stroke-width="1.4"/><path d="M-3 69 v9 M3 69 v9" stroke="#fffdf9" stroke-width="1.4" stroke-linecap="round"/>' +
+        arm('M-14 68 Q-17 80 -10 86', '#f6c4d2', 6) + arm('M14 68 Q17 80 10 86', '#f6c4d2', 6) +
+        // embroidery hoop with a stitched heart
+        '<circle cx="0" cy="86" r="12" fill="#fffaf0" stroke="#c9a24a" stroke-width="3"/><circle cx="0" cy="86" r="12" fill="none"' + L + ' stroke-width="1"/>' +
+        '<path d="M0 90 c-6 -4 -6 -9 -2.6 -9 c1.4 0 2.6 1 2.6 2.4 c0 -1.4 1.2 -2.4 2.6 -2.4 c3.4 0 3.4 5 -2.6 9 z" fill="none" stroke="#d9587b" stroke-width="1.3" stroke-dasharray="1.6 1.2"/>' +
+        hand(-11, 87) + hand(11, 87) +
+        face + '<path d="M-19 44 Q-20 22 1 23 Q20 24 20 44 Q12 34 2 33 Q-8 34 -19 44 Z" fill="' + HAIR + '"' + L + '/>';
+    } else {
+      // officiant mode: little black dress, pearls, a microphone and the ceremony script
+      s += longHair +
+        '<path d="M-5 118 V134 M5 118 V134" stroke="' + SKIN + '" stroke-width="4" stroke-linecap="round"/>' +
+        '<path d="M-5 118 V134 M5 118 V134" stroke="' + INK + '" stroke-width="5.8" stroke-linecap="round" opacity=".18"/>' +
+        '<path d="M-10 135 h8 l1 -4 h-8 z M2 135 h8 l1 -4 h-8 z" fill="' + INK + '"/>' +
+        '<path d="M-10 66 H10 L11 88 Q24 108 21 120 Q0 125 -21 120 Q-24 108 -11 88 Z" fill="' + INK + '"' + L + '/>' +
+        '<path d="M-6 92 Q-14 106 -14 118" fill="none" stroke="#5a5256" stroke-width="1.4" opacity=".7"/>' +
+        '<path d="M-10 66 Q-5 72 0 68 Q5 72 10 66" fill="' + SKIN + '"' + L + ' stroke-width="1.3"/>' +
+        '<path d="M-7 63 Q0 70 7 63" fill="none" stroke="#fffdf9" stroke-width="2.4" stroke-dasharray="0.1 3" stroke-linecap="round"/>' +
+        // script book in one hand
+        arm('M10 68 Q18 76 17 88', SKIN, 4.5) +
+        '<rect x="11" y="84" width="16" height="20" rx="1.6" fill="#2a2426"' + L + ' stroke-width="1.4"/><path d="M19 91 c-1.6 -2.4 -4.6 -0.8 -2.8 1.3 l2.8 2.7 l2.8 -2.7 c1.8 -2.1 -1.2 -3.7 -2.8 -1.3 z" fill="#c9a24a"/>' +
+        hand(17, 90) +
+        // microphone in the other
+        arm('M-10 68 Q-22 72 -14 62', SKIN, 4.5) +
+        '<rect x="-17" y="58" width="5" height="13" rx="2" fill="#3a3335"' + L + ' stroke-width="1.2" transform="rotate(-20 -14 62)"/>' +
+        '<circle cx="-12" cy="55" r="4.4" fill="#9b9599"' + L + ' stroke-width="1.3"/><path d="M-14.5 54 h5 M-14 56.5 h4" stroke="#5a5256" stroke-width=".8"/>' +
+        hand(-14, 63) +
+        face + bangs +
+        '<path d="M-15 30 l3 -2 l1 3 z" fill="#c9a24a"/>' +
+        '<text class="twinkle" x="30" y="40" font-size="10" fill="#c9a24a">✦</text><text class="twinkle" x="-38" y="96" font-size="8" fill="#c2a67c" style="animation-delay:1.3s">✦</text>';
+    }
+    return '<g class="idle">' + s + '</g>';
+  }
+
   function walker() {
     return '<g class="walker">' + walkerParts() + '</g>';
   }
@@ -518,6 +615,11 @@
   }
 
   buildScene();
+
+  // a little Marisa in each section, dressed for the job
+  document.querySelectorAll('[data-persona]').forEach(function (svg) {
+    svg.innerHTML = '<path d="M-70 138 H70" stroke="#1f1a1c" stroke-width="1.4" opacity=".35"/>' + persona(svg.getAttribute('data-persona'));
+  });
 
   // the welcome letter's portrait: Marisa and her bulldog walking on the spot
   var portrait = document.getElementById('portraitScene');
