@@ -472,12 +472,35 @@
 
     // keep the whole street in view on wide screens, crop to the centre on narrow ones
     var wrap = document.getElementById('sceneWrap');
+    // phones: the whole street becomes a swipeable panorama, starting on the pink shop
+    var centred = false;
     function fit() {
       var r = wrap.getBoundingClientRect();
-      scene.setAttribute('preserveAspectRatio', r.width / r.height < 1.25 ? 'xMidYMax slice' : 'xMidYMax meet');
+      if (window.innerWidth <= 760) {
+        wrap.classList.add('pan');
+        scene.setAttribute('preserveAspectRatio', 'xMidYMax meet');
+        scene.style.width = Math.round(r.height * 1440 / 760) + 'px';
+        if (!centred) { wrap.scrollLeft = (scene.getBoundingClientRect().width - r.width) / 2; centred = true; }
+      } else {
+        wrap.classList.remove('pan');
+        scene.style.width = '';
+        scene.setAttribute('preserveAspectRatio', r.width / r.height < 1.25 ? 'xMidYMax slice' : 'xMidYMax meet');
+      }
     }
     fit();
     window.addEventListener('resize', fit);
+    var swipeHint = document.getElementById('swipeHint');
+    // only a real finger (or trackpad) swipe hides the hint, not our own centring or peek
+    ['touchstart', 'wheel'].forEach(function (evt) {
+      wrap.addEventListener(evt, function () { document.body.classList.add('swiped'); }, { passive: true });
+    });
+    // a little "peek" so people know the street moves, then back to the shop
+    window.peekStreet = function () {
+      if (!wrap.classList.contains('pan') || reduceMotion || document.body.classList.contains('swiped')) return;
+      var start = wrap.scrollLeft;
+      wrap.scrollTo({ left: start + 140, behavior: 'smooth' });
+      setTimeout(function () { wrap.scrollTo({ left: start, behavior: 'smooth' }); }, 900);
+    };
 
     // gently "boiling" pen lines while the façade is on screen
     if (!reduceMotion && !window.matchMedia('(hover: none)').matches) {
@@ -515,14 +538,16 @@
     document.body.classList.add('show');
     document.body.classList.remove('locked');
     if (!reduceMotion) sparkleBurst(window.innerWidth / 2, window.innerHeight * 0.4, 36);
+    setTimeout(function () { if (window.peekStreet) window.peekStreet(); }, 2600);
   }
 
   // a puff of fairy dust, used when the curtains open
-  function sparkleBurst(x, y, count) {
+  function sparkleBurst(x, y, count, spread) {
+    spread = spread || 1;
     var tints = ['#f2a7bb', '#c39a50', '#c9b6ec', '#9cc3e6', '#d9587b'];
     for (var i = 0; i < count; i++) {
       var s = document.createElement('span');
-      var a = Math.random() * Math.PI * 2, d = 80 + Math.random() * 260;
+      var a = Math.random() * Math.PI * 2, d = (80 + Math.random() * 260) * spread;
       s.className = 'dust dust--burst';
       s.textContent = Math.random() < 0.7 ? '✦' : '♡';
       s.style.left = x + 'px';
@@ -549,6 +574,16 @@
     sp.style.transitionDelay = (0.9 + i * 0.07) + 's';
     once.appendChild(sp);
   });
+
+  // touch screens: a little sprinkle of fairy dust wherever you tap
+  if (!reduceMotion) {
+    var lastTap = 0;
+    window.addEventListener('pointerdown', function (e) {
+      if (e.pointerType !== 'touch' || Date.now() - lastTap < 250) return;
+      lastTap = Date.now();
+      sparkleBurst(e.clientX, e.clientY, 9, 0.25);
+    }, { passive: true });
+  }
 
   // fairy dust follows the mouse
   if (!reduceMotion && window.matchMedia('(pointer: fine)').matches) {
