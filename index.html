@@ -1,4 +1,4 @@
-<title>Thirtyvivor</title>
+<title>Surviving 30 Years of Hannah</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Cinzel:wght@700;900&family=Karla:wght@400;600;800&family=Caveat:wght@600&display=swap">
@@ -53,6 +53,22 @@ p { margin: 0; }
 .wordmark { font-family: var(--display); font-size: clamp(2.4rem, 12vw, 4.2rem); letter-spacing: .04em; color: var(--bone);
   background: linear-gradient(180deg, #fff6df 0%, #ffcf7a 45%, #e0741d 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 3px 0 #2a1406); }
+.wordmark { line-height: .95; text-wrap: balance; }
+.surviving { font-family: var(--carved); font-weight: 900; letter-spacing: .35em; font-size: clamp(.9rem, 3.6vw, 1.1rem); color: var(--ember-2); text-transform: uppercase; }
+.sticker { position: fixed; z-index: 6; left: 50%; top: calc(env(safe-area-inset-top, 0px) + 16%); pointer-events: none; text-align: center; max-width: 88vw;
+  background: var(--bone); color: #1a0d03; font-family: var(--display); font-size: clamp(1.4rem, 6.5vw, 2.1rem); line-height: 1.05; padding: 12px 22px 14px;
+  border-radius: 16px; border: 4px solid #1a0d03; box-shadow: 6px 6px 0 var(--ember); --r: -5deg; animation: pop 1.9s ease forwards; }
+.sticker small { display: block; font-family: var(--body); font-weight: 800; font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; color: #9a4410; margin-bottom: 4px; }
+@keyframes pop {
+  0% { transform: translateX(-50%) rotate(var(--r)) scale(.3); opacity: 0; }
+  12% { transform: translateX(-50%) rotate(var(--r)) scale(1.1); opacity: 1; }
+  20%, 82% { transform: translateX(-50%) rotate(var(--r)) scale(1); opacity: 1; }
+  100% { transform: translateX(-50%) rotate(var(--r)) scale(.95); opacity: 0; } }
+.vote { position: relative; }
+.stamp { position: absolute; right: -12px; bottom: -12px; transform: rotate(-10deg); font-family: var(--body); font-weight: 800; font-size: .72rem; letter-spacing: .14em;
+  color: #c8261a; border: 2px solid #c8261a; background: #f3e6c6; padding: 2px 7px; border-radius: 3px; }
+.tally { font-weight: 700; color: var(--bone); text-align: center; min-height: 1.5em; }
+.hintrow { display: flex; justify-content: center; }
 .season { font-family: var(--carved); font-weight: 700; letter-spacing: .22em; font-size: .85rem; color: var(--sand); text-transform: uppercase; }
 
 /* Torch tracker */
@@ -135,7 +151,7 @@ footer { text-align: center; }
 #music { position: fixed; z-index: 5; right: max(14px, calc(env(safe-area-inset-right, 0px) + 14px)); bottom: calc(env(safe-area-inset-bottom, 0px) + 14px);
   border-radius: 999px; padding: 10px 16px; font-size: .78rem; background: rgba(12,21,17,.9); color: var(--ember-2); border: 1px solid var(--ember); box-shadow: 0 4px 14px rgba(0,0,0,.5); }
 canvas#confetti { position: fixed; inset: 0; pointer-events: none; width: 100%; height: 100%; z-index: 4; }
-@media (prefers-reduced-motion: reduce) { .lit .flame, .vote { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .lit .flame, .vote { animation: none; } .sticker { animation-duration: 2.4s; } }
 </style>
 
 <main id="app" aria-live="polite"></main>
@@ -147,7 +163,8 @@ canvas#confetti { position: fixed; inset: 0; pointer-events: none; width: 100%; 
    PERSONALIZE HERE
    ===================================================================== */
 const CONFIG = {
-  name: "BESTIE",                 // her name
+  name: "Hannah",                 // her name
+  nick: "Goose",                  // what the host calls her
   from: "your tribe",             // who it's from
   dogs: ["LUNA", "COMET"],        // her dogs (CAPS, letters only)
   scramble: [
@@ -156,18 +173,33 @@ const CONFIG = {
     ["TRIBAL COUNCIL", "Where the votes get read"],
   ],
   personalQ: null, // e.g. { q: "Where did we meet?", options: ["Bio class","A bar","Soccer","The DMV"], answer: 0 }
-  votes: ["Happy", "30th", "Birthday", "Love, Luna 🐾", "Love, Comet 🐾"],
+  // Votes read at Tribal. Every one of them is for her, and none of them count.
+  votes: ["Goose", "Hannah 🎂", "Goose 🎉", "Goose 🐾 (Luna)", "Goose 🐾 (Comet)"],
 };
 /* ===================================================================== */
 
 const cap = s => s.charAt(0) + s.slice(1).toLowerCase();
 const [D1, D2] = CONFIG.dogs.map(cap);
+const G = CONFIG.nick, NUM = ["Zero","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten"];
+const LINES = {
+  good: ["Dig deep!", "Big moment!", "Here we go!", `${G} is doing it!`, "That's how you play!", "Worth playing for?"],
+  bad: ["Got nothin' for ya.", "Ooh. That's gonna sting.", "Not gonna happen.", "Dig deeper!"],
+};
+const pick = a => a[Math.floor(Math.random() * a.length)];
+function sticker(text, label = "The host") {
+  document.querySelectorAll(".sticker").forEach(n => n.remove());
+  const s = document.createElement("div"); s.className = "sticker"; s.setAttribute("role", "status");
+  s.style.setProperty("--r", (Math.random() * 10 - 5).toFixed(1) + "deg");
+  s.innerHTML = `<small>${label}</small>${text}`; document.body.append(s);
+  setTimeout(() => s.remove(), 2000);
+}
 
 const TRIVIA = [
   { q: "Who won the very first season, set in Borneo?", options: ["Rudy Boesch", "Richard Hatch", "Kelly Wiglesworth", "Sue Hawk"], answer: 1 },
   { q: "How many days did a classic season last?", options: ["30", "42", "39", "26"], answer: 2 },
   { q: "Who was the first castaway ever to win twice?", options: ["Tony Vlachos", "Parvati Shallow", "Sandra Diaz-Twine", "Boston Rob"], answer: 2 },
   { q: "Which season introduced the hidden immunity idol?", options: ["Guatemala", "Palau", "Panama", "Pearl Islands"], answer: 0 },
+  { q: "A castaway asks the host for a hint. What does he say?", options: ["Dig deep!", "Got nothin' for ya", "Worth playing for?", "Come on in!"], answer: 1 },
   { q: "What does the host say as he snuffs your torch?", options: ["Bring it in, guys", "The tribe has spoken", "Worth playing for?", "Come on in, guys"], answer: 1 },
   ...(CONFIG.personalQ ? [CONFIG.personalQ] : []),
   { q: "Final question. Who are the best dogs on any island?", options: [D1, D2, `Trick question: ${D1} AND ${D2}`, "Some other dog"], answer: 2 },
@@ -179,8 +211,8 @@ const TORCHES = ["Quiz", "Scramble", "Puzzle", "Idol"];
 
 /* ---------- state ---------- */
 let S = { step: 0, wins: 0 };
-try { const s = JSON.parse(localStorage.getItem("thirtyvivor") || "null"); if (s && typeof s.step === "number") S = s; } catch (e) {}
-const save = () => { try { localStorage.setItem("thirtyvivor", JSON.stringify(S)); } catch (e) {} };
+try { const s = JSON.parse(localStorage.getItem("hannah30") || "null"); if (s && typeof s.step === "number") S = s; } catch (e) {}
+const save = () => { try { localStorage.setItem("hannah30", JSON.stringify(S)); } catch (e) {} };
 const app = document.getElementById("app");
 const el = html => { const t = document.createElement("template"); t.innerHTML = html.trim(); return t.content.firstChild; };
 
@@ -193,15 +225,16 @@ function header() {
   const small = S.step > 0;
   return `<header class="logo">
     ${small ? "" : medallion()}
-    <div class="wordmark" style="${small ? "font-size:clamp(1.8rem,8vw,2.4rem)" : ""}">THIRTYVIVOR</div>
-    <div class="season">Outwit · Outplay · Out-thirty</div>
+    <div class="surviving">Surviving</div>
+    <div class="wordmark" style="${small ? "font-size:clamp(1.8rem,8vw,2.4rem)" : ""}">30 Years of Hannah</div>
+    <div class="season">Outwit · Outplay · Out-Goose</div>
   </header>
   ${S.step > 0 ? `<div class="tracker" aria-label="${S.wins} of 4 torches lit">${TORCHES.map((t, i) =>
       `<div class="t ${i < S.wins ? "lit" : "out"}">${torchSVG()}<span>${t}</span></div>`).join("")}</div>` : ""}`;
 }
 
 function medallion() {
-  return `<svg class="medallion" viewBox="0 0 260 260" role="img" aria-label="Thirtyvivor emblem">
+  return `<svg class="medallion" viewBox="0 0 260 260" role="img" aria-label="Surviving 30 Years of Hannah emblem">
     <defs>
       <path id="ring" d="M130 130 m-98 0 a98 98 0 1 1 196 0 a98 98 0 1 1 -196 0"/>
       <radialGradient id="stone" cx="40%" cy="35%"><stop offset="0" stop-color="#5a4a36"/><stop offset="1" stop-color="#20170e"/></radialGradient>
@@ -210,7 +243,7 @@ function medallion() {
     <circle cx="130" cy="130" r="126" fill="#120b05"/>
     <circle cx="130" cy="130" r="120" fill="url(#stone)" stroke="url(#gold)" stroke-width="5"/>
     <text font-family="Cinzel, Georgia, serif" font-weight="900" font-size="15" letter-spacing="5" fill="#ffcf7a">
-      <textPath href="#ring">OUTWIT · OUTPLAY · OUT-THIRTY · SEASON 30 ·</textPath></text>
+      <textPath href="#ring" textLength="600">OUTWIT · OUTPLAY · OUT-GOOSE · SEASON 30 ·</textPath></text>
     <circle cx="130" cy="130" r="78" fill="#0f1a14" stroke="#ffbe55" stroke-width="2"/>
     <g class="lit"><g class="flame" style="transform-origin:130px 112px">
       <path d="M130 52c14 18 24 30 19 46-3 10-10 16-19 16s-16-6-19-16c-5-15 7-23 10-33 3 7 5 10 9 10 0-10-3-15 0-23z" fill="#ff6a13"/>
@@ -237,7 +270,7 @@ function card(eyebrow, title, body) {
   app.append(c); return c;
 }
 function winPanel(c, line, next = "Light your torch") {
-  Music.sting();
+  Music.sting(); sticker(pick(["Big moment!", `${G} wins!`, "That's how you play!", "Dig deep… and done!"]));
   c.append(el(`<div class="center" style="display:flex;flex-direction:column;gap:12px">
     <p class="hand">${line}</p><button id="next">${next}</button></div>`));
   const b = c.querySelector("#next"); b.onclick = () => advance(true); b.focus({ preventScroll: true });
@@ -245,13 +278,13 @@ function winPanel(c, line, next = "Light your torch") {
 
 /* ---------- 0. intro ---------- */
 function intro() {
-  const c = card("Day 1 · Season 30", `Come on in, ${CONFIG.name}!`, `
-    <p class="host"><b>The host</b>Thirty years ago, one castaway was dropped into this world with nothing. Today, you've been brought back for the most important season yet.</p>
+  const c = card("Day 1 · Season 30", `Come on in, ${G}!`, `
+    <p class="host"><b>The host</b>Thirty years ago, a baby Goose hatched on this island. Thirty years later, the rest of us are still surviving her. Welcome to the most important season yet.</p>
     <p>That idol in your hands stays wrapped. To earn the right to open it, you have to win four challenges. Each win lights a torch. Light all four and you go to Tribal Council.</p>
     <p>Your tribe: <strong>${D1}</strong> and <strong>${D2}</strong>. They believe in you. Mostly because you have the treats.</p>
     <p class="host"><b>The host</b>Wanna know what you're playing for?</p>
-    <div class="center" style="display:flex;justify-content:center"><button id="go">Drop your buffs. Let's play</button></div>`);
-  c.querySelector("#go").onclick = () => { Music.start(); advance(false); };
+    <div class="center" style="display:flex;justify-content:center"><button id="go">Worth playing for? Let's go</button></div>`);
+  c.querySelector("#go").onclick = () => { Music.start(); sticker("Survivors ready? GO!"); advance(false); };
 }
 
 /* ---------- 1. trivia ---------- */
@@ -268,10 +301,10 @@ function trivia() {
       const b = el(`<button></button>`); b.textContent = txt;
       b.onclick = () => {
         if (k === t.answer) {
-          b.classList.add("right"); m.textContent = "Correct!"; m.className = "msg good"; Music.hit();
+          b.classList.add("right"); m.textContent = "Correct!"; m.className = "msg good"; Music.hit(); if (Math.random() < .5) sticker(pick(LINES.good));
           o.querySelectorAll("button").forEach(x => x.disabled = true);
-          setTimeout(() => { i++; if (i < TRIVIA.length) show(); else { [".options", ".q", ".progress", ".msg"].forEach(s => c.querySelector(s).remove()); winPanel(c, `${CONFIG.name} wins reward!`); } }, 700);
-        } else { b.classList.add("wrong"); b.disabled = true; m.textContent = "Ooh. That's wrong. Try again."; m.className = "msg bad"; }
+          setTimeout(() => { i++; if (i < TRIVIA.length) show(); else { [".options", ".q", ".progress", ".msg"].forEach(s => c.querySelector(s).remove()); winPanel(c, `${G} wins reward!`); } }, 700);
+        } else { b.classList.add("wrong"); b.disabled = true; m.textContent = "Ooh. That's wrong. Try again."; m.className = "msg bad"; sticker(pick(LINES.bad)); }
       };
       o.append(b);
     });
@@ -287,7 +320,9 @@ function shuffleWord(w) {
 }
 function scramble() {
   const c = card("Immunity Challenge", "Word Scramble", `
-    <p class="host"><b>The host</b>Unscramble every word. Get them all and the torch is yours.</p><div class="list"></div>`);
+    <p class="host"><b>The host</b>Unscramble every word. Get them all and the torch is yours.</p><div class="list"></div>
+    <div class="hintrow"><button class="ghost hint-btn">Ask the host for a hint</button></div>`);
+  c.querySelector(".hint-btn").onclick = () => sticker("Got nothin' for ya.");
   const list = c.querySelector(".list"); let solved = 0;
   SCRAMBLE.forEach(([w, hint], idx) => {
     const r = el(`<div class="scr"><div class="letters">${shuffleWord(w).split("").map(ch => `<i>${ch}</i>`).join("")}</div><div class="hint">${hint}</div>
@@ -295,8 +330,8 @@ function scramble() {
     const inp = r.querySelector("input");
     inp.oninput = () => {
       if (inp.value.toUpperCase().replace(/\s/g, "") === w.replace(/\s/g, "")) {
-        inp.value = w; inp.classList.add("ok"); inp.disabled = true; solved++; Music.hit();
-        if (solved === SCRAMBLE.length) winPanel(c, "Every word unscrambled!");
+        inp.value = w; inp.classList.add("ok"); inp.disabled = true; solved++; Music.hit(); if (solved < SCRAMBLE.length) sticker(pick(LINES.good));
+        if (solved === SCRAMBLE.length) c.querySelector(".hintrow").remove(), winPanel(c, "Every word unscrambled!");
       }
     };
     list.append(r);
@@ -309,7 +344,8 @@ function slide() {
   const c = card("Immunity Challenge", "The Final Puzzle", `
     <p class="host"><b>The host</b>It always comes down to a puzzle. Slide the tiles until they spell <strong>BIRTHDAY</strong>, gap in the bottom-right corner.</p>
     <div class="board" aria-label="Slide puzzle"></div><p class="progress moves" style="text-align:center">Moves: 0</p>
-    <div style="display:flex;justify-content:center"><button class="ghost" id="shuf">Reshuffle</button></div>`);
+    <div class="hintrow" style="gap:10px;flex-wrap:wrap"><button class="ghost" id="shuf">Reshuffle</button><button class="ghost hint-btn">Ask for a hint</button></div>`);
+  c.querySelector(".hint-btn").onclick = () => sticker(pick(["Got nothin' for ya.", "Dig deep!"]));
   const board = c.querySelector(".board"); let tiles, moves = 0, done = false;
   const nb = i => [i - 3, i + 3, i % 3 ? i - 1 : -1, i % 3 < 2 ? i + 1 : -1].filter(n => n >= 0 && n < 9);
   const mix = () => {
@@ -330,7 +366,7 @@ function slide() {
     if (done) return; const g = tiles.indexOf(null);
     if (!nb(i).includes(g)) return;
     [tiles[g], tiles[i]] = [tiles[i], tiles[g]]; moves++; draw(); Music.tick();
-    if (tiles.slice(0, 8).every((t, k) => t === k)) { done = true; c.querySelector("#shuf").remove(); winPanel(c, `Solved in ${moves} moves. ${CONFIG.name} wins immunity!`); }
+    if (tiles.slice(0, 8).every((t, k) => t === k)) { done = true; c.querySelector(".hintrow").remove(); winPanel(c, `Solved in ${moves} moves. ${G} wins immunity!`); }
   };
   c.querySelector("#shuf").onclick = mix; mix();
 }
@@ -359,7 +395,8 @@ function hunt() {
     const d = Math.max(Math.abs(i % N - idol % N), Math.abs(Math.floor(i / N) - Math.floor(idol / N)));
     const kind = d === 1 ? "hot" : d === 2 ? "warm" : "cold";
     b.classList.add(kind); b.textContent = kind.toUpperCase();
-    if (digs >= MAX) { over = true; msg.textContent = `Out of digs. ${D1} re-buried it somewhere else.`; msg.className = "msg bad"; setTimeout(bury, 2000); }
+    if (kind === "hot") sticker("You're on it!", D2 + " says");
+    if (digs >= MAX) { over = true; sticker("Got nothin' for ya."); msg.textContent = `Out of digs. ${D1} re-buried it somewhere else.`; msg.className = "msg bad"; setTimeout(bury, 2000); }
     else msg.textContent = `Digs left: ${MAX - digs}`;
   };
   bury();
@@ -367,22 +404,38 @@ function hunt() {
 
 /* ---------- 5. tribal ---------- */
 function tribal() {
-  const c = card("Night 39 · Tribal Council", "It's time to vote", `
-    <p class="host"><b>The host</b>All four torches are lit. You've outwitted, outplayed and outlasted your twenties. The tribe has cast its votes. I'll read them.</p>
-    <p class="host"><b>The host</b>Once the votes are read, the decision is final.</p>
-    <div class="urn"></div><div style="display:flex;justify-content:center"><button id="read">Read the first vote</button></div>`);
-  let k = 0; const urn = c.querySelector(".urn"), btn = c.querySelector("#read");
+  const V = CONFIG.votes;
+  const c = card("Night 39 · Tribal Council", "Grab a torch, get fire", `
+    <p class="host"><b>The host</b>${G}, all four torches are lit. Grab a torch, dip it in and get fire. This is part of the ritual of Tribal Council, because in this game, fire represents your life.</p>
+    <div class="stage" style="display:flex;flex-direction:column;gap:14px;align-items:center"></div>
+    <div class="urn"></div><p class="tally"></p>
+    <div style="display:flex;justify-content:center"><button id="act">Get fire</button></div>`);
+  const stage = c.querySelector(".stage"), urn = c.querySelector(".urn"), tally = c.querySelector(".tally"), btn = c.querySelector("#act");
+  const say = t => stage.append(el(`<p class="host" style="align-self:stretch"><b>The host</b>${t}</p>`));
+  let phase = 0, k = 0;
   btn.onclick = () => {
     Music.boom();
-    if (k < CONFIG.votes.length) {
-      urn.append(el(`<div class="vote">${CONFIG.votes[k]}</div>`)); k++;
-      btn.textContent = k < CONFIG.votes.length ? "Read the next vote" : "Final word";
+    if (phase === 0) {
+      say("It is time to vote. The tribe has already cast theirs. I'll go tally the votes."); btn.textContent = "Wait for the host"; phase = 1;
+    } else if (phase === 1) {
+      say("If anybody has a hidden immunity idol and you want to play it, now would be the time to do so.");
+      btn.textContent = "Stand up and play your idol"; phase = 2;
+    } else if (phase === 2) {
+      sticker("This IS a hidden immunity idol!");
+      say(`This is a hidden immunity idol. Any votes cast for ${G} will not count. I'll read the votes.`);
+      btn.textContent = "Read the first vote"; phase = 3;
+    } else if (k < V.length) {
+      urn.append(el(`<div class="vote">${V[k]}<span class="stamp">DOES NOT COUNT</span></div>`)); k++;
+      tally.textContent = `${NUM[k] || k} vote${k > 1 ? "s" : ""} ${G}. Does not count.`;
+      btn.textContent = k < V.length ? "Next vote" : "Final word";
     } else {
-      btn.parentElement.remove(); Music.mode("win"); Music.sting();
+      btn.parentElement.remove(); Music.mode("win"); Music.sting(); sticker("Unbelievable!");
+      tally.textContent = `${NUM[V.length] || V.length} votes ${G}. Not a single one counts.`;
       c.append(el(`<div style="display:flex;flex-direction:column;gap:14px;align-items:center;text-align:center">
         <div class="won-idol" aria-hidden="true">🗿</div>
-        <p class="final">The tribe has spoken. You have immunity for another 30 years.</p>
-        <p style="font-size:1.15rem;color:var(--bone)"><strong>Happy birthday, ${CONFIG.name}. You may now unwrap your idol.</strong></p>
+        <p class="final">${G}, you have survived 30 years. Your torch stays lit.</p>
+        <p class="host" style="text-align:left"><b>The host</b>For once, the tribe has spoken in your favor. Happy birthday, ${CONFIG.name}.</p>
+        <p style="font-size:1.15rem;color:var(--bone)"><strong>You may now unwrap your idol.</strong></p>
         <p class="hand">Love, ${CONFIG.from}, ${D1} &amp; ${D2}</p></div>`));
       confetti();
     }
