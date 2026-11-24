@@ -1,335 +1,410 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Marisa Kahnt</title>
-  <meta name="description" content="Marisa Kahnt: recruiting operations by day, custom embroidery at Marisa Stitches, and wedding ceremonies with I Do by Marisa. Metro Detroit.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@400;500&family=Parisienne&display=swap" rel="stylesheet">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+<title>Island of Thirty</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Karla:wght@400;600;800&family=Caveat:wght@600&display=swap">
+<style>
+/* Layout: one torch-lit column; each challenge is a "station" card on a night-jungle ground, with a clue pouch pinned on top. */
+:root {
+  --night: #0f1a14;      /* jungle at night */
+  --leaf: #1c3326;       /* card ground */
+  --leaf-2: #26442f;
+  --sand: #e9d3a3;       /* text, parchment */
+  --ember: #ff7a1a;      /* torch flame accent */
+  --ember-2: #ffb347;
+  --bone: #f6ecd6;
+  --muted: #a9b9a4;
+  --good: #7fd48a;
+  --bad: #ff6b5b;
+  --display: "Bowlby One", "Impact", "Arial Black", sans-serif;
+  --body: "Karla", system-ui, -apple-system, sans-serif;
+  --hand: "Caveat", "Segoe Print", cursive;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { background: var(--night); color: var(--sand); }
+body {
+  font-family: var(--body); font-size: 17px; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 24px 64px;
+  background:
+    radial-gradient(ellipse 80% 40% at 50% 0%, rgba(255,122,26,.18), transparent 70%),
+    var(--night);
+  min-height: 100%;
+}
+main { max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+h1, h2 { font-family: var(--display); font-weight: 400; letter-spacing: .02em; text-wrap: balance; margin: 0; line-height: 1.05; }
+h1 { font-size: clamp(2.4rem, 9vw, 3.6rem); color: var(--bone); }
+h2 { font-size: clamp(1.5rem, 5.5vw, 2rem); color: var(--bone); }
+p { margin: 0; }
+.eyebrow { text-transform: uppercase; letter-spacing: .16em; font-size: .78rem; font-weight: 800; color: var(--ember-2); }
+.hand { font-family: var(--hand); font-size: 1.5rem; color: var(--ember-2); line-height: 1.2; }
 
-  <!-- Pick-a-door navigation -->
-  <header class="nav" id="nav">
-    <a href="#top" class="crest" aria-label="Marisa Kahnt, back to the top">
-      <span class="crest__mono" aria-hidden="true">MK</span>
-      <span class="crest__name">Marisa Kahnt</span>
-    </a>
-    <div class="elevator">
-      <nav aria-label="Houses on the street">
-        <ol class="floors">
-          <li><a href="#lobby" data-floor="0"><span class="floors__btn">1</span><span class="floors__label">Hello</span></a></li>
-          <li><a href="#office" data-floor="1"><span class="floors__btn">2</span><span class="floors__label">Office</span></a></li>
-          <li><a href="#stitches" data-floor="2"><span class="floors__btn">3</span><span class="floors__label">Stitches</span></a></li>
-          <li><a href="#ido" data-floor="3"><span class="floors__btn">4</span><span class="floors__label">I Do</span></a></li>
-          <li><a href="#desk" data-floor="4"><span class="floors__btn">✉</span><span class="floors__label">Say hi</span></a></li>
-        </ol>
-      </nav>
-    </div>
-  </header>
+/* Clue pouch */
+.pouch { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: space-between;
+  background: rgba(233,211,163,.06); border: 1px dashed rgba(233,211,163,.3); border-radius: 10px; padding: 10px 14px; }
+.pouch .label { font-size: .8rem; text-transform: uppercase; letter-spacing: .14em; color: var(--muted); font-weight: 800; }
+.digits { display: flex; gap: 8px; }
+.digit { width: 38px; height: 46px; display: grid; place-items: center; border-radius: 6px;
+  font-family: var(--display); font-size: 1.4rem; background: var(--night); border: 1px solid var(--leaf-2); color: var(--muted); font-variant-numeric: tabular-nums; }
+.digit.got { color: var(--night); background: var(--ember-2); border-color: var(--ember-2); }
 
-  <main>
-    <!-- Hero: a colourful little street behind silk curtains -->
-    <section class="stage" id="top">
-      <div class="hello">
-        <p class="hello__eyebrow">Marisa Kahnt · Metro Detroit</p>
-        <p class="hello__script" id="onceUpon">welcome to my brain!!</p>
-        <h1 class="hello__name">Hi, I'm Marisa!</h1>
-        <p class="hello__roles">talent ops by day <i>✦</i> serial hobbyist by night <i>✦</i> pick a door</p>
-      </div>
+.card { background: linear-gradient(180deg, var(--leaf), #172b20); border: 1px solid var(--leaf-2); border-radius: 14px;
+  padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+.hero { text-align: center; align-items: center; padding-block: 36px; }
+.torch { width: 72px; height: 110px; }
+.torch.lit .flame { animation: flicker 1.2s ease-in-out infinite alternate; transform-origin: 50% 100%; }
+.torch:not(.lit) .flame { opacity: 0; }
+@keyframes flicker { 0% { transform: scale(1,1) rotate(-2deg); } 50% { transform: scale(.94,1.06) rotate(2deg);} 100% { transform: scale(1.04,.96) rotate(-1deg);} }
 
-      <div class="scene-wrap" id="sceneWrap">
-        <svg class="scene" id="scene" viewBox="0 0 1440 760" preserveAspectRatio="xMidYMax meet" aria-label="A little street of colourful buildings. Each one links to part of the site: the office, Marisa Stitches, the pink shop, I Do by Marisa and a say-hi house"></svg>
-      </div>
-      <p class="swipe-hint" id="swipeHint" aria-hidden="true"><span>←</span> swipe the street <span>→</span></p>
+button, .btn { font: inherit; font-weight: 800; cursor: pointer; border: 0; border-radius: 999px; padding: 12px 22px;
+  background: var(--ember); color: #1a0d03; letter-spacing: .02em; transition: transform .1s, background .2s; }
+button:hover { background: var(--ember-2); }
+button:active { transform: scale(.97); }
+button:focus-visible, input:focus-visible, .tile:focus-visible, .sand:focus-visible { outline: 3px solid var(--bone); outline-offset: 2px; }
+button.ghost { background: transparent; color: var(--sand); border: 1px solid rgba(233,211,163,.35); }
+button:disabled { opacity: .45; cursor: default; }
 
-      <div class="valance" aria-hidden="true"></div>
-      <div class="curtain curtain--left" aria-hidden="true"><i class="tassel"></i></div>
-      <div class="curtain curtain--right" aria-hidden="true"><i class="tassel"></i></div>
-      <button class="keytag" id="checkIn" type="button">
-        <span class="keytag__ring" aria-hidden="true"></span>
-        <span class="keytag__tag">
-          <small>Marisa Kahnt</small>
-          knock knock
-          <em>tap to come in</em>
-        </span>
-      </button>
-    </section>
+.options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 460px) { .options { grid-template-columns: 1fr; } }
+.options button { background: var(--night); color: var(--sand); border: 1px solid var(--leaf-2); border-radius: 10px; text-align: left; font-weight: 600; }
+.options button:hover { border-color: var(--ember-2); background: var(--night); }
+.options button.wrong { border-color: var(--bad); color: var(--bad); }
+.options button.right { border-color: var(--good); color: var(--good); }
+.progress { font-size: .85rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.msg { min-height: 1.5em; font-weight: 600; }
+.msg.good { color: var(--good); } .msg.bad { color: var(--bad); }
 
-    <div class="ribbon" aria-hidden="true">
-      <div class="ribbon__track">
-        <span>Recruiting Operations</span><span>✦</span><span>Custom Embroidery</span><span>✦</span><span>Wedding Ceremonies</span><span>✦</span><span>Metro Detroit</span><span>✦</span>
-        <span>Recruiting Operations</span><span>✦</span><span>Custom Embroidery</span><span>✦</span><span>Wedding Ceremonies</span><span>✦</span><span>Metro Detroit</span><span>✦</span>
-      </div>
-    </div>
+/* Scramble */
+.scr { display: flex; flex-direction: column; gap: 6px; }
+.scr .letters { font-family: var(--display); font-size: 1.5rem; letter-spacing: .3em; color: var(--ember-2); word-break: break-all; }
+.scr .hint { font-size: .85rem; color: var(--muted); }
+.row { display: flex; gap: 8px; flex-wrap: wrap; }
+input[type=text] { font: inherit; flex: 1; min-width: 0; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--leaf-2);
+  background: var(--night); color: var(--bone); text-transform: uppercase; letter-spacing: .1em; }
+input.ok { border-color: var(--good); color: var(--good); }
 
-    <!-- No. 1: Hello -->
-    <section class="lobby" id="lobby">
-      <p class="floor-tag reveal">Hi, hello</p>
-      <article class="letter reveal">
-        <header class="letter__head">
-          <span class="letter__crest" aria-hidden="true">MK</span>
-          <p class="letter__name">Marisa Kahnt</p>
-          <p class="letter__place">Metro Detroit, Michigan</p>
-        </header>
-        <figure class="portrait">
-          <div class="portrait__frame"><svg class="scene portrait__scene" id="portraitScene" viewBox="-30 560 170 140" role="img" aria-label="Marisa walking her English bulldog"></svg></div>
-          <figcaption>me &amp; my bulldog</figcaption>
-        </figure>
-        <p class="letter__hand">Hi there!!</p>
-        <p>Welcome to my brain! I'm Marisa Kahnt (pronounced "can't," which is ironic for someone born with the "how hard can it be" gene).</p>
-        <p>By day, I'm on the talent operations and strategy side at <strong>Block</strong>, keeping things running smoothly so we hire the best people (and they actually start!).</p>
-        <p>By night, I'm a serial hobbyist: machine embroidery at <strong>Marisa Stitches</strong> (busy hands, quiet mind) and writing and officiating ceremonies with <strong>I Do by Marisa</strong>, because I love a good love story. Lately it's sourdough, genealogy, reality TV and travel (where my type A finally turns type B), with a children's book someday. The hobbies will not stop. I have accepted this.</p>
-        <p>Same girl, different hats. Pick a door, any door!!</p>
-        <p class="letter__sign"><span>Marisa</span></p>
-      </article>
-    </section>
+/* Slide puzzle */
+.board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; width: min(100%, 320px); aspect-ratio: 1; max-width: 100%; margin: 0 auto;
+  background: #0a120d; padding: 6px; border-radius: 12px; border: 2px solid #5a3d1e; }
+.tile { display: grid; place-items: center; font-family: var(--display); font-size: clamp(1.8rem, 9vw, 2.6rem);
+  background: linear-gradient(160deg, #b9874a, #7d5428); color: #2a1606; border-radius: 8px; cursor: pointer; user-select: none;
+  box-shadow: inset 0 -4px 0 rgba(0,0,0,.25); border: 0; padding: 0; }
+.tile.blank { background: transparent; box-shadow: none; cursor: default; }
+.tile.home { color: var(--bone); }
 
-    <!-- No. 2: The Office (professional) -->
-    <section class="office" id="office">
-      <p class="floor-tag reveal">The day job</p>
-      <div class="office__frame reveal">
-        <span class="perch" aria-hidden="true"></span>
-        <div class="office__grid">
-          <div class="office__intro">
-            <figure class="persona persona--office">
-            <div class="persona__frame"><svg class="scene persona__svg" data-persona="office" viewBox="-70 0 140 148" role="img" aria-label="Cartoon Marisa as the strategist: pink blazer, laptop and a coffee"></svg></div>
-            <figcaption>the strategist</figcaption>
-          </figure>
-            <h2>Marisa Kahnt</h2>
-            <p class="office__say">Kahnt, pronounced "can't"</p>
-            <p class="office__title">Sr. Recruiting Operations Specialist at Block</p>
-            <p class="office__loc">Recruiting Ops · People Tooling &amp; AI/Automation</p>
-            <p class="office__summary">I work on the operations and strategy side of the talent team: the systems, processes and tooling that keep recruiting running smoothly, so we find and hire the best people, and they actually start.</p>
-            <blockquote class="office__quote">I'd rather eliminate the problem than build a fix for it.</blockquote>
-            <div class="office__ctas">
-              <a href="https://www.linkedin.com/in/mkahnt/" target="_blank" rel="noopener" class="btn btn--ink">LinkedIn ↗</a>
-              <a href="mailto:marisakkahnt@gmail.com?subject=Let%27s%20talk%20shop&amp;body=Hi%20Marisa%21%21%0A%0AI%20just%20took%20a%20stroll%20down%20your%20little%20street%2C%20waved%20at%20your%20bulldog%2C%20and%20came%20to%20one%20conclusion%3A%20you%20seem%20amazing%20and%20we%20should%20talk%20shop.%0A%0AHere%27s%20what%20I%27d%20love%20to%20pick%20your%20brain%20about%20%28broken%20processes%20welcome%29%3A%0A%0A%0A%0AP.S.%20I%27m%20pronouncing%20it%20%22can%27t.%22%20Nailed%20it.%0A%0ATalk%20soon%2C%0A" class="btn btn--line">What can we eliminate?</a>
-            </div>
-          </div>
+/* Idol hunt */
+.beach { display: grid; grid-template-columns: repeat(6, 1fr); gap: 5px; width: min(100%, 380px); margin: 0 auto; }
+.sand { aspect-ratio: 1; border-radius: 6px; border: 0; padding: 0; background: #d8b878; cursor: pointer; font-size: 1.2rem; color: #2a1606; display: grid; place-items: center; }
+.sand:hover { background: #e6c88a; }
+.sand.dug { cursor: default; font-family: var(--display); font-size: .9rem; }
+.sand.hot { background: var(--bad); } .sand.warm { background: var(--ember-2); } .sand.cold { background: #7fa7b8; }
+.sand.idol { background: var(--good); font-size: 1.4rem; }
 
-          <ol class="career" aria-label="Experience">
-            <li>
-              <span class="career__dates">2024 – now</span>
-              <h3>Sr. Recruiting Operations Specialist</h3>
-              <p class="career__org">Block</p>
-            </li>
-            <li>
-              <span class="career__dates">2022 – 2024</span>
-              <h3>Sr. Recruiting Coordinator</h3>
-              <p class="career__org">Block</p>
-            </li>
-            <li>
-              <span class="career__dates">2021</span>
-              <h3>Recruiting Coordinator</h3>
-              <p class="career__org">Twilio</p>
-            </li>
-            <li>
-              <span class="career__dates">2019 – 2020</span>
-              <h3>Leadership Consultant</h3>
-              <p class="career__org">Phi Mu HQ</p>
-            </li>
-          </ol>
-        </div>
+/* Lock */
+.lock { display: flex; gap: 10px; justify-content: center; }
+.wheel { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.wheel button { padding: 4px 14px; border-radius: 8px; background: var(--leaf-2); color: var(--sand); }
+.wheel .val { width: 54px; height: 64px; display: grid; place-items: center; font-family: var(--display); font-size: 2rem;
+  background: #2b2b26; color: var(--bone); border-radius: 8px; border: 2px solid #6b6b60; font-variant-numeric: tabular-nums; }
 
-        <h3 class="office__sub">How I work</h3>
-        <ul class="traits">
-          <li><strong>Curious</strong>First question is always "why do we do it this way?" Second is usually "can we not?"</li>
-          <li><strong>Born with the gene</strong>The "how hard can it be" gene, specifically. If I don't know how to do something yet, that's just Tuesday. I ramp fast and figure it out.</li>
-          <li><strong>Leads with empathy</strong>People are usually doing their best with a broken process. I assume good intent first, always.</li>
-          <li><strong>"Yes, and"</strong>I treat work like improv: always looking for the "yes, and," not the reason it won't work. Failing just means I learned something before you had to.</li>
-          <li><strong>Allergic to extra steps</strong>If a process has more than five steps, I'm already redesigning it in my head. I promise I'm listening too.</li>
-          <li><strong>Knows the room</strong>I can tell you exactly who needs to be looped in, who doesn't, and who just wants the recap after.</li>
-          <li><strong>Doesn't gatekeep</strong>I'd rather teach you the fix than be the only one who can do it. When one of us shines, we all shine.</li>
-          <li><strong>Craft</strong>I sweat the details nobody asked for. The last 10% is the part people remember.</li>
-        </ul>
+/* Tribal */
+.urn { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+.vote { background: var(--bone); color: #2a1606; padding: 14px 22px; border-radius: 4px; transform: rotate(-2deg);
+  font-family: var(--hand); font-size: 2rem; min-width: 220px; text-align: center; box-shadow: 0 6px 18px rgba(0,0,0,.4); }
+.vote:nth-child(even) { transform: rotate(2deg); }
+.final { font-family: var(--display); font-size: clamp(1.6rem, 6vw, 2.2rem); color: var(--ember-2); text-align: center; text-wrap: balance; }
+.center { text-align: center; align-items: center; }
+footer { text-align: center; color: var(--muted); font-size: .85rem; }
+footer button { font-size: .8rem; padding: 6px 12px; }
+canvas#confetti { position: fixed; inset: 0; pointer-events: none; width: 100%; height: 100%; }
+@media (prefers-reduced-motion: reduce) { .torch.lit .flame { animation: none; } }
+</style>
 
-        <h3 class="office__sub">Toolkit</h3>
-        <div class="toolkit">
-          <div><h4>Process</h4><ul class="skills"><li>Process design</li><li>Platform architecture</li><li>Workflow automation</li><li>UAT</li><li>Program mgmt</li><li>Data integrity</li><li>People management</li></ul></div>
-          <div><h4>Systems</h4><ul class="skills"><li>Workday</li><li>Greenhouse</li><li>SmartRecruiters</li><li>LinkedIn Recruiter</li><li>Jira</li><li>Gem</li><li>BrightHire</li><li>Guide</li><li>DocuSign</li><li>Okta</li><li>Notion</li><li>Asana</li></ul></div>
-          <div><h4>AI &amp; Build</h4><ul class="skills"><li>Claude Code</li><li>Claude MCP</li><li>Goose</li><li>RAG design</li><li>Agent skills</li><li>Google Apps Script</li><li>Gemini</li><li>ChatGPT</li></ul></div>
-        </div>
-        <p class="office__built">This site? Claude Code, zero frameworks, and me. No engineers were involved in the making of this brain.</p>
-      </div>
-    </section>
+<main id="app" aria-live="polite"></main>
+<canvas id="confetti" aria-hidden="true"></canvas>
 
-    <!-- No. 3: Marisa Stitches, a storefront with window displays -->
-    <section class="house house--stitches" id="stitches">
-      <p class="floor-tag reveal">The hobby that got out of hand</p>
-      <div class="facade reveal">
-        <div class="facade__roof" aria-hidden="true"><span class="facade__hoop"></span></div>
-        <div class="facade__awning" aria-hidden="true"></div>
-        <div class="facade__body">
-          <h2 class="facade__sign">Marisa Stitches</h2>
-          <p class="facade__kind">Custom machine embroidery · Clinton Township, MI</p>
-          <p class="facade__tagline">A serial hobbyist <em>who took it too far.</em></p>
-          <p class="facade__script">charm, threaded in.</p>
-          <figure class="persona persona--stitches">
-            <div class="persona__frame"><svg class="scene persona__svg" data-persona="stitches" viewBox="-70 0 140 148" role="img" aria-label="Cartoon Marisa as the maker: comfy creative clothes, an embroidery hoop, a lamp and a sleepy bulldog"></svg></div>
-            <figcaption>the maker</figcaption>
-          </figure>
+<script>
+/* =====================================================================
+   PERSONALIZE HERE — this is the only part you need to edit.
+   ===================================================================== */
+const CONFIG = {
+  name: "BESTIE",                 // her name
+  from: "your tribe",             // who it's from (e.g. "Marisa")
+  dogs: ["BISCUIT", "MAPLE"],     // her dogs' names (CAPS, letters only)
+  code: [3, 0, 3, 9],             // 4-digit lock code: one digit is earned per challenge
+  // Extra words for the scramble challenge: [word, hint]
+  scramble: [
+    ["IMMUNITY", "Wear it and you're safe tonight"],
+    ["BLINDSIDE", "Nobody saw it coming"],
+  ],
+  // Personal trivia question to end Challenge 1 (inside joke, memory, etc.)
+  personalQ: null, // e.g. { q: "Where did we meet?", options: ["Bio class","A bar","Soccer","The DMV"], answer: 0 }
+  // Where is the real gift hidden? Shown at the very end.
+  giftClue: "Your gift is waiting. Go find it and open it now.",
+  // The votes read at Tribal Council, one at a time.
+  votes: ["Happy", "Birthday", "Queen", "of the", "Island"],
+};
+/* ===================================================================== */
 
-          <div class="displays">
-            <button class="display" type="button">
-              <span class="display__inside">
-                <svg viewBox="0 0 80 80" aria-hidden="true"><g class="ink-line"><circle cx="40" cy="40" r="28" /><circle cx="40" cy="40" r="23" /><rect x="35" y="7" width="10" height="7" rx="2" /></g><text x="40" y="51" text-anchor="middle" class="display__mono">M</text></svg>
-                <strong>Monograms &amp; names</strong>
-                <span>your initials, beautifully stitched</span>
-              </span>
-              <span class="shutter shutter--l" aria-hidden="true"></span><span class="shutter shutter--r" aria-hidden="true"></span>
-              <span class="flowerbox" aria-hidden="true"></span>
-            </button>
-            <button class="display" type="button">
-              <span class="display__inside">
-                <svg viewBox="0 0 80 80" aria-hidden="true"><g class="ink-line"><path d="M28 14 h24 l14 12 -8 9 -6 -4 v32 h-24 v-32 l-6 4 -8 -9 z" class="fill-soft" /><path d="M34 14 q6 8 12 0" /><path d="M36 44 c-3 -4 -9 -2 -6 3 l6 5 6 -5 c3 -5 -3 -7 -6 -3 z" class="fill-accent" /></g></svg>
-                <strong>Baby gifts</strong>
-                <span>the sweetest little keepsakes</span>
-              </span>
-              <span class="shutter shutter--l" aria-hidden="true"></span><span class="shutter shutter--r" aria-hidden="true"></span>
-              <span class="flowerbox" aria-hidden="true"></span>
-            </button>
-            <button class="display" type="button">
-              <span class="display__inside">
-                <svg viewBox="0 0 80 80" aria-hidden="true"><g class="ink-line"><rect x="14" y="48" width="52" height="12" rx="3" class="fill-soft" /><rect x="18" y="36" width="44" height="12" rx="3" class="fill-accent" /><rect x="22" y="24" width="36" height="12" rx="3" class="fill-soft" /><path d="M14 54 h52 M22 30 h36" stroke-dasharray="2 3" /></g></svg>
-                <strong>Towels, napkins &amp; pouches</strong>
-                <span>cocktail napkins included</span>
-              </span>
-              <span class="shutter shutter--l" aria-hidden="true"></span><span class="shutter shutter--r" aria-hidden="true"></span>
-              <span class="flowerbox" aria-hidden="true"></span>
-            </button>
-            <button class="display" type="button">
-              <span class="display__inside">
-                <svg viewBox="0 0 80 80" aria-hidden="true"><g class="ink-line"><path d="M16 48 q0 -26 24 -26 q24 0 24 26 z" class="fill-soft" /><path d="M16 48 h50 q8 0 8 6 h-58 z" class="fill-accent" /><circle cx="40" cy="22" r="3" /><path d="M32 40 q8 -8 16 0" stroke-dasharray="2 3" /></g></svg>
-                <strong>Shirts &amp; hats</strong>
-                <span>wearable, stitchable, giftable</span>
-              </span>
-              <span class="shutter shutter--l" aria-hidden="true"></span><span class="shutter shutter--r" aria-hidden="true"></span>
-              <span class="flowerbox" aria-hidden="true"></span>
-            </button>
-          </div>
+const dogList = CONFIG.dogs.length === 1 ? CONFIG.dogs[0] : CONFIG.dogs.slice(0, -1).join(", ") + " & " + CONFIG.dogs.at(-1);
+const cap = s => s.charAt(0) + s.slice(1).toLowerCase();
 
-          <p class="facade__note">All machine embroidered on my Brother and shipped everywhere. Busy hands, quiet mind.</p>
-          <div class="facade__door">
-            <a class="btn btn--brand" href="https://www.marisastitches.com" target="_blank" rel="noopener">visit marisastitches.com ↗</a>
-            <a class="btn btn--line" href="https://www.instagram.com/marisastitches/" target="_blank" rel="noopener">@marisastitches</a>
-          </div>
-        </div>
-      </div>
-    </section>
+const TRIVIA = [
+  { q: "Who won the very first season, set in Borneo?", options: ["Rudy Boesch", "Richard Hatch", "Kelly Wiglesworth", "Sue Hawk"], answer: 1 },
+  { q: "Who was the first castaway ever to win twice?", options: ["Tony Vlachos", "Parvati Shallow", "Sandra Diaz-Twine", "Boston Rob"], answer: 2 },
+  { q: "Which season introduced the hidden immunity idol?", options: ["Guatemala", "Palau", "Panama", "Pearl Islands"], answer: 0 },
+  { q: "What does the host say after snuffing a torch?", options: ["Bring it in, guys", "The tribe has spoken", "Worth playing for?", "Come on in, guys"], answer: 1 },
+  CONFIG.personalQ || { q: "Final question. Who are the best dogs on any island?", options: [...CONFIG.dogs.map(cap), "All of the above, obviously"].slice(-4), answer: Math.min(CONFIG.dogs.length, 3) },
+];
 
-    <!-- No. 4: I Do by Marisa, a little chapel with window displays -->
-    <section class="house house--ido" id="ido">
-      <p class="floor-tag reveal">The one where I marry people</p>
-      <div class="facade reveal">
-        <div class="facade__roof" aria-hidden="true"><span class="facade__bell"></span></div>
-        <div class="facade__awning" aria-hidden="true"></div>
-        <div class="facade__body">
-          <h2 class="facade__sign">I Do by Marisa</h2>
-          <p class="facade__kind">Metro Detroit · Officiant · Writer · Vow Coach</p>
-          <p class="facade__motto">Story is the signature.</p>
-          <p class="facade__tagline"><em>Your story, told with intention. Timeless in feeling. Never templated.</em></p>
-          <figure class="persona persona--ido">
-            <div class="persona__frame"><svg class="scene persona__svg" data-persona="ido" viewBox="-70 0 140 148" role="img" aria-label="Cartoon Marisa as the storyteller: black dress, microphone and a ceremony script"></svg></div>
-            <figcaption>the storyteller</figcaption>
-          </figure>
+const SCRAMBLE = [
+  ...CONFIG.dogs.map(d => [d, "A furry member of your alliance"]),
+  ...CONFIG.scramble,
+];
 
-          <div class="displays displays--three">
-            <button class="display" type="button">
-              <span class="display__inside">
-                <svg viewBox="0 0 80 80" aria-hidden="true"><g class="ink-line"><circle cx="32" cy="46" r="16" /><circle cx="48" cy="46" r="16" /><path d="M44 22 l4 -7 4 7 -4 4 z" class="fill-accent" /></g></svg>
-                <strong>Officiant</strong>
-                <span>your ceremony, across Metro Detroit</span>
-              </span>
-              <span class="shutter shutter--l" aria-hidden="true"></span><span class="shutter shutter--r" aria-hidden="true"></span>
-              <span class="flowerbox" aria-hidden="true"></span>
-            </button>
-            <button class="display" type="button">
-              <span class="display__inside">
-                <svg viewBox="0 0 80 80" aria-hidden="true"><g class="ink-line"><rect x="18" y="16" width="36" height="48" rx="2" class="fill-soft" /><path d="M24 28 h24 M24 36 h24 M24 44 h16" /><path d="M66 10 q-20 10 -22 40 l4 -2 q4 -26 18 -38 z" class="fill-accent" /></g></svg>
-                <strong>Writer</strong>
-                <span>every word written just for you two</span>
-              </span>
-              <span class="shutter shutter--l" aria-hidden="true"></span><span class="shutter shutter--r" aria-hidden="true"></span>
-              <span class="flowerbox" aria-hidden="true"></span>
-            </button>
-            <button class="display" type="button">
-              <span class="display__inside">
-                <svg viewBox="0 0 80 80" aria-hidden="true"><g class="ink-line"><path d="M12 22 h40 a6 6 0 0 1 6 6 v18 a6 6 0 0 1 -6 6 h-26 l-10 9 v-9 h-4 a6 6 0 0 1 -6 -6 v-18 a6 6 0 0 1 6 -6 z" class="fill-soft" /><path d="M32 42 c-3 -4 -9 -2 -6 3 l6 5 6 -5 c3 -5 -3 -7 -6 -3 z" class="fill-accent" /></g></svg>
-                <strong>Vow coach</strong>
-                <span>help finding your own words</span>
-              </span>
-              <span class="shutter shutter--l" aria-hidden="true"></span><span class="shutter shutter--r" aria-hidden="true"></span>
-              <span class="flowerbox" aria-hidden="true"></span>
-            </button>
-          </div>
+const STEPS = ["intro", "trivia", "scramble", "slide", "hunt", "lock", "tribal"];
 
-          <p class="facade__note">I love a good love story, and I love telling yours even more.</p>
-          <p class="facade__quote">"Every word felt like it was written just for us."</p>
-          <div class="facade__door">
-            <a class="btn btn--brand" href="https://www.idobymarisa.com" target="_blank" rel="noopener">visit idobymarisa.com ↗</a>
-            <a class="btn btn--line" href="https://www.instagram.com/idobymarisa/" target="_blank" rel="noopener">@idobymarisa</a>
-          </div>
-        </div>
-      </div>
-    </section>
+/* ---------- state ---------- */
+let S = { step: 0, digits: 0 };
+try { const saved = JSON.parse(localStorage.getItem("island30") || "null"); if (saved) S = saved; } catch (e) {}
+const save = () => { try { localStorage.setItem("island30", JSON.stringify(S)); } catch (e) {} };
+const app = document.getElementById("app");
+const el = (html) => { const t = document.createElement("template"); t.innerHTML = html.trim(); return t.content.firstChild; };
 
-    <!-- ✉: Say hi (contact) -->
-    <section class="desk" id="desk">
-      <p class="floor-tag reveal">Say hi!!</p>
-      <div class="register reveal">
-        <h2>Which Marisa are you looking for?</h2>
-        <p class="register__note">a very official, one-question BuzzFeed-style quiz</p>
+function pouch() {
+  if (S.step === 0) return "";
+  const d = CONFIG.code.map((n, i) => `<div class="digit ${i < S.digits ? "got" : ""}">${i < S.digits ? n : "?"}</div>`).join("");
+  return `<div class="pouch"><span class="label">Clue pouch</span><div class="digits">${d}</div></div>`;
+}
 
-        <div class="quiz" id="quiz">
-          <div class="quiz__q" id="quizQ">
-            <button type="button" class="quiz__a" data-result="strategist"><span class="quiz__emoji" aria-hidden="true">💼</span>I've got a broken process and big dreams</button>
-            <button type="button" class="quiz__a" data-result="maker"><span class="quiz__emoji" aria-hidden="true">🧵</span>I need a monogram on literally everything</button>
-            <button type="button" class="quiz__a" data-result="storyteller"><span class="quiz__emoji" aria-hidden="true">💍</span>We're getting married!!</button>
-          </div>
+function advance(earnDigit) {
+  if (earnDigit) S.digits = Math.min(S.digits + 1, CONFIG.code.length);
+  S.step++; save(); render(); window.scrollTo({ top: 0, behavior: "smooth" });
+}
 
-          <div class="quiz__result" id="quizResult" hidden aria-live="polite">
-            <div class="persona__frame quiz__frame"><svg class="scene persona__svg" id="quizPersona" viewBox="-70 0 140 148" aria-hidden="true"></svg></div>
-            <p class="quiz__kicker">you're looking for…</p>
-            <h3 class="quiz__title" id="quizTitle"></h3>
-            <p class="quiz__line" id="quizLine"></p>
-            <a class="btn btn--ink quiz__cta" id="quizCta" href="#"></a>
-            <button type="button" class="quiz__again" id="quizAgain">take the quiz again</button>
-          </div>
-        </div>
+function winPanel(card, title, text) {
+  const n = S.digits;
+  card.append(el(`<div class="center" style="display:flex;flex-direction:column;gap:12px">
+    <p class="hand">${title}</p>
+    <p>${text} Your clue: <strong style="color:var(--ember-2);font-size:1.3rem">the digit ${CONFIG.code[n]}</strong>. It goes in position ${n + 1} of the lock.</p>
+    <button id="next">Take the clue and move on</button></div>`));
+  card.querySelector("#next").onclick = () => advance(true);
+  card.querySelector("#next").focus();
+}
 
-        <p class="quiz__skip">or skip the quiz:
-          <a href="mailto:marisakkahnt@gmail.com?subject=Let%27s%20talk%20shop&amp;body=Hi%20Marisa%21%21%0A%0AI%20just%20took%20a%20stroll%20down%20your%20little%20street%2C%20waved%20at%20your%20bulldog%2C%20and%20came%20to%20one%20conclusion%3A%20you%20seem%20amazing%20and%20we%20should%20talk%20shop.%0A%0AHere%27s%20what%20I%27d%20love%20to%20pick%20your%20brain%20about%20%28broken%20processes%20welcome%29%3A%0A%0A%0A%0AP.S.%20I%27m%20pronouncing%20it%20%22can%27t.%22%20Nailed%20it.%0A%0ATalk%20soon%2C%0A" data-quiz-link="strategist">talk shop</a> ·
-          <a href="https://www.marisastitches.com/#order" target="_blank" rel="noopener" data-quiz-link="maker">custom order</a> ·
-          <a href="https://www.idobymarisa.com/#contact" target="_blank" rel="noopener" data-quiz-link="storyteller">officiate my wedding</a>
-        </p>
-        <p class="register__mail">or write straight to <a href="mailto:marisakkahnt@gmail.com">marisakkahnt@gmail.com</a></p>
-      </div>
-    </section>
-  </main>
+function render() {
+  app.innerHTML = pouch();
+  ({ intro, trivia, scramble, slide, hunt, lock, tribal })[STEPS[S.step]]();
+  app.append(el(`<footer><button class="ghost" id="reset">Start over</button></footer>`));
+  app.querySelector("#reset").onclick = () => { S = { step: 0, digits: 0 }; save(); render(); };
+}
 
-  <footer class="footer">
-    <p class="footer__crest">Marisa Kahnt</p>
-    <p class="footer__links">
-      <a href="https://www.marisastitches.com" target="_blank" rel="noopener">Marisa Stitches</a>
-      <i>✦</i>
-      <a href="https://www.idobymarisa.com" target="_blank" rel="noopener">I Do by Marisa</a>
-      <i>✦</i>
-      <a href="https://www.linkedin.com/in/mkahnt/" target="_blank" rel="noopener">LinkedIn</a>
-    </p>
-    <p class="footer__links footer__links--small">
-      <a href="https://www.instagram.com/marisastitches/" target="_blank" rel="noopener">@marisastitches</a>
-      <i>✦</i>
-      <a href="https://www.instagram.com/idobymarisa/" target="_blank" rel="noopener">@idobymarisa</a>
-    </p>
-    <p class="footer__small">© <span id="year"></span> Marisa Kahnt</p>
-  </footer>
+const TORCH = `<svg class="torch" viewBox="0 0 72 110" aria-hidden="true">
+  <g class="flame"><path d="M36 6c10 14 18 22 14 36-2 8-8 12-14 12s-12-4-14-12c-3-12 6-18 8-26 2 6 4 8 6 8 0-8-2-12 0-18z" fill="#ff7a1a"/>
+  <path d="M36 26c5 8 9 12 7 20-1 4-4 6-7 6s-6-2-7-6c-1-6 3-9 4-13 1 3 2 4 3 4 0-4-1-7 0-11z" fill="#ffd27a"/></g>
+  <path d="M24 54h24l-4 10H28z" fill="#8a5a2b"/><rect x="31" y="64" width="10" height="46" rx="3" fill="#6b4320"/>
+  <path d="M28 54l4 10M36 54v10M44 54l-4 10" stroke="#4d2f14" stroke-width="2"/></svg>`;
 
-  <script src="main.js"></script>
-</body>
-</html>
+/* ---------- 0. intro ---------- */
+function intro() {
+  const c = el(`<section class="card hero">
+    ${TORCH}
+    <p class="eyebrow">Thirty years. One castaway.</p>
+    <h1>Island of Thirty</h1>
+    <p>Welcome to the island, <strong>${CONFIG.name}</strong>. Your gift is locked up until you prove you can outwit, outplay and outlast.</p>
+    <p>Four challenges stand between you and your reward. Each one wins you a digit for the lock. ${dogList} ${CONFIG.dogs.length > 1 ? "are" : "is"} counting on you.</p>
+    <button id="go">Grab your torch</button>
+  </section>`);
+  app.append(c);
+  c.querySelector("#go").onclick = () => {
+    c.querySelector(".torch").classList.add("lit");
+    c.querySelector("#go").textContent = "Fire represents your life…";
+    c.querySelector("#go").disabled = true;
+    setTimeout(() => advance(false), 1400);
+  };
+}
+
+/* ---------- 1. trivia ---------- */
+function trivia() {
+  let i = 0;
+  const c = el(`<section class="card"><p class="eyebrow">Challenge 1 · Superfan quiz</p><h2>Prove you're a true fan</h2>
+    <p class="progress"></p><p class="q" style="font-weight:600;font-size:1.15rem"></p><div class="options"></div><p class="msg"></p></section>`);
+  app.append(c);
+  const show = () => {
+    const t = TRIVIA[i];
+    c.querySelector(".progress").textContent = `Question ${i + 1} of ${TRIVIA.length}`;
+    c.querySelector(".q").textContent = t.q;
+    c.querySelector(".msg").textContent = ""; c.querySelector(".msg").className = "msg";
+    const o = c.querySelector(".options"); o.innerHTML = "";
+    t.options.forEach((txt, k) => {
+      const b = el(`<button></button>`); b.textContent = txt;
+      b.onclick = () => {
+        const m = c.querySelector(".msg");
+        if (k === t.answer) {
+          b.classList.add("right"); m.textContent = "Correct!"; m.className = "msg good";
+          o.querySelectorAll("button").forEach(x => x.disabled = true);
+          setTimeout(() => { i++; if (i < TRIVIA.length) show(); else { o.remove(); c.querySelector(".q").remove(); c.querySelector(".progress").remove(); m.remove(); winPanel(c, "Flawless victory.", "You know your stuff."); } }, 700);
+        } else {
+          b.classList.add("wrong"); b.disabled = true; m.textContent = "Nope. Try again."; m.className = "msg bad";
+        }
+      };
+      o.append(b);
+    });
+  };
+  show();
+}
+
+/* ---------- 2. scramble ---------- */
+function shuffleWord(w) {
+  let a = w.split(""), out = w;
+  for (let tries = 0; tries < 20 && out === w; tries++) { for (let k = a.length - 1; k > 0; k--) { const j = Math.floor(Math.random() * (k + 1)); [a[k], a[j]] = [a[j], a[k]]; } out = a.join(""); }
+  return out;
+}
+function scramble() {
+  const c = el(`<section class="card"><p class="eyebrow">Challenge 2 · Word puzzle</p><h2>Unscramble the tribe</h2>
+    <p>Every word has to be right before the puzzle counts.</p><div class="list" style="display:flex;flex-direction:column;gap:18px"></div><p class="msg"></p></section>`);
+  app.append(c);
+  const list = c.querySelector(".list"); let solved = 0;
+  SCRAMBLE.forEach(([w, hint], idx) => {
+    const r = el(`<div class="scr"><div class="letters">${shuffleWord(w)}</div><div class="hint">${hint}</div>
+      <div class="row"><input type="text" id="scr${idx}" autocomplete="off" spellcheck="false" aria-label="Answer for ${hint}"></div></div>`);
+    const inp = r.querySelector("input");
+    inp.oninput = () => {
+      if (inp.value.trim().toUpperCase().replace(/\s/g, "") === w) {
+        inp.classList.add("ok"); inp.disabled = true; solved++;
+        if (solved === SCRAMBLE.length) winPanel(c, "Puzzle solved!", "Every word is unscrambled.");
+      }
+    };
+    list.append(r);
+  });
+}
+
+/* ---------- 3. slide puzzle ---------- */
+function slide() {
+  const WORD = "BIRTHDAY".split(""); // 8 tiles + 1 gap
+  const c = el(`<section class="card"><p class="eyebrow">Challenge 3 · The slide puzzle</p><h2>Every season ends with a puzzle</h2>
+    <p>Slide the wooden tiles until they read <strong>BIRTHDAY</strong>, left to right, top to bottom, gap in the bottom-right corner. Tap a tile next to the gap to move it.</p>
+    <div class="board" role="grid" aria-label="Slide puzzle"></div><p class="progress moves">Moves: 0</p>
+    <div class="row" style="justify-content:center"><button class="ghost" id="shuf">Reshuffle</button></div></section>`);
+  app.append(c);
+  const board = c.querySelector(".board"); let tiles, moves = 0, done = false;
+  const neighbors = i => [i - 3, i + 3, i % 3 ? i - 1 : -1, i % 3 < 2 ? i + 1 : -1].filter(n => n >= 0 && n < 9);
+  const scramble = () => {
+    tiles = [0, 1, 2, 3, 4, 5, 6, 7, null]; let gap = 8, prev = -1;
+    for (let k = 0; k < 80; k++) { const opts = neighbors(gap).filter(n => n !== prev); const n = opts[Math.floor(Math.random() * opts.length)]; [tiles[gap], tiles[n]] = [tiles[n], tiles[gap]]; prev = gap; gap = n; }
+    moves = 0; draw();
+  };
+  const draw = () => {
+    board.innerHTML = "";
+    tiles.forEach((t, i) => {
+      const b = el(`<button class="tile ${t === null ? "blank" : ""} ${t === i ? "home" : ""}" ${t === null ? 'tabindex="-1" aria-label="Gap"' : ""}>${t === null ? "" : WORD[t]}</button>`);
+      if (t !== null) b.onclick = () => move(i);
+      board.append(b);
+    });
+    c.querySelector(".moves").textContent = `Moves: ${moves}`;
+  };
+  const move = i => {
+    if (done) return; const g = tiles.indexOf(null);
+    if (!neighbors(i).includes(g)) return;
+    [tiles[g], tiles[i]] = [tiles[i], tiles[g]]; moves++; draw();
+    if (tiles.slice(0, 8).every((t, k) => t === k)) { done = true; c.querySelector("#shuf").remove(); winPanel(c, "B-I-R-T-H-D-A-Y!", `Solved in ${moves} moves.`); }
+  };
+  c.querySelector("#shuf").onclick = scramble;
+  scramble();
+}
+
+/* ---------- 4. idol hunt ---------- */
+function hunt() {
+  const N = 6, MAX = 10;
+  const c = el(`<section class="card"><p class="eyebrow">Challenge 4 · Idol hunt</p><h2>${cap(CONFIG.dogs[0])} buried an idol</h2>
+    <p>A hidden immunity idol is buried somewhere on this beach. Dig a square and the sand tells you how close you are: <strong style="color:var(--bad)">hot</strong>, <strong style="color:var(--ember-2)">warm</strong> or <strong style="color:#7fa7b8">cold</strong>. You have ${MAX} digs.</p>
+    <div class="beach"></div><p class="msg"></p></section>`);
+  app.append(c);
+  const beach = c.querySelector(".beach"), msg = c.querySelector(".msg");
+  let idol, digs, found;
+  const bury = () => {
+    idol = Math.floor(Math.random() * N * N); digs = 0; found = false; beach.innerHTML = "";
+    msg.textContent = `Digs left: ${MAX}`; msg.className = "msg";
+    for (let i = 0; i < N * N; i++) {
+      const b = el(`<button class="sand" aria-label="Dig row ${Math.floor(i / N) + 1}, column ${i % N + 1}"></button>`);
+      b.onclick = () => dig(i, b); beach.append(b);
+    }
+  };
+  const dig = (i, b) => {
+    if (found || b.classList.contains("dug")) return;
+    digs++; b.classList.add("dug");
+    if (i === idol) {
+      found = true; b.classList.add("idol"); b.textContent = "🗿";
+      msg.textContent = ""; winPanel(c, "You found the idol!", `${cap(CONFIG.dogs.at(-1))} is very proud of you.`); return;
+    }
+    const d = Math.max(Math.abs(i % N - idol % N), Math.abs(Math.floor(i / N) - Math.floor(idol / N)));
+    const kind = d === 1 ? "hot" : d === 2 ? "warm" : "cold";
+    b.classList.add(kind); b.textContent = kind.toUpperCase();
+    if (digs >= MAX) { found = true; msg.textContent = "Out of digs. The idol has been re-hidden."; msg.className = "msg bad";
+      setTimeout(bury, 1800); }
+    else msg.textContent = `Digs left: ${MAX - digs}`;
+  };
+  bury();
+}
+
+/* ---------- 5. lock ---------- */
+function lock() {
+  const vals = CONFIG.code.map(() => 0);
+  const c = el(`<section class="card center"><p class="eyebrow">The reward</p><h2>Crack the lock</h2>
+    <p>Enter the digits from your clue pouch, in order.</p><div class="lock"></div>
+    <button id="open">Open the lock</button><p class="msg"></p></section>`);
+  app.append(c);
+  const L = c.querySelector(".lock");
+  vals.forEach((v, i) => {
+    const w = el(`<div class="wheel"><button aria-label="Digit ${i + 1} up">▲</button><div class="val">0</div><button aria-label="Digit ${i + 1} down">▼</button></div>`);
+    const [up, down] = w.querySelectorAll("button"); const out = w.querySelector(".val");
+    up.onclick = () => { vals[i] = (vals[i] + 1) % 10; out.textContent = vals[i]; };
+    down.onclick = () => { vals[i] = (vals[i] + 9) % 10; out.textContent = vals[i]; };
+    L.append(w);
+  });
+  c.querySelector("#open").onclick = () => {
+    const m = c.querySelector(".msg");
+    if (vals.every((v, i) => v === CONFIG.code[i])) advance(false);
+    else { m.textContent = "The lock won't budge. Check your clue pouch."; m.className = "msg bad"; }
+  };
+}
+
+/* ---------- 6. tribal ---------- */
+function tribal() {
+  const c = el(`<section class="card center"><p class="eyebrow">Tribal Council</p><h2>It's time to read the votes</h2>
+    <p>The tribe has voted on one question: <em>what is today?</em></p>
+    <div class="urn"></div><button id="read">Read the first vote</button></section>`);
+  app.append(c);
+  let k = 0; const urn = c.querySelector(".urn"), btn = c.querySelector("#read");
+  btn.onclick = () => {
+    if (k < CONFIG.votes.length) {
+      urn.append(el(`<div class="vote">${CONFIG.votes[k]}</div>`)); k++;
+      btn.textContent = k < CONFIG.votes.length ? "Read the next vote" : "And the tribe has spoken…";
+    } else {
+      btn.remove();
+      c.append(el(`<div style="display:flex;flex-direction:column;gap:14px;align-items:center">
+        <p class="final">Happy 30th, ${CONFIG.name}! You've earned immunity for another year.</p>
+        <p>${CONFIG.giftClue}</p><p class="hand">Love, ${CONFIG.from} (and ${dogList})</p></div>`));
+      confetti();
+    }
+  };
+}
+
+/* ---------- confetti ---------- */
+function confetti() {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const cv = document.getElementById("confetti"), ctx = cv.getContext("2d");
+  cv.width = innerWidth * devicePixelRatio; cv.height = innerHeight * devicePixelRatio; ctx.scale(devicePixelRatio, devicePixelRatio);
+  const cols = ["#ff7a1a", "#ffb347", "#7fd48a", "#f6ecd6", "#ff6b5b"];
+  const P = Array.from({ length: 160 }, () => ({ x: Math.random() * innerWidth, y: -20 - Math.random() * innerHeight, r: 4 + Math.random() * 5, vy: 2 + Math.random() * 3, vx: -1 + Math.random() * 2, a: Math.random() * 6, c: cols[Math.floor(Math.random() * cols.length)] }));
+  let t = 0;
+  (function frame() {
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+    P.forEach(p => { p.y += p.vy; p.x += p.vx + Math.sin(t / 20 + p.a); p.a += .1; ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.a); ctx.fillStyle = p.c; ctx.fillRect(-p.r / 2, -p.r / 2, p.r, p.r * 1.6); ctx.restore(); });
+    if (++t < 420) requestAnimationFrame(frame); else ctx.clearRect(0, 0, innerWidth, innerHeight);
+  })();
+}
+
+render();
+</script>
