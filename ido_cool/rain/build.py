@@ -18,7 +18,7 @@ CSS="""*{box-sizing:border-box}body{margin:0;background:#777}p{margin:0}
 .ls{padding:110px 90px}
 .ls .t{font:italic 400 100px/.95 'Cormorant Garamond';letter-spacing:-.02em;margin-bottom:16px}
 .ls .k{color:var(--gold);margin-bottom:50px}
-.row{display:flex;gap:28px;padding:24px 0;border-bottom:1.5px solid #e7ddd0}
+.row{display:flex;gap:28px;padding:20px 0;border-bottom:1.5px solid #e7ddd0}
 .row .d{flex:none;font:400 52px/1 'Pinyon Script';color:var(--wine);width:60px}
 .row b{display:block;font:500 46px/1.05 'Cormorant Garamond'}
 .row i{display:block;font:400 26px/1.35 Raleway;color:#6d5d55;margin-top:6px;font-style:normal}
@@ -28,7 +28,8 @@ M='<div class="mark">I Do by Marisa</div>'
 S=[]
 S.append(f'<section class="s dk c1" id="rain1"><div class="drops"></div><p class="cap k">a hot take from your officiant</p><h1>rain on your wedding day?</h1><p class="g">good.</p><p class="sub">swipe. i’ll explain.</p>{M}</section>')
 S.append(f'<section class="s c2" id="rain2"><p class="n">02</p><div class="ph"><img src="me.jpg"></div><p class="q">i love rain. people call it gloomy.<br>i think it’s beautiful and calming.</p><p class="cap who">marisa, on a wet boardwalk</p>{M}</section>')
-R=[('the light is softer','overcast skies are a photographer’s dream. no squinting, no harsh shadows.'),
+R=[('it’s good luck','the saying goes: a wet knot is harder to untie. you’re literally tying the knot.'),
+   ('the light is softer','overcast skies are a photographer’s dream. no squinting, no harsh shadows.'),
    ('everyone leans in','guests huddle close under umbrellas. it gets cozy fast.'),
    ('clear umbrellas = iconic photos','seriously. buy a dozen and thank me later.'),
    ('it becomes the story','nobody retells “it was 72 and sunny.” they retell the rain.')]
