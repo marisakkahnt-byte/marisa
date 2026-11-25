@@ -322,11 +322,18 @@ function scramble() {
   const c = card("Immunity Challenge", "Word Scramble", `
     <p class="host"><b>The host</b>Unscramble every word. Get them all and the torch is yours.</p><div class="list"></div>
     <div class="hintrow"><button class="ghost hint-btn">Ask the host for a hint</button></div>`);
-  c.querySelector(".hint-btn").onclick = () => sticker("Got nothin' for ya.");
+  let asks = 0;
+  c.querySelector(".hint-btn").onclick = () => {
+    asks++;
+    if (asks === 1) return sticker("Got nothin' for ya.");
+    sticker("Fine. Just this once.");
+    c.querySelectorAll(".scr .hint").forEach(h => h.hidden = false);
+    c.querySelector(".hintrow").hidden = true;
+  };
   const list = c.querySelector(".list"); let solved = 0;
   SCRAMBLE.forEach(([w, hint], idx) => {
-    const r = el(`<div class="scr"><div class="letters">${shuffleWord(w).split("").map(ch => `<i>${ch}</i>`).join("")}</div><div class="hint">${hint}</div>
-      <input type="text" id="scr${idx}" autocomplete="off" spellcheck="false" aria-label="Answer: ${hint}"></div>`);
+    const r = el(`<div class="scr"><div class="letters">${shuffleWord(w).split("").map(ch => `<i>${ch}</i>`).join("")}</div><div class="hint" hidden>${hint}</div>
+      <input type="text" id="scr${idx}" autocomplete="off" spellcheck="false" aria-label="Word ${idx + 1} answer"></div>`);
     const inp = r.querySelector("input");
     inp.oninput = () => {
       if (inp.value.toUpperCase().replace(/\s/g, "") === w.replace(/\s/g, "")) {
