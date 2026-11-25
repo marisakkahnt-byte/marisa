@@ -43,11 +43,12 @@ IK = lambda t: f'<p class="ik">{t}</p>'
 IS = lambda t, sz=130: f'<p class="script" style="font-size:{sz}px">{t}</p>'
 IP = lambda t, sz=48: f'<p class="ip" style="font-size:{sz}px">{t}</p>'
 R = '<div class="rule"></div>'
-ido(C, '1', 'dark', IK('start here') + IS('Your friend officiates.<br>I write the words.', 108) + IP('Swipe for 3 ways I can help →', 44))
-ido(C, '2', 'cream', IK('01 · ceremony scripts') + IS('The words', 140) + R + IP('A ceremony written from your real story, timed and ready for your friend to read. Never a template.'))
-ido(C, '3', 'blush', IK('02 · officiant coaching') + IS('The confidence', 130) + R + IP('One-on-one by phone or Google Meet, so the person you picked feels ready, not just willing.'))
-ido(C, '4', 'cream', IK('03 · write it yourself') + IS('The tools', 140) + R + IP('The Vow Builder, the Toast Builder, the Officiant Kit and free printables.'))
-ido(C, '5', 'dark', IK('hi, I’m Marisa') + IS('Let’s tell your story', 116) + IP('Ordained minister · ceremony writer · officiant coach') + IP('<b>idobymarisa.com</b> · link in bio', 44))
+ido(C, '1', 'dark', IK('start here') + IS('I marry you.<br>Or I write the words<br>for the friend who does.', 96) + IP('Swipe to see how →', 44))
+ido(C, '2', 'cream', IK('01 · I officiate') + IS('The Signature Ceremony', 104) + R + IP('Your ceremony, written from your real story and delivered by me. Weddings, elopements and vow renewals around Metro Detroit.'))
+ido(C, '3', 'blush', IK('02 · your friend officiates') + IS('The words', 140) + R + IP('A custom script for the friend or family member marrying you, timed and ready to read.'))
+ido(C, '4', 'cream', IK('03 · officiant coaching') + IS('The confidence', 130) + R + IP('One-on-one by phone or Google Meet, so the person you picked feels ready, not just willing.'))
+ido(C, '5', 'blush', IK('04 · write it yourself') + IS('The tools', 140) + R + IP('The Vow Builder, the Toast Builder, the Officiant Kit and free printables.'))
+ido(C, '6', 'dark', IK('hi, I’m Marisa') + IS('Let’s tell your story', 116) + IP('Ordained minister · officiant · ceremony writer') + IP('<b>idobymarisa.com</b> · link in bio', 44))
 
 css = open(os.path.join(D, '..', 'highlights', 'stories.html')).read().split('<style>')[1].split('</style>')[0]
 css = css.replace('height:1920px', 'height:1350px') + '.st .ol li{margin-bottom:40px}.st .ol b{font-size:52px}.ft{bottom:70px}.ido .frame{inset:40px}'

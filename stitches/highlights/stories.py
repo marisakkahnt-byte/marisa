@@ -64,10 +64,10 @@ IS = lambda t, sz=150: f'<p class="script" style="font-size:{sz}px">{t}</p>'
 IP = lambda t, sz=52: f'<p class="ip" style="font-size:{sz}px">{t}</p>'
 R = '<div class="rule"></div>'
 
-ido('01_Start-Here', '1', 'dark', IK('start here') + IS('Hi, I’m Marisa') + IP('Ordained minister, ceremony writer and officiant coach in Metro Detroit.'))
+ido('01_Start-Here', '1', 'dark', IK('start here') + IS('Hi, I’m Marisa') + IP('Ordained minister, officiant and ceremony writer in Metro Detroit.'))
 ido('01_Start-Here', '2', 'cream', IK('how I can help') + IS('Your story, out loud', 120) + R +
-    '<ul class="iul"><li>Ceremony scripts for when a friend officiates</li><li>Officiant coaching by phone or Google Meet</li><li>Vow writing help</li><li>Officiating on select dates</li></ul>')
-ido('01_Start-Here', '3', 'blush', IK('let’s talk') + IS('Tell me your story', 130) + IP('Scripts and coaching happen anywhere in the U.S.') + IP('<b>idobymarisa.com</b>', 48), sticker=True)
+    '<ul class="iul"><li>Officiating your ceremony</li><li>Ceremony scripts for when a friend officiates</li><li>Officiant coaching by phone or Google Meet</li><li>Vow writing help</li></ul>')
+ido('01_Start-Here', '3', 'blush', IK('let’s talk') + IS('Tell me your story', 130) + IP('I officiate around Metro Detroit. Scripts and coaching happen anywhere in the U.S.') + IP('<b>idobymarisa.com</b>', 48), sticker=True)
 
 ido('02_Scripts', '1', 'dark', IK('script-only ceremonies') + IS('Your friend officiates.<br>I write the words.', 112))
 ido('02_Scripts', '2', 'cream', IK('how it works') +
