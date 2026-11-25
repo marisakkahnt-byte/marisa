@@ -158,17 +158,17 @@ button { font: inherit; color: inherit; }
 
 /* street extras */
 .scene .plaque-text { font: italic 600 19px var(--display); }
-.scene .plaque-text--stitches { font: 700 12.5px var(--display); letter-spacing: .1em; text-transform: uppercase; }
+.scene .plaque-text--stitches { font: 400 21px "DM Serif Display", var(--display); letter-spacing: -.02em; }
 .scene .plaque-script { font: 400 26px var(--script); }
 .suite .script-title { font: 400 2.6rem var(--script); }
-.suite__tagline { font: 600 1.6rem/1.15 var(--display); color: #2f4a3a; margin: 0 auto .2rem !important; }
-.suite__tagline em { display: block; color: #1f2a44; font-weight: 400; }
-.suite__script { font: italic 500 1.6rem var(--hand); color: #c9a24a; margin: 0 auto .8rem !important; }
+.suite__tagline { font: 600 1.6rem/1.15 var(--display); color: #2B2B2B; margin: 0 auto .2rem !important; }
+.suite__tagline em { display: block; color: #8C857A; font-weight: 400; }
+.suite__script { font: italic 500 1.6rem var(--hand); color: #E86A9A; margin: 0 auto .8rem !important; }
 .suite__quote { font-style: italic; color: var(--ink-soft); border-block: 1px solid currentColor; padding: .6rem 0; max-width: 20rem !important; }
 #stitches .door__leaf {
   background:
     linear-gradient(var(--ink), var(--ink)) 50% 64px / 1px calc(100% - 92px) no-repeat,
-    radial-gradient(ellipse 7px 5px, rgba(201,162,74,.55) 96%, transparent) 0 0 / 34px 30px,
+    radial-gradient(ellipse 5px 5px, rgba(232,106,154,.55) 96%, transparent) 0 0 / 34px 30px,
     var(--door);
 }
 .scene .shop-sign { font: italic 600 40px var(--display); fill: #c2456b; }
@@ -388,8 +388,8 @@ section { padding: clamp(4.5rem, 10vw, 8rem) 16px; scroll-margin-top: 64px; }
 
 /* ---------- Houses: storefronts with window displays ---------- */
 .house--stitches {
-  --wall: #f1e6cc; --roof: #2f4a3a; --trim: #c9a24a; --brand: #2f4a3a; --brand-2: #1f2a44; --shutter: #2f4a3a; --soft: #f1e6cc; --accent: #c9a24a;
-  background: repeating-linear-gradient(90deg, #f6efdf 0 26px, #fbf6ee 26px 52px);
+  --wall: #F4EFE7; --roof: #E86A9A; --trim: #E86A9A; --brand: #2B2B2B; --brand-2: #8C857A; --shutter: #E86A9A; --soft: #F4EFE7; --accent: #E86A9A;
+  background: repeating-linear-gradient(90deg, #F4EFE7 0 26px, #FBF9F6 26px 52px);
 }
 .house--ido {
   --wall: #f3ece2; --roof: #b7a097; --trim: #c2a67c; --brand: #2c2825; --brand-2: #8c7268; --shutter: #b7a097; --soft: #f3ece2; --accent: #e6d6cc;
@@ -423,8 +423,7 @@ section { padding: clamp(4.5rem, 10vw, 8rem) 16px; scroll-margin-top: 64px; }
 }
 .house--stitches .facade__body {
   background:
-    radial-gradient(ellipse 8px 5px at 20% 30%, #cfc8bb 95%, transparent) 0 0 / 90px 80px,
-    radial-gradient(ellipse 6px 4px at 70% 70%, #cfc8bb 95%, transparent) 0 0 / 90px 80px,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='110' viewBox='0 0 120 110'%3E%3Cg opacity='.16'%3E%3Cpath d='M22 18h12l4 5-10 11-10-11z' fill='%23E86A9A'/%3E%3Cpath d='M86 70c-3-3-1-7 3-7 2 0 3 1 4 3 1-2 2-3 4-3 4 0 6 4 3 7l-7 7z' fill='%232F6FD6'/%3E%3Cpath d='M70 20l4-4 4 4-4 4z M30 84l3-3 3 3-3 3z' fill='%23D9D3C7'/%3E%3C/g%3E%3C/svg%3E") 0 0 / 170px 150px,
     var(--wall);
 }
 .facade__sign {
@@ -432,6 +431,20 @@ section { padding: clamp(4.5rem, 10vw, 8rem) 16px; scroll-margin-top: 64px; }
   box-shadow: inset 0 0 0 5px #fffdf9, inset 0 0 0 6px var(--trim);
   font: 700 clamp(1.4rem, 4vw, 2.1rem) var(--display); color: var(--brand); letter-spacing: .08em; text-transform: uppercase;
 }
+.facade__sign--gem { position: relative; font: 400 clamp(2.4rem, 7vw, 3.6rem)/1 "DM Serif Display", var(--display); text-transform: none; letter-spacing: -.035em; color: #2B2B2B; padding: .18em .9em .26em; box-shadow: inset 0 0 0 5px #fffdf9, inset 0 0 0 6px #E86A9A; }
+.jgems { position: absolute; inset: 0; pointer-events: none; }
+.jgem { position: absolute; filter: drop-shadow(0 4px 5px rgba(40,30,20,.25)); animation: jfloat 4.6s ease-in-out infinite; }
+.jgem--a { width: 34px; left: -18px; top: -16px; transform: rotate(-12deg); }
+.jgem--b { width: 34px; right: -20px; top: -10px; animation-delay: -1.4s; }
+.jgem--c { width: 26px; right: 14%; bottom: -14px; animation-delay: -2.2s; }
+.jgem--d { width: 22px; left: 16%; bottom: -12px; animation-delay: -3s; }
+.jgem--e { width: 20px; left: 46%; top: -14px; animation-delay: -.7s; }
+.jglint { position: absolute; color: #fff; font-size: 16px; text-shadow: 0 0 6px #fff, 0 0 2px #E86A9A; animation: jtwinkle 2.6s ease-in-out infinite; }
+.jglint--a { left: -6px; top: -10px; }
+.jglint--b { right: -4px; top: -4px; animation-delay: -1.3s; }
+@keyframes jfloat { 0%,100% { translate: 0 0; } 50% { translate: 0 -5px; } }
+@keyframes jtwinkle { 0%,55%,100% { transform: scale(0) rotate(0); opacity: 0; } 70% { transform: scale(1.2) rotate(45deg); opacity: 1; } 85% { transform: scale(.2) rotate(90deg); opacity: .4; } }
+@media (prefers-reduced-motion: reduce) { .jgem, .jglint { animation: none; } .jglint { opacity: 0; } }
 .house--ido .facade__sign { font: 400 clamp(2.2rem, 6vw, 3rem) var(--script); text-transform: none; letter-spacing: 0; padding: .1em 1.1em; }
 .facade__kind { margin: 1rem 0 .4rem; font: 500 .72rem var(--caps); letter-spacing: .26em; text-transform: uppercase; color: var(--brand-2); }
 .facade__tagline { margin: .2rem auto 0; max-width: 34rem; font: 600 clamp(1.4rem, 3.4vw, 1.9rem)/1.2 var(--display); color: var(--brand); }
@@ -546,7 +559,7 @@ section { padding: clamp(4.5rem, 10vw, 8rem) 16px; scroll-margin-top: 64px; }
 .persona__svg { inset: 10px 8px 4px; width: calc(100% - 16px); height: calc(100% - 14px); }
 .persona figcaption { margin-top: .4rem; font: 400 1.6rem/1 var(--script); color: var(--persona-ink, var(--rose)); }
 .persona--office { float: right; margin: 0 0 1rem 1.4rem; --persona-bg: #f6dbe4; }
-.persona--stitches { margin: 1.8rem auto 0; --persona-bg: #e9e4cf; --persona-ink: #2f4a3a; }
+.persona--stitches { margin: 1.8rem auto 0; --persona-bg: #EFE9DF; --persona-ink: #2B2B2B; }
 .persona--ido { margin: 1.8rem auto 0; --persona-bg: #ece2da; --persona-ink: #8c7268; }
 @media (max-width: 600px) { .persona--office { float: none; margin: 0 auto 1.4rem; } }
 .scene .idle { animation: idlebob 2.6s ease-in-out infinite alternate; }
@@ -595,7 +608,7 @@ input:focus, textarea:focus { outline: none; border-bottom: 2px solid var(--rose
   padding: 1.4rem 1rem 1.2rem; border: 1px solid var(--ink); border-radius: 14px; background: #fffdf9;
   transition: transform .4s var(--bounce), box-shadow .4s;
 }
-.door-btn--stitches { --door: #2f4a3a; }
+.door-btn--stitches { --door: #E86A9A; }
 .door-btn--ido { --door: #b7a097; }
 .door-btn:hover, .door-btn:focus-visible { transform: translateY(-5px); box-shadow: 0 14px 24px -14px rgba(31,26,28,.45); }
 .door-btn__door {
@@ -626,7 +639,7 @@ input:focus, textarea:focus { outline: none; border-bottom: 2px solid var(--rose
 .quiz__result--storyteller .quiz__frame { --persona-bg: #ece2da; }
 .quiz__kicker { margin: 1rem 0 0; font: 500 .7rem var(--caps); letter-spacing: .28em; text-transform: uppercase; color: var(--muted); }
 .quiz__title { font: 400 2.6rem/1.1 var(--script); color: var(--rose); margin: .1rem 0 .4rem; }
-.quiz__result--maker .quiz__title { color: #2f4a3a; }
+.quiz__result--maker .quiz__title { color: #C2457A; }
 .quiz__result--storyteller .quiz__title { color: #8c7268; }
 .quiz__line { max-width: 26rem; margin: 0 auto 1.2rem; }
 .quiz__cta { margin-bottom: .6rem; }
