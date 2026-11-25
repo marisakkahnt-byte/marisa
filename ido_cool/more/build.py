@@ -16,7 +16,7 @@ CSS = """*{box-sizing:border-box}body{margin:0;background:#777}p{margin:0}
 .dk .t{position:absolute;left:0;right:0;top:560px;font:italic 400 92px 'Cormorant Garamond'}
 .dk .sub{position:absolute;left:140px;right:140px;top:760px;font:400 34px/1.5 'Raleway';color:#d8cfc4}
 .ln{background:var(--cream)}
-.ln .ph{position:absolute;left:70px;right:70px;top:70px;height:700px;border-radius:24px;background-size:cover;background-position:center}
+.ln .ph{position:absolute;left:70px;right:70px;top:70px;height:720px;display:flex;align-items:center;justify-content:center}.ln .ph img{max-width:100%;max-height:100%;border-radius:20px}
 .ln .q{position:absolute;left:90px;right:90px;top:830px;font:italic 400 60px/1.15 'Cormorant Garamond'}
 .ln .who{position:absolute;left:90px;top:1180px;color:var(--gold)}
 .ln .mark{color:var(--wine)}
@@ -50,7 +50,7 @@ L = [('kj.jpg', 'their vows promised love through “the road trips and the ordi
      ('aa.jpg', 'her parents and both sets of her grandparents were married this same weekend. now it’s theirs too.', 'Avance &amp; Alex'),
      ('cd.jpg', 'in their world, a pinky promise is binding. (exceptions for gifts and surprises only.)', 'Catherine &amp; David')]
 for i, (img, q, who) in enumerate(L, 1):
-    S.append(f'<section class="s ln" id="lines{i}"><div class="n">{i+1}/6</div><div class="ph" style="background-image:url(img/{img.split(chr(34))[0]});background-position:{'center top' if 'data-top' in img else 'center'}"></div><p class="q">{q}</p><p class="cap who">{who}</p>{M}</section>')
+    S.append(f'<section class="s ln" id="lines{i}"><div class="n">{i+1}/6</div><div class="ph"><img src="img/{img.split(chr(34))[0]}"></div><p class="q">{q}</p><p class="cap who">{who}</p>{M}</section>')
 S.append('<section class="s dk" id="lines5"><p class="t" style="top:330px">your story</p><p class="y" style="top:450px;font-size:200px">is next</p>'
          '<p class="sub" style="top:820px">booking 2027 weddings in Metro Detroit, and ceremony scripts anywhere. i marry you, or i write the words for the friend who does.</p><div class="mark" style="color:#D9C08F">I Do by Marisa</div></section>')
 S.append(f'<section class="s cv" id="aecover"><div class="bg" style="background-image:url(img/book1.jpg)"></div><div class="fade"></div><div class="ttl"><p class="cap k">issue no. 01</p><p class="h">the Altar Edit</p><p class="d">what’s happening in weddings,<br>and what it means for your ceremony</p></div>{M}</section>')
