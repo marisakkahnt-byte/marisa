@@ -1,7 +1,7 @@
 // Record each text TikTok to MP4: node tt_rec.js tips tuesday toast vowline hobbyist
 const { chromium } = require('playwright');
 const path = require('path'); const fs = require('fs'); const { execFileSync } = require('child_process');
-const NAMES = { tips: 'TikTok_IDo_Officiant-Notes', tuesday: 'TikTok_IDo_Write-About-A-Tuesday', toast: 'TikTok_IDo_Toast-Donts', vowline: 'TikTok_IDo_Vow-Line', hobbyist: 'TikTok_Stitches_Serial-Hobbyist' };
+const NAMES = { tips: 'TikTok_IDo_Officiant-Notes', tuesday: 'TikTok_IDo_Write-About-A-Tuesday', toast: 'TikTok_IDo_Toast-Donts', vowline: 'TikTok_IDo_Vow-Line', hobbyist: 'TikTok_Stitches_Serial-Hobbyist', engaged: 'TikTok_IDo_Just-Engaged', friend: 'TikTok_IDo_Friend-Officiant-Needs', whyme: 'TikTok_IDo_When-I-Officiate' };
 (async () => {
   const b = await chromium.launch();
   for (const v of process.argv.slice(2)) {
