@@ -344,7 +344,8 @@ function slide() {
   const c = card("Immunity Challenge", "The Final Puzzle", `
     <p class="host"><b>The host</b>It always comes down to a puzzle. Slide the tiles until they spell <strong>BIRTHDAY</strong>, gap in the bottom-right corner. Tiles in the right spot turn white.</p>
     <div class="board" aria-label="Slide puzzle"></div><p class="progress moves" style="text-align:center">Moves: 0</p>
-    <div class="hintrow" style="gap:10px;flex-wrap:wrap"><button class="ghost" id="shuf">Reshuffle</button><button class="ghost hint-btn">Ask for a hint</button></div>`);
+    <div class="hintrow" style="gap:10px;flex-wrap:wrap"><button class="ghost" id="shuf">Reshuffle</button><button class="ghost hint-btn">Ask for a hint</button></div>
+    <p class="progress" style="text-align:center">Stuck? Ask for a hint twice and the host will solve it for you.</p>`);
   const board = c.querySelector(".board"); let tiles, moves = 0, done = false, hist = [], asks = 0;
   const nb = i => [i - 3, i + 3, i % 3 ? i - 1 : -1, i % 3 < 2 ? i + 1 : -1].filter(n => n >= 0 && n < 9);
   const solved = () => tiles.slice(0, 8).every((t, k) => t === k);
@@ -376,8 +377,11 @@ function slide() {
   c.querySelector(".hint-btn").onclick = () => {
     asks++;
     if (asks === 1) return sticker("Got nothin' for ya.");
-    sticker(asks === 2 ? "Fine. Just this once." : "OK, OK. Here.");
-    if (hist.length) move(hist[hist.length - 1], true);
+    if (asks > 2) return;
+    sticker("Fine. Just this once.");
+    c.querySelectorAll(".hintrow button").forEach(b => b.disabled = true);
+    const solveStep = () => { if (done || !hist.length) return; move(hist[hist.length - 1], true); setTimeout(solveStep, 350); };
+    setTimeout(solveStep, 600);
   };
   c.querySelector("#shuf").onclick = () => { asks = 0; mix(); };
   mix();
