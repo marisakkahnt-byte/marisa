@@ -342,33 +342,45 @@ function scramble() {
 function slide() {
   const WORD = "BIRTHDAY".split("");
   const c = card("Immunity Challenge", "The Final Puzzle", `
-    <p class="host"><b>The host</b>It always comes down to a puzzle. Slide the tiles until they spell <strong>BIRTHDAY</strong>, gap in the bottom-right corner.</p>
+    <p class="host"><b>The host</b>It always comes down to a puzzle. Slide the tiles until they spell <strong>BIRTHDAY</strong>, gap in the bottom-right corner. Tiles in the right spot turn white.</p>
     <div class="board" aria-label="Slide puzzle"></div><p class="progress moves" style="text-align:center">Moves: 0</p>
     <div class="hintrow" style="gap:10px;flex-wrap:wrap"><button class="ghost" id="shuf">Reshuffle</button><button class="ghost hint-btn">Ask for a hint</button></div>`);
-  c.querySelector(".hint-btn").onclick = () => sticker(pick(["Got nothin' for ya.", "Dig deep!"]));
-  const board = c.querySelector(".board"); let tiles, moves = 0, done = false;
+  const board = c.querySelector(".board"); let tiles, moves = 0, done = false, hist = [], asks = 0;
   const nb = i => [i - 3, i + 3, i % 3 ? i - 1 : -1, i % 3 < 2 ? i + 1 : -1].filter(n => n >= 0 && n < 9);
+  const solved = () => tiles.slice(0, 8).every((t, k) => t === k);
   const mix = () => {
-    tiles = [0, 1, 2, 3, 4, 5, 6, 7, null]; let gap = 8, prev = -1;
-    for (let k = 0; k < 80; k++) { const opts = nb(gap).filter(n => n !== prev); const n = opts[Math.floor(Math.random() * opts.length)]; [tiles[gap], tiles[n]] = [tiles[n], tiles[gap]]; prev = gap; gap = n; }
+    do {
+      tiles = [0, 1, 2, 3, 4, 5, 6, 7, null]; hist = []; let gap = 8, prev = -1;
+      for (let k = 0; k < 12; k++) { const opts = nb(gap).filter(n => n !== prev); const n = opts[Math.floor(Math.random() * opts.length)]; [tiles[gap], tiles[n]] = [tiles[n], tiles[gap]]; hist.push(gap); prev = gap; gap = n; }
+    } while (solved());
     moves = 0; draw();
   };
-  const draw = () => {
+  const draw = (flash = -1) => {
     board.innerHTML = "";
     tiles.forEach((t, i) => {
       const b = el(`<button class="tile ${t === null ? "blank" : ""} ${t === i ? "home" : ""}" ${t === null ? 'tabindex="-1" aria-label="Gap"' : ""}>${t === null ? "" : WORD[t]}</button>`);
+      if (i === flash) b.style.outline = "3px solid var(--good)";
       if (t !== null) b.onclick = () => move(i);
       board.append(b);
     });
     c.querySelector(".moves").textContent = `Moves: ${moves}`;
   };
-  const move = i => {
+  const move = (i, fromHint = false) => {
     if (done) return; const g = tiles.indexOf(null);
     if (!nb(i).includes(g)) return;
-    [tiles[g], tiles[i]] = [tiles[i], tiles[g]]; moves++; draw(); Music.tick();
-    if (tiles.slice(0, 8).every((t, k) => t === k)) { done = true; c.querySelector(".hintrow").remove(); winPanel(c, `Solved in ${moves} moves. ${G} wins immunity!`); }
+    [tiles[g], tiles[i]] = [tiles[i], tiles[g]]; moves++;
+    if (fromHint) hist.pop(); else hist.push(g);
+    draw(fromHint ? g : -1); Music.tick();
+    if (solved()) { done = true; c.querySelector(".hintrow").remove(); winPanel(c, `Solved in ${moves} moves. ${G} wins immunity!`); }
   };
-  c.querySelector("#shuf").onclick = mix; mix();
+  c.querySelector(".hint-btn").onclick = () => {
+    asks++;
+    if (asks === 1) return sticker("Got nothin' for ya.");
+    sticker(asks === 2 ? "Fine. Just this once." : "OK, OK. Here.");
+    if (hist.length) move(hist[hist.length - 1], true);
+  };
+  c.querySelector("#shuf").onclick = () => { asks = 0; mix(); };
+  mix();
 }
 
 /* ---------- 4. idol hunt ---------- */
