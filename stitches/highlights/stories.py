@@ -90,6 +90,19 @@ ido('04_Shop', '3', 'dark', IK('shop now') + IS('Link’s right here', 130) + IP
 ido('05_Kind-Words', '1', 'dark', IK('kind words') + '<p class="iq">“There is absolutely<br>no one better.”</p>' + IP('— Nick &amp; Hannah', 46))
 ido('05_Kind-Words', '2', 'blush', IK('kind words') + '<p class="iq">“She made everyone laugh,<br>and you felt in on the<br>couple’s inside jokes!”</p>' + IP('— Catherine O’Gorman', 46))
 
+# ---------------- STITCHES: HOBBY HIGHLIGHTS ----------------
+def cover(fn, word, shape, g, w):
+    S.append(('crafts/covers', fn, f'<section class="s st"><div class="in" style="display:flex;flex-direction:column;align-items:center"><div style="position:relative;width:{w}px;height:{int(w*float(SH[shape][0].split()[3])/float(SH[shape][0].split()[2]))}px">{gem(shape, g, w, 0, 0)}</div>'
+              f'<div style="font:400 {150 if len(word) > 9 else 170}px/1 \'DM Serif Display\';letter-spacing:-.04em;margin-top:60px">{word}</div></div></section>'))
+CRAFTS = [('05_needlepoint', 'needlepoint', 'pear', 'ruby', 250, 'where it all started', 'little canvases, one tiny stitch at a time.', [('heart', 'rose', 120, 130, 300, -10), ('round', 'dia', 110, 830, 1480, 0)]),
+          ('06_hand-stitched', 'by hand', 'heart', 'ame', 400, 'hand embroidery', 'no machine. just a hoop,<br>a needle and a playlist.', [('marq', 'cit', 60, 860, 320, 20), ('emerald', 'em', 130, 130, 1460, -8)]),
+          ('07_quilting', 'quilting', 'emerald', 'em', 420, 'the newest hobby', 'learning to quilt.<br>the hobbies will not stop.', [('heart', 'sap', 120, 830, 300, 10), ('pear', 'ruby', 80, 150, 1480, -12)]),
+          ('08_wips', 'wips', 'marq', 'cit', 170, 'works in progress', 'half-finished, fully loved.<br>come see what’s on the hoop.', [('round', 'ame', 120, 130, 320, 0), ('heart', 'rose', 110, 840, 1470, 8)])]
+for fn, word, shape, g, w, kick, line, extra in CRAFTS:
+    cover(fn, word, shape, g, w)
+    title = {'wips': 'on the hoop', 'by hand': 'by hand'}.get(word, word)
+    st('../crafts/stories/' + fn, '1', K(kick) + H(title) + P(line), ''.join(gem(*e) for e in extra))
+
 CSS = """
 *{box-sizing:border-box}body{margin:0;background:#777}
 .s{width:1080px;height:1920px;position:relative;overflow:hidden;margin-bottom:10px;display:flex;align-items:center;justify-content:center;text-align:center}
