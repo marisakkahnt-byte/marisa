@@ -8,9 +8,10 @@ CSS = """
 .cap{font:600 22px 'Raleway';letter-spacing:.32em;text-transform:uppercase}
 .logo{position:absolute;right:56px;bottom:40px;font:400 44px 'Pinyon Script';opacity:.85}
 /* profile */
-.pf{background:var(--blush);padding:70px 70px}
+.pf{background:var(--blush);padding:56px 70px}
+.pf .logo{bottom:14px}
 .pf .name{font:600 64px 'Raleway';letter-spacing:-.01em;margin:0}
-.pf .ph{height:340px;border-radius:30px;margin:26px 0 22px;background:repeating-linear-gradient(120deg,#d9c3bb 0 30px,#e4cfc8 30px 60px);display:flex;align-items:center;justify-content:center;font:600 24px 'Raleway';letter-spacing:.2em;color:#8a6f66}
+.pf .ph{height:380px;border-radius:30px;margin:26px 0 22px;background:repeating-linear-gradient(120deg,#d9c3bb 0 30px,#e4cfc8 30px 60px);display:flex;align-items:center;justify-content:center;font:600 24px 'Raleway';letter-spacing:.2em;color:#8a6f66}
 .chips{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:22px}
 .chips span{background:#fff;border-radius:999px;padding:12px 22px;font:500 24px 'Raleway'}
 .card{background:#fff;border-radius:30px;padding:28px 36px;margin-bottom:18px;position:relative}
@@ -43,7 +44,7 @@ CSS = """
 """
 S = []
 S.append('<section class="s pf" id="profile"><p class="name">Marisa, your officiant</p>'
- '<div class="ph">YOUR PHOTO HERE</div>'
+ '<div class="ph" style="background:url(photos/me/officiant_01.jpg) center 22%/cover"></div>'
  '<div class="chips"><span>📍 Metro Detroit</span><span>💍 Ordained minister</span><span>🎤 Officiant</span><span>✍️ Ceremony writer</span></div>'
  '<div class="card"><b>My simple pleasures</b><p>a 20-minute ceremony, a script in 14-point font, the pause right after the kiss</p><i>♡</i></div>'
  '<div class="card"><b>I’ll fall for you if</b><p>you tell me about a random Tuesday</p><i>♡</i></div>'
