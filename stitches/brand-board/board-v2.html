@@ -1,0 +1,129 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Marisa Stitches Brand Board v2</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--oat:#F4EFE7;--linen:#FBF9F6;--greige:#D9D3C7;--ink:#2B2B2B;--soft:#8C857A;--rose:#E86A9A;--sap:#2F6FD6;--em:#1FA35B;--ruby:#C8203E;--ame:#8E6CD8;--dia:#E9EDF3;--cit:#E9B949}
+*{box-sizing:border-box}body{margin:0;background:#E7E2D9}
+.board{width:1600px;padding:64px;background:var(--linen);font-family:'DM Sans',sans-serif;color:var(--ink);position:relative;overflow:hidden}
+.k{font:700 12px 'DM Sans';letter-spacing:.32em;text-transform:uppercase;color:var(--soft);margin:0 0 16px}
+.serif{font-family:'DM Serif Display',serif;letter-spacing:-.035em;line-height:.88}
+.top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1px solid var(--greige);padding-bottom:26px;margin-bottom:40px}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:28px}
+.card{border-radius:20px;padding:30px;background:#fff;position:relative;overflow:hidden;border:1px solid #EEE9E0}
+.span12{grid-column:span 12}.span6{grid-column:span 6}.span7{grid-column:span 7}.span5{grid-column:span 5}
+.logos{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px}
+.logo{border-radius:16px;height:250px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
+.lab{position:absolute;bottom:12px;left:0;right:0;font:700 10px 'DM Sans';letter-spacing:.24em;text-transform:uppercase;color:var(--soft)}
+.g{position:absolute;filter:drop-shadow(0 6px 8px rgba(40,30,20,.22))}
+.sw{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.chip{border-radius:14px;height:120px;display:flex;flex-direction:column;justify-content:flex-end;padding:14px;font:700 15px 'DM Sans';color:var(--ink);border:1px solid #E6E0D5}
+.chip small{font:500 12px 'DM Sans';opacity:.75}
+.gemrow{display:flex;gap:18px;align-items:flex-end;flex-wrap:wrap;margin-top:6px}
+.gemrow figure{margin:0;text-align:center;font:500 13px 'DM Sans';color:var(--soft)}
+.gemrow svg{display:block;margin:0 auto 6px;filter:drop-shadow(0 6px 8px rgba(40,30,20,.2))}
+.sf{background:var(--linen);border-radius:12px;padding:14px 16px;border:1px dashed var(--greige)}
+.sf b{display:block;font:700 10px 'DM Sans';letter-spacing:.22em;text-transform:uppercase;color:var(--soft);margin-bottom:6px}
+.sf span{font-size:32px;line-height:1.1}
+.stitchfonts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.reel{flex:none;width:230px;height:400px;border-radius:18px;position:relative;overflow:hidden;background:linear-gradient(160deg,#E9E4DB,#CFC8BC);display:flex;align-items:center;justify-content:center;text-align:center}
+.reel .t{font:400 54px 'DM Serif Display';letter-spacing:-.045em;line-height:.82;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.18)}
+ul.rules{margin:0;padding-left:20px;font-size:17px;line-height:1.65}
+.btn{display:inline-block;background:var(--ink);color:#fff;font:500 16px 'DM Sans';padding:15px 28px;border-radius:999px}
+</style></head><body>
+<!-- gem library -->
+<svg width="0" height="0" style="position:absolute"><defs>
+<linearGradient id="gRose" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFD3E4"/><stop offset=".45" stop-color="#E86A9A"/><stop offset="1" stop-color="#9E2E5F"/></linearGradient>
+<linearGradient id="gSap" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#BFD8FF"/><stop offset=".45" stop-color="#2F6FD6"/><stop offset="1" stop-color="#173C86"/></linearGradient>
+<linearGradient id="gEm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B6F0CC"/><stop offset=".45" stop-color="#1FA35B"/><stop offset="1" stop-color="#0B5A31"/></linearGradient>
+<linearGradient id="gRuby" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFB3BF"/><stop offset=".45" stop-color="#C8203E"/><stop offset="1" stop-color="#6E0E21"/></linearGradient>
+<linearGradient id="gAme" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E5D9FF"/><stop offset=".45" stop-color="#8E6CD8"/><stop offset="1" stop-color="#4A3187"/></linearGradient>
+<linearGradient id="gDia" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".5" stop-color="#DCE2EA"/><stop offset="1" stop-color="#9AA4B2"/></linearGradient>
+<linearGradient id="gCit" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFF2C4"/><stop offset=".45" stop-color="#E9B949"/><stop offset="1" stop-color="#93661A"/></linearGradient>
+<symbol id="heart" viewBox="0 0 100 92"><path d="M50 90 6 42C-6 26 4 4 26 4c11 0 19 6 24 15C55 10 63 4 74 4c22 0 32 22 20 38z" fill="var(--f)"/><path d="M50 90 30 30 50 19 70 30zM6 42l24-12L26 4M94 42 70 30 74 4M30 30H6M70 30h24" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="1.6"/><path d="M50 19 30 30 50 90" fill="#fff" fill-opacity=".18"/><ellipse cx="28" cy="20" rx="9" ry="5" fill="#fff" fill-opacity=".7" transform="rotate(-30 28 20)"/></symbol>
+<symbol id="round" viewBox="0 0 100 80"><path d="M22 4h56l20 22-48 52L2 26z" fill="var(--f)"/><path d="M2 26h96M22 4l12 22 16 52M78 4 66 26 50 78M34 26 50 4l16 22" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1.6"/><path d="M34 26 50 4 66 26z" fill="#fff" fill-opacity=".3"/></symbol>
+<symbol id="emerald" viewBox="0 0 100 70"><path d="M16 2h68l14 14v38L84 68H16L2 54V16z" fill="var(--f)"/><path d="M28 14h44l8 8v26l-8 8H28l-8-8V22z" fill="#fff" fill-opacity=".15" stroke="#fff" stroke-opacity=".5" stroke-width="1.4"/><path d="M16 2 28 14M84 2 72 14M98 54 80 48M2 54l18-6M16 68l12-12M84 68 72 56" stroke="#fff" stroke-opacity=".5" stroke-width="1.4"/><path d="M30 18h20l-8 10H26z" fill="#fff" fill-opacity=".45"/></symbol>
+<symbol id="pear" viewBox="0 0 70 100"><path d="M35 2C52 24 68 46 68 64a33 33 0 0 1-66 0C2 46 18 24 35 2z" fill="var(--f)"/><path d="M35 2v62M35 64 6 52M35 64l29-12M35 64 14 88M35 64l21 24" stroke="#fff" stroke-opacity=".45" stroke-width="1.4"/><ellipse cx="22" cy="44" rx="6" ry="12" fill="#fff" fill-opacity=".45" transform="rotate(20 22 44)"/></symbol>
+<symbol id="marq" viewBox="0 0 60 100"><path d="M30 2c22 24 26 72 0 96C4 74 8 26 30 2z" fill="var(--f)"/><path d="M30 2v96M30 50 8 30M30 50l22-20M30 50 8 70M30 50l22 20" stroke="#fff" stroke-opacity=".45" stroke-width="1.4"/><path d="M30 6C20 20 16 36 18 46l12 4z" fill="#fff" fill-opacity=".35"/></symbol>
+</defs></svg>
+
+<div class="board">
+<div class="top"><div><p class="k">Brand board · draft 2 · based on your "cool girls" reel</p>
+<div class="serif" style="font-size:44px">marisa stitches, <i>jewel box</i></div></div>
+<div style="font:400 20px 'DM Sans';color:var(--soft)">quiet neutrals. real-looking gems. big soft serif.</div></div>
+
+<div class="grid">
+<div class="card span12"><p class="k">01 · Logo directions (pick one)</p><div class="logos">
+<div class="logo" style="background:var(--oat)">
+<div class="serif" style="font-size:72px">marisa<br>stitches</div>
+<svg class="g" style="left:calc(50% + 58px);top:40px;--f:url(#gRose)" width="34" height="32"><use href="#heart"/></svg>
+<div class="lab">A · Soft serif + one heart gem</div></div>
+<div class="logo" style="background:#fff;border:1px solid #EEE9E0">
+<div style="width:150px;height:150px;border-radius:50%;background:var(--oat);display:grid;place-items:center;position:relative">
+<div class="serif" style="font-size:110px;line-height:1;margin-top:-6px">M</div>
+<svg class="g" style="right:2px;top:6px;--f:url(#gDia)" width="40" height="32"><use href="#round"/></svg></div>
+<div style="font:700 11px 'DM Sans';letter-spacing:.32em;margin-top:14px">MARISA STITCHES</div>
+<div class="lab">B · Your M badge, now with a diamond</div></div>
+<div class="logo" style="background:linear-gradient(160deg,#E9E4DB,#D2CBBF)">
+<div class="serif" style="font-size:48px;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.15)">cool girls<br>have cool<br>hobbies</div>
+<svg class="g" style="left:40px;top:30px;--f:url(#gSap)" width="40" height="37"><use href="#heart"/></svg>
+<svg class="g" style="right:44px;top:60px;--f:url(#gRuby)" width="26" height="37"><use href="#pear"/></svg>
+<svg class="g" style="right:60px;bottom:40px;--f:url(#gEm)" width="44" height="31"><use href="#emerald"/></svg>
+<svg class="g" style="left:56px;bottom:46px;--f:url(#gDia)" width="34" height="27"><use href="#round"/></svg>
+<div class="lab" style="color:#fff">C · Tagline lockup (posts + stickers)</div></div>
+</div></div>
+
+<div class="card span7"><p class="k">02 · Palette: neutral base</p><div class="sw">
+<div class="chip" style="background:var(--oat)">Oat<small>#F4EFE7 · backgrounds</small></div>
+<div class="chip" style="background:var(--linen)">Linen<small>#FBF9F6 · pages</small></div>
+<div class="chip" style="background:var(--greige)">Greige<small>#D9D3C7 · lines, cards</small></div>
+<div class="chip" style="background:var(--ink);color:#fff">Ink<small>#2B2B2B · text</small></div>
+</div>
+<p class="k" style="margin-top:26px">Gem accents: one or two at a time, never as backgrounds</p>
+<div class="gemrow">
+<figure><svg width="62" height="57" style="--f:url(#gRose)"><use href="#heart"/></svg>Rose<br>#E86A9A</figure>
+<figure><svg width="62" height="57" style="--f:url(#gSap)"><use href="#heart"/></svg>Sapphire<br>#2F6FD6</figure>
+<figure><svg width="74" height="52" style="--f:url(#gEm)"><use href="#emerald"/></svg>Emerald<br>#1FA35B</figure>
+<figure><svg width="42" height="60" style="--f:url(#gRuby)"><use href="#pear"/></svg>Ruby<br>#C8203E</figure>
+<figure><svg width="66" height="53" style="--f:url(#gAme)"><use href="#round"/></svg>Amethyst<br>#8E6CD8</figure>
+<figure><svg width="36" height="60" style="--f:url(#gCit)"><use href="#marq"/></svg>Citrine<br>#E9B949</figure>
+<figure><svg width="66" height="53" style="--f:url(#gDia)"><use href="#round"/></svg>Diamond<br>#E9EDF3</figure>
+</div></div>
+
+<div class="card span5" style="display:flex;gap:22px;align-items:center"><div class="reel">
+<svg class="g" style="left:20px;top:26px;--f:url(#gRose)" width="34" height="31"><use href="#heart"/></svg>
+<svg class="g" style="right:26px;top:70px;--f:url(#gSap)" width="40" height="37"><use href="#heart"/></svg>
+<svg class="g" style="left:24px;top:150px;--f:url(#gEm)" width="44" height="31"><use href="#emerald"/></svg>
+<svg class="g" style="right:20px;top:220px;--f:url(#gDia)" width="34" height="27"><use href="#round"/></svg>
+<svg class="g" style="left:40px;bottom:50px;--f:url(#gRuby)" width="26" height="37"><use href="#pear"/></svg>
+<svg class="g" style="right:50px;bottom:30px;--f:url(#gAme)" width="30" height="24"><use href="#round"/></svg>
+<div class="t">your<br>name,<br>stitched</div></div>
+<div><p class="k">03 · Your look, in a reel</p><p style="font-size:16px;line-height:1.55;margin:0">Soft neutral footage (the machine, the hoop, white or oat fabric), one big lowercase serif line in white, and scattered real-looking gems. Exactly like your reel. That's the brand.</p></div></div>
+
+<div class="card span6"><p class="k">04 · Brand fonts (two)</p>
+<div class="serif" style="font-size:72px">DM Serif Display</div>
+<p style="font-size:15px;color:var(--soft);margin:6px 0 20px">Lowercase, tight, big. Headlines, reels, stickers, the logo.</p>
+<p style="font:500 30px 'DM Sans';margin:0">DM Sans</p>
+<p style="font-size:17px;line-height:1.55;margin:6px 0 0">Everything else: prices, the form, captions. Quiet so the gems can sparkle.</p></div>
+
+<div class="card span6"><p class="k">05 · Six stitch fonts (down from 100+)</p><div class="stitchfonts">
+<div class="sf"><b>Script</b><span style="font-family:'Brush Script MT',cursive;font-style:italic">Hazel</span></div>
+<div class="sf"><b>Serif</b><span class="serif" style="letter-spacing:-.02em">hazel</span></div>
+<div class="sf"><b>Block</b><span style="font:700 30px 'DM Sans';letter-spacing:.06em">HAZEL</span></div>
+<div class="sf"><b>Mini caps</b><span style="font:500 20px 'DM Sans';letter-spacing:.34em">HAZEL</span></div>
+<div class="sf"><b>Italic</b><span style="font:italic 400 32px 'DM Serif Display'">Hazel</span></div>
+<div class="sf"><b>Varsity</b><span style="font:700 28px Georgia,serif;letter-spacing:.04em">HAZEL</span></div>
+</div><p style="font-size:13px;color:var(--soft);margin:12px 0 0">Previews only. You'd map each to the closest font in your embroidery software. "Want something else? Just ask" stays.</p></div>
+
+<div class="card span12" style="display:flex;gap:40px;align-items:center"><div style="flex:1"><p class="k">06 · Thread menu (gem names)</p>
+<p style="font-size:19px;line-height:1.7;margin:0">Rose · Sapphire · Emerald · Ruby · Amethyst · Citrine · Diamond (white) · Onyx (black) · Oat · <i>custom, just ask</i></p></div>
+<span class="btn">start my order</span>
+<div style="position:relative;width:150px;height:150px;border-radius:50%;background:var(--oat);display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid var(--greige)">
+<div class="serif" style="font-size:30px">stitched<br>with love</div>
+<svg class="g" style="right:10px;top:8px;--f:url(#gRose)" width="30" height="28"><use href="#heart"/></svg></div></div>
+
+<div class="card span12" style="background:var(--ink);color:#fff;border:0"><p class="k" style="color:var(--greige)">07 · Rules</p>
+<ul class="rules"><li><b>Neutral first.</b> Oat, linen and white do 90% of the work. Gems are little accents, like jewelry on an outfit.</li>
+<li><b>No rainbow gradients.</b> Gems keep their own color; 1–3 per graphic, up to ~10 scattered in a reel.</li>
+<li>Type is lowercase, big and tight. Keep the voice: "big hobby girl over here."</li>
+<li>For stitching: the logo works in one thread color (ink or a single gem color).</li></ul></div>
+</div></div>
+</body></html>
