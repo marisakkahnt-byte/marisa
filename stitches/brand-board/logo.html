@@ -1,0 +1,83 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Marisa Stitches Logo</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@700&display=swap" rel="stylesheet">
+<style>
+/* ?bg=oat|white|ink|none  ?still=1 (no animation)  ?stitch=1 (one-color embroidery version, no gems) */
+html,body{margin:0}
+body{width:1600px;height:1000px;display:grid;place-items:center;overflow:hidden;background:#F4EFE7}
+body.white{background:#FBF9F6}body.ink{background:#2B2B2B}body.none{background:transparent}
+.wrap{position:relative;display:inline-block;padding:80px 110px}
+.word{font:400 260px/.82 'DM Serif Display',serif;letter-spacing:-.045em;color:#2B2B2B;text-align:center;position:relative;z-index:1}
+body.ink .word{color:#FBF9F6}
+.tag{font:700 22px 'DM Sans';letter-spacing:.42em;text-transform:uppercase;color:#8C857A;text-align:center;margin-top:34px;position:relative;z-index:1}
+body.ink .tag{color:#D9D3C7}
+.dot{}
+.gem{position:absolute;transform:translate(-50%,-50%);z-index:2}
+.gem .fl{animation:float var(--fd,5s) ease-in-out var(--dl,0s) infinite}
+.gem svg.body{display:block;width:100%;height:auto;filter:drop-shadow(0 10px 12px rgba(40,30,20,.25));animation:tilt var(--td,5s) ease-in-out var(--dl,0s) infinite}
+.glint{position:absolute;width:var(--gs,40%);aspect-ratio:1;transform:translate(-50%,-50%) scale(0);animation:twinkle var(--gd,2.4s) ease-in-out var(--gdl,0s) infinite;pointer-events:none}
+.glint svg{width:100%;height:100%;display:block;filter:drop-shadow(0 0 5px rgba(255,255,255,.95))}
+.sw{transform:skewX(-18deg);animation:sweep var(--sd,3s) ease-in-out var(--sdl,0s) infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes tilt{0%,100%{transform:rotate(var(--r0,-5deg))}50%{transform:rotate(var(--r1,5deg))}}
+@keyframes sweep{0%,55%{transform:translateX(0) skewX(-18deg)}85%,100%{transform:translateX(var(--dist)) skewX(-18deg)}}
+@keyframes twinkle{0%,60%,100%{transform:translate(-50%,-50%) scale(0) rotate(0)}72%{transform:translate(-50%,-50%) scale(1) rotate(45deg)}84%{transform:translate(-50%,-50%) scale(.2) rotate(90deg)}}
+body.still *{animation:none!important}
+body.still .glint.keep{transform:translate(-50%,-50%) scale(.8) rotate(45deg)}
+body.stitch .gem{display:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<linearGradient id="gRose" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFD3E4"/><stop offset=".45" stop-color="#E86A9A"/><stop offset="1" stop-color="#9E2E5F"/></linearGradient>
+<linearGradient id="gSap" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#BFD8FF"/><stop offset=".45" stop-color="#2F6FD6"/><stop offset="1" stop-color="#173C86"/></linearGradient>
+<linearGradient id="gEm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B6F0CC"/><stop offset=".45" stop-color="#1FA35B"/><stop offset="1" stop-color="#0B5A31"/></linearGradient>
+<linearGradient id="gRuby" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFB3BF"/><stop offset=".45" stop-color="#C8203E"/><stop offset="1" stop-color="#6E0E21"/></linearGradient>
+<linearGradient id="gAme" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E5D9FF"/><stop offset=".45" stop-color="#8E6CD8"/><stop offset="1" stop-color="#4A3187"/></linearGradient>
+<linearGradient id="gDia" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".5" stop-color="#DCE2EA"/><stop offset="1" stop-color="#9AA4B2"/></linearGradient>
+<linearGradient id="gCit" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFF2C4"/><stop offset=".45" stop-color="#E9B949"/><stop offset="1" stop-color="#93661A"/></linearGradient>
+<linearGradient id="shineG" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+</defs></svg>
+<div class="wrap" id="wrap">
+  <div class="word">mar<span class="dot" id="i1">ı</span>sa<br>st<span class="dot" id="i2">ı</span>tches</div>
+  <div class="tag">custom embroidery · clinton twp, mi</div>
+</div>
+<script>
+const q=new URLSearchParams(location.search);
+['oat','white','ink','none'].forEach(c=>{if(q.get('bg')===c)document.body.classList.add(c)});
+if(q.get('still'))document.body.classList.add('still');
+if(q.get('stitch')){document.body.classList.add('stitch');document.getElementById('i1').textContent='i';document.getElementById('i2').textContent='i';}
+const SHAPES={
+ heart:{vb:'0 0 100 92',path:'M50 90 6 42C-6 26 4 4 26 4c11 0 19 6 24 15C55 10 63 4 74 4c22 0 32 22 20 38z',lines:'<path d="M50 90 30 30 50 19 70 30zM6 42l24-12L26 4M94 42 70 30 74 4M30 30H6M70 30h24" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="1.6"/><path d="M50 19 30 30 50 90" fill="#fff" fill-opacity=".18"/><ellipse cx="28" cy="20" rx="9" ry="5" fill="#fff" fill-opacity=".7" transform="rotate(-30 28 20)"/>',glints:[[28,22],[66,34]]},
+ round:{vb:'0 0 100 80',path:'M22 4h56l20 22-48 52L2 26z',lines:'<path d="M2 26h96M22 4l12 22 16 52M78 4 66 26 50 78M34 26 50 4l16 22" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1.6"/><path d="M34 26 50 4 66 26z" fill="#fff" fill-opacity=".3"/>',glints:[[50,8],[74,30]]},
+ emerald:{vb:'0 0 100 70',path:'M16 2h68l14 14v38L84 68H16L2 54V16z',lines:'<path d="M28 14h44l8 8v26l-8 8H28l-8-8V22z" fill="#fff" fill-opacity=".15" stroke="#fff" stroke-opacity=".5" stroke-width="1.4"/><path d="M16 2 28 14M84 2 72 14M98 54 80 48M2 54l18-6M16 68l12-12M84 68 72 56" stroke="#fff" stroke-opacity=".5" stroke-width="1.4"/><path d="M30 18h20l-8 10H26z" fill="#fff" fill-opacity=".45"/>',glints:[[30,20],[78,26]]},
+ pear:{vb:'0 0 70 100',path:'M35 2C52 24 68 46 68 64a33 33 0 0 1-66 0C2 46 18 24 35 2z',lines:'<path d="M35 2v62M35 64 6 52M35 64l29-12M35 64 14 88M35 64l21 24" stroke="#fff" stroke-opacity=".45" stroke-width="1.4"/><ellipse cx="22" cy="44" rx="6" ry="12" fill="#fff" fill-opacity=".45" transform="rotate(20 22 44)"/>',glints:[[32,30]]},
+ marq:{vb:'0 0 60 100',path:'M30 2c22 24 26 72 0 96C4 74 8 26 30 2z',lines:'<path d="M30 2v96M30 50 8 30M30 50l22-20M30 50 8 70M30 50l22 20" stroke="#fff" stroke-opacity=".45" stroke-width="1.4"/><path d="M30 6C20 20 16 36 18 46l12 4z" fill="#fff" fill-opacity=".35"/>',glints:[[30,20]]}
+};
+const STAR='<svg viewBox="-10 -10 20 20"><path d="M0-10C1-3 3-1 10 0 3 1 1 3 0 10-1 3-3 1-10 0-3-1-1-3 0-10z" fill="#fff"/></svg>';
+let n=0;
+function gem(shape,grad,x,y,w,d,rot){
+  const S=SHAPES[shape],[,,vw,vh]=S.vb.split(' ').map(Number),i=n++;
+  const el=document.createElement('div');el.className='gem';
+  el.style.cssText=`left:${x}px;top:${y}px;width:${w}px;--dl:${-d*2}s;--fd:${4+(i%3)}s;--td:${4+(i%4)}s;--r0:${(rot||0)-4}deg;--r1:${(rot||0)+4}deg`;
+  const sweep=`<clipPath id="c${i}"><path d="${S.path}"/></clipPath><g clip-path="url(#c${i})"><rect class="sw" x="${-vw*.6}" y="${-vh*.2}" width="${vw*.35}" height="${vh*1.4}" fill="url(#shineG)" style="--dist:${vw*1.9}px;--sd:${2.6+(i%3)*.6}s;--sdl:${d}s"/></g>`;
+  el.innerHTML=`<div class="fl"><div style="position:relative"><svg class="body" viewBox="${S.vb}"><path d="${S.path}" fill="url(#${grad})"/>${S.lines}${sweep}</svg>${S.glints.map((g,j)=>`<div class="glint${j===0&&i%2===0?' keep':''}" style="left:${g[0]/vw*100}%;top:${g[1]/vh*100}%;--gs:${34+j*8}%;--gd:${1.8+((i+j)%4)*.5}s;--gdl:${(d+j*.7)%2.4}s">${STAR}</div>`).join('')}</div></div>`;
+  document.getElementById('wrap').appendChild(el);
+}
+document.fonts.ready.then(()=>{
+  const W=document.getElementById('wrap').getBoundingClientRect();
+  const at=id=>{const r=document.getElementById(id).getBoundingClientRect();return [r.left-W.left+r.width/2,r.top-W.top]};
+  const [x1,y1]=at('i1'),[x2,y2]=at('i2');const DY=+(q.get('dy')||98);
+  // the i dots become gems
+  gem('heart','gRose',x1+5,y1+DY,70,0,0);
+  gem('round','gDia',x2+5,y2+DY,70,.8,0);
+  // scattered sparkle
+  const ww=W.width,wh=W.height;
+  gem('heart','gSap',70,95,88,.4,-12);
+  gem('emerald','gEm',ww-80,110,96,1.2,8);
+  gem('pear','gRuby',ww-70,wh*.52,54,.2,14);
+  gem('round','gAme',60,wh*.56,70,1.6,-8);
+  gem('marq','gCit',ww*.48,46,34,1.0,30);
+  gem('round','gDia',ww-40,wh-40,50,.6,0);
+  gem('heart','gRose',40,wh-40,48,1.4,10);
+});
+</script>
+</body></html>
