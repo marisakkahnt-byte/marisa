@@ -13,14 +13,14 @@ CSS="""*{box-sizing:border-box}body{margin:0;background:#777}p{margin:0}
 .cv .h{position:absolute;left:80px;right:80px;top:960px;font:italic 400 110px/.95 'Cormorant Garamond';letter-spacing:-.02em}
 .cv .k{position:absolute;left:84px;top:1180px;color:var(--gold)}
 /* list */
-.ls{padding:110px 90px}
+.ls{padding:80px 90px}
 .ls .t{font:italic 400 96px/.95 'Cormorant Garamond';letter-spacing:-.02em;margin-bottom:14px}
-.ls .k{color:var(--gold);margin-bottom:60px}
-.row{display:flex;gap:30px;align-items:flex-start;padding:26px 0;border-bottom:1.5px solid #e7ddd0}
+.ls .k{color:var(--gold);margin-bottom:24px}
+.row{display:flex;gap:28px;align-items:flex-start;padding:16px 0;border-bottom:1.5px solid #e7ddd0}
 .box{flex:none;width:44px;height:44px;border:2px solid var(--ink);border-radius:6px;margin-top:8px;position:relative}
 .box.on::after{content:'✓';position:absolute;left:6px;top:-14px;font:600 48px 'Raleway';color:var(--wine)}
-.row b{display:block;font:500 50px/1.05 'Cormorant Garamond'}
-.row i{display:block;font:400 28px/1.35 'Raleway';color:#6d5d55;margin-top:6px;font-style:normal}
+.row b{display:block;font:500 42px/1.05 'Cormorant Garamond'}
+.row i{display:block;font:400 24px/1.3 'Raleway';color:#6d5d55;margin-top:6px;font-style:normal}
 /* big */
 .bg2{background:var(--wine);color:var(--cream)}
 .bg2 .k{position:absolute;left:90px;top:120px;color:var(--gold2)}
@@ -35,12 +35,14 @@ CSS="""*{box-sizing:border-box}body{margin:0;background:#777}p{margin:0}
 """
 M='<div class="mark">I Do by Marisa</div>'
 S=[]
-S.append(f'<section class="s cv" id="bag1"><div class="ph"><img src="bookcert.jpg"></div><div class="tape"></div><p class="h">what’s in my bag,<br>officiant edition</p><p class="cap k">swipe · you’re gonna judge the pens</p>{M}</section>')
-items=[(1,'the script','printed, 14-pt, in the black book. never on my phone. i’m not a monster.'),
-       (1,'muji gel pens (plural)','the license deserves the good pen. one always gets borrowed. it never comes back.'),
-       (1,'the certificate','the prettiest piece of paper you’ll sign all day.'),
-       (1,'tissues','for the groom. it’s always the groom.'),
-       (0,'chill','left it at home. you won’t catch me crying first. (i will.)')]
+S.append(f'<section class="s cv" id="bag1"><div class="ph"><img src="08_portfolio-styled-blue-wall-b.jpg"></div><div class="tape"></div><p class="h">what’s in my bag,<br>officiant edition</p><p class="cap k">swipe · you’re gonna judge the pens</p>{M}</section>')
+items=[(1,'the portfolio','run of show, rehearsal checklist, and the license. it never leaves my hands.'),
+       (1,'the black “officiant” book','your script. printed. never on my phone. i’m not a monster.'),
+       (1,'muji gel pens (plural)','the license deserves the good pen. one always gets borrowed.'),
+       (1,'stamps','the license goes back in the mail to the county clerk. same week. always.'),
+       (1,'business cards','mine, plus my favorite vendors’. your florist will thank me.'),
+       (1,'a custom-embroidered longchamp','it holds all of the above. obviously.'),
+       (0,'chill','left it at home. (i will cry first.)')]
 rows=''.join(f'<div class="row"><div class="box{" on" if c else ""}"></div><div><b>{t}</b><i>{d}</i></div></div>' for c,t,d in items)
 S.append(f'<section class="s ls" id="bag2"><p class="n">02</p><p class="t">the packing list</p><p class="cap k">every ceremony, no exceptions</p>{rows}{M}</section>')
 S.append(f'<section class="s bg2" id="bag3"><p class="n" style="color:#D9C08F">03</p><p class="cap k">a hill i will die on</p><p class="q">friends don’t let friends sign a marriage license with a hotel pen.</p><p class="foot">muji gel pens only. smooth, no smudge, looks great in your photos. you’re welcome.</p>{M}</section>')
