@@ -27,6 +27,13 @@
 
 **What this tells us:** your system is already efficient, and it's built so the business can stay small. Any growth should keep it that way: few new things, each one easy to repeat.
 
+## The account: a creative home, one product
+@marisastitches is where Marisa posts all her making (needlepoint, hand embroidery, quilting, works in progress) because that's how it started and what keeps it fun. **The only thing for sale is custom machine embroidery.**
+- Hobby highlights (needlepoint, by hand, quilting) carry a "just for fun ♡ not for sale" tag.
+- Hobby captions end with: *"just for me, not for sale ♡ custom machine embroidery orders → link in bio"*
+- FAQ line: *"Do you sell needlepoint or hand embroidery? Not right now. Those are just for fun! I only take custom machine embroidery orders."*
+- Bio: *custom machine embroidery 🪡 + whatever else I'm stitching for fun · Clinton Twp, MI*
+
 ## The big idea: Stitches makes the I Do merch
 The "By the power vested in me" hat and the "I marry people." tote don't need Printify. Stitch them yourself.
 - **The math:** a blank hat costs about $6–9 at wholesale. With your $15 placement fee, that's roughly $21–24 of cost and labor, and it sells at about $34. Printify's embroidered hat alone costs about $18–31.

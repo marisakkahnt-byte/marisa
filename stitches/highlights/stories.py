@@ -101,7 +101,7 @@ CRAFTS = [('05_needlepoint', 'needlepoint', 'pear', 'ruby', 250, 'where it all s
 for fn, word, shape, g, w, kick, line, extra in CRAFTS:
     cover(fn, word, shape, g, w)
     title = {'wips': 'on the hoop', 'by hand': 'by hand'}.get(word, word)
-    st('../crafts/stories/' + fn, '1', K(kick) + H(title) + P(line), ''.join(gem(*e) for e in extra))
+    st('../crafts/stories/' + fn, '1', K(kick) + H(title) + P(line) + ('' if word == 'wips' else '<p class="tag">just for fun ♡ not for sale</p>'), ''.join(gem(*e) for e in extra))
 
 CSS = """
 *{box-sizing:border-box}body{margin:0;background:#777}
@@ -122,6 +122,7 @@ CSS = """
 .st .price b{display:block;font:400 150px/1 'DM Serif Display';color:#E86A9A}
 .st .price span{font:400 42px/1.4 'DM Sans'}
 .st .q{font:400 96px/1.08 'DM Serif Display';letter-spacing:-.03em;margin:0 0 50px}
+.st .tag{display:inline-block;margin-top:30px;padding:16px 34px;border:2px solid #E86A9A;border-radius:999px;font:700 28px 'DM Sans';letter-spacing:.18em;text-transform:uppercase;color:#C2457A}
 .stk{position:absolute;left:0;right:0;bottom:300px;font:700 26px 'DM Sans';letter-spacing:.2em;text-transform:uppercase;color:#B9B2A6;z-index:2}
 .ft{position:absolute;left:0;right:0;bottom:120px;font:700 28px 'DM Sans';letter-spacing:.3em;color:#8C857A}
 .ido.dark{background:#2A241F radial-gradient(circle at 50% 40%,#43362C,#2A241F 70%);color:#FBF7F0}
