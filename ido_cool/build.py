@@ -35,6 +35,14 @@ CSS = """
 .b.l{background:#fff}.b.r{background:var(--ink);color:var(--cream);margin-left:auto}
 .b.r.w{background:var(--wine)}
 .th .ts{text-align:center;color:#8a776e;margin:30px 0}
+/* reframe */
+.rf{background:var(--ink);color:var(--cream);padding:150px 90px;display:flex;flex-direction:column;justify-content:center}
+.rf .a{font:400 66px/1.15 'Cormorant Garamond';margin:0 0 40px;color:#b9ab9c}
+.rf .a s{text-decoration-color:var(--wine);text-decoration-thickness:5px}
+.rf .b2{font:italic 400 112px/1 'Cormorant Garamond';margin:0 0 70px;color:var(--cream)}
+.rf .b2 em{color:var(--gold2)}
+.rf .c{font:400 40px/1.4 'Cormorant Garamond';color:#d8ccbd;margin:0}
+.rf .logo{color:var(--gold2)}
 /* notes */
 .nt{background:#fffdf8;color:var(--ink);padding:90px 90px}
 .nt .top{display:flex;justify-content:space-between;color:var(--gold);font:600 30px 'Raleway';margin-bottom:60px}
@@ -62,5 +70,11 @@ S.append(('notes', '<section class="s nt" id="notes"><div class="top"><span>‹ 
  '<p>eat something before you walk</p><p>look at them, not me</p><p>slow down at the vows. it feels long. it isn’t.</p>'
  '<p>let yourself cry. everyone else is.</p><p>nobody noticed the thing you think went wrong</p><p>after the kiss, pause before you walk back</p>'
  '<div class="logo">I Do by Marisa</div></section>'))
+S.append(('reframe1', '<section class="s rf" id="reframe1"><p class="cap" style="color:var(--gold2);margin:0 0 50px">a little reframe</p>'
+ '<p class="a">writing your vows isn’t a <s>writing</s> problem.</p><p class="b2">it’s a <em>pressure</em> problem.</p>'
+ '<p class="c">you already know what to say. you just think it has to be perfect. it doesn’t. it has to be true.</p><div class="logo">I Do by Marisa</div></section>'))
+S.append(('reframe2', '<section class="s rf" id="reframe2"><p class="cap" style="color:var(--gold2);margin:0 0 50px">a little reframe</p>'
+ '<p class="a">your friend isn’t nervous about <s>public speaking</s>.</p><p class="b2">they’re nervous about <em>getting you wrong.</em></p>'
+ '<p class="c">a script written from your real story fixes that. so does one practice run with me.</p><div class="logo">I Do by Marisa</div></section>'))
 fonts = '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Pinyon+Script&family=Raleway:wght@400;600&display=swap" rel="stylesheet">'
 open(os.path.join(D, 'cool.html'), 'w').write('<!doctype html><html><head><meta charset="utf-8">' + fonts + '<style>' + CSS + '</style></head><body>' + ''.join(h for _, h in S) + '</body></html>')
