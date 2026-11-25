@@ -75,7 +75,7 @@ ido('02_Scripts', '2', 'cream', IK('how it works') +
     '<li><b>You review it</b><span>Or keep it a surprise. Your call.</span></li><li><b>Your officiant reads it</b><span>And everyone asks how they wrote it.</span></li></ol>')
 ido('02_Scripts', '3', 'blush', IK('in every script') + IS('Every pause, planned', 120) + R +
     '<ul class="iul"><li>Your real story, never a template</li><li>Timing for every section</li><li>[Pause] and [Beat] cues for your officiant</li><li>Who moves when, and where to stand</li><li>A print-ready PDF for the binder</li></ul>')
-ido('02_Scripts', '4', 'dark', IK('booking 2027') + IS('Let’s write yours', 130) + IP('Book at least 2 weeks before the wedding.') + IP('Inquire at <b>idobymarisa.com</b>', 48), sticker=True)
+ido('02_Scripts', '4', 'dark', IK('booking 2027') + IS('Let’s write yours', 130) + IP('Book at least 3 weeks before the wedding.') + IP('Inquire at <b>idobymarisa.com</b>', 48), sticker=True)
 
 ido('03_Coaching', '1', 'blush', IK('officiant coaching') + IS('For the friend<br>who said yes', 130))
 ido('03_Coaching', '2', 'cream', IK('what we cover') + IS('Ready, not just willing', 110) + R +
