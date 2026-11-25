@@ -1,6 +1,6 @@
 """Film-still editorial posts (1080x1350): subtitle split, bold lowercase headline over photo, wide-caps title card."""
 import os
-D = os.path.dirname(os.path.abspath(__file__)); PH = 'file://' + os.path.join(D, 'photos')
+D = os.path.dirname(os.path.abspath(__file__)); PH = 'file://' + os.path.join(D, 'stock')
 GRAIN = '<svg class="grain" width="1080" height="1350"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .55 0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>'
 CSS = """
 *{box-sizing:border-box}body{margin:0;background:#777}
@@ -23,12 +23,12 @@ CSS = """
 .tc .mark{color:#D9C08F}
 """
 S = []
-S.append(f'''<section class="s" id="subtitle"><div class="ph" style="left:0;top:0;width:1080px;height:675px;background-image:url('{PH}/hero.jpg');background-position:center 70%"></div>
-<div class="ph" style="left:0;top:675px;width:1080px;height:675px;background-image:url('{PH}/gallery-01.jpg');background-position:center 40%"></div>
+S.append(f'''<section class="s" id="subtitle"><div class="ph" style="left:0;top:0;width:1080px;height:675px;background-image:url('{PH}/dresses.jpg');background-position:center 40%"></div>
+<div class="ph" style="left:0;top:675px;width:1080px;height:675px;background-image:url('{PH}/wine.jpg');background-position:center 55%"></div>
 <div style="position:absolute;left:0;right:0;top:395px;height:280px;background:linear-gradient(transparent,rgba(20,14,10,.7))"></div><div style="position:absolute;left:0;right:0;top:1000px;height:350px;background:linear-gradient(transparent,rgba(20,14,10,.75))"></div><div style="position:absolute;left:0;right:0;top:673px;height:4px;background:#1c1512"></div><div class="vig"></div>{GRAIN}
 <p class="sub" style="top:500px">Why do we spend a year<br>planning the reception</p>
 <p class="sub" style="top:1090px">and twenty minutes on the part<br>we’ll replay forever?</p><div class="mark">I Do by Marisa</div></section>''')
-S.append(f'''<section class="s" id="whoisit"><div class="ph" style="inset:0;background-image:url('{PH}/hero.jpg');background-position:center 60%"></div><div class="shade"></div><div class="vig"></div>{GRAIN}
+S.append(f'''<section class="s" id="whoisit"><div class="ph" style="inset:0;background-image:url('{PH}/wine.jpg');background-position:center 40%"></div><div class="shade"></div><div class="vig"></div>{GRAIN}
 <p class="hl">who’s<br>marrying you?</p><p class="hs">me, or your best friend with words i wrote.</p><div class="mark">I Do by Marisa</div></section>''')
 S.append(f'''<section class="s tc" id="thescript">{GRAIN}<div class="wide">The Script</div><p class="side">a ceremony written from your real story →<br><br><span style="color:#FBF7F0;opacity:.75">for you to hear, or for your friend to read.</span></p>
 <div class="page"><h3>Nora &amp; Sam</h3><div class="m">CEREMONY · 18 MIN</div><span class="cue">WELCOME</span><p>Friends, family, and the three people who flew in from Denver for this: welcome.</p><span class="cue">THEIR STORY</span><p>Nora and Sam met at bar trivia, on rival teams, when Sam told Nora the answer she got wrong. Neither of them knew what they were in for.</p><span class="cue">PAUSE · LOOK UP</span><p>Ask anyone here, and they’ll tell you it was a Tuesday that sealed it: Sam, making coffee the exact way Nora likes it, without being asked.</p><span class="cue">THE VOWS</span><p>Nora, Sam, when you’re ready…</p></div><div class="mark">I Do by Marisa</div></section>''')
