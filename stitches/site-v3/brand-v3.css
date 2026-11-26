@@ -80,3 +80,14 @@ nav::after{background:var(--gold)!important;height:1px!important}
 .fgem{position:absolute;background:center/contain no-repeat;opacity:.95;animation:gemDrift var(--d,9s) ease-in-out infinite,gemShine var(--s,3.4s) ease-in-out infinite;animation-delay:var(--dl,0s),var(--dl,0s)}
 @keyframes gemDrift{0%,100%{translate:0 0;rotate:var(--r0,0deg)}33%{translate:8px -16px;rotate:calc(var(--r0,0deg) + 14deg)}66%{translate:-6px -8px;rotate:calc(var(--r0,0deg) - 10deg)}}
 @media (prefers-reduced-motion: reduce){.m-gem,.gem,.intro-gem,.fgem,.win-dots i,.m-gem::after,.fgem::after{animation:none!important}}
+
+/* ---------- v3.4 gem M mark ---------- */
+.gem-m-band{background:#1F1D24;padding:90px 20px 80px;text-align:center;position:relative;overflow:hidden}
+.gem-m-band::before,.gem-m-band::after{content:"✦";position:absolute;color:#fff;text-shadow:0 0 12px #fff,0 0 3px #B8914A;font-size:26px;opacity:.85;animation:gemShine 3.2s ease-in-out infinite}
+.gem-m-band::before{left:18%;top:28%}.gem-m-band::after{right:20%;bottom:30%;font-size:18px;animation-delay:-1.6s}
+.gem-m-mark{width:min(230px,52vw);height:auto;display:block;margin:0 auto;animation:gemMFloat 6s ease-in-out infinite}
+@keyframes gemMFloat{0%,100%{translate:0 0}50%{translate:0 -10px}}
+.gem-m-tag{margin:28px 0 0;font:400 clamp(24px,4vw,34px)/1.2 "DM Serif Display",serif;color:#F4EFE7;letter-spacing:-.01em}
+.gem-m-tag span{color:#C49A64;margin:0 .3em}
+.footer-gem-m{width:58px;height:auto;display:block;margin:0 0 14px}
+@media (prefers-reduced-motion:reduce){.gem-m-mark,.gem-m-band::before,.gem-m-band::after{animation:none}}

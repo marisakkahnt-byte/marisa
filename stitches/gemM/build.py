@@ -37,13 +37,13 @@ sk = thin(m)
 ys, xs = np.nonzero(sk)
 pts = list(zip(xs.tolist(), ys.tolist())); R.shuffle(pts)
 placed = poisson(pts, lambda: R.choice([30, 34]), R, gap=-4)
-fill = poisson([p for p in pts], lambda: 18, R, gap=-2)
+fill = poisson([p for p in pts], lambda: R.choice([14, 17]), R, gap=-3)
 import itertools
 def free(x,y,r):
-    return all((px-x)**2+(py-y)**2 >= (pr+r-4)**2 for px,py,pr in placed)
+    return all((px-x)**2+(py-y)**2 >= (pr+r-6)**2 for px,py,pr in placed)
 placed += [f for f in fill if free(*f)]
 shapes = ['round', 'oval', 'round', 'pear', 'emerald', 'marq', 'heart']
-colors = ['em', 'dia', 'em', 'dia', 'rose']
+colors = ['em', 'dia', 'rose', 'em', 'dia', 'sap', 'cit', 'ame']
 html = [f'<!doctype html><html><body style="margin:0;background:transparent"><div id="m" style="position:relative;width:{W}px;height:{H}px">']
 for (x, y, r) in placed:
     s = int(r * 2.3)
