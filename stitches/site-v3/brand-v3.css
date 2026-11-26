@@ -59,3 +59,5 @@ nav::after{background:var(--gold)!important;height:1px!important}
 .intro-card::before{top:-18px;right:24px}.intro-card::after{bottom:-14px;left:30px;width:24px;height:24px;animation-delay:1.2s}
 @keyframes twinkle{0%,100%{transform:scale(.7) rotate(0);opacity:.6}50%{transform:scale(1.1) rotate(20deg);opacity:1}}
 .mq-zebra,.mq-zebra-bold,.mq-zebra-blue,.pd-zebra{background:#FBF9F6 var(--zebra-tall) 0 30%/360px auto repeat-x!important}
+.about-me img[src="marisa-zebra.jpg"]{object-position:center top!important}
+.hero-portrait{object-position:center 20%!important}
