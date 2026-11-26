@@ -49,6 +49,12 @@ html.append(f'''<div style="display:flex;gap:160px;align-items:center;padding:60
  {g(B("round","diamond",110,seed=64),90,34)}
  <div class="dm" style="color:#0E4A38;font-size:58px;margin-top:110px">you <i>sparkle</i></div></div>
 </div>''')
+html.insert(-1, f'''<div style="display:flex;gap:160px;align-items:center;padding:60px">
+<div class="st" data-n="sticker_real-gems-only" style="width:440px;height:240px;border-radius:999px;background:{VELVET}">
+ {g(B('round','diamond',80,seed=71),-20,-26)}{g(E('emerald',58,seed=72),380,150,12)}{g(B('heart','pink',56,seed=73),370,-14,-10)}{TW(60,170,26)}
+ <div class="dm" style="color:#FBF9F6;font-size:66px">real gems <i style="color:#F6D4E0">only</i></div>
+ <div class="caps" style="color:#C49A64;font-size:13px;margin-top:10px">✦ marisa stitches ✦</div></div>
+</div>''')
 html.append('</body></html>')
 open('/home/user/marisa/stickers/phrases/phrases.html', 'w').write(''.join(html))
 print('ok')
