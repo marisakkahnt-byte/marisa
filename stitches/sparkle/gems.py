@@ -22,7 +22,7 @@ def outline(shape,n=24):
       continue
     P.append((x,y))
   return P
-def gem(shape,color,size,x,y,rot=0):
+def gem_old(shape,color,size,x,y,rot=0):
   n=10 if shape=='star' else 14
   P=outline(shape,n); lt,md,dk=COL.get(color,COL['dia'])
   if shape=='star': lt,md,dk=COL['dia']
@@ -58,3 +58,20 @@ def gem(shape,color,size,x,y,rot=0):
   out.append('<path d="M70 22 l2 7 7 2 -7 2 -2 7 -2 -7 -7 -2 7 -2z" fill="#fff" fill-opacity=".95"/>')
   return (f'<svg viewBox="-4 -4 108 108" width="{size}" height="{size}" style="position:absolute;left:{x}px;top:{y}px;transform:rotate({rot}deg);'
           f'filter:drop-shadow(0 {max(2,size//14)}px {max(3,size//10)}px rgba(0,0,0,.22));overflow:visible">'+''.join(out)+'</svg>')
+
+
+# ---- Real-gem style (brand standard from Nov 2026). Crystal stars keep the old renderer. ----
+import sys as _sys
+_sys.path.insert(0, '/home/user/marisa/stitches/realgems')
+from realgem import brilliant as _brilliant, emerald_cut as _emerald_cut
+_CMAP = {'rose': 'pink', 'dia': 'diamond', 'em': 'emerald', 'sap': 'sapphire', 'ruby': 'ruby',
+         'ame': 'amethyst', 'cit': 'citrine', 'aqua': 'aqua'}
+_SMAP = {'round': 'round', 'oval': 'oval', 'pear': 'pear', 'heart': 'heart', 'marq': 'marquise'}
+_n = [0]
+def gem(shape, color, size, x, y, rot=0):
+    if shape == 'star':
+        return gem_old(shape, color, size, x, y, rot)
+    _n[0] += 1
+    g = _CMAP.get(color, 'diamond')
+    svg = _emerald_cut(g, size, seed=_n[0]) if shape == 'emerald' else _brilliant(_SMAP.get(shape, 'round'), g, size, seed=_n[0])
+    return (f'<div style="position:absolute;left:{x}px;top:{y}px;width:{size}px;height:{size}px;transform:rotate({rot}deg)">' + svg + '</div>')
