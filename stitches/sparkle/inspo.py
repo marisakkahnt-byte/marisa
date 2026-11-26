@@ -2,9 +2,11 @@
 import os,random
 D=os.path.dirname(os.path.abspath(__file__))
 src=open(os.path.join(D,'..','pinned','build.py')).read().split('# Stitches pin 1')[0]
-ns={'__file__':os.path.join(D,'..','pinned','build.py')};exec(src,ns);gem=ns['gem']
+ns={'__file__':os.path.join(D,'..','pinned','build.py')};exec(src,ns)
+import sys as _s;_s.path.insert(0,D)
+from gems import gem
 random.seed(7)
-SH=['heart','round','emerald','pear','marq'];CO=['rose','dia','em','sap','ruby','ame','cit']
+SH=['heart','round','emerald','pear','marq','star','round','heart'];CO=['rose','dia','em','sap','ruby','ame','cit','aqua']
 def confetti(n,box,smin,smax,avoid=None):
   out=''
   for _ in range(n):
@@ -17,6 +19,7 @@ def stars(n,box,col='#F4EFE7'):
   s=''
   for _ in range(n):
     x=random.randint(box[0],box[2]);y=random.randint(box[1],box[3]);z=random.randint(14,46)
+    if 60<x<860 and 120<y<520: continue
     s+=f'<span style="position:absolute;left:{x}px;top:{y}px;font-size:{z}px;color:{col};opacity:{random.uniform(.5,1):.2f}">★</span>'
   return s
 CSS="""*{box-sizing:border-box}body{margin:0;background:#777}p{margin:0}
@@ -29,7 +32,7 @@ CSS="""*{box-sizing:border-box}body{margin:0;background:#777}p{margin:0}
 .night .t i{color:#E8A9C6}
 .night .u{position:absolute;left:94px;top:420px;font:500 32px/1.4 'DM Sans';color:#BDB3C9}
 .ft{position:absolute;z-index:5;left:0;right:0;bottom:46px;text-shadow:0 0 12px #F2B8CB,0 0 12px #F2B8CB;text-align:center;font:700 22px 'DM Sans';letter-spacing:.3em;color:#7A2350}
-.night .ft{color:#8C849A}
+.night .ft{color:#8C849A;text-shadow:none;background:#141218;padding:8px 0}
 .trail{position:absolute;inset:0}
 """
 S=[]

@@ -2,7 +2,9 @@
 import os
 D=os.path.dirname(os.path.abspath(__file__))
 src=open(os.path.join(D,'..','pinned','build.py')).read().split('# Stitches pin 1')[0]
-ns={'__file__':os.path.join(D,'..','pinned','build.py')};exec(src,ns);gem=ns['gem']
+ns={'__file__':os.path.join(D,'..','pinned','build.py')};exec(src,ns)
+import sys as _s;_s.path.insert(0,D)
+from gems import gem
 CSS="""*{box-sizing:border-box}body{margin:0;background:#777}p{margin:0}
 .s{width:1080px;height:1350px;position:relative;overflow:hidden;margin-bottom:10px;background:#F4EFE7;color:#2B2B2B;font-family:'DM Sans'}
 .ink{background:#1F1D24;color:#F4EFE7}
@@ -34,8 +36,8 @@ SP=lambda x,y,s=46:f'<span class="spark" style="left:{x}px;top:{y}px;font-size:{
 S=[]
 S.append(f'<section class="s ink pad" id="bs1">{gem("round","dia",170,800,140)+gem("heart","rose",120,860,1040,12)+gem("emerald","em",110,110,1080,-8)}{SP(720,110)}{SP(300,1180,34)}'
  '<p class="k" style="margin-top:220px">a little sparkle</p><h1>your monogram,<br>in your <i>birthstone</i></h1><p class="sub">swipe to find your month →<br>then screenshot it. (you know you will.)</p>'+F+'</section>')
-M=[('jan','garnet','ruby'),('feb','amethyst','ame'),('mar','aquamarine','sap'),('apr','diamond','dia'),('may','emerald','em'),('jun','pearl','dia'),
-   ('jul','ruby','ruby'),('aug','peridot','em'),('sep','sapphire','sap'),('oct','opal','rose'),('nov','citrine','cit'),('dec','blue topaz','sap')]
+M=[('jan','garnet','ruby'),('feb','amethyst','ame'),('mar','aquamarine','aqua'),('apr','diamond','dia'),('may','emerald','em'),('jun','pearl','dia'),
+   ('jul','ruby','ruby'),('aug','peridot','em'),('sep','sapphire','sap'),('oct','opal','rose'),('nov','citrine','cit'),('dec','blue topaz','aqua')]
 T={'garnet':'deep wine','amethyst':'violet','aquamarine':'sea glass','diamond':'silver','emerald':'emerald','pearl':'ivory','ruby':'cherry','peridot':'lime','sapphire':'navy','opal':'blush','citrine':'gold','blue topaz':'sky'}
 tiles=''.join(f'<div>{gem("round",c,64,0,0)}<b>{m}</b><small>{g} · {T[g]} thread</small></div>' for m,g,c in M)
 S.append(f'<section class="s pad" id="bs2" style="padding-top:90px"><p class="k">thread color, by month</p><h1 style="font-size:96px;margin-bottom:30px">the birthstone edit</h1><div class="bs">{tiles}</div>'+F+'</section>')
