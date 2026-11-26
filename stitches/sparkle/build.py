@@ -42,7 +42,7 @@ T={'garnet':'deep wine','amethyst':'violet','aquamarine':'sea glass','diamond':'
 tiles=''.join(f'<div>{gem("round",c,64,0,0)}<b>{m}</b><small>{g} · {T[g]} thread</small></div>' for m,g,c in M)
 S.append(f'<section class="s pad" id="bs2" style="padding-top:90px"><p class="k">thread color, by month</p><h1 style="font-size:96px;margin-bottom:30px">the birthstone edit</h1><div class="bs">{tiles}</div>'+F+'</section>')
 S.append(f'<section class="s pad math" id="gm">{gem("heart","rose",120,860,140,10)+gem("round","cit",80,130,1120)}{SP(800,120)}'
- '<p class="k" style="margin-top:200px">girl math, monogram edition</p><p>one monogram: $15</p><p>times you’ll use that towel this year: 365</p><p class="eq">basically<br>4¢ a day</p><p class="sub" style="margin-top:40px">so it’s free. we did the math. ✦</p>'+F+'</section>')
+ '<p class="k" style="margin-top:200px">girl math, monogram edition</p><p>one monogram: priceless</p><p>times you’ll use that towel this year: 365</p><p class="eq">basically<br>free</p><p class="sub" style="margin-top:40px">we did the math. ✦</p>'+F+'</section>')
 R=['tone-on-tone is always the chic choice','one placement beats five','small letters look more expensive','script for soft, serif for old money','gold thread is a personality']
 rows=''.join(f'<p><span>0{i}</span>{r}</p>' for i,r in enumerate(R,1))
 S.append(f'<section class="s pad rules" id="rules">{gem("emerald","em",90,930,50,8)}{SP(880,40,30)}<p class="k">the rules</p><h1 style="font-size:110px">how to monogram<br><i>like an it girl</i></h1>{rows}'+F+'</section>')
