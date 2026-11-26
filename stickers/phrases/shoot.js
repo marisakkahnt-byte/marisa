@@ -1,4 +1,4 @@
-const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const p=await b.newPage({viewport:{width:4300,height:2400}});
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch();const p=await b.newPage({viewport:{width:5600,height:2400}});
 await p.goto('file://'+__dirname+'/phrases.html');await p.waitForTimeout(2000);
 for(const el of await p.$$('.c')){const n=await el.getAttribute('data-n');await el.screenshot({path:__dirname+'/'+n+'.png'});}
 await p.addStyleTag({content:'body{background:transparent!important}'});
