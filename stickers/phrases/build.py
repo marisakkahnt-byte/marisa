@@ -1,4 +1,4 @@
-"""'you're a gem' + 'don't lose your sparkle' keepsake cards and stickers, with real gems."""
+"""'you're a gem' + 'certified gem' + 'rare find' keepsake cards and stickers, with real gems."""
 import sys
 sys.path.insert(0, '/home/user/marisa/stitches/realgems')
 from realgem import brilliant as B, emerald_cut as E

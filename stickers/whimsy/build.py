@@ -54,9 +54,9 @@ html = f'''<!doctype html><html><head><meta charset="utf-8">
  <img src="../logo-ink.png" style="position:absolute;bottom:80px;left:50%;transform:translateX(-50%);width:200px">
 </div>
 
-<div class="c" data-n="card-08_gem-frame-stay-sparkly" style="background:#EEEAE4">
+<div class="c" data-n="card-08_gem-frame-rare-find" style="background:#EEEAE4">
  <div class="linen" style="position:absolute;left:210px;top:300px;right:210px;bottom:300px;background-color:#F6D4E0;border-radius:6px"></div>
- <img src="rs_sparkly.svg" style="position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);width:680px">
+ <img src="rs_rarefind.svg" style="position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);width:860px">
  <img src="../logo-ink.png" style="position:absolute;left:50%;top:1290px;transform:translateX(-50%);width:170px">
  {frame(W, H, 360)}
 </div>
