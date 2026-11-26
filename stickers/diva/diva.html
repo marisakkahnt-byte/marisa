@@ -1,0 +1,77 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@600&display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:'DM Sans'}
+.board{width:1600px;padding:60px 50px 80px;box-sizing:border-box;background:#F4EFE7;display:flex;flex-wrap:wrap;gap:60px 40px;justify-content:center;align-items:center}
+.board h1{width:100%;text-align:center;margin:0;font:400 64px 'DM Serif Display';color:#1F1D24;letter-spacing:-.02em}
+.board h1 small{display:block;font:600 14px 'DM Sans';letter-spacing:.3em;text-transform:uppercase;color:#0E4A38;margin-top:8px}
+.item{position:relative;display:flex;flex-direction:column;align-items:center}
+.lbl{margin-top:22px;font:600 13px 'DM Sans';letter-spacing:.2em;text-transform:uppercase;color:#8a7f78;text-align:center;line-height:1.6}
+.bubble{font:400 170px/1 'Bagel Fat One';letter-spacing:-.01em;
+  background:linear-gradient(180deg,#9DF2C9 0%,#2FB07A 38%,#0E4A38 72%,#1C7A55 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  -webkit-text-stroke:2px rgba(255,255,255,.5);filter:drop-shadow(0 0 0 #fff) drop-shadow(5px 0 0 #fff) drop-shadow(-5px 0 0 #fff) drop-shadow(0 5px 0 #fff) drop-shadow(0 -5px 0 #fff) drop-shadow(0 12px 14px rgba(0,0,0,.25))}
+.gloss{position:absolute;left:18%;right:22%;top:24%;height:16%;border-radius:50%;background:linear-gradient(#fff,rgba(255,255,255,0));opacity:.55;filter:blur(1px)}
+.gem{position:absolute;filter:drop-shadow(0 4px 4px rgba(0,0,0,.28))}
+.tw{position:absolute;color:#fff;text-shadow:0 0 10px #fff,0 0 3px #B8914A}
+.pearl{border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff 0 18%,#F5EEE6 45%,#C9BEB2 100%);box-shadow:0 3px 6px rgba(0,0,0,.2)}
+.shell{background:radial-gradient(circle at 30% 25%,#7FE0B3 0%,#1B8A5E 35%,#0E4A38 70%,#08301F 100%)}
+</style></head><body>
+<section class="board" id="board"><h1>marisa stitches · diva mode ✦<small>direction test · Y2K doll-world energy, still chic</small></h1>
+
+<!-- 1. glossy bubble diva sticker -->
+<div class="item"><div style="position:relative;width:520px;height:300px;display:flex;align-items:center;justify-content:center;background:#F6D4E0;border-radius:150px;border:12px solid #fff;box-shadow:0 10px 24px rgba(0,0,0,.15)">
+ <div style="position:relative"><div class="bubble">diva</div><div class="gloss"></div></div>
+ <img class="gem" src="../gem-ruby.png" style="width:56px;top:22px;left:40px;rotate:-14deg"><img class="gem" src="../gem-crystal.png" style="width:44px;bottom:26px;right:50px"><span class="tw" style="top:30px;right:70px;font-size:34px">✦</span><span class="tw" style="bottom:36px;left:90px;font-size:24px">✦</span>
+</div><div class="lbl">1 · glossy bubble “diva” sticker</div></div>
+
+<!-- 2. pocket compact -->
+<div class="item"><svg width="420" height="560" viewBox="0 0 420 560">
+ <defs>
+  <radialGradient id="sh" cx="30%" cy="25%" r="80%"><stop offset="0" stop-color="#8FE8BE"/><stop offset=".35" stop-color="#1B8A5E"/><stop offset=".7" stop-color="#0E4A38"/><stop offset="1" stop-color="#062618"/></radialGradient>
+  <linearGradient id="holo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fdf0f6"/><stop offset=".3" stop-color="#e6efff"/><stop offset=".55" stop-color="#dcf5ea"/><stop offset=".8" stop-color="#fff2d2"/><stop offset="1" stop-color="#f6d4e0"/></linearGradient>
+  <radialGradient id="pl" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff"/><stop offset=".6" stop-color="#F3ECE4"/><stop offset="1" stop-color="#BDB2A6"/></radialGradient>
+ </defs>
+ <!-- lid (open, above) -->
+ <path d="M210 262 C120 262 40 210 40 140 C40 70 100 30 160 40 C185 44 200 58 210 74 C220 58 235 44 260 40 C320 30 380 70 380 140 C380 210 300 262 210 262Z" fill="url(#sh)" stroke="#fff" stroke-width="10"/>
+ <path d="M210 240 C135 240 66 196 66 140 C66 88 110 60 158 66 C182 70 198 84 210 102 C222 84 238 70 262 66 C310 60 354 88 354 140 C354 196 285 240 210 240Z" fill="url(#holo)"/>
+ <text x="210" y="168" text-anchor="middle" font-family="DM Serif Display" font-size="52" fill="#0E4A38" letter-spacing="-1">hey diva</text>
+ <text x="210" y="200" text-anchor="middle" font-family="DM Sans" font-weight="600" font-size="12" letter-spacing="4" fill="#B8914A">✦ MIRROR MIRROR ✦</text>
+ <!-- hinge -->
+ <rect x="170" y="262" width="80" height="16" rx="8" fill="#B8914A" stroke="#fff" stroke-width="4"/>
+ <!-- base (below) -->
+ <path d="M210 520 C120 520 40 468 40 398 C40 328 100 288 160 298 C185 302 200 316 210 332 C220 316 235 302 260 298 C320 288 380 328 380 398 C380 468 300 520 210 520Z" fill="url(#sh)" stroke="#fff" stroke-width="10"/>
+ <path d="M210 498 C135 498 66 454 66 398 C66 346 110 318 158 324 C182 328 198 342 210 360 C222 342 238 328 262 324 C310 318 354 346 354 398 C354 454 285 498 210 498Z" fill="#FBF9F6"/>
+ <!-- tiny sewing studio inside -->
+ <rect x="96" y="440" width="228" height="12" rx="4" fill="#C49A64"/>
+ <circle cx="150" cy="404" r="34" fill="#fff" stroke="#C49A64" stroke-width="7"/><circle cx="150" cy="404" r="26" fill="none" stroke="#B8914A" stroke-width="2"/>
+ <text x="150" y="418" text-anchor="middle" font-family="DM Serif Display" font-size="34" fill="#0E4A38">M</text>
+ <rect x="143" y="366" width="14" height="9" rx="2" fill="#B8914A"/>
+ <!-- spool -->
+ <rect x="214" y="400" width="34" height="8" rx="2" fill="#C49A64"/><rect x="218" y="408" width="26" height="26" fill="#F28DB4"/><rect x="214" y="432" width="34" height="8" rx="2" fill="#C49A64"/>
+ <path d="M244 414 q20 4 26 -20" fill="none" stroke="#F28DB4" stroke-width="2"/>
+ <!-- tiny gem + pearl -->
+ <circle cx="290" cy="420" r="13" fill="url(#pl)"/>
+ <polygon points="282,376 298,376 306,388 290,406 274,388" fill="#13A05A" stroke="#fff" stroke-width="2"/>
+ <polygon points="282,376 298,376 290,388" fill="#fff" opacity=".5"/>
+ <text x="210" y="482" text-anchor="middle" font-family="DM Sans" font-weight="600" font-size="11" letter-spacing="3.5" fill="#0E4A38">MARISA STITCHES</text>
+ <!-- sparkle -->
+ <text x="366" y="60" font-size="34" fill="#fff" style="filter:drop-shadow(0 0 4px #B8914A)">✦</text>
+</svg><div class="lbl">2 · pocket compact<br>(tiny sewing studio inside)</div></div>
+
+<!-- 3. rhinestone diva tee -->
+<div class="item"><div style="position:relative;width:440px;height:480px">
+ <svg viewBox="0 0 440 480" width="440" height="480" style="position:absolute;inset:0"><path d="M140 30 Q220 70 300 30 L420 90 L380 190 L340 170 L340 460 L100 460 L100 170 L60 190 L20 90Z" fill="#1F1D24" stroke="#000" stroke-opacity=".2"/><path d="M175 40 Q220 72 265 40" fill="none" stroke="#3a3640" stroke-width="10"/></svg>
+ <img src="../whimsy/rs_diva.svg" style="position:absolute;left:115px;top:150px;width:210px">
+ <div style="position:absolute;left:0;right:0;top:300px;text-align:center;font:600 10px 'DM Sans';letter-spacing:.34em;color:#C49A64">MARISA STITCHES</div>
+</div><div class="lbl">3 · merch idea: rhinestone “diva” tee</div></div>
+
+<!-- 4. certified diva badge -->
+<div class="item"><div style="position:relative;width:300px;height:300px;border-radius:50%;border:12px solid #fff;box-shadow:0 10px 24px rgba(0,0,0,.15);background:conic-gradient(from 40deg,#f6d4e0,#e6efff,#dcf5ea,#fff2d2,#f6d4e0);display:flex;flex-direction:column;align-items:center;justify-content:center">
+ <div style="font:600 13px 'DM Sans';letter-spacing:.34em;color:#0E4A38">CERTIFIED</div>
+ <div style="position:relative"><div class="bubble" style="font-size:96px">diva</div></div>
+ <div style="font:600 11px 'DM Sans';letter-spacing:.3em;color:#B8914A">✦ STITCHED WITH SASS ✦</div>
+ <div class="pearl" style="position:absolute;width:26px;height:26px;top:40px;left:58px"></div><div class="pearl" style="position:absolute;width:18px;height:18px;bottom:56px;right:54px"></div>
+ <img class="gem" src="../gem-emerald.png" style="width:40px;top:36px;right:56px">
+</div><div class="lbl">4 · “certified diva” holo badge</div></div>
+
+</section></body></html>
