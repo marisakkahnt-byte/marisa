@@ -36,3 +36,26 @@ h1 em,h2 em,h1 i,h2 i{color:var(--emerald)}
 .sticker--pink{background:var(--linen)!important}
 .sew-thread{background:repeating-linear-gradient(90deg,var(--emerald) 0 9px,transparent 9px 14px)!important}
 .hero-headline svg path,.hero-headline svg *{stroke:var(--emerald)!important}
+/* ── v3.1: real zebra (not stripes) + classic cheetah + polka ── */
+:root{--zebra-wide:url("zebra-wide.svg");--zebra-tall:url("zebra-tall.svg");--zebra-sq:url("zebra-sq.svg");--cheetah:url("cheetah-tile.svg");
+ --polka-oat:radial-gradient(#1F1D24 3px,transparent 3.5px) 0 0/16px 16px,radial-gradient(#1F1D24 3px,transparent 3.5px) 8px 8px/16px 16px,#F4EFE7;
+ --polka-emerald:radial-gradient(#F4EFE7 3px,transparent 3.5px) 0 0/16px 16px,radial-gradient(#F4EFE7 3px,transparent 3.5px) 8px 8px/16px 16px,#0E4A38}
+.mq-zebra,.mq-zebra-bold,.mq-zebra-blue,.pd-zebra,.tape--zebra{background:#FBF9F6 var(--zebra-wide) center/cover no-repeat!important}
+.tape--zebra{background:#FBF9F6 var(--zebra-sq) center/220px no-repeat!important}
+.intro-half--zebra{background:#FBF9F6 var(--zebra-tall) center/cover no-repeat!important}
+.pd-cheetah,.mq-cheetah,.mq-cheetah-tan,.mq-cheetah-blue{background:#C49A64 var(--cheetah) 0 0/180px 180px repeat!important}
+.mq-gingham{background:var(--polka-emerald)!important}
+.hero-zebra-left,.hero-zebra-right,.process-section::before{background:var(--polka-oat)!important;opacity:.9}
+.services-section::before,.form-section::before,.faq-section::after,footer::before{background:#C49A64 var(--cheetah) 0 0/140px 140px repeat!important}
+nav::after{background:var(--gold)!important;height:1px!important}
+.fonts-section::before{display:none!important}
+.intro-half--cheetah{background:#C49A64 var(--cheetah) 0 0/220px 220px repeat!important}
+.intro-half--zebra{border-right:4px solid var(--emerald)!important}
+.mq-zebra,.mq-zebra-bold,.mq-zebra-blue,.pd-zebra{background:#FBF9F6 var(--zebra-wide) 0 50%/auto 150% repeat-x!important}
+.tape--zebra{background:#FBF9F6 var(--zebra-sq) center/70px repeat!important}
+/* Y2K sparkle accents, kept chic */
+.intro-card{position:relative}
+.intro-card::before,.intro-card::after{content:"";position:absolute;width:34px;height:34px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0C54 38 62 46 100 50C62 54 54 62 50 100C46 62 38 54 0 50C38 46 46 38 50 0Z' fill='%23B8914A'/%3E%3C/svg%3E") center/contain no-repeat;animation:twinkle 2.4s ease-in-out infinite}
+.intro-card::before{top:-18px;right:24px}.intro-card::after{bottom:-14px;left:30px;width:24px;height:24px;animation-delay:1.2s}
+@keyframes twinkle{0%,100%{transform:scale(.7) rotate(0);opacity:.6}50%{transform:scale(1.1) rotate(20deg);opacity:1}}
+.mq-zebra,.mq-zebra-bold,.mq-zebra-blue,.pd-zebra{background:#FBF9F6 var(--zebra-tall) 0 30%/360px auto repeat-x!important}
