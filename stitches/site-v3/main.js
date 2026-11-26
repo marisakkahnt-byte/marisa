@@ -813,6 +813,12 @@ document.addEventListener('DOMContentLoaded', () => {
       cta.rel = 'noopener';
     }
     if (sticky) sticky.style.display = 'none';
+    // buttons that say "order" point to Instagram while closed
+    document.querySelectorAll('a.btn[href="#order"], a.nav-cta').forEach(a => {
+      a.textContent = 'Follow along ✦';
+      a.href = 'https://instagram.com/marisastitches'; a.target = '_blank'; a.rel = 'noopener';
+    });
+    document.querySelectorAll('a.pricing-link').forEach(a => a.style.display = 'none');
   }
 });
 

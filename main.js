@@ -770,7 +770,7 @@
   /* ---------- Say hi: "Which Marisa are you looking for?" quiz ---------- */
   var QUIZ = {
     strategist: { title: 'the strategist', line: "Pull up a chair. Let's talk process, people and the problems worth eliminating. I'll bring the coffee.", cta: "Let's talk shop" },
-    maker: { title: 'the maker', line: "Monograms, baby gifts, cocktail napkins... if it holds still long enough, I'll stitch it.", cta: 'Start a custom order ↗', persona: 'stitches' },
+    maker: { title: 'the maker', line: "Monograms, baby gifts, cocktail napkins... if it holds still long enough, I'll stitch it.", cta: 'See the stitches ↗', persona: 'stitches' },
     storyteller: { title: 'the storyteller', line: "Congratulations!! Let's tell your love story, word for word.", cta: 'Officiate my wedding ↗', persona: 'ido' }
   };
   QUIZ.strategist.persona = 'office';
