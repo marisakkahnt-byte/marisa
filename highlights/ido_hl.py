@@ -30,6 +30,16 @@ def frame(set_, n, theme, icon, kicker, title, body='', foot='', link=False):
             f'<div class="in"><div class="ic">{ic}</div><p class="k" style="color:{k}">{kicker}</p><h1>{title}</h1>'
             f'<div class="b">{body}</div>{foot}</div>{lk}<img class="lg" src="{logo}"></section>')
 
+
+def photo(set_, n, img, names, line='', credit='', theme='dark'):
+    bg = DARK if theme == 'dark' else CREAM
+    fg = BLUSH if theme == 'dark' else INK
+    logo = '../ido_cool/_brand/logo-blush-crop.png' if theme == 'dark' else '../ido_cool/_brand/logo-charcoal-crop.png'
+    cr = f'<p class="cr" style="color:{GOLD}">{credit}</p>' if credit else ''
+    return (f'<section class="s" data-n="{set_}_{n}" style="background:{bg};color:{fg}"><div class="fr" style="border-color:{GOLD}"></div>'
+            f'<div class="ph"><img src="couple_photos/{img}"></div>'
+            f'<div class="cap"><h2>{names}</h2><p class="ln">{line}</p>{cr}</div><img class="lg" src="{logo}"></section>')
+
 LI = lambda items: '<ul>' + ''.join(f'<li>{i}</li>' for i in items) + '</ul>'
 S = []
 # about
@@ -47,10 +57,26 @@ S += [frame('vows', 1, 'dark', 'vows', 'vows', 'Your words, just a little braver
       frame('vows', 2, 'cream', None, 'vow tip', 'Write about a Tuesday', '<p>Skip the big feelings. Write about a normal Tuesday: how they make your coffee, the song they hum doing the dishes.</p>'),
       frame('vows', 3, 'blush', None, 'vow tip', 'Read it out loud. Twice.', '<p>If you trip over a line, so will your nerves. Shorter sentences, more breaths.</p>'),
       frame('vows', 4, 'dark', None, 'stuck?', 'Let’s find your words', '<p>Send me a DM, or ask in the question box below.</p>')]
-# kind words
-S += [frame('kind-words', 1, 'dark', 'kind words', 'kind words', '“There is absolutely no one better.”', '<p class="att">— Nick &amp; Hannah</p>'),
-      frame('kind-words', 2, 'blush', None, 'kind words', '“She made everyone laugh, and you felt in on the couple’s inside jokes!”', '<p class="att">— Catherine</p>'),
-      frame('kind-words', 3, 'cream', None, 'kind words', '“Every word felt like it was written just for us.”', '<p class="att">— a very happy couple</p>')]
+# kind words (from idobymarisa.com)
+S += [frame('kind-words', 1, 'dark', 'kind words', 'kind words', 'Straight from my couples', '<p>Tap through ♡</p>'),
+      frame('kind-words', 2, 'blush', None, 'kind words', '“She gave our love a language.”', '<p class="att">— Gabrielle &amp; Darian</p>'),
+      frame('kind-words', 3, 'cream', None, 'kind words', '“Every word felt like it was written just for us.”', '<p class="att">— Heather &amp; Brandon</p>'),
+      frame('kind-words', 4, 'dark', None, 'kind words', '“There is absolutely no one better.”', '<p class="att">— Nick &amp; Hannah</p>'),
+      frame('kind-words', 5, 'blush', None, 'kind words', '“My grandmother said she did better than any bishop she’s ever seen.”', '<p class="att">— Nick</p>'),
+      frame('kind-words', 6, 'cream', None, 'kind words', '“She made everyone laugh, and you felt in on the couple’s inside jokes!”', '<p class="att">— Catherine</p>'),
+      frame('kind-words', 7, 'dark', None, 'married by me?', 'Leave a little review', '<p>It means the world, and it helps the next couple find me.</p><p class="u">link below ↓</p>', link=True)]
+# couples (approved to share)
+S += [frame('couples', 1, 'dark', 'couples', 'my couples', 'Love stories I got to tell', '<p>Tap through ♡</p>'),
+      photo('couples', 2, 'dip-kiss.jpg', 'Kenz &amp; Pez', 'a fall evening, and the dip of the year', '📸 @gabriellecynthiaphoto'),
+      photo('couples', 3, 'ceremony-wide.jpg', 'Kenz &amp; Pez', 'Petite Acres', '📸 @gabriellecynthiaphoto', theme='cream'),
+      photo('couples', 4, 'IMG_2174_first-dance.jpg', 'Gerard &amp; Alyssa', 'first dance, Castle Hall'),
+      photo('couples', 5, 'IMG_5195_connors-kiss.jpg', 'The Connors', 'their ceremony had a ring warming ♡', theme='cream'),
+      photo('couples', 6, 'AmberRyan_05.jpg', 'Amber &amp; Ryan', 'Detroit Yacht Club'),
+      photo('couples', 7, 'AmberRyan_02.jpg', 'Amber &amp; Ryan', 'the aisle, before the guests', theme='cream'),
+      photo('couples', 8, 'AvanceAlex_02.jpg', 'Avance &amp; Alex', 'Cushing Field House'),
+      photo('couples', 9, 'KristenJohn_dock.jpg', 'Kristen &amp; John', 'a lakeside elopement', theme='cream'),
+      photo('couples', 10, 'KristenJohn_cabana.jpg', 'Kristen &amp; John', 'small, sweet and all heart'),
+      frame('couples', 11, 'blush', None, 'your turn', 'Let’s tell your story', '<p class="u">idobymarisa.com</p>', link=True)]
 # rain
 S += [frame('rain', 1, 'dark', 'rain', 'rain on your wedding day?', 'Good.', '<p>They say a wet knot is harder to untie. So, good luck.</p>'),
       frame('rain', 2, 'blush', None, 'a little about me', 'I love the rain', '<p>Some people think it’s gloomy. I think it’s beautiful and calming. Umbrella photos? Iconic.</p>'),
@@ -82,6 +108,11 @@ ol{counter-reset:c;text-align:left}ol li{counter-increment:c;position:relative;p
 ol li::before{content:counter(c);position:absolute;left:0;top:2px;width:58px;height:58px;border:1.5px solid #B08D57;border-radius:50%;font:500 32px/58px 'Cormorant Garamond';text-align:center;color:#B08D57}
 ol b{display:block;font:500 46px 'Cormorant Garamond'}ol span{display:block;font:italic 500 34px 'Cormorant Garamond';opacity:.75}
 .lk{position:absolute;bottom:330px;left:0;right:0;text-align:center;font:600 22px Raleway;letter-spacing:.3em;text-transform:uppercase;opacity:.85}
+.ph{position:absolute;left:110px;right:110px;top:150px;height:1180px;display:flex;align-items:center;justify-content:center}
+.ph img{max-width:100%;max-height:100%;object-fit:contain;box-shadow:0 0 0 10px rgba(255,255,255,.9),0 16px 30px rgba(0,0,0,.35)}
+.cap{position:absolute;left:100px;right:100px;top:1380px;text-align:center}
+.cap h2{margin:0;font:400 96px/1 'Pinyon Script'}.cap .ln{margin:14px 0 0;font:italic 500 40px 'Cormorant Garamond'}
+.cap .cr{margin:16px 0 0;font:600 24px Raleway;letter-spacing:.12em}
 .lg{position:absolute;bottom:110px;left:50%;transform:translateX(-50%);width:150px}
 </style></head><body>'''] + S + ['</body></html>']
 open('/home/user/marisa/highlights/ido_hl.html', 'w').write(''.join(html))
