@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>A Little Card for You · I Do by Marisa</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Pinyon+Script&family=Raleway:wght@400;500;600&display=swap">
+<style>
+/* Layout: one centered "desk" scene; envelope -> card -> next steps below */
+:root{
+  --cream:#FBF7F0; --desk:#EFE6D8; --paper:#FFFDF9; --ink:#2A241F; --muted:#6E625A;
+  --gold:#B08D57; --gold-soft:#D9C08F; --wine:#7E2E2C; --blush:#EBCFC8; --env:#F3E3DC; --env-dark:#E7D0C6;
+  --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --script:"Pinyon Script","Snell Roundhand","Apple Chancery",cursive;
+  --sans:"Raleway","Helvetica Neue",Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--desk);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.6;
+  background-image:radial-gradient(circle at 50% 30%,#F7F0E5 0,var(--desk) 70%);min-height:100vh}
+.wrap{max-width:720px;margin:0 auto;padding-block:28px 72px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  display:grid;justify-items:center;gap:18px}
+.kicker{font:600 11px/1.4 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin:6px 0 0;text-align:center}
+.hint{font-family:var(--serif);font-style:italic;color:var(--muted);font-size:1.05rem;margin:0;text-align:center;min-height:1.6em;transition:opacity .4s}
+
+/* ---------- Stage ---------- */
+.stage{position:relative;width:min(360px,92vw);aspect-ratio:360/470;perspective:1400px}
+/* Envelope */
+.env{position:absolute;left:0;right:0;bottom:0;height:56%;transition:transform 1s cubic-bezier(.6,0,.3,1),opacity .8s}
+.env-back{position:absolute;inset:0;background:var(--env-dark);border-radius:6px;box-shadow:0 18px 40px rgba(60,40,30,.18)}
+.liner{position:absolute;inset:5% 5% 0;border-radius:4px 4px 0 0;overflow:hidden;
+  background:var(--wine) radial-gradient(circle,var(--gold-soft) 1.3px,transparent 1.6px) 0 0/14px 14px}
+.env-front{position:absolute;inset:0;z-index:4;pointer-events:none;
+  background:
+   linear-gradient(to top right,var(--env) 49.6%,transparent 50%) left bottom/50.5% 100% no-repeat,
+   linear-gradient(to top left,var(--env) 49.6%,transparent 50%) right bottom/50.5% 100% no-repeat,
+   linear-gradient(to top,var(--env) 0 58%,transparent 58%) center bottom/100% 100% no-repeat;
+  filter:drop-shadow(0 -1px 0 rgba(0,0,0,.04))}
+.env-front::after{content:"";position:absolute;left:8%;bottom:9%;font:600 8px var(--sans)}
+.addr{position:absolute;z-index:5;left:0;right:0;bottom:9%;text-align:center;pointer-events:none}
+.addr .to{font-family:var(--script);font-size:clamp(1.6rem,7vw,2.1rem);color:var(--ink);line-height:1}
+.addr .from{font:600 8.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.stamp{position:absolute;z-index:5;right:6%;bottom:62%;width:44px;height:54px;background:var(--paper);
+  border:3px dotted var(--env);outline:1px solid var(--gold-soft);display:grid;place-items:center;transform:rotate(4deg);pointer-events:none}
+.stamp span{font-family:var(--script);color:var(--wine);font-size:1.5rem;line-height:1}
+.postmark{position:absolute;z-index:7;right:15%;bottom:57%;width:58px;height:58px;border:1.5px solid rgba(126,46,44,.35);border-radius:50%;
+  display:grid;place-items:center;text-align:center;font:600 6px/1.3 var(--sans);letter-spacing:.12em;color:rgba(126,46,44,.5);transform:rotate(-14deg);pointer-events:none}
+.flap{position:absolute;left:0;right:0;top:0;height:62%;z-index:6;transform-origin:top center;transform-style:preserve-3d;
+  transition:transform .9s cubic-bezier(.55,0,.25,1),z-index 0s .45s}
+.flap::before,.flap::after{content:"";position:absolute;inset:0;clip-path:polygon(0 0,100% 0,50% 100%);backface-visibility:hidden;border-radius:6px 6px 0 0}
+.flap::before{background:var(--env);filter:brightness(.98)}
+.flap::after{background:var(--wine) radial-gradient(circle,var(--gold-soft) 1.3px,transparent 1.6px) 0 0/14px 14px;transform:rotateX(180deg)}
+.seal{position:absolute;z-index:8;left:50%;top:57%;width:64px;height:64px;margin:-32px 0 0 -32px;border:0;padding:0;cursor:pointer;
+  border-radius:50% 47% 52% 49%;background:radial-gradient(circle at 38% 34%,#a14644,var(--wine) 62%,#5e1f1e);
+  box-shadow:0 3px 8px rgba(60,20,20,.35),inset 0 0 0 5px rgba(0,0,0,.08);display:grid;place-items:center;
+  transition:transform .5s,opacity .5s;animation:breathe 2.6s ease-in-out infinite}
+.seal span{font-family:var(--script);color:#F1D9B0;font-size:2rem;line-height:1;margin-top:4px;text-shadow:0 1px 0 rgba(0,0,0,.25)}
+.seal:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+@keyframes breathe{50%{transform:scale(1.06)}}
+
+/* Card */
+.card{position:absolute;left:8%;right:8%;bottom:6%;height:78%;z-index:2;transform-style:preserve-3d;transform:translateY(22%) scale(.68);
+  transition:transform 1.1s cubic-bezier(.5,0,.2,1);cursor:pointer}
+.face{position:absolute;inset:0;backface-visibility:hidden;background:var(--paper);border-radius:4px;
+  box-shadow:0 14px 34px rgba(60,40,30,.2);display:grid;place-items:center;text-align:center;padding:9% 9%;overflow:hidden}
+.face::before{content:"";position:absolute;inset:10px;border:1px solid var(--gold-soft);pointer-events:none}
+.face::after{content:"";position:absolute;inset:14px;border:1px solid rgba(176,141,87,.35);pointer-events:none}
+.back{transform:rotateY(180deg);align-content:center;text-align:left;padding:12% 11%}
+.front .eyebrow{font:600 9px var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--gold)}
+.front .big{font-family:var(--script);font-size:clamp(3.2rem,15vw,4.4rem);line-height:1;color:var(--ink);margin:.12em 0 .06em}
+.front .sub{font-family:var(--serif);font-style:italic;font-size:1.08rem;color:var(--muted);max-width:16em;margin:0 auto}
+.rule{width:44px;height:1px;background:var(--gold);margin:14px auto}
+.front svg{width:72px;height:auto;display:block;margin:0 auto 6px}
+.back .to{font-family:var(--script);font-size:1.9rem;line-height:1.1;margin:0 0 8px}
+.back p{font-family:var(--serif);font-size:1.06rem;line-height:1.45;margin:0 0 .7em}
+.back .sig{font-family:var(--script);font-size:2rem;color:var(--wine);margin:4px 0 0}
+.back .note{font-style:italic;color:var(--muted)}
+
+/* States */
+.liner,.card{visibility:hidden}
+.stage.opening .liner,.stage.opening .card{visibility:visible}
+.stamp,.postmark{transition:opacity .4s}
+.stage.opening .stamp,.stage.opening .postmark{opacity:0}
+.stage.opening .seal{transform:scale(.4) rotate(-30deg);opacity:0;animation:none;pointer-events:none}
+.stage.opening .flap{transform:rotateX(180deg);z-index:1}
+.stage.rising .card{transform:translateY(-24%) scale(.68);z-index:3}
+.stage.out .env{transform:translateY(60%);opacity:0}
+.stage.out .card{transform:translateY(-12%) scale(1)}
+.stage.flipped .card{transform:translateY(-12%) scale(1) rotateY(180deg)}
+.stage.out .flap{transition:none}
+
+/* Next steps */
+.steps{width:100%;max-width:560px;background:var(--paper);border-radius:6px;padding:28px clamp(18px,5vw,34px);
+  box-shadow:0 10px 30px rgba(60,40,30,.08);opacity:0;transform:translateY(12px);transition:opacity .8s,transform .8s;display:grid;gap:22px}
+.steps.show{opacity:1;transform:none}
+.steps h2{font-family:var(--serif);font-weight:500;font-size:1.9rem;line-height:1.15;margin:0;text-align:center;text-wrap:balance}
+.steps .lede{font-family:var(--serif);font-style:italic;color:var(--muted);text-align:center;margin:-12px 0 0;font-size:1.05rem}
+.step{display:grid;grid-template-columns:36px 1fr;gap:14px;align-items:start}
+.step .n{width:36px;height:36px;border-radius:50%;border:1px solid var(--gold);display:grid;place-items:center;font-family:var(--serif);font-size:1.1rem;color:var(--gold)}
+.step h3{font-family:var(--serif);font-weight:600;font-size:1.25rem;margin:2px 0 4px}
+.step p{margin:0 0 10px;color:var(--ink)}
+.step small{color:var(--muted)}
+.btns{display:flex;flex-wrap:wrap;gap:8px}
+.btn{display:inline-block;font:600 11px var(--sans);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--ink);
+  border:1px solid var(--ink);border-radius:999px;padding:9px 16px;transition:background .2s,color .2s}
+.btn:hover,.btn:focus-visible{background:var(--ink);color:var(--paper)}
+.btn.solid{background:var(--wine);border-color:var(--wine);color:#fff}
+.btn.solid:hover{background:#651f1e}
+.fine{font-size:12px;color:var(--muted);text-align:center;margin:0}
+footer{text-align:center;color:var(--muted);font-size:12px;letter-spacing:.06em;display:grid;gap:4px;margin-top:6px}
+footer .m{font-family:var(--script);font-size:1.6rem;color:var(--gold);letter-spacing:0}
+footer a{color:inherit}
+.replay{background:none;border:0;font:600 10px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);cursor:pointer;padding:8px;text-decoration:underline;text-underline-offset:3px}
+canvas.fx{position:fixed;inset:0;pointer-events:none;z-index:20}
+@media (prefers-reduced-motion:reduce){
+  .env,.flap,.card,.seal,.steps{transition:none!important;animation:none!important}
+}
+
+/* ===== v2: alive ===== */
+.wrap{position:relative;z-index:1}
+canvas.amb{position:fixed;inset:0;pointer-events:none;z-index:0}
+body.holiday{background:#231D19;background-image:radial-gradient(circle at 50% 22%,#43352C 0,#231D19 72%)}
+body.holiday .hint,body.holiday footer,body.holiday .replay{color:#DCCDBA}
+body.holiday .kicker{color:var(--gold-soft)}
+body.holiday .env-back{box-shadow:0 22px 50px rgba(0,0,0,.45)}
+.stage:not(.opening) .env{animation:wiggle 4.6s ease-in-out 1.4s infinite;transform-origin:50% 100%}
+@keyframes wiggle{0%,84%,100%{transform:rotate(0)}87%{transform:rotate(-2.4deg) translateY(-3px)}90%{transform:rotate(2.2deg)}93%{transform:rotate(-1.3deg)}96%{transform:rotate(.6deg)}}
+.stage.done{animation:bob 5.5s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-9px)}}
+.front .art{position:relative;width:96px;height:78px;margin:0 auto 4px}
+.front .art svg{width:100%;height:100%;margin:0;overflow:visible}
+.orn{transform-origin:48px 0;animation:swing 3.4s ease-in-out infinite}
+@keyframes swing{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(8deg)}}
+.tw{position:absolute;width:13px;height:13px;animation:tw 2.6s ease-in-out infinite;pointer-events:none}
+.tw svg{width:100%!important;height:100%;margin:0!important}
+.tw path{fill:var(--gold-soft)}
+@keyframes tw{0%,100%{opacity:.15;transform:scale(.5) rotate(0)}50%{opacity:1;transform:scale(1) rotate(45deg)}}
+.glL{transform-box:view-box;transform-origin:30px 64px;animation:clinkL 3.2s ease-in-out infinite}
+.glR{transform-box:view-box;transform-origin:66px 64px;animation:clinkR 3.2s ease-in-out infinite}
+@keyframes clinkL{0%,25%,75%,100%{transform:translateX(0) rotate(0)}45%,55%{transform:translateX(6px) rotate(12deg)}}
+@keyframes clinkR{0%,25%,75%,100%{transform:translateX(0) rotate(0)}45%,55%{transform:translateX(-6px) rotate(-12deg)}}
+.spk{transform-box:view-box;transform-origin:48px 14px;animation:spk 3.2s ease-out infinite;opacity:0}
+@keyframes spk{0%,44%{opacity:0;transform:scale(.3)}50%{opacity:1;transform:scale(1)}68%,100%{opacity:0;transform:scale(1.5)}}
+.orn{transform-box:view-box}
+.music{position:fixed;z-index:30;right:max(14px,env(safe-area-inset-right,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));
+  width:46px;height:46px;border-radius:50%;border:1px solid var(--gold);background:var(--paper);cursor:pointer;
+  box-shadow:0 6px 16px rgba(0,0,0,.15);display:grid;place-items:center;padding:0}
+.music .bars{display:flex;gap:3px;align-items:flex-end;height:16px}
+.music .bars i{width:3px;height:6px;background:var(--wine);border-radius:1px;animation:eq 1s ease-in-out infinite}
+.music .bars i:nth-child(2){animation-delay:.2s}.music .bars i:nth-child(3){animation-delay:.4s}
+.music[aria-pressed="false"]{opacity:.6}
+.music[aria-pressed="false"] .bars i{animation:none;height:3px}
+@keyframes eq{0%,100%{height:4px}50%{height:15px}}
+.music:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+/* social video mode */
+body.social{overflow:hidden}
+body.social .wrap{zoom:2.55;padding-top:150px;transition:opacity 1s}
+body.social.ending .wrap{opacity:0}
+body.social .hint,body.social .replay,body.social .steps,body.social footer,body.social .music{display:none!important}
+.endcard{position:fixed;inset:0;z-index:25;display:grid;place-items:center;align-content:center;text-align:center;opacity:0;transition:opacity 1.4s;pointer-events:none;
+  background:radial-gradient(circle at 50% 50%,rgba(35,29,25,.6),rgba(35,29,25,.94))}
+.endcard.show{opacity:1}
+.endcard .e1{font:600 26px var(--sans);letter-spacing:.32em;text-transform:uppercase;color:var(--gold-soft)}
+.endcard .e2{font-family:var(--script);font-size:118px;line-height:1.05;color:#FBF7F0;margin:14px 0 6px}
+.endcard .e3{font-family:var(--serif);font-style:italic;font-size:48px;color:#E9DCC8}
+.endcard .e4{font:600 30px var(--sans);letter-spacing:.22em;color:var(--gold-soft);margin-top:54px}
+body:not(.holiday) .endcard{background:radial-gradient(circle at 50% 50%,rgba(251,247,240,.7),rgba(239,230,216,.96))}
+body:not(.holiday) .endcard .e2{color:var(--ink)} body:not(.holiday) .endcard .e3{color:var(--muted)} body:not(.holiday) .endcard .e1,body:not(.holiday) .endcard .e4{color:var(--gold)}
+@media (prefers-reduced-motion:reduce){.stage .env,.stage.done,.orn,.tw,.glL,.glR,.spk,.music .bars i{animation:none!important}}
+
+.county{margin-top:12px;display:grid;gap:6px;max-width:320px}
+.county label{font:600 11px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.county select,.consent input[type=text],.consent .fld input{font:15px var(--sans);padding:9px 11px;border:1px solid #E4D8C6;border-radius:4px;background:#fff;color:var(--ink);width:100%}
+.county .small,.why p{font-size:13.5px;color:var(--muted);margin:6px 0 0}
+.why{margin-top:10px}.why summary{cursor:pointer;font-family:var(--serif);font-style:italic;color:var(--gold);font-size:1.02rem}
+.consent{display:grid;gap:10px;margin-top:6px}
+.consent fieldset{border:0;padding:0;margin:0;display:grid;gap:6px}.consent legend{position:absolute;left:-9999px}
+.consent .opt{display:flex;gap:10px;align-items:center;font-size:15px;cursor:pointer}
+.consent .opt input{accent-color:var(--wine);width:17px;height:17px}
+.consent .fld{display:grid;gap:5px;font:600 11px var(--sans);letter-spacing:.08em;color:var(--muted)}
+.consent .fld small{font-weight:400;letter-spacing:0}
+.consent button{justify-self:start;cursor:pointer}
+.consent button:disabled{opacity:.6}
+.consent .hp{position:absolute;left:-9999px}
+.formmsg{font-size:13px;color:var(--muted);margin:0;min-height:1.2em}
+.thanks{font-family:var(--serif);font-size:1.3rem;margin:0}
+footer .lg{width:70px;margin:0 auto 4px;display:block}.lg-l{display:none!important}body.holiday .lg-d{display:none!important}body.holiday .lg-l{display:block!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="kicker" id="kicker">You've got mail</p>
+
+  <div class="stage" id="stage">
+    <div class="card" id="card" aria-live="polite">
+      <div class="face front" id="front"></div>
+      <div class="face back" id="back"></div>
+    </div>
+    <div class="env" id="env">
+      <div class="env-back"><div class="liner"></div></div>
+      <div class="env-front"></div>
+      <div class="stamp"><span>M</span></div>
+      <div class="postmark">METRO<br>DETROIT<br>· MI ·</div>
+      <div class="addr"><div class="to" id="addrTo">For you</div><div class="from">From I Do by Marisa</div></div>
+      <div class="flap" id="flap"></div>
+      <button class="seal" id="seal" aria-label="Open your card"><span>M</span></button>
+    </div>
+  </div>
+
+  <p class="hint" id="hint">Tap the seal to open</p>
+  <button class="replay" id="replay" hidden>Open it again</button>
+
+  <section class="steps" id="steps" hidden></section>
+
+  <footer>
+    <img class="lg lg-d" src="/images/logo.png" alt="I Do by Marisa"><img class="lg lg-l" src="/images/logo-blush.png" alt="I Do by Marisa">
+    <span>Story is the signature · <a href="https://idobymarisa.com">idobymarisa.com</a></span>
+  </footer>
+</div>
+<canvas class="amb" id="amb"></canvas>
+<canvas class="fx" id="fx"></canvas>
+<button class="music" id="music" aria-pressed="true" aria-label="Music on or off" hidden><span class="bars"><i></i><i></i><i></i></span></button>
+<div class="endcard" id="endcard" aria-hidden="true"></div>
+<form name="photo-consent" data-netlify="true" netlify-honeypot="bot-field" hidden><input name="couple"><input name="share"><input name="tag"><input name="couple_instagram"><input name="photographer"><input name="bot-field"></form>
+
+<script>
+(function(){
+  /* ===== Settings Marisa can change ===== */
+  var REVIEW_URL = 'https://g.page/r/CTUuZ3qRU5TPEAI/review'; // paste your Google review link here, e.g. https://g.page/r/XXXX/review
+  var CLERKS = {
+    oakland:{name:'Oakland County Clerk', url:'https://www.oakgov.com/government/clerk-register-of-deeds/life-events-services/marriage-records'},
+    macomb:{name:'Macomb County Clerk', url:'https://www.macombgov.org/departments/clerk-register-deeds/marriage-license-copies'},
+    wayne:{name:'Wayne County Clerk', url:'https://www.waynecountymi.gov/Government/Elected-Officials/Clerk/General-Office/Marriage-Licenses'}
+  };
+  var STATE_RECORDS = 'https://www.michigan.gov/mdhhs/doing-business/vitalrecords/order-a-copy-of-a-vital-record';
+  var SSA = 'https://www.ssa.gov/number-card';
+  var SOS = 'https://www.michigan.gov/sos/all-services/license-or-id-name-correction';
+
+  /* ===== Read the link ===== */
+  var q = new URLSearchParams(location.search);
+  var type = (q.get('type') || (location.hash === '#holiday' ? 'holiday' : 'thanks')).toLowerCase();
+  var to = q.get('to') || 'Nora & Sam';
+  var note = q.get('note') || '';
+  var county = (q.get('county') || '').trim();
+  var filed = q.get('filed') || '';
+  var sample = !q.get('to');
+  var social = q.get('social')==='1';
+  if(social){ to = q.get('to') || 'To you'; }
+  if(type==='holiday') document.body.classList.add('holiday');
+  if(social) document.body.classList.add('social');
+
+  function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function fmtDate(s){var d=new Date(s+'T12:00:00');return isNaN(d)?esc(s):d.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});}
+
+  var star='<svg viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0l1.2 3.8L10 5 6.2 6.2 5 10 3.8 6.2 0 5l3.8-1.2z"/></svg>';
+  function stars(list){return list.map(function(p){return '<span class="tw" style="left:'+p[0]+'%;top:'+p[1]+'%;animation-delay:'+p[2]+'s">'+star+'</span>';}).join('');}
+  var ringsSVG='<div class="art"><svg viewBox="0 0 96 78" fill="none" stroke="#B08D57" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">'+
+    '<g class="glL"><path d="M14 24h32c0 10-7 16-16 16S14 34 14 24z" fill="rgba(217,192,143,.28)"/><path d="M30 40v22M20 64h20"/></g>'+
+    '<g class="glR"><path d="M50 24h32c0 10-7 16-16 16S50 34 50 24z" fill="rgba(217,192,143,.28)"/><path d="M66 40v22M56 64h20"/></g>'+
+    '<g class="spk" stroke="#D9C08F"><path d="M48 2v6M48 18v6M37 13h6M53 13h6M40 5l4 4M56 5l-4 4M40 21l4-4M56 21l-4-4"/></g></svg></div>';
+  var ornSVG='<div class="art"><svg viewBox="0 0 96 78" fill="none" stroke="#B08D57" stroke-width="1.3" aria-hidden="true"><g class="orn">'+
+    '<path d="M48 0v10"/><rect x="42" y="10" width="12" height="7" rx="1.5"/><circle cx="48" cy="44" r="25" fill="rgba(217,192,143,.14)"/>'+
+    '<path d="M24 37c16 7 32 7 48 0M24 51c16 7 32 7 48 0" stroke-dasharray="2 4"/><circle cx="40" cy="36" r="4" fill="#FFFFFF" stroke="none" opacity=".75"/>'+
+    '<path d="M48 10c-9-9-18-2-10 2 3 2 10-2 10-2zm0 0c9-9 18-2 10 2-3 2-10-2-10-2z" fill="#7E2E2C" stroke="none"/></g></svg></div>';
+
+
+  var front=document.getElementById('front'), back=document.getElementById('back');
+  document.getElementById('addrTo').textContent = to;
+
+  if(type==='holiday'){
+    document.title='Happy Holidays · I Do by Marisa';
+    document.getElementById('kicker').textContent='A little holiday mail';
+    front.innerHTML=stars([[12,14,0],[82,10,.8],[18,72,1.4],[84,66,.4],[50,88,1.9],[72,30,1.1]])+'<div>'+ornSVG+'<div class="eyebrow">Season\u2019s greetings</div><div class="big">Happy Holidays</div><div class="rule"></div><div class="sub">from I Do by Marisa</div></div>';
+    back.innerHTML='<div><p class="to">'+esc(social?'Hi friends':to)+',</p>'+
+      (social?'<p>To every couple who let me tell their story this year: thank you. You made my year.</p><p>Wishing you a cozy season. Good food, warm socks and someone who saves you the last cookie.</p>':
+      '<p>Whether this is your first holiday season married or your tenth, I hope it\u2019s a cozy one. Good food, warm socks and someone who saves you the last cookie.</p>')+
+      (note?'<p class="note">'+esc(note)+'</p>':'')+
+      (social?'':'<p>Thank you for letting me be part of your story. It\u2019s still one of my favorites.</p>')+
+      '<p class="sig">Love, Marisa</p></div>';
+  } else {
+    front.innerHTML=stars([[14,16,.3],[84,12,1.2],[80,74,.6]])+'<div>'+ringsSVG+'<div class="eyebrow">A little note</div><div class="big">Thank you</div><div class="rule"></div><div class="sub">for letting me be part of your moment</div></div>';
+    back.innerHTML='<div><p class="to">'+esc(social?'Hi friends':to)+',</p>'+
+      (social?'<p>To every couple who let me stand up there with you this year: thank you. I had the best seat in the house, every single time.</p>':
+      '<p>Thank you for letting me stand up there with you. I had the best seat in the house, and I don\u2019t take that lightly.</p>')+
+      (note?'<p class="note">'+esc(note)+'</p>':'')+
+      (social?'<p>Here\u2019s to every love story still being written.</p>':'<p>I hope you\u2019re still floating. Go enjoy being married.</p>')+
+      '<p class="sig">Love, Marisa</p></div>';
+  }
+
+  /* ===== Next steps (thank-you card only) ===== */
+  var steps=document.getElementById('steps');
+  if(type!=='holiday'){
+    var countyOpts='<option value="">Choose your county</option>'+Object.keys(CLERKS).map(function(k){return '<option value="'+k+'">'+CLERKS[k].name.replace(' Clerk','')+'</option>';}).join('')+'<option value="other">Somewhere else</option>';
+    var review = (REVIEW_URL||sample)
+      ? '<div class="step"><div class="n">5</div><div><h3>If your ceremony meant something to you</h3><p>Would you share a few words about it? I read every single one (usually with a tissue), and your words help the next couple find someone to tell their story.</p><div class="btns">'+
+        (REVIEW_URL?'<a class="btn solid" href="'+REVIEW_URL+'" target="_blank" rel="noopener">Share a few words</a>':'<span class="btn" aria-disabled="true">Share a few words (link coming)</span>')+'</div></div></div>'
+      : '';
+    steps.innerHTML =
+      '<h2>A few little things</h2><p class="lede">So the paperwork part is easy</p>'+
+      '<div class="step"><div class="n">1</div><div><h3>Your license is signed and returned</h3><p>I’ve returned your signed marriage license to the county clerk. Once they record it, you’re officially official on paper too.</p></div></div>'+
+      '<div class="step"><div class="n">2</div><div><h3>Want certified copies?</h3><p>Give it a week or two to be recorded, then order a couple of certified copies. Most name changes need one.</p>'+
+        '<div class="btns"><a class="btn solid" href="'+STATE_RECORDS+'" target="_blank" rel="noopener">Order from the State of Michigan</a></div>'+
+        '<div class="county"><label for="countyPick">Or order from your county</label><select id="countyPick">'+countyOpts+'</select><div id="countyOut"></div></div>'+
+        '<details class="why"><summary>What’s a certified copy?</summary><p>It’s an official copy of your marriage record with the clerk’s seal. Social Security, the Secretary of State and your bank will ask for one before they update your name. Order two or three so you’re never waiting on mail.</p></details></div></div>'+
+      '<div class="step"><div class="n">3</div><div><h3>Changing your name?</h3><p>Totally optional. Keeping your name is just as valid. If you are changing it, go in this order:</p>'+
+        '<p><b>First,</b> Social Security (free).<br><b>Then,</b> the Michigan Secretary of State for your license.<br><b>After that,</b> your passport, bank, work and insurance.</p>'+
+        '<div class="btns"><a class="btn solid" href="'+SSA+'" target="_blank" rel="noopener">Social Security</a><a class="btn" href="'+SOS+'" target="_blank" rel="noopener">Secretary of State</a></div></div></div>'+
+      '<div class="step"><div class="n">4</div><div><h3>Can I share a few of your photos?</h3><p>Some of my favorite moments are the ones your photographer caught. If you’re comfortable with it, I’d love to share a few on my Instagram and website, always with credit to them. No pressure either way.</p>'+
+        '<form class="consent" id="consent" name="photo-consent" method="POST" novalidate>'+
+          '<input type="hidden" name="form-name" value="photo-consent"><input type="hidden" name="couple" value="'+esc(to)+'">'+
+          '<p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>'+
+          '<fieldset><legend>Photos</legend>'+
+            '<label class="opt"><input type="radio" name="share" value="Yes, share away" required> Yes, share away!</label>'+
+            '<label class="opt"><input type="radio" name="share" value="Yes, but check with us first"> Yes, but check with us first</label>'+
+            '<label class="opt"><input type="radio" name="share" value="Please keep them private"> We’d rather keep them private</label></fieldset>'+
+          '<label class="opt"><input type="checkbox" name="tag" value="Yes, tag us"> Tag us when you post</label>'+
+          '<label class="fld" for="ig">Your Instagram handles <small>(optional)</small><input id="ig" name="couple_instagram" placeholder="@you, @your-person"></label>'+
+          '<label class="fld" for="ph">Your photographer’s Instagram or email <small>(so I can credit them)</small><input id="ph" name="photographer" placeholder="@photographer or name@email.com"></label>'+
+          '<button class="btn solid" type="submit">Send to Marisa</button><p class="formmsg" id="formmsg" aria-live="polite"></p>'+
+        '</form></div></div>'+
+      review+
+      '<p class="fine">Not legal advice. Fees and steps can change, so check each office’s site.</p>';
+    var pick=document.getElementById('countyPick'), out=document.getElementById('countyOut');
+    pick.addEventListener('change',function(){
+      var c=CLERKS[pick.value];
+      out.innerHTML = c ? '<a class="btn" href="'+c.url+'" target="_blank" rel="noopener">Go to the '+esc(c.name)+'</a>'
+        : (pick.value==='other' ? '<p class="small">Search your county clerk’s website for “marriage records.” The State of Michigan button above works for every county, too.</p>' : '');
+    });
+    var form=document.getElementById('consent'), msg=document.getElementById('formmsg');
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      if(!form.querySelector('input[name=share]:checked')){msg.textContent='Pick one of the photo options first.';return;}
+      var btn=form.querySelector('button'); btn.disabled=true; msg.textContent='Sending…';
+      fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString()})
+        .then(function(r){ if(!r.ok) throw 0; form.innerHTML='<p class="thanks">Got it, thank you! 🤍</p>'; })
+        .catch(function(){ btn.disabled=false; msg.textContent=/idobymarisa\.com$/.test(location.hostname)?'That didn’t send. Try again, or just text me your answer.':'This is a preview, so nothing was sent. On your real card, this goes straight to Marisa.'; });
+    });
+  } else {
+    steps.innerHTML='<h2>Cheers to you two</h2><p class="lede" style="margin:-8px 0 0">Know someone newly engaged? I\u2019d love to hear their story.</p><div class="btns" style="justify-content:center"><a class="btn solid" href="https://idobymarisa.com" target="_blank" rel="noopener">idobymarisa.com</a></div>';
+  }
+
+  /* ===== The opening ===== */
+  var stage=document.getElementById('stage'), hint=document.getElementById('hint'), replay=document.getElementById('replay');
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var step=0;
+  function wait(ms){return new Promise(function(r){setTimeout(r, reduce?0:ms);});}
+  function open(){
+    if(step) return; step=1;
+    startMusic();
+    hint.style.opacity=0;
+    stage.classList.add('opening');
+    wait(900).then(function(){stage.classList.add('rising');return wait(1000);})
+    .then(function(){stage.classList.add('out');return wait(1000);})
+    .then(function(){stage.classList.add('flipped');burst();return wait(1100);})
+    .then(function(){hint.textContent='Tap the card to flip it';hint.style.opacity=1;steps.hidden=false;
+      requestAnimationFrame(function(){steps.classList.add('show');});replay.hidden=false;step=2;stage.classList.add('done');
+      if(social) setTimeout(function(){document.body.classList.add('ending');endcard.classList.add('show');},4800);});
+  }
+  document.getElementById('seal').addEventListener('click',open);
+  document.getElementById('card').addEventListener('click',function(){
+    if(step===2){stage.classList.toggle('flipped');} else open();
+  });
+  replay.addEventListener('click',function(){
+    stage.className='stage';steps.classList.remove('show');endcard.classList.remove('show');replay.hidden=true;hint.textContent='Tap the seal to open';hint.style.opacity=1;step=0;
+  });
+
+  /* ===== Music box (original tunes, played live in the browser) ===== */
+  var TUNES={
+    holiday:{bpm:100,mel:[[71,1],[74,1],[79,1],[78,2],[76,1],[74,1],[71,1],[67,1],[69,3],[71,1],[74,1],[79,1],[81,2],[79,1],[78,1],[74,1],[76,1],[74,3],[76,1],[79,1],[76,1],[74,2],[71,1],[72,1],[69,1],[66,1],[67,3]],
+      bass:[55,50,55,50,55,50,50,50,48,55,50,55]},
+    thanks:{bpm:96,mel:[[72,1],[76,1],[79,1],[81,2],[79,1],[77,1],[76,1],[74,1],[76,3],[72,1],[76,1],[79,1],[84,2],[83,1],[81,1],[79,1],[77,1],[79,3],[81,1],[77,1],[81,1],[79,2],[76,1],[74,1],[76,1],[74,1],[72,3]],
+      bass:[48,53,55,48,48,45,53,55,53,48,55,48]}
+  };
+  var AC=null, master=null, playing=false, loopTimer=null;
+  var musicBtn=document.getElementById('music');
+  function initAudio(){
+    if(AC) return;
+    var C=window.AudioContext||window.webkitAudioContext; if(!C) return;
+    AC=new C(); master=AC.createGain(); master.gain.value=.2;
+    var comp=AC.createDynamicsCompressor(); master.connect(comp); comp.connect(AC.destination);
+    var dl=AC.createDelay(); dl.delayTime.value=.23; var fb=AC.createGain(); fb.gain.value=.28; var wet=AC.createGain(); wet.gain.value=.3;
+    master.connect(dl); dl.connect(fb); fb.connect(dl); dl.connect(wet); wet.connect(comp);
+  }
+  function tine(t,m,v,len){
+    var f=440*Math.pow(2,(m-69)/12);
+    [[1,v,len],[4.02,v*.16,len*.35],[2,v*.12,len*.6]].forEach(function(p){
+      var o=AC.createOscillator(), g=AC.createGain(); o.type='sine'; o.frequency.value=f*p[0];
+      g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(p[1],t+.005); g.gain.exponentialRampToValueAtTime(.0008,t+p[2]);
+      o.connect(g); g.connect(master); o.start(t); o.stop(t+p[2]+.05);
+    });
+  }
+  function playTune(){
+    if(!AC||!playing) return;
+    var T=TUNES[type==='holiday'?'holiday':'thanks'], b=60/T.bpm, t=AC.currentTime+.08, beat=0;
+    T.mel.forEach(function(n){tine(t+beat*b,n[0],.55,1.8); beat+=n[1];});
+    T.bass.forEach(function(m,i){tine(t+i*3*b,m,.32,2.4); tine(t+i*3*b+b,m+7,.14,1.4); tine(t+i*3*b+2*b,m+12,.12,1.2);});
+    loopTimer=setTimeout(playTune,(beat*b+b*1.5)*1000);
+  }
+  function startMusic(){
+    if(reduce) return;
+    initAudio(); if(!AC) return;
+    if(AC.state==='suspended') AC.resume();
+    if(playing) return; playing=true; master.gain.setValueAtTime(.2,AC.currentTime);
+    musicBtn.hidden=false; musicBtn.setAttribute('aria-pressed','true'); playTune();
+  }
+  function stopMusic(){
+    playing=false; clearTimeout(loopTimer);
+    if(AC){master.gain.cancelScheduledValues(AC.currentTime);master.gain.setTargetAtTime(0,AC.currentTime,.15);}
+    musicBtn.setAttribute('aria-pressed','false');
+  }
+  musicBtn.addEventListener('click',function(){ if(playing) stopMusic(); else startMusic(); });
+
+  /* ===== Ambient: snow for the holidays, champagne bubbles for thank-yous ===== */
+  var amb=document.getElementById('amb'), ax=amb.getContext('2d'), AW=0, AH=0, DPR=1, flakes=[];
+  var sc = social?2.4:1;
+  function sizeAmb(){DPR=Math.min(2,window.devicePixelRatio||1);AW=innerWidth;AH=innerHeight;amb.width=AW*DPR;amb.height=AH*DPR;amb.style.width=AW+'px';amb.style.height=AH+'px';ax.setTransform(DPR,0,0,DPR,0,0);}
+  function mk(init){
+    var holiday=type==='holiday';
+    return holiday
+      ? {x:Math.random()*AW,y:init?Math.random()*AH:-10,r:(Math.random()*2.4+.8)*sc,vy:(Math.random()*.6+.35)*sc,ph:Math.random()*6.28,sw:Math.random()*.6+.2,
+         c:Math.random()<.18?'rgba(217,192,143,.9)':'rgba(255,255,255,'+(Math.random()*.4+.55).toFixed(2)+')'}
+      : {x:Math.random()*AW,y:init?Math.random()*AH:AH+10,r:(Math.random()*4+2)*sc,vy:-(Math.random()*.5+.25)*sc,ph:Math.random()*6.28,sw:Math.random()*.5+.2,
+         heart:Math.random()<.18,c:Math.random()<.5?'rgba(176,141,87,.35)':'rgba(217,192,143,.45)'};
+  }
+  function heart(x,y,r,c){ax.save();ax.translate(x,y);ax.fillStyle='rgba(235,207,200,.8)';ax.beginPath();ax.moveTo(0,r*.6);
+    ax.bezierCurveTo(-r*1.4,-r*.4,-r*.5,-r*1.4,0,-r*.5);ax.bezierCurveTo(r*.5,-r*1.4,r*1.4,-r*.4,0,r*.6);ax.fill();ax.restore();}
+  function ambLoop(){
+    ax.clearRect(0,0,AW,AH);
+    flakes.forEach(function(p,i){
+      p.ph+=.02; p.y+=p.vy; p.x+=Math.sin(p.ph)*p.sw*.6;
+      if(type==='holiday'){ ax.fillStyle=p.c; ax.beginPath(); ax.arc(p.x,p.y,p.r,0,6.3); ax.fill(); if(p.y>AH+10) flakes[i]=mk(false); }
+      else { if(p.heart) heart(p.x,p.y,p.r*.9); else { ax.strokeStyle=p.c; ax.lineWidth=1.2*sc; ax.beginPath(); ax.arc(p.x,p.y,p.r,0,6.3); ax.stroke(); }
+             if(p.y<-12) flakes[i]=mk(false); }
+    });
+    requestAnimationFrame(ambLoop);
+  }
+  if(!reduce){ sizeAmb(); addEventListener('resize',sizeAmb); var count=type==='holiday'?(social?160:90):(social?60:30); for(var i=0;i<count;i++) flakes.push(mk(true)); requestAnimationFrame(ambLoop); }
+
+  /* ===== Social video: plays itself, ends on a title card ===== */
+  var endcard=document.getElementById('endcard');
+  endcard.innerHTML = type==='holiday'
+    ? '<div><div class="e1">From my desk to yours</div><div class="e2">Happy Holidays</div><div class="e3">Thank you for a beautiful year of love stories</div><div class="e4">@IDOBYMARISA</div></div>'
+    : '<div><div class="e1">To every couple this year</div><div class="e2">Thank you</div><div class="e3">for letting me be part of your moment</div><div class="e4">@IDOBYMARISA</div></div>';
+
+  if(social) setTimeout(open,1600);
+  /* ===== A little sparkle ===== */
+  var cv=document.getElementById('fx'), cx=cv.getContext('2d');
+  function burst(){
+    if(reduce) return;
+    var W=cv.width=innerWidth*devicePixelRatio, H=cv.height=innerHeight*devicePixelRatio, s=devicePixelRatio;
+    cv.style.width=innerWidth+'px';cv.style.height=innerHeight+'px';
+    var cols=type==='holiday'?['#D9C08F','#B08D57','#FFFFFF','#7E2E2C']:['#D9C08F','#B08D57','#EBCFC8','#7E2E2C'];
+    var P=[];for(var i=0;i<90;i++){P.push({x:W/2+(Math.random()-.5)*W*.5,y:H*.32,vx:(Math.random()-.5)*6*s,vy:(-Math.random()*7-2)*s,
+      r:(Math.random()*2.6+1.2)*s,c:cols[i%cols.length],h:Math.random()<.25,a:1,rot:Math.random()*6});}
+    var t0=performance.now();
+    (function frame(t){
+      var k=(t-t0)/2600; cx.clearRect(0,0,W,H);
+      P.forEach(function(p){p.vy+=.16*s;p.vx*=.99;p.x+=p.vx;p.y+=p.vy;p.a=Math.max(0,1-k);p.rot+=.05;
+        cx.globalAlpha=p.a;cx.fillStyle=p.c;
+        if(p.h){cx.save();cx.translate(p.x,p.y);cx.rotate(p.rot);cx.beginPath();var r=p.r*1.4;
+          cx.moveTo(0,r*.6);cx.bezierCurveTo(-r*1.4,-r*.4,-r*.5,-r*1.4,0,-r*.5);cx.bezierCurveTo(r*.5,-r*1.4,r*1.4,-r*.4,0,r*.6);cx.fill();cx.restore();}
+        else{cx.beginPath();cx.arc(p.x,p.y,p.r,0,7);cx.fill();}});
+      if(k<1) requestAnimationFrame(frame); else cx.clearRect(0,0,W,H);
+    })(t0);
+  }
+})();
+</script>
+</body>
+</html>

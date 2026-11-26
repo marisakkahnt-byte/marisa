@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex">
+<title>The Vow Builder</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,300;1,400;1,500&family=Pinyon+Script&family=Raleway:wght@400;500;600&display=swap">
+<style>
+/* Layout: a writing desk. Questions on the left, the vow card on the right updating live; stacks on phones. Single warm-paper look by design (brand). */
+:root{
+  --paper:#FBF7F0; --paper-2:#F3EBDF; --card:#FFFDF9; --ink:#2A241F; --ink-soft:#655B53;
+  --gold:#B08D57; --gold-lt:#D9C08F; --rose:#A67568; --line:rgba(42,36,31,.14);
+  --script:'Pinyon Script','Snell Roundhand',cursive;
+  --serif:'Cormorant Garamond',Garamond,Georgia,serif;
+  --sans:'Raleway','Helvetica Neue',Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:18px;line-height:1.55;margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding-block:40px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header{text-align:center;margin-bottom:34px}
+.eyebrow{font:600 11px/1 var(--sans);letter-spacing:.32em;text-transform:uppercase;color:var(--rose);margin:0 0 12px}
+h1{font:400 clamp(48px,8vw,78px)/1.05 var(--script);margin:0;font-weight:400}
+.lede{max-width:560px;margin:10px auto 0;color:var(--ink-soft);font-size:19px;text-wrap:balance}
+.rule{width:120px;height:1px;background:var(--gold-lt);margin:18px auto;position:relative}
+.rule::after{content:"";position:absolute;left:50%;top:-3px;width:6px;height:6px;border:1px solid var(--gold);background:var(--paper);transform:translateX(-50%) rotate(45deg)}
+.desk{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:44px;align-items:start}
+@media (max-width:880px){.desk{grid-template-columns:1fr;gap:30px}}
+/* questions */
+form{display:grid;gap:26px}
+.q{display:grid;gap:8px;min-width:0}
+.q > label,.q > .lab{font:600 11px var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+.q .hint{font-style:italic;color:var(--ink-soft);font-size:16px;margin:-4px 0 0}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:460px){.row2{grid-template-columns:1fr}}
+input[type=text],textarea{width:100%;font:500 18px/1.45 var(--serif);color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:2px;padding:11px 13px;transition:border-color .2s}
+textarea{resize:vertical;min-height:58px}
+input:focus,textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(176,141,87,.15)}
+.pfx{font-style:italic;color:var(--ink-soft);font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:500 15px var(--serif);color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:999px;padding:7px 14px;cursor:pointer;transition:all .2s}
+.chip:hover{border-color:var(--gold)}
+.chip[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.chip:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.sec{border-top:1px solid var(--line);padding-top:22px;display:grid;gap:22px}
+.sec h2{font:300 italic 28px/1.1 var(--serif);margin:0}
+/* vow card */
+.stage{position:sticky;top:calc(env(safe-area-inset-top,0px) + 20px)}
+@media (max-width:880px){.stage{position:static}}
+.card{background:var(--card);padding:44px clamp(22px,5vw,54px) 36px;position:relative;box-shadow:0 30px 60px -38px rgba(60,40,25,.45),0 1px 2px rgba(60,40,25,.08)}
+.card::before{content:"";position:absolute;inset:12px;border:1px solid var(--gold-lt);pointer-events:none}
+.card .to{font:400 clamp(34px,5vw,46px)/1.1 var(--script);text-align:center;margin:0 0 4px}
+.card .meta{text-align:center;font:600 10px var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--rose);margin:0}
+#vows{font:400 20px/1.72 var(--serif);margin-top:22px;max-width:62ch;margin-left:auto;margin-right:auto}
+#vows p{margin:0 0 14px}
+#vows .promises p{margin:0 0 6px}
+#vows .close{font-style:italic}
+.tools{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:20px}
+.btn{font:500 14px var(--serif);font-variant:small-caps;letter-spacing:.2em;padding:12px 22px;border:1px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;transition:background .25s,color .25s}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn.solid{background:var(--ink);color:var(--paper)}
+.btn.solid:hover{background:var(--gold);border-color:var(--gold)}
+.status{min-height:22px;text-align:center;font-style:italic;color:var(--rose);font-size:15px;margin-top:8px}
+.tips{margin-top:22px;background:var(--paper-2);padding:18px 22px;font-size:16px;color:var(--ink-soft)}
+.tips b{font:600 10px var(--sans);letter-spacing:.26em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:6px}
+.sample{display:inline-block;font:600 10px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--rose);border:1px solid var(--gold-lt);padding:5px 10px;margin-top:14px}
+footer{text-align:center;margin-top:48px;color:var(--ink-soft);font-size:15px}
+footer .sig{font:400 28px var(--script);color:var(--ink);display:block}
+.gate{text-align:center;max-width:520px;margin:8vh auto}
+.gate-form{display:grid;gap:12px;margin-top:22px;justify-items:center}
+.gate-form input{max-width:320px;text-align:center;letter-spacing:.2em;text-transform:uppercase}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media print{
+  @page{size:5in 7in;margin:0}
+  body{background:#fff}
+  header,form,.tools,.status,.tips,footer,.gate,.sample{display:none!important}
+  .wrap{padding:0;max-width:none}.desk{display:block}.stage{position:static}
+  .card{box-shadow:none;min-height:7in;padding:.45in .42in}
+  .card .meta{display:none}
+  .card .to{font-size:28pt}
+  .card::before{inset:.18in}
+  #vows{font-size:10.5pt;line-height:1.45;margin-top:10px}
+  #vows p{margin:0 0 7px}
+}
+</style>
+</head><body>
+
+<div class="wrap">
+<section id="gate" class="gate" hidden>
+  <p class="eyebrow">I Do by Marisa · Vow Builder</p>
+  <h1>Welcome in</h1>
+  <div class="rule" aria-hidden="true"></div>
+  <p class="lede">Enter the access code from your download to start writing your vows.</p>
+  <form id="gateForm" class="gate-form"><label for="code" class="eyebrow" style="margin:0">Access code</label>
+    <input type="text" id="code" autocapitalize="characters" spellcheck="false">
+    <button type="submit" class="btn solid">Open the Vow Builder</button>
+    <p class="status" id="gateMsg" role="status"></p></form>
+</section>
+<div id="app">
+<header>
+  <p class="eyebrow">I Do by Marisa · Vow Builder</p>
+  <h1>Say it like you</h1>
+  <div class="rule" aria-hidden="true"></div>
+  <p class="lede">Answer a few questions about your story. Your vows write themselves on the card as you go, in the tone you choose. Then make them yours.</p>
+  <span class="sample" id="sampleTag">Filled in with an example: Nora, writing to Sam</span>
+</header>
+
+<div class="desk">
+<form id="f" autocomplete="off">
+  <div class="row2">
+    <div class="q"><label for="me">Your name</label><input type="text" id="me" value="Nora"></div>
+    <div class="q"><label for="them">Their name</label><input type="text" id="them" value="Sam"></div>
+  </div>
+
+  <div class="q"><span class="lab" id="toneLab">Tone</span>
+    <div class="chips" role="group" aria-labelledby="toneLab" data-group="tone">
+      <button type="button" class="chip" data-v="romantic">Romantic</button>
+      <button type="button" class="chip" data-v="funny" aria-pressed="true">Funny, then sweet</button>
+      <button type="button" class="chip" data-v="simple">Short + simple</button>
+      <button type="button" class="chip" data-v="poetic">Poetic</button>
+    </div>
+  </div>
+
+  <div class="q"><span class="lab" id="lenLab">Length</span>
+    <div class="chips" role="group" aria-labelledby="lenLab" data-group="len">
+      <button type="button" class="chip" data-v="short">About 1 minute</button>
+      <button type="button" class="chip" data-v="classic" aria-pressed="true">About 2 minutes</button>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2>Your story</h2>
+    <div class="q"><label for="met">How you met</label><p class="hint">Finish the sentence: “We met…”</p>
+      <textarea id="met" rows="2">at bar trivia, on rival teams, when I told you the answer you got wrong</textarea></div>
+    <div class="q"><label for="knew">The moment you knew</label><p class="hint">“I knew it was you when…”</p>
+      <textarea id="knew" rows="2">the power went out on Thanksgiving and you ran a flashlight card tournament for my whole family</textarea></div>
+    <div class="q"><label for="only">Something only you notice</label><p class="hint">“You're the only person who…”</p>
+      <textarea id="only" rows="2">can turn a Sunday night card game into the best part of my week</textarea></div>
+    <div class="q"><label for="funny">A funny truth <span style="text-transform:none;letter-spacing:0;font-family:var(--serif);font-style:italic">(optional)</span></label><p class="hint">“You still…”</p>
+      <textarea id="funny" rows="2">request a recount every time I win at euchre</textarea></div>
+    <div class="q"><label for="means">What marriage means to you</label><p class="hint">“To me, marriage means…”</p>
+      <textarea id="means" rows="2">having my person in every room, even when you're not there</textarea></div>
+  </div>
+
+  <div class="sec">
+    <h2>Your promises</h2>
+    <div class="q"><span class="lab" id="proLab">Pick your favorites</span><p class="hint">Choose three or more. Add your own below.</p>
+      <div class="chips" role="group" aria-labelledby="proLab" data-group="pro" data-multi>
+        <button type="button" class="chip" aria-pressed="true">make you laugh, especially on the hard days</button>
+        <button type="button" class="chip">listen, even when I think I'm right</button>
+        <button type="button" class="chip" aria-pressed="true">choose you on the boring days and the rainy ones</button>
+        <button type="button" class="chip">keep dancing with you in the kitchen</button>
+        <button type="button" class="chip">be your safe place</button>
+        <button type="button" class="chip">tell you the truth, kindly</button>
+        <button type="button" class="chip">grow with you, never apart</button>
+        <button type="button" class="chip">never stop being curious about you</button>
+        <button type="button" class="chip" aria-pressed="true">keep showing up</button>
+        <button type="button" class="chip">celebrate your wins louder than mine</button>
+        <button type="button" class="chip">always save you the last bite</button>
+      </div>
+    </div>
+    <div class="q"><label for="own">A promise only you would make</label><p class="hint">“I promise to…”</p>
+      <textarea id="own" rows="2">let you shuffle</textarea></div>
+    <div class="q"><label for="symbol">Something that's yours</label><p class="hint">A word, an object or a place that belongs to your story.</p>
+      <input type="text" id="symbol" value="the index card"></div>
+  </div>
+
+  <div class="sec">
+    <h2>Optional touches</h2>
+    <div class="q"><label for="kids">Becoming a family with kids?</label><p class="hint">Their names, the way you'd say them out loud. Leave blank to skip.</p>
+      <input type="text" id="kids" placeholder="Maya and Leo"></div>
+    <div class="q"><label for="kidsPro">A promise to them</label><p class="hint">“I promise to…”</p>
+      <textarea id="kidsPro" rows="2" placeholder="love you as my own, cheer the loudest at every game and always be one more person in your corner"></textarea></div>
+    <div class="q"><label for="faith">A faith or tradition line</label><p class="hint">A blessing, a verse or words from your family's tradition. Leave blank to skip.</p>
+      <textarea id="faith" rows="2" placeholder="With God as our foundation, I will love you as I have been loved."></textarea></div>
+  </div>
+</form>
+
+<div class="stage">
+  <article class="card" aria-live="polite">
+    <p class="to" id="toLine">My vows to Sam</p>
+    <p class="meta" id="metaLine">About 1 min 40 sec read aloud · 210 words</p>
+    <div id="vows"></div>
+  </article>
+  <div class="tools">
+    <button type="button" class="btn solid" id="copy">Copy my vows</button>
+    <button type="button" class="btn" id="shuffle">Try other wording</button>
+    <button type="button" class="btn" id="printBtn" hidden>Print my vow card</button>
+    <button type="button" class="btn" id="clear">Start fresh</button>
+  </div>
+  <p class="status" id="status" role="status"></p>
+  <div class="tips"><b>From Marisa, before you read these out loud</b>
+    This is your first draft, not your final one. Read it out loud once, slowly. Change any word that doesn't sound like you. Then cut one sentence; it's always better shorter. Aim for under two minutes, and bring a printed copy, not your phone.</div>
+</div>
+</div>
+
+</div>
+<footer><img src="/images/logo.png" alt="I Do by Marisa" style="width:64px;display:block;margin:0 auto 10px;opacity:.9"><span class="sig">Story is the signature</span>I Do by Marisa · idobymarisa.com<br><small>Your answers stay on this device. Personal use only.</small></footer>
+</div>
+
+<script>
+(function(){
+const ACCESS='SAYITLIKEYOU';
+const $=id=>document.getElementById(id);
+let variant=0;
+// chip groups
+document.querySelectorAll('[data-group]').forEach(g=>{
+  const multi=g.hasAttribute('data-multi');
+  g.addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;
+    if(multi){c.setAttribute('aria-pressed',c.getAttribute('aria-pressed')==='true'?'false':'true')}
+    else{g.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed','false'));c.setAttribute('aria-pressed','true')}
+    hideSample();render();});
+});
+const pick=g=>{const c=document.querySelector(`[data-group="${g}"] .chip[aria-pressed="true"]`);return c?c.dataset.v:''};
+const picks=()=>[...document.querySelectorAll('[data-group="pro"] .chip[aria-pressed="true"]')].map(c=>c.textContent.trim());
+const v=id=>$(id).value.trim().replace(/[.\s]+$/,'');
+const esc=s=>s.replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+const cap=s=>s?s[0].toUpperCase()+s.slice(1):s;
+function hideSample(){$('sampleTag').hidden=true}
+
+const OPEN={
+ romantic:[(T,m)=>`${T}, we met ${m}. I didn't know it yet, but my whole life was about to begin.`,(T,m)=>`${T}, it started ${m}, and nothing has been the same since.`],
+ funny:[(T,m)=>`${T}, we met ${m}. Neither of us knew what we were in for. Honestly, I still don't.`,(T,m)=>`${T}, let the record show: we met ${m}. It was not the plan. It was better than the plan.`],
+ simple:[(T,m)=>`${T}, we met ${m}.`,(T,m)=>`${T}, it began ${m}.`],
+ poetic:[(T,m)=>`${T}, some stories begin quietly. Ours began ${m}.`,(T,m)=>`${T}, I have thought about the first chapter a thousand times. We met ${m}.`]
+};
+const CLOSE={
+ romantic:[(s)=>`${s?`Wherever life takes us, I'll bring ${s}. `:''}I choose you, today and every day after.`,(s)=>`${s?`Let ${s} remind us where we started. `:''}You are my home, and I choose you, for the rest of my life.`],
+ funny:[(s)=>`${s?`I'll always bring ${s}. `:''}You're stuck with me now, and there's nowhere I'd rather be. I choose you.`,(s)=>`${s?`And yes, I'll bring ${s}. `:''}I love you, I like you, and I choose you, every single day.`],
+ simple:[(s)=>`I choose you, today and always.`,(s)=>`I love you. I choose you. Always.`],
+ poetic:[(s)=>`${s?`Let ${cap(s.replace(/^the /,''))} be our quiet promise. `:''}In every season and every kind of weather, I choose you.`,(s)=>`${s?`Keep ${s} close; it holds our whole beginning. `:''}Today I give you my word, and my whole heart.`]
+};
+
+function build(){
+  const T=v('them')||'My love', me=v('me');
+  const tone=pick('tone')||'romantic', len=pick('len')||'classic', k=variant%2;
+  const m=v('met'), knew=v('knew'), only=v('only'), funny=v('funny'), means=v('means'), own=v('own'), sym=v('symbol');
+  const P=[];
+  if(m) P.push(OPEN[tone][k](T,m)); else P.push(`${T},`);
+  const mid=[];
+  if(knew) mid.push(`I knew it was you when ${knew}.`);
+  if(only) mid.push(tone==='poetic'?`You are the only one who ${only}, and I have never stopped noticing.`:`You're the only person who ${only}.`);
+  if(funny && (tone==='funny' || (len==='classic' && tone!=='simple'))) mid.push(tone==='funny'?`You still ${funny}, and I wouldn't change a thing.`:`You still ${funny}. I love that about you.`);
+  if(means && len==='classic') mid.push(`To me, marriage means ${means}.`);
+  if(len==='short' || tone==='simple') mid.splice(2);
+  if(mid.length) P.push(mid.join(' '));
+  let pro=picks(); if(own) pro=[own,...pro];
+  const maxP=(len==='short'||tone==='simple')?3:5; pro=pro.slice(0,maxP);
+  const kids=v('kids'), kidsPro=v('kidsPro'), faith=v('faith');
+  if(kids) P.push(`And to ${kids}: I'm not only marrying your ${tone==='funny'?'favorite person':'parent'} today. I promise to ${kidsPro||'love you, show up for you and be one more person in your corner, always'}.`);
+  const intro=tone==='funny'?'So, in front of everyone we love, and a few people who are here for the open bar, I promise:':(tone==='poetic'?'So today, before everyone who loves us, I make you these promises.':'So today, in front of everyone we love, I promise:');
+  return {T,me,P,intro,pro,faith,close:CLOSE[tone][k](sym)};
+}
+function render(){
+  const d=build();
+  let h=d.P.map(p=>`<p>${esc(p)}</p>`).join('');
+  if(d.pro.length){h+=`<p>${esc(d.intro)}</p><div class="promises">`+d.pro.map(p=>`<p>I promise to ${esc(p)}.</p>`).join('')+`</div>`}
+  if(d.faith) h+=`<p style="margin-top:14px">${esc(d.faith)}${/[.!?]$/.test(d.faith)?'':'.'}</p>`;
+  h+=`<p class="close" style="margin-top:14px">${esc(d.close)}</p>`;
+  $('vows').innerHTML=h;
+  $('toLine').textContent=`My vows to ${d.T}`;
+  const words=$('vows').innerText.split(/\s+/).filter(Boolean).length, secs=Math.round(words/130*60);
+  const mm=Math.floor(secs/60), ss=secs%60;
+  $('metaLine').textContent=`About ${mm?mm+' min ':''}${ss} sec read aloud · ${words} words`;
+}
+// drafts save in this browser only
+const FIELDS=['me','them','met','knew','only','funny','means','own','symbol','kids','kidsPro','faith'];
+function save(){try{localStorage.setItem('vb-draft',JSON.stringify({f:Object.fromEntries(FIELDS.map(i=>[i,$(i).value])),tone:pick('tone'),len:pick('len'),pro:[...document.querySelectorAll('[data-group="pro"] .chip')].map(c=>c.getAttribute('aria-pressed')==='true'),variant}))}catch(e){}}
+function load(){try{const d=JSON.parse(localStorage.getItem('vb-draft')||'null');if(!d)return;
+  FIELDS.forEach(i=>{if(d.f&&i in d.f)$(i).value=d.f[i]});
+  [['tone',d.tone],['len',d.len]].forEach(([g,val])=>{if(!val)return;document.querySelectorAll(`[data-group="${g}"] .chip`).forEach(c=>c.setAttribute('aria-pressed',c.dataset.v===val?'true':'false'))});
+  (d.pro||[]).forEach((on,i)=>{const c=document.querySelectorAll('[data-group="pro"] .chip')[i];if(c)c.setAttribute('aria-pressed',on?'true':'false')});
+  variant=d.variant||0;hideSample();$('status').textContent='Welcome back. Your draft is right where you left it.'}catch(e){}}
+document.addEventListener('click',e=>{if(e.target.closest('.chip,#shuffle,#clear'))setTimeout(save,0)});
+$('f').addEventListener('input',()=>{hideSample();render();save()});
+// on Marisa's own site: access code + printable card
+const SITE=/idobymarisa\.com$/.test(location.hostname);
+if(SITE){
+  $('printBtn').hidden=false;
+  $('printBtn').addEventListener('click',()=>window.print());
+  let ok=false;try{ok=localStorage.getItem('vb-ok')==='1'}catch(e){}
+  if(!ok){$('gate').hidden=false;$('app').hidden=true}
+  $('gateForm').addEventListener('submit',e=>{e.preventDefault();
+    if($('code').value.trim().toUpperCase()===ACCESS){try{localStorage.setItem('vb-ok','1')}catch(e){}$('gate').hidden=true;$('app').hidden=false}
+    else $('gateMsg').textContent='That code doesn’t match. Check the code on your download page, or message Marisa through idobymarisa.com.'});
+}
+load();
+$('f').addEventListener('submit',e=>e.preventDefault());
+$('shuffle').addEventListener('click',()=>{variant++;render();$('status').textContent='New wording. Keep whichever sounds most like you.'});
+$('clear').addEventListener('click',()=>{
+  ['me','them','met','knew','only','funny','means','own','symbol'].forEach(i=>$(i).value='');
+  document.querySelectorAll('[data-group="pro"] .chip').forEach(c=>c.setAttribute('aria-pressed','false'));
+  hideSample();render();$('status').textContent='Cleared. Start with your names.';$('me').focus();
+});
+$('copy').addEventListener('click',()=>{
+  const text=$('vows').innerText.trim();
+  const ok=()=>$('status').textContent='Copied. Paste them into your notes and make them yours.';
+  try{navigator.clipboard.writeText(text).then(ok,()=>selectVows())}catch(e){selectVows()}
+});
+function selectVows(){const r=document.createRange();r.selectNodeContents($('vows'));const s=getSelection();s.removeAllRanges();s.addRange(r);$('status').textContent='Your vows are selected. Copy them with your device’s copy command.'}
+render();
+})();
+</script>
+</body></html>

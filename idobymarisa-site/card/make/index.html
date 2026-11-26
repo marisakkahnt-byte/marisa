@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>E-Card Maker · I Do by Marisa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,400&family=Pinyon+Script&family=Raleway:wght@400;500;600&display=swap">
+<style>
+:root{--cream:#FBF7F0;--paper:#FFFDF9;--ink:#2A241F;--muted:#6E625A;--gold:#B08D57;--line:#E4D8C6;--wine:#7E2E2C;
+  --serif:"Cormorant Garamond",Georgia,serif;--script:"Pinyon Script",cursive;--sans:"Raleway","Helvetica Neue",Arial,sans-serif;color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font:15px/1.55 var(--sans)}
+.wrap{max-width:620px;margin:0 auto;padding-block:32px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:22px}
+h1{font-family:var(--script);font-weight:400;font-size:2.8rem;line-height:1;margin:0;color:var(--ink)}
+.k{font:600 11px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin:0}
+.lede{color:var(--muted);margin:6px 0 0}
+form,.out{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:22px;display:grid;gap:16px}
+label{display:grid;gap:6px;font:600 12px var(--sans);letter-spacing:.06em;color:var(--muted)}
+input,select,textarea{font:15px var(--sans);color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:4px;padding:10px 12px;width:100%}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:520px){.row{grid-template-columns:1fr}}
+.seg{display:flex;gap:8px;flex-wrap:wrap}
+.seg button{font:600 11px var(--sans);letter-spacing:.14em;text-transform:uppercase;padding:9px 14px;border-radius:999px;border:1px solid var(--ink);background:none;color:var(--ink);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.only-thanks[hidden]{display:none}
+.out h2{font-family:var(--serif);font-weight:500;font-size:1.5rem;margin:0}
+.box{background:var(--cream);border:1px solid var(--line);border-radius:4px;padding:12px;font:14px/1.5 var(--sans);white-space:pre-wrap;word-break:break-word;user-select:all}
+.btns{display:flex;gap:8px;flex-wrap:wrap}
+.btn{font:600 11px var(--sans);letter-spacing:.14em;text-transform:uppercase;padding:10px 16px;border-radius:999px;border:1px solid var(--wine);background:var(--wine);color:#fff;cursor:pointer;text-decoration:none}
+.btn.ghost{background:none;color:var(--wine)}
+.ok{font-size:12px;color:var(--gold);min-height:1.2em}
+small{color:var(--muted);font-weight:400;letter-spacing:0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="k">Private · just for you</p>
+    <h1>E-Card Maker</h1>
+    <p class="lede">Type their names, copy the message, and send it by text or email. Takes about 15 seconds.</p>
+  </header>
+
+  <form id="f" onsubmit="return false">
+    <div>
+      <p class="k" style="margin-bottom:8px">Which card?</p>
+      <div class="seg" id="type">
+        <button type="button" data-v="thanks" aria-pressed="true">Thank-you</button>
+        <button type="button" data-v="holiday" aria-pressed="false">Happy holidays</button>
+      </div>
+    </div>
+    <label for="to">Couple's names, the way you'd write them <small>(e.g. Kenz &amp; Pez)</small>
+      <input id="to" value="" placeholder="Kenz & Pez" autocomplete="off"></label>
+    <label for="note">A personal line, optional <small>(shows inside the card)</small>
+      <textarea id="note" rows="2" placeholder="Still thinking about the fireworks during your recessional."></textarea></label>
+    <div>
+      <p class="k" style="margin-bottom:8px">Sending it by</p>
+      <div class="seg" id="via">
+        <button type="button" data-v="text" aria-pressed="true">Text</button>
+        <button type="button" data-v="email" aria-pressed="false">Email</button>
+      </div>
+      <p class="lede" style="font-size:13px">Check their questionnaire answer for "How do you prefer I reach out?"</p>
+    </div>
+  </form>
+
+  <section class="out" aria-live="polite">
+    <h2>Your message</h2>
+    <div class="box" id="msg"></div>
+    <div class="btns">
+      <button class="btn" id="copyMsg" type="button">Copy message</button>
+      <a class="btn ghost" id="preview" href="#" target="_blank" rel="noopener">Preview the card</a>
+    </div>
+    <p class="ok" id="ok"></p>
+    <details><summary style="cursor:pointer;color:var(--muted);font-size:13px">Just the link</summary><div class="box" id="link" style="margin-top:8px"></div></details>
+  </section>
+</div>
+<script>
+(function(){
+  var state={type:'thanks',via:'text'};
+  var base=(/idobymarisa\.com$/.test(location.hostname)?location.origin:'https://idobymarisa.com')+'/card/';
+  function seg(id,key){document.querySelectorAll('#'+id+' button').forEach(function(b){b.addEventListener('click',function(){
+    state[key]=b.dataset.v;document.querySelectorAll('#'+id+' button').forEach(function(x){x.setAttribute('aria-pressed',x===b);});render();});});}
+  seg('type','type');seg('via','via');
+  ['to','note'].forEach(function(id){document.getElementById(id).addEventListener('input',render);});
+  function v(id){return document.getElementById(id).value.trim();}
+  function first(names){return names||'you two';}
+  function render(){
+    var thanks=state.type==='thanks';
+    document.querySelectorAll('.only-thanks').forEach(function(el){el.hidden=!thanks;});
+    var p=new URLSearchParams();
+    if(!thanks)p.set('type','holiday');
+    p.set('to',v('to')||'Nora & Sam');
+    if(v('note'))p.set('note',v('note'));
+    var url=base+'?'+p.toString().replace(/\+/g,'%20');
+    var n=first(v('to'));var m;
+    if(thanks&&state.via==='text') m='Hi '+n+'! I made you a little something 🤍 There’s a thank-you inside, plus a few easy next steps for your license and name change. Thank you for letting me be part of your day.\n'+url;
+    else if(thanks) m='Subject: A little thank-you from me\n\nHi '+n+',\n\nI made you a little something. Open it here (sound on!):\n'+url+'\n\nInside you’ll find a thank-you from me, plus the easy next steps: your signed license is returned, how to order certified copies, and where to go if you’re changing your name.\n\nThank you for letting me stand up there with you. I hope you’re still floating.\n\nWarmly,\nMarisa';
+    else if(state.via==='text') m='Happy holidays, '+n+'! I made you a little card 🤍 (sound on!)\n'+url;
+    else m='Subject: A little holiday mail\n\nHi '+n+',\n\nI made you a little holiday card. Open it here (sound on!):\n'+url+'\n\nThank you for letting me be part of your story. Wishing you the coziest season.\n\nWarmly,\nMarisa';
+    document.getElementById('msg').textContent=m;
+    document.getElementById('link').textContent=url;
+    document.getElementById('preview').href=url;
+  }
+  document.getElementById('copyMsg').addEventListener('click',function(){
+    var t=document.getElementById('msg').textContent, ok=document.getElementById('ok');
+    function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById('msg'));var s=getSelection();s.removeAllRanges();s.addRange(r);ok.textContent='Selected. Copy it from your menu.';}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){ok.textContent='Copied. Paste it into your text or email.';},sel);}else sel();
+  });
+  render();
+})();
+</script>
+</body>
+</html>

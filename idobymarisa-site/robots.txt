@@ -1,0 +1,8 @@
+# Welcome, humans and helpful robots.
+User-agent: *
+Allow: /
+Disallow: /vow-builder/
+Disallow: /toast-builder/
+Disallow: /card/
+
+Sitemap: https://idobymarisa.com/sitemap.xml

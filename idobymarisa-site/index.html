@@ -26,12 +26,64 @@
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "I Do by Marisa",
-  "description": "Custom wedding ceremonies, script-only ceremonies, officiant coaching, and vow writing support.",
+  "description": "Story-first wedding officiant writing and officiating custom ceremonies built around each couple's real story. Also: script-only ceremonies, officiant coaching and vow writing support.",
   "url": "https://idobymarisa.com/",
   "image": "https://idobymarisa.com/images/hero.jpg",
-  "sameAs": ["https://www.instagram.com/idobymarisa/"],
-  "areaServed": ["Metro Detroit", "Michigan", "United States"],
-  "slogan": "Story is the signature."
+  "sameAs": [
+    "https://www.instagram.com/idobymarisa/"
+  ],
+  "areaServed": [
+    "Metro Detroit",
+    "Michigan",
+    "United States"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressRegion": "MI",
+    "addressCountry": "US"
+  },
+  "slogan": "Story is the signature.",
+  "knowsAbout": [
+    "wedding ceremonies",
+    "wedding officiant",
+    "vow writing",
+    "inclusive weddings",
+    "officiant coaching"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Services and shop",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "The Signature Ceremony"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Script-Only Ceremonies"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Officiant Coaching"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Vow Writing Support"
+        }
+      }
+    ]
+  }
 }
 </script>
 
@@ -537,11 +589,28 @@ footer .copy{font-size:.95rem;color:rgba(243,234,223,.35);padding-top:26px;borde
   .note:not(.wide){grid-column:1/-1}
 }
 
+
+/* ── QUIET MOTION (inspired by modern UI kits, kept on-brand) ── */
+/* 1. Headings arrive word by word, out of a soft blur */
+.js .fx-words .w{display:inline-block;opacity:0;filter:blur(6px);transform:translateY(.25em);transition:opacity .9s var(--ease),filter .9s var(--ease),transform .9s var(--ease);transition-delay:calc(var(--i)*70ms)}
+.js .fx-words.in .w{opacity:1;filter:none;transform:none}
+/* 2. Service cards: a candle-soft glow follows the cursor, the gold rule draws across */
+.svc{position:relative;isolation:isolate}
+.svc::before{content:"";position:absolute;inset:-14px -16px -10px;z-index:-1;border-radius:4px;opacity:0;transition:opacity .5s var(--ease);background:radial-gradient(220px circle at var(--mx,50%) var(--my,30%),rgba(217,192,143,.26),transparent 72%);-webkit-mask-image:radial-gradient(ellipse at center,#000 55%,transparent 100%);mask-image:radial-gradient(ellipse at center,#000 55%,transparent 100%)}
+.svc::after{content:"";position:absolute;left:0;top:-1px;height:1px;width:100%;background:var(--antique,#B08D57);transform:scaleX(0);transform-origin:left;transition:transform .8s var(--ease)}
+@media (hover:hover){.svc:hover::before{opacity:1}.svc:hover::after{transform:scaleX(1)}}
+/* 3. One slow gold shimmer across the main button, once, after the intro */
+.btn-solid .shine{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(105deg,transparent 35%,rgba(255,238,200,.38) 50%,transparent 65%);transform:translateX(-120%)}
+.btn-solid.shimmer .shine{animation:shine 1.6s var(--ease) 1 forwards}
+@keyframes shine{to{transform:translateX(120%)}}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
   .js .write-ink{clip-path:none}
   .quill{display:none}
   .ticker-track{animation:none}
+  .js .fx-words .w{opacity:1;filter:none;transform:none}
+  .btn-solid .shine{display:none}
 }
 </style>
 </head>
@@ -601,6 +670,7 @@ footer .copy{font-size:.95rem;color:rgba(243,234,223,.35);padding-top:26px;borde
       <li><a href="#process">Process</a></li>
       <li><a href="#kind-words">Kind Words</a></li>
       <li><a href="#faq">FAQ</a></li>
+<li><a href="/the-shop">Shop</a></li>
       <li><a href="#connect" class="btn btn-solid">Inquire</a></li>
     </ul>
     <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -611,7 +681,7 @@ footer .copy{font-size:.95rem;color:rgba(243,234,223,.35);padding-top:26px;borde
   <a href="#services">Services</a>
   <a href="#process">Process</a>
   <a href="#kind-words">Kind Words</a>
-  <a href="#faq">FAQ</a>
+  <a href="#faq">FAQ</a><a href="/the-shop">Shop</a>
   <a href="#connect">Inquire</a>
   <a href="https://www.instagram.com/idobymarisa/" target="_blank" rel="noopener" class="mm-ig">@idobymarisa</a>
 </nav>
@@ -815,7 +885,7 @@ footer .copy{font-size:.95rem;color:rgba(243,234,223,.35);padding-top:26px;borde
         <div class="faq-item"><button class="faq-q" aria-expanded="false">Can you attend the rehearsal?<span class="plus"></span></button><div class="faq-a"><div><p>Yes — rehearsal attendance is available as an add-on. It’s not always necessary, but if you want that extra layer of calm and clarity, I’m happy to be there. We’ll talk through what makes the most sense for your day.</p></div></div></div>
         <div class="faq-item"><button class="faq-q" aria-expanded="false">Do you help with vows or ceremony scripts?<span class="plus"></span></button><div class="faq-a"><div><p>Absolutely. Whether you’re writing your own vows or having a friend officiate, I offer everything from guided workbooks to live coaching and script support. Many ceremony packages also include vow resources.</p></div></div></div>
         <div class="faq-item"><button class="faq-q" aria-expanded="false">Do you work with LGBTQ+ couples?<span class="plus"></span></button><div class="faq-a"><div><p>Always. All love is welcome here. My work is inclusive, affirming, and always tailored to you and your story.</p></div></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false">How far in advance should we book?<span class="plus"></span></button><div class="faq-a"><div><p>I recommend booking 3–6 months out for full-service ceremonies, and at least 2 weeks in advance for script-only or vow support. If your timeline is shorter, feel free to reach out — I’ll do my best to accommodate when possible.</p></div></div></div>
+        <div class="faq-item"><button class="faq-q" aria-expanded="false">How far in advance should we book?<span class="plus"></span></button><div class="faq-a"><div><p>I recommend booking 3–6 months out for full-service ceremonies, and at least 3 weeks in advance for script-only ceremonies and 2 weeks for coaching or vow support. If your timeline is shorter, feel free to reach out — I’ll do my best to accommodate when possible.</p></div></div></div>
         <div class="faq-item"><button class="faq-q" aria-expanded="false">What happens after I reach out?<span class="plus"></span></button><div class="faq-a"><div><p>After you submit an inquiry, you’ll receive a guide outlining my services, approach, and investment. Take some time to review it, and if it feels aligned, you can reply to move forward. I’m intentional about next steps so our time together is meaningful from the start.</p></div></div></div>
       </div>
     </div>
@@ -937,11 +1007,12 @@ footer .copy{font-size:.95rem;color:rgba(243,234,223,.35);padding-top:26px;borde
         <li><a href="#process">Process</a></li>
         <li><a href="#kind-words">Kind Words</a></li>
         <li><a href="#faq">FAQ</a></li>
+<li><a href="/the-shop">Shop</a></li>
         <li><a href="#connect">Inquire</a></li>
         <li><a href="https://www.instagram.com/idobymarisa/" target="_blank" rel="noopener">Instagram</a></li>
       </ul>
     </nav>
-    <p class="copy">© 2026 I Do by Marisa · Metro Detroit · Available Nationwide</p>
+    <p class="copy" style="margin-bottom:8px"><a href="/privacy">Privacy</a> &nbsp;·&nbsp; <a href="/terms">Terms</a></p><p class="copy">© 2026 I Do by Marisa · Metro Detroit · Available Nationwide</p>
   </div>
 </footer>
 
@@ -1141,6 +1212,26 @@ footer .copy{font-size:.95rem;color:rgba(243,234,223,.35);padding-top:26px;borde
       });
   });
 
+})();
+</script>
+<script>
+/* Quiet motion: word-by-word headings, cursor glow on service cards, one button shimmer */
+(function(){
+  var ok=!matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!ok||!('IntersectionObserver' in window))return;
+  document.querySelectorAll('h2.serif-head').forEach(function(h){
+    var words=h.textContent.trim().split(/\s+/);
+    h.setAttribute('aria-label',h.textContent.trim());
+    h.innerHTML=words.map(function(w,i){return '<span class="w" aria-hidden="true" style="--i:'+i+'">'+w.replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</span>'}).join(' ');
+    h.classList.add('fx-words');
+  });
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.4});
+  document.querySelectorAll('.fx-words').forEach(function(h){io.observe(h)});
+  document.querySelectorAll('.svc').forEach(function(c){
+    c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')});
+  });
+  var b=document.querySelector('.hero-actions .btn-solid');
+  if(b){var s=document.createElement('span');s.className='shine';s.setAttribute('aria-hidden','true');b.appendChild(s);setTimeout(function(){b.classList.add('shimmer')},3200)}
 })();
 </script>
 </body>
