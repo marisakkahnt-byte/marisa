@@ -1,0 +1,38 @@
+/* Marisa Stitches brand v3: heirloom, but make it cool. Loaded after style.css. */
+:root{
+  --ink:#1F1D24;--oat:#F4EFE7;--linen:#FBF9F6;--camel:#C49A64;--blush:#F6D4E0;--emerald:#0E4A38;
+  --ruby:#C8102E;--sapphire:#2F6FD6;--jewel-emerald:#13A05A;--amethyst:#9B5DE5;--citrine:#F2A81D;
+  --lf-pink:var(--emerald);--lf-purple:var(--emerald);--lf-teal:var(--emerald);--lf-yellow:var(--gold);
+  --lf-rainbow:linear-gradient(90deg,#0E4A38,#0E4A38);
+  --holo:linear-gradient(135deg,#F4EFE7,#FBF9F6,#EFE6D6,#F4EFE7);
+  --gem-ruby:url("gem-ruby.png");--gem-sapphire:url("gem-sapphire.png");--gem-emerald:url("gem-emerald.png");
+  --gem-amethyst:url("gem-amethyst.png");--gem-citrine:url("gem-citrine.png");
+}
+body{font-family:'DM Sans',sans-serif}
+[class*="gem"]{background-size:contain!important;background-repeat:no-repeat!important;background-position:center!important}
+/* nav */
+.nav-logo-img{height:46px;width:auto;display:block}
+/* splash: logo card over zebra + classic cheetah */
+.intro-card{background:var(--linen);border-radius:22px;padding:34px 44px 26px;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.28);border:2px solid var(--gold);animation:cardIn .7s cubic-bezier(.2,.9,.3,1.2) both}
+.intro-card img{width:min(300px,60vw);height:auto;display:block}
+.intro-card p{margin-top:12px;font:700 12px 'DM Sans',sans-serif;letter-spacing:.34em;text-transform:uppercase;color:var(--emerald)}
+@keyframes cardIn{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:none}}
+.intro-gem{width:60px!important;height:60px!important;filter:drop-shadow(0 6px 10px rgba(0,0,0,.25))}
+/* headings: lowercase-friendly serif, emerald italics */
+h1,h2,h3{font-family:'DM Serif Display',serif;letter-spacing:-.02em}
+h1 em,h2 em,h1 i,h2 i{color:var(--emerald)}
+/* window chrome: emerald bars, no rainbow */
+.hero-portrait{background:var(--gold)!important}
+.win-dots i{width:14px!important;height:14px!important;border:0!important;background:center/contain no-repeat!important}
+.win-dots i:nth-child(1){background-image:url("gem-ruby.png")!important}
+.win-dots i:nth-child(2){background-image:url("gem-citrine.png")!important}
+.win-dots i:nth-child(3){background-image:url("gem-emerald.png")!important}
+.win-bar{color:var(--linen)}
+.win--dark{border-color:#062E22!important}
+:root{--cobalt:#0E4A38;--sky:#E9E1D2;--bright-green:#B8914A}
+.fonts-section,.faq-section{background-color:var(--emerald)!important}
+.tape--pink{background:repeating-linear-gradient(90deg,#C49A64 0 8px,#D7B585 8px 16px)!important}
+.status-bar{background:var(--ink)!important}
+.sticker--pink{background:var(--linen)!important}
+.sew-thread{background:repeating-linear-gradient(90deg,var(--emerald) 0 9px,transparent 9px 14px)!important}
+.hero-headline svg path,.hero-headline svg *{stroke:var(--emerald)!important}

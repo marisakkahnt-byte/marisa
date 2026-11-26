@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <!-- Zebra: diagonal black + ivory stripes -->
+    <pattern id="fz" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse" patternTransform="rotate(-42)">
+      <rect width="16" height="16" fill="#F4EFE7"/>
+      <rect x="0" y="0" width="4"   height="16" fill="#1A1A1A"/>
+      <rect x="6" y="0" width="2.5" height="16" fill="#1A1A1A"/>
+      <rect x="11" y="0" width="3.5" height="16" fill="#1A1A1A"/>
+    </pattern>
+    <!-- Cheetah: gold with tiling navy spots -->
+    <pattern id="fc" x="0" y="0" width="22" height="20" patternUnits="userSpaceOnUse">
+      <rect width="22" height="20" fill="#C89A3C"/>
+      <ellipse cx="4"  cy="4"  rx="2.8" ry="1.8" fill="#1E2F4A" transform="rotate(-18,4,4)"/>
+      <ellipse cx="14" cy="2"  rx="2"   ry="1.4" fill="#1E2F4A" transform="rotate(14,14,2)"/>
+      <ellipse cx="19" cy="9"  rx="2.4" ry="1.5" fill="#1E2F4A" transform="rotate(-20,19,9)"/>
+      <ellipse cx="2"  cy="13" rx="2.2" ry="1.4" fill="#1E2F4A" transform="rotate(25,2,13)"/>
+      <ellipse cx="10" cy="13" rx="3"   ry="1.9" fill="#1E2F4A" transform="rotate(10,10,13)"/>
+      <ellipse cx="19" cy="16" rx="1.8" ry="1.2" fill="#1E2F4A" transform="rotate(-15,19,16)"/>
+    </pattern>
+    <!-- M clip path -->
+    <clipPath id="fm">
+      <text x="32" y="58" font-family="Georgia,serif" font-size="70" font-weight="900" text-anchor="middle">M</text>
+    </clipPath>
+  </defs>
+
+  <!-- Emerald background -->
+  <rect width="64" height="64" fill="#1F4D3A"/>
+
+  <!-- M filled with split zebra/cheetah -->
+  <g clip-path="url(#fm)">
+    <rect x="0"  y="0" width="32" height="64" fill="url(#fz)"/>
+    <rect x="32" y="0" width="32" height="64" fill="url(#fc)"/>
+  </g>
+</svg>

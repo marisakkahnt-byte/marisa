@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<meta name="theme-color" content="#F4EFE7"/>
+<title>Marisa Stitches Studio — Custom Machine Embroidery · Clinton Township, MI</title>
+
+<!-- SEO -->
+<meta name="description" content="Custom machine embroidery by Marisa — monograms, names, baby gifts, pouches, towels and more. Based in Clinton Township, Metro Detroit. Ships everywhere."/>
+<meta name="keywords" content="custom embroidery, machine embroidery, monogram, baby gifts, personalized gifts, Clinton Township, Metro Detroit, Michigan"/>
+<meta name="author" content="Marisa's Stitches Studio"/>
+<link rel="canonical" href="https://marisastitches.com/"/>
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://marisastitches.com/"/>
+<meta property="og:title" content="Marisa's Stitches Studio — Custom Machine Embroidery"/>
+<meta property="og:description" content="Custom machine embroidery — monograms, names, baby gifts, pouches, towels and more. Based in Clinton Township, Metro Detroit. Ships everywhere."/>
+<meta property="og:image" content="https://marisastitches.com/gallery-mono-closeup.jpg"/>
+<meta property="og:image:alt" content="Custom embroidery monogram close-up by Marisa's Stitches Studio"/>
+<meta property="og:site_name" content="Marisa's Stitches Studio"/>
+<meta property="og:locale" content="en_US"/>
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Marisa's Stitches Studio — Custom Machine Embroidery"/>
+<meta name="twitter:description" content="Custom machine embroidery — monograms, names, baby gifts, pouches, towels and more. Metro Detroit area. Ships everywhere."/>
+<meta name="twitter:image" content="https://marisastitches.com/gallery-mono-closeup.jpg"/>
+<meta name="twitter:image:alt" content="Custom embroidery monogram close-up by Marisa's Stitches Studio"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Cinzel+Decorative:wght@400;700&family=Oswald:wght@400;700&family=Caveat:wght@400;700&family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+<link rel="stylesheet" href="brand-v3.css"/>
+<link rel="icon" href="favicon.ico" sizes="any"/>
+<link rel="icon" href="favicon.svg" type="image/svg+xml"/>
+<link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+<script src="https://w.behold.so/widget.js" type="module" defer></script>
+</head>
+<body>
+<!-- ── INTRO SPLASH: plays once per visit; click/tap to skip ── -->
+<div class="intro" id="intro" aria-hidden="true">
+  <div class="intro-half intro-half--zebra"></div>
+  <div class="intro-half intro-half--cheetah"></div>
+  <div class="intro-stage">
+    <div class="intro-card"><img src="logo-ink.png" alt="marisa stitches"/><p>she’s a gem ✦</p></div>
+    <span class="intro-gem" style="--x:-150px;--y:-120px;background-image:var(--gem-ruby);"></span>
+    <span class="intro-gem" style="--x:160px;--y:-100px;background-image:var(--gem-citrine);"></span>
+    <span class="intro-gem" style="--x:-170px;--y:60px;background-image:var(--gem-emerald);"></span>
+    <span class="intro-gem" style="--x:170px;--y:90px;background-image:var(--gem-amethyst);"></span>
+    <span class="intro-gem" style="--x:-40px;--y:-170px;background-image:var(--gem-sapphire);"></span>
+    <span class="intro-gem" style="--x:210px;--y:-20px;background-image:var(--gem-ruby);"></span>
+  </div>
+  <button class="intro-skip" type="button">skip ›</button>
+</div>
+<script>
+  // Self-contained so the splash never waits on other scripts.
+  // Skipped on repeat visits within the same session, or if motion is reduced.
+  (function () {
+    var html = document.documentElement, intro = document.getElementById('intro'), done = false;
+    var seen = false;
+    try { seen = sessionStorage.getItem('ms-intro-seen') || matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { seen = true; }
+    if (seen) { intro.remove(); html.classList.add('hero-go'); return; }
+    html.classList.add('intro-playing');
+    function endIntro() {
+      if (done) return;
+      done = true;
+      try { sessionStorage.setItem('ms-intro-seen', '1'); } catch (e) {}
+      intro.classList.add('intro--out');
+      html.classList.add('hero-go');
+      setTimeout(function () { intro.remove(); html.classList.remove('intro-playing'); }, 850);
+    }
+    intro.addEventListener('click', endIntro);
+    setTimeout(endIntro, 2900);
+  })();
+</script>
+
+<!-- ── NAV ── -->
+<!-- ── STATUS BAR ── -->
+<header class="site-top" id="site-top">
+<div class="status-bar" id="status-bar">
+  <span class="status-dot"></span>
+  <span class="status-msg"></span>
+  <a href="#order" class="status-cta" id="status-cta">Place an order →</a>
+</div>
+
+<nav>
+  <a class="nav-logo" href="#">
+    <!-- Nav logo kept exactly as-is -->
+    <img class="nav-logo-img" src="logo-ink.png" alt="marisa stitches" width="160" height="86"/>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#fonts">Fonts &amp; Colors</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#instagram">Instagram</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#order">Order</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a class="nav-cta btn btn-solid" href="#order">Let's Get Stitching</a>
+</nav>
+  <div class="sew-progress" aria-hidden="true"><div class="sew-thread" id="sew-thread"></div><span class="sew-needle" id="sew-needle">🪡</span></div>
+</header>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-zebra-left"></div>
+  <div class="hero-zebra-right"></div>
+  <div class="hero-cheetah-bg"></div>
+  <div class="hero-dots" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="hero-kicker">Custom Machine Embroidery · Clinton Township, MI</p>
+      <h1 class="hero-headline">A serial hobbyist<br><em class="stitch-under">who took it too far.<svg viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2 9 C 60 3, 120 13, 180 6 S 270 4, 298 8" pathLength="100"/></svg></em></h1>
+      <p class="hero-tagline">charm, threaded in.</p>
+      <div class="hero-identity">
+        <img src="marisa-1.jpg" alt="Marisa, founder of Marisa's Stitches Studio" class="hero-portrait"/>
+        <p class="hero-sub">Hi, I'm Marisa.</p>
+      </div>
+      <p class="hero-body">Custom machine embroidery for names, monograms, baby gifts, totes, towels &amp; more. Bring me your idea and I'll stitch it with a little charm. ♡</p>
+      <div class="hero-btns">
+        <a class="btn btn-solid" href="#order">Let's Get Stitching →</a>
+        <a class="btn btn-outline" href="https://instagram.com/marisastitches" target="_blank" rel="noopener">See My Work</a>
+      </div>
+    </div>
+
+    <div class="hero-m-wrap">
+      <span class="sticker sticker--pink" style="top:6%;left:2%;--r:-10deg;">100+ fonts!</span>
+      <span class="m-gem" aria-hidden="true" style="top:2%;right:16%;width:40px;height:34px;background-image:var(--gem-ruby);--r:12deg;"></span>
+      <span class="m-gem" aria-hidden="true" style="top:44%;left:-2%;width:30px;height:25px;background-image:var(--gem-emerald);--r:-14deg;animation-delay:1s;"></span>
+      <span class="m-gem" aria-hidden="true" style="bottom:28%;right:-2%;width:26px;height:22px;background-image:var(--gem-amethyst);--r:8deg;animation-delay:2s;"></span>
+      <span class="sticker sticker--gold" style="bottom:10%;right:0;--r:8deg;">made w/ love <i class="gem gem--ruby"></i></span>
+      <!-- Hero M: left half = blue-green zebra (logo inspiration), right half = gold cheetah -->
+      <svg viewBox="0 0 300 280" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <!-- Zebra: black + ivory, matching the nav logo exactly -->
+          <pattern id="hz" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse" patternTransform="rotate(-42)">
+            <rect width="28" height="28" fill="#F4EFE7"/>
+            <rect x="0"  y="0" width="7"  height="28" fill="#1A1A1A"/>
+            <rect x="11" y="0" width="4"  height="28" fill="#1A1A1A"/>
+            <rect x="19" y="0" width="6"  height="28" fill="#1A1A1A"/>
+          </pattern>
+          <!-- Gold cheetah: same as before -->
+          <pattern id="hc" x="0" y="0" width="44" height="44" patternUnits="userSpaceOnUse">
+            <rect width="44" height="44" fill="#B8914A"/>
+            <ellipse cx="11" cy="10" rx="5.5" ry="4" transform="rotate(-18,11,10)" fill="#1F1D24"/>
+            <ellipse cx="30" cy="7" rx="4.5" ry="3.5" transform="rotate(14,30,7)" fill="#1F1D24"/>
+            <ellipse cx="5" cy="28" rx="4" ry="3" transform="rotate(-28,5,28)" fill="#1F1D24"/>
+            <ellipse cx="24" cy="26" rx="5.5" ry="4" transform="rotate(10,24,26)" fill="#1F1D24"/>
+            <ellipse cx="38" cy="22" rx="4" ry="3" transform="rotate(-14,38,22)" fill="#1F1D24"/>
+            <ellipse cx="16" cy="38" rx="4.5" ry="3.5" transform="rotate(22,16,38)" fill="#1F1D24"/>
+            <ellipse cx="36" cy="38" rx="3.5" ry="2.5" transform="rotate(-8,36,38)" fill="#1F1D24"/>
+          </pattern>
+          <clipPath id="hm">
+            <text x="150" y="258" font-family="Georgia,serif" font-size="290" font-weight="900" text-anchor="middle">M</text>
+          </clipPath>
+        </defs>
+        <g clip-path="url(#hm)">
+          <rect x="0" y="0" width="150" height="280" fill="url(#hz)"/>
+          <rect x="150" y="0" width="150" height="280" fill="url(#hc)"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- Thread swatch bar — inspired by the color bar in the logo -->
+<div class="swatch-bar" aria-hidden="true">
+  <span style="background:#1F1D24; flex:2"></span>
+  <span style="background:#B8914A; flex:1"></span>
+  <span style="background:#C49A64; flex:1.5"></span>
+  <span style="background:#0E4A38; flex:2"></span>
+  <span style="background:#1F1D24; flex:1.5"></span>
+  <span style="background:#C49A64; flex:1"></span>
+  <span style="background:#F6D4E0; flex:1"></span>
+  <span style="background:#0E4A38; flex:1.5"></span>
+  <span style="background:#1F1D24; flex:1"></span>
+  <span style="background:#0E4A38; flex:1"></span>
+  <span style="background:#B8914A; flex:2"></span>
+  <span style="background:#1F1D24; flex:1"></span>
+  <span style="background:#C49A64; flex:1.5"></span>
+  <span style="background:#0E4A38; flex:1"></span>
+  <span style="background:#B8914A; flex:1"></span>
+  <span style="background:#1F1D24; flex:2"></span>
+</div>
+
+
+<!-- ── ABOUT ME ── -->
+<section class="about-me">
+  <div class="section-wrap about-me-wrap">
+    <figure class="polaroid polaroid--big" style="--r:-4deg;">
+      <span class="tape tape--cheetah"></span>
+      <img src="marisa-2.jpg" alt="Marisa smiling" loading="lazy"/>
+      <figcaption>hi, it's me! ♡</figcaption>
+    </figure>
+    <div class="win">
+      <svg class="spool-buddy" viewBox="0 0 70 80" aria-hidden="true">
+        <defs><linearGradient id="sb-a" x1="0" x2="1"><stop offset="0" stop-color="#1e9c6a"/><stop offset=".5" stop-color="#C49A64"/><stop offset="1" stop-color="#F6D4E0"/></linearGradient></defs>
+        <rect x="14" y="20" width="42" height="48" rx="4" fill="url(#sb-a)" stroke="#1F1D24" stroke-width="2.5"/>
+        <path d="M14 30 h42 M14 58 h42" stroke="#fff" stroke-width="1.5" opacity=".5"/>
+        <ellipse cx="22" cy="34" rx="3" ry="2" fill="#1F1D24" opacity=".55"/><ellipse cx="50" cy="60" rx="3" ry="2" fill="#1F1D24" opacity=".55"/>
+        <rect x="6" y="12" width="58" height="10" rx="5" fill="#B8914A" stroke="#1F1D24" stroke-width="2.5"/>
+        <rect x="6" y="66" width="58" height="10" rx="5" fill="#B8914A" stroke="#1F1D24" stroke-width="2.5"/>
+        <rect x="21" y="36" width="28" height="24" rx="10" fill="#F8F4EC" stroke="#1F1D24" stroke-width="2"/>
+        <circle cx="28" cy="44" r="3" fill="#1F1D24"/><circle cx="42" cy="44" r="3" fill="#1F1D24"/><circle cx="29" cy="43" r="1" fill="#fff"/><circle cx="43" cy="43" r="1" fill="#fff"/><path d="M30 51 q5 5 10 0" fill="none" stroke="#1F1D24" stroke-width="2.2" stroke-linecap="round"/>
+        <circle cx="25" cy="50" r="2.5" fill="#0E4A38" opacity=".45"/><circle cx="45" cy="50" r="2.5" fill="#0E4A38" opacity=".45"/>
+      </svg>
+      <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">about_me.txt</span></div>
+      <div class="win-body">
+        <ul class="about-list">
+          <li><b>✦</b> Serial hobbyist: needlepoint → hand embroidery → one Brother machine → no going back.</li>
+          <li><b>✦</b> Also learning to quilt. The hobbies will not stop.</li>
+          <li><b>✦</b> Tech girl by day, which is why there's a very organized form.</li>
+          <li><b>✦</b> Based in Clinton Township, MI. Shipping anywhere in the US.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROCESS ── -->
+<section class="process-section" id="how">
+  <div class="section-wrap">
+    <p class="eyebrow">How It Works</p>
+    <h2 class="section-h">All custom.<br><em>You bring the item, I stitch it.</em></h2>
+    <div class="thin-rule"></div>
+
+    <div class="how-layout">
+    <div class="process-steps">
+      <div class="p-step">
+        <div class="p-num">01</div>
+        <div>
+          <div class="p-title">Fill out the order form</div>
+          <div class="p-body">The wording, your favorite fonts, inspo pics, and when you need it. You'll see a price estimate as you go.</div>
+        </div>
+      </div>
+      <div class="p-step">
+        <div class="p-num">02</div>
+        <div>
+          <div class="p-title">I'll reach out within 48 hours</div>
+          <div class="p-body">With a written quote, any questions, and my address if you're shipping me your item.</div>
+        </div>
+      </div>
+      <div class="p-step">
+        <div class="p-num">03</div>
+        <div>
+          <div class="p-title">Get me your item</div>
+          <div class="p-body">Drop it off or ship it to me by the date in your form. Ordering it online? Have it shipped straight to me.</div>
+        </div>
+      </div>
+      <div class="p-step">
+        <div class="p-num">04</div>
+        <div>
+          <div class="p-title">You approve the proof</div>
+          <div class="p-body">A digital mockup before anything touches the machine. Edits happen here, not after.</div>
+        </div>
+      </div>
+      <div class="p-step">
+        <div class="p-num">05</div>
+        <div>
+          <div class="p-title">Stitched &amp; sent</div>
+          <div class="p-body"><span class="turnaround-val"></span> once I have your item and you've approved the mockup. Paid in full before pickup or shipping.</div>
+        </div>
+      </div>
+    </div>
+    <!-- Cute embroidery machine: needle bobs, hoop shifts, a heart stitches itself in -->
+    <figure class="machine" aria-hidden="true">
+      <svg viewBox="0 0 320 250" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="mdots" width="14" height="14" patternUnits="userSpaceOnUse">
+            <rect width="14" height="14" fill="#F8F4EC"/>
+            <circle cx="7" cy="7" r="2.4" fill="#B8914A"/>
+          </pattern>
+          <pattern id="mzebra" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(-42)">
+            <rect width="14" height="14" fill="#F4EFE7"/>
+            <rect width="5" height="14" fill="#1A1A1A"/>
+            <rect x="8" width="2.5" height="14" fill="#1A1A1A"/>
+          </pattern>
+          <pattern id="mcheetah" width="22" height="22" patternUnits="userSpaceOnUse">
+            <rect width="22" height="22" fill="#B8914A"/>
+            <ellipse cx="5" cy="5" rx="2.6" ry="2" fill="#1F1D24"/>
+            <ellipse cx="15" cy="9" rx="2.2" ry="1.7" fill="#1F1D24"/>
+            <ellipse cx="8" cy="17" rx="2.4" ry="1.8" fill="#1F1D24"/>
+            <ellipse cx="19" cy="19" rx="1.8" ry="1.4" fill="#1F1D24"/>
+          </pattern>
+        </defs>
+
+        <ellipse cx="165" cy="236" rx="140" ry="9" fill="#1F1D24" opacity="0.08"/>
+
+        <!-- thread from spool to needle -->
+        <path class="m-thread" d="M178 26 C 150 10, 110 18, 100 52 L 92 150" fill="none" stroke="#B8914A" stroke-width="1.5"/>
+
+        <!-- spool -->
+        <g class="m-spool">
+          <rect x="170" y="16" width="18" height="24" rx="2" fill="#0E4A38"/>
+          <rect x="170" y="21" width="18" height="3" fill="#2FAF74" opacity="0.7"/>
+          <rect x="170" y="29" width="18" height="3" fill="#2FAF74" opacity="0.7"/>
+          <rect x="166" y="13" width="26" height="5" rx="2" fill="#B8914A"/>
+          <rect x="166" y="38" width="26" height="5" rx="2" fill="#B8914A"/>
+        </g>
+
+        <!-- pillar with touchscreen -->
+        <rect x="214" y="56" width="80" height="140" rx="16" fill="#fff" stroke="#1F1D24" stroke-width="3"/>
+        <rect x="226" y="96" width="56" height="44" rx="5" fill="#1F1D24"/>
+        <path d="M254 124 c-5 -4 -9 -7 -9 -11 a4 4 0 0 1 9 -1 a4 4 0 0 1 9 1 c0 4 -4 7 -9 11z" fill="#0E4A38"/>
+        <rect x="232" y="131" width="44" height="3" rx="1.5" fill="#F4EFE7" opacity="0.25"/>
+        <rect class="m-progress" x="232" y="131" width="44" height="3" rx="1.5" fill="#B8914A"/>
+        <circle cx="236" cy="158" r="5" fill="#0E4A38"/>
+        <circle cx="252" cy="158" r="5" fill="#B8914A"/>
+        <circle cx="268" cy="158" r="5" fill="#C49A64"/>
+
+        <!-- arm (polka dots) -->
+        <rect x="56" y="46" width="238" height="50" rx="18" fill="url(#mdots)" stroke="#1F1D24" stroke-width="3"/>
+        <!-- head -->
+        <rect x="58" y="48" width="64" height="98" rx="14" fill="#fff" stroke="#1F1D24" stroke-width="3"/>
+        <rect x="70" y="62" width="40" height="8" rx="4" fill="url(#mcheetah)"/>
+        <circle cx="76" cy="84" r="3" fill="#1F1D24"/>
+        <circle cx="104" cy="84" r="3" fill="#1F1D24"/>
+        <path d="M84 92 q6 6 12 0" fill="none" stroke="#1F1D24" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="70" cy="92" r="3.5" fill="#0E4A38" opacity="0.35"/>
+        <circle cx="110" cy="92" r="3.5" fill="#0E4A38" opacity="0.35"/>
+
+        <!-- needle bar + needle -->
+        <g class="m-needle">
+          <rect x="88" y="144" width="8" height="12" rx="2" fill="#1F1D24"/>
+          <line x1="92" y1="156" x2="92" y2="174" stroke="#9aa0a6" stroke-width="2.4" stroke-linecap="round"/>
+        </g>
+
+        <!-- base (zebra) -->
+        <rect x="30" y="192" width="270" height="30" rx="10" fill="url(#mzebra)" stroke="#1F1D24" stroke-width="3"/>
+
+        <!-- embroidery hoop with fabric; the design stitches itself in -->
+        <g class="m-hoop">
+          <rect x="34" y="166" width="116" height="46" rx="12" fill="#F8F4EC" stroke="#B8914A" stroke-width="5"/>
+          <rect x="146" y="182" width="16" height="12" rx="3" fill="#B8914A"/>
+          <path class="m-design" pathLength="100" d="M92 204 C 76 194, 72 184, 80 179 C 85 176, 90 179, 92 183 C 94 179, 99 176, 104 179 C 112 184, 108 194, 92 204 Z" fill="none" stroke="#0E4A38" stroke-width="3.5" stroke-linejoin="round"/>
+          <path class="m-design" pathLength="100" d="M50 200 l6 -14 l6 10 l6 -10 l6 14" fill="none" stroke="#0E4A38" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <g class="m-sparkle"><path d="M126 176 l2 5 l5 2 l-5 2 l-2 5 l-2 -5 l-5 -2 l5 -2z" fill="#B8914A"/></g>
+        </g>
+      </svg>
+      <figcaption class="machine-caption">my Brother machine, hard at work ♡</figcaption>
+    </figure>
+    </div><!-- /how-layout -->
+  </div>
+</section>
+
+<!-- Thread swatch divider (mini version) -->
+<div class="swatch-bar swatch-bar-mini" aria-hidden="true">
+  <span style="background:#0E4A38; flex:1.5"></span>
+  <span style="background:#B8914A; flex:1"></span>
+  <span style="background:#1F1D24; flex:2"></span>
+  <span style="background:#C49A64; flex:1"></span>
+  <span style="background:#0E4A38; flex:1"></span>
+  <span style="background:#B8914A; flex:1.5"></span>
+  <span style="background:#1F1D24; flex:1"></span>
+  <span style="background:#0E4A38; flex:1"></span>
+  <span style="background:#0E4A38; flex:2"></span>
+  <span style="background:#C49A64; flex:1"></span>
+  <span style="background:#B8914A; flex:1"></span>
+  <span style="background:#1F1D24; flex:1.5"></span>
+</div>
+
+<!-- ── FONTS & COLORS ── -->
+<section class="fonts-section" id="fonts">
+  <div class="section-wrap">
+    <p class="eyebrow">Fonts &amp; Colors</p>
+    <h2 class="section-h">Pick Your Favorites <span class="sticker sticker--inline sticker--pink" style="--r:6deg;">tap the ♡</span></h2>
+    <div class="thin-rule"></div>
+
+    <div class="fonts-intro">
+      <p>Type your name, tap your faves (up to 3), and I'll send you options. These are just a few favorites. <strong>I have 100+ fonts</strong>, so if you're picturing something else, I can probably make it work!</p>
+    </div>
+
+    <div class="win win--dark">
+      <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">♡ fonts.exe</span></div>
+      <div class="win-body">
+    <input type="text" id="font-try" class="font-try-input" placeholder="Type something… e.g. Hazel" maxlength="30" autocomplete="off"/>
+
+    <div class="font-catalog-grid" id="font-catalog-grid">
+      <!-- populated by JS -->
+    </div>
+    <p class="fonts-note">Previews are approximate. Real stitching looks a little different depending on size and fabric.</p>
+      </div>
+    </div>
+
+    <div class="color-pick-wrap win win--dark">
+      <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">colors.exe</span></div>
+      <div class="win-body">
+      <h3 class="color-pick-title">Color direction</h3>
+      <p class="color-pick-sub">Tap any that feel right. I'll follow up with exact thread shades.</p>
+      <div class="color-wheel" id="color-wheel">
+        <!-- populated by JS -->
+      </div>
+      </div>
+    </div>
+
+    <div class="picks-summary" id="picks-summary">
+      <span id="picks-summary-text">Nothing picked yet. Your picks will carry into the order form.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── ZEBRA / CHEETAH DIVIDER ── -->
+<div class="pattern-divider" aria-hidden="true">
+  <div class="pd-zebra"></div>
+  <div class="pd-cheetah"></div>
+  <div class="pd-zebra pd-zebra--narrow"></div>
+</div>
+
+<!-- ── GALLERY ── -->
+<section class="gallery-section" id="gallery">
+  <div class="section-wrap">
+    <p class="eyebrow">The Work</p>
+    <h2 class="section-h">Recent Orders <span class="sticker sticker--inline sticker--gold" style="--r:-5deg;"><i class="gem gem--citrine"></i> new!</span></h2>
+    <div class="thin-rule"></div>
+    <p class="gallery-sub">Fresh off the hoop. Every piece is one of a kind.</p>
+
+    <div class="photo-wall">
+      <figure class="polaroid" style="--r:-3deg;"><span class="tape tape--zebra"></span><img src="gallery-bib-pink.jpg" alt="Personalized pink bib — Hazel with bow" loading="lazy"/><figcaption>Hazel ♡</figcaption></figure>
+      <figure class="polaroid" style="--r:2deg;"><span class="tape tape--pink"></span><img src="gallery-bib-mint.jpg" alt="Mint bib with puppy and H monogram" loading="lazy"/><figcaption>puppy + H</figcaption></figure>
+      <figure class="polaroid" style="--r:-1.5deg;"><span class="tape tape--cheetah"></span><img src="gallery-bib-sage.jpg" alt="Sage bib — Sadie Ann with floral bow" loading="lazy"/><figcaption>Sadie Ann</figcaption></figure>
+      <figure class="polaroid" style="--r:3deg;"><span class="tape tape--dots"></span><img src="gallery-pouch-cherries.jpg" alt="Canvas pouches with initials and cherries" loading="lazy"/><figcaption>cherries!!</figcaption></figure>
+      <figure class="polaroid" style="--r:-2.5deg;"><span class="tape tape--zebra"></span><img src="gallery-pouch-dara.jpg" alt="Canvas pouch — Dara in red script" loading="lazy"/><figcaption>Dara</figcaption></figure>
+      <figure class="polaroid" style="--r:1.5deg;"><span class="tape tape--pink"></span><img src="gallery-pouch-katie.jpg" alt="Green canvas pouch — Katie with shamrock" loading="lazy"/><figcaption>Katie ☘</figcaption></figure>
+      <figure class="polaroid" style="--r:-3deg;"><span class="tape tape--cheetah"></span><img src="gallery-waffle-names.jpg" alt="Waffle pouches — Callie and Anna" loading="lazy"/><figcaption>Callie & Anna</figcaption></figure>
+      <figure class="polaroid" style="--r:2deg;"><span class="tape tape--dots"></span><img src="gallery-waffle-mt.jpg" alt="Waffle pouch — MT initials with cherries" loading="lazy"/><figcaption>MT</figcaption></figure>
+      <figure class="polaroid" style="--r:-1.5deg;"><span class="tape tape--zebra"></span><img src="gallery-waffle-st.jpg" alt="Waffle pouch — ST initials with cherries" loading="lazy"/><figcaption>ST</figcaption></figure>
+      <figure class="polaroid" style="--r:3deg;"><span class="tape tape--pink"></span><img src="gallery-mono-closeup.jpg" alt="Close-up ornate monogram on white fabric" loading="lazy"/><figcaption>fancy monogram</figcaption></figure>
+      <figure class="polaroid" style="--r:-2.5deg;"><span class="tape tape--cheetah"></span><img src="gallery-towel-mono.jpg" alt="White hand towels with ornate monogram" loading="lazy"/><figcaption>towel set</figcaption></figure>
+      <figure class="polaroid" style="--r:1.5deg;"><span class="tape tape--dots"></span><img src="gallery-towel-s.jpg" alt="Blush towel — ornate S monogram" loading="lazy"/><figcaption>S</figcaption></figure>
+      <figure class="polaroid" style="--r:-3deg;"><span class="tape tape--zebra"></span><img src="gallery-towel-d.jpg" alt="Blush towel — ornate D monogram" loading="lazy"/><figcaption>D</figcaption></figure>
+    </div>
+
+    <div class="gallery-cta">
+      <a class="btn btn-outline" href="https://instagram.com/marisastitches" target="_blank" rel="noopener">See more on Instagram →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── INSTAGRAM (live feed via Behold.so — new posts appear automatically) ── -->
+<section class="ig-section" id="instagram">
+  <div class="section-wrap">
+    <p class="eyebrow">Follow Along</p>
+    <h2 class="ig-handle">@marisastitches <span class="sticker sticker--inline sticker--gold" style="--r:-4deg;">live!</span></h2>
+    <p class="ig-sub">My latest projects, straight from Instagram.</p>
+
+    <div class="win win--dark ig-win">
+      <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">📸 instagram.exe</span></div>
+      <div class="win-body">
+        <div class="ig-feed-wrap">
+          <behold-widget feed-id="TrFoAyzjAvisRd6wHDMv"></behold-widget>
+          <noscript>
+            <div class="ig-fallback">
+              <a href="https://instagram.com/marisastitches" target="_blank" rel="noopener">View @marisastitches on Instagram →</a>
+            </div>
+          </noscript>
+        </div>
+      </div>
+    </div>
+
+    <div class="ig-cta-row">
+      <a class="btn btn-solid" href="https://instagram.com/marisastitches" target="_blank" rel="noopener">Follow @marisastitches →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── CHEETAH / ZEBRA DIVIDER ── -->
+<div class="pattern-divider" aria-hidden="true">
+  <div class="pd-cheetah"></div>
+  <div class="pd-zebra"></div>
+  <div class="pd-cheetah pd-cheetah--narrow"></div>
+</div>
+
+<!-- ── PRICING ── -->
+<section class="pricing-section" id="pricing">
+  <div class="section-wrap">
+    <p class="section-eyebrow">Transparent &amp; Simple</p>
+    <h2 class="section-h">Pricing</h2>
+
+    <p class="pricing-intro">Simple per-placement pricing. The order form adds it up for you as you go.</p>
+
+    <!-- Embroidery rate callout -->
+    <div class="pricing-rate-bar">
+      <div class="pricing-rate-item">
+        <span class="pricing-rate-label">Names, text &amp; monograms</span>
+        <span class="pricing-rate-price">$15 <span class="pricing-rate-unit">per placement</span></span>
+      </div>
+      <div class="pricing-rate-divider"></div>
+      <div class="pricing-rate-item">
+        <span class="pricing-rate-label">Complex designs &amp; detailed fills</span>
+        <span class="pricing-rate-price">$20 <span class="pricing-rate-unit">per placement</span></span>
+      </div>
+    </div>
+
+    <div class="pricing-paths pricing-paths--two">
+      <div class="pricing-path">
+        <div class="pricing-path-icon">👕</div>
+        <h3 class="pricing-path-title">You provide the item</h3>
+        <p class="pricing-path-desc">Drop it off or ship it to me. Buying it online? Ship it straight to me. Submit the form first and I'll send you my address.</p>
+        <div class="pricing-path-total"><span>You pay</span><strong>embroidery only</strong></div>
+      </div>
+      <div class="pricing-path pricing-path--accent">
+        <div class="pricing-path-icon">🧵</div>
+        <h3 class="pricing-path-title">I have a few in stock</h3>
+        <p class="pricing-path-desc" id="stock-note">Canvas pouches, bibs, and bath towels. Just choose one in the order form.</p>
+        <div class="pricing-path-total"><span>You pay</span><strong>embroidery + item price</strong></div>
+      </div>
+    </div>
+
+    <!-- Shipping footer -->
+    <div class="pricing-shipping-bar">
+      <span class="pricing-shipping-label">✉️ &nbsp;Shipping</span>
+      <span class="pricing-shipping-detail"><strong>$7 flat rate</strong> anywhere in the US &nbsp;·&nbsp; <strong>Free local pickup</strong> in Clinton Township, MI</span>
+    </div>
+
+    <p class="pricing-footer">Rush orders (when I can fit them) are +$5, or +$10 for bigger orders. <a href="#order" class="pricing-link">Start an order →</a></p>
+
+  </div>
+</section>
+
+<!-- ── ORDER FORM ── -->
+<section class="form-section" id="order">
+  <div class="section-wrap">
+    <p class="eyebrow">Custom Orders</p>
+    <h2 class="section-h">Start a Custom Order <span class="sticker sticker--inline sticker--pink" style="--r:4deg;">all custom ♡</span></h2>
+    <div class="thin-rule"></div>
+
+    <!-- Shown only when ORDER_STATUS = 'closed' in main.js -->
+    <div class="shop-closed win" id="shop-closed" style="display:none;">
+      <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">shop_status.txt</span></div>
+      <svg class="spool-buddy" viewBox="0 0 70 80" aria-hidden="true">
+        <defs><linearGradient id="sb-s" x1="0" x2="1"><stop offset="0" stop-color="#1e9c6a"/><stop offset=".5" stop-color="#C49A64"/><stop offset="1" stop-color="#F6D4E0"/></linearGradient></defs>
+        <rect x="14" y="20" width="42" height="48" rx="4" fill="url(#sb-s)" stroke="#1F1D24" stroke-width="2.5"/>
+        <path d="M14 30 h42 M14 58 h42" stroke="#fff" stroke-width="1.5" opacity=".5"/>
+        <ellipse cx="22" cy="34" rx="3" ry="2" fill="#1F1D24" opacity=".55"/><ellipse cx="50" cy="60" rx="3" ry="2" fill="#1F1D24" opacity=".55"/>
+        <rect x="6" y="12" width="58" height="10" rx="5" fill="#B8914A" stroke="#1F1D24" stroke-width="2.5"/>
+        <rect x="6" y="66" width="58" height="10" rx="5" fill="#B8914A" stroke="#1F1D24" stroke-width="2.5"/>
+        <rect x="21" y="36" width="28" height="24" rx="10" fill="#F8F4EC" stroke="#1F1D24" stroke-width="2"/>
+        <path d="M24 44 q4 3 8 0" fill="none" stroke="#1F1D24" stroke-width="2.2" stroke-linecap="round"/><path d="M38 44 q4 3 8 0" fill="none" stroke="#1F1D24" stroke-width="2.2" stroke-linecap="round"/><text x="52" y="16" font-family="Caveat, cursive" font-size="14" font-weight="700" fill="#F6D4E0">z</text><text x="60" y="8" font-family="Caveat, cursive" font-size="11" font-weight="700" fill="#0E4A38">z</text><path d="M31 53 q4 2 8 0" fill="none" stroke="#1F1D24" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="25" cy="50" r="2.5" fill="#0E4A38" opacity=".45"/><circle cx="45" cy="50" r="2.5" fill="#0E4A38" opacity=".45"/>
+      </svg>
+      <p class="shop-closed-kicker">The shop is currently closed</p>
+      <h3 class="shop-closed-h">Taking a little break from orders.</h3>
+      <p>Stay tuned on Instagram to catch up on my recent projects. I'll post there and update this site as soon as the shop opens again.</p>
+      <p>When it reopens, <strong>the order form right here on my website is the best and only way to place an order</strong>. Questions about what I can do? Check the <a href="#faq">FAQ</a> or DM me on Instagram.</p>
+      <a class="btn btn-solid" href="https://instagram.com/marisastitches" target="_blank" rel="noopener">Follow @marisastitches →</a>
+    </div>
+
+    <div id="order-open-content">
+    <div class="form-intro">
+      <p>Tell me what you're picturing. I'll reply with a quote within 48 hours. Half-formed ideas welcome!</p>
+    </div>
+
+    <div class="order-layout">
+    <div class="win order-win">
+      <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">order_form.txt</span></div>
+      <div class="win-body">
+    <form class='order-form' enctype='multipart/form-data' id='order-form' method='POST' name='order-request'>
+      <input type="hidden" name="form-name" value="order-request"/>
+      <input type="hidden" name="subject" value="New order request — Marisa Stitches"/>
+      <p style="display:none;"><label>Don't fill this out: <input name="bot-field"/></label></p>
+
+      <!-- 1. YOU -->
+      <fieldset class="of-block">
+        <legend class="form-block-title">1 · About you</legend>
+        <div class="fg">
+          <label for="f-name">Name *</label>
+          <input type="text" id="f-name" name="name" placeholder="Your name" required/>
+        </div>
+        <div class="form-row">
+          <div class="fg">
+            <label for="f-phone">Phone *</label>
+            <input type="tel" id="f-phone" name="phone" placeholder="(555) 555-5555" required/>
+          </div>
+          <div class="fg">
+            <label for="f-email">Email *</label>
+            <input type="email" id="f-email" name="email" placeholder="you@email.com" required/>
+          </div>
+        </div>
+        <div class="fg">
+          <label>Send my mockup by</label>
+          <div class="check-group">
+            <div class="check-pill"><input type="radio" id="contact-text" name="mockup-contact" value="Text" checked/><label for="contact-text">Text</label></div>
+            <div class="check-pill"><input type="radio" id="contact-email" name="mockup-contact" value="Email"/><label for="contact-email">Email</label></div>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- 2. THE ITEM -->
+      <fieldset class="of-block">
+        <legend class="form-block-title">2 · The item</legend>
+        <div class="fg">
+          <label for="f-item">What are we embroidering? *</label>
+          <input type="text" id="f-item" name="item" placeholder="e.g. black crewneck sweatshirt, size L" required/>
+        </div>
+        <div class="fg">
+          <label for="f-qty">How many?</label>
+          <div class="stepper">
+            <button type="button" class="stepper-btn" data-step="-1" data-for="f-qty" aria-label="Fewer">−</button>
+            <input type="number" id="f-qty" name="quantity" value="1" min="1" max="99" inputmode="numeric"/>
+            <button type="button" class="stepper-btn" data-step="1" data-for="f-qty" aria-label="More">+</button>
+          </div>
+        </div>
+        <div class="fg">
+          <label>Who's providing the item?</label>
+          <div class="check-group">
+            <div class="check-pill"><input type="radio" id="src-own" name="item-source" value="Customer provides it" checked/><label for="src-own">I'll get it to you</label></div>
+            <div class="check-pill"><input type="radio" id="src-stock" name="item-source" value="From Marisa's stock"/><label for="src-stock">Use one from your stock</label></div>
+          </div>
+        </div>
+        <div id="own-item-fields">
+          <div class="form-note-box">
+            <p>Buying it on Amazon or anywhere else? <strong>Ship it straight to me.</strong> Submit this form first and I'll reach out with my address.</p>
+          </div>
+        </div>
+        <div id="stock-item-fields" style="display:none;">
+          <div class="fg">
+            <label for="f-stock">Which one?</label>
+            <select id="f-stock" name="stock-item"></select>
+            <span class="fg-hint" id="stock-hint"></span>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- 3. THE DESIGN -->
+      <fieldset class="of-block">
+        <legend class="form-block-title">3 · The design</legend>
+        <div class="fg">
+          <label for="f-wording">Exact wording *</label>
+          <textarea id="f-wording" name="wording" placeholder="Type it exactly how you want it stitched, e.g. 'Hazel' or 'J S M'. Add extras too, like a bow or cherries." required></textarea>
+          <span class="fg-hint">Double-check spelling and capitalization. I stitch exactly what's here.</span>
+        </div>
+        <div class="fg">
+          <label>What kind of design?</label>
+          <div class="check-group">
+            <div class="check-pill"><input type="radio" id="dt-text" name="design-type" value="Names, text or monogram" data-price="15" checked/><label for="dt-text">Names, text or monogram · $15</label></div>
+            <div class="check-pill"><input type="radio" id="dt-complex" name="design-type" value="Design or detailed fill" data-price="20"/><label for="dt-complex">Design or detailed fill · $20</label></div>
+          </div>
+        </div>
+        <div class="fg">
+          <label>Where on the item? <span class="label-note">(pick all that apply)</span></label>
+          <div class="check-group" id="placement-group">
+            <div class="check-pill"><input type="checkbox" id="pl-1" class="placement-opt" value="Left chest"/><label for="pl-1">Left chest</label></div>
+            <div class="check-pill"><input type="checkbox" id="pl-2" class="placement-opt" value="Center chest"/><label for="pl-2">Center chest</label></div>
+            <div class="check-pill"><input type="checkbox" id="pl-3" class="placement-opt" value="Sleeve"/><label for="pl-3">Sleeve</label></div>
+            <div class="check-pill"><input type="checkbox" id="pl-4" class="placement-opt" value="Back"/><label for="pl-4">Back</label></div>
+            <div class="check-pill"><input type="checkbox" id="pl-5" class="placement-opt" value="Hat front"/><label for="pl-5">Hat front</label></div>
+            <div class="check-pill"><input type="checkbox" id="pl-6" class="placement-opt" value="Corner"/><label for="pl-6">Corner</label></div>
+            <div class="check-pill"><input type="checkbox" id="pl-7" class="placement-opt" value="Centered"/><label for="pl-7">Centered</label></div>
+            <div class="check-pill"><input type="checkbox" id="pl-8" class="placement-opt" value="Not sure, you pick"/><label for="pl-8">Not sure, you pick</label></div>
+          </div>
+          <input type="hidden" name="placement" id="f-placement"/>
+          <span class="fg-hint">Each spot counts as one placement in the estimate.</span>
+        </div>
+        <div class="form-row">
+          <div class="fg">
+            <label for="font-preference">Favorite fonts</label>
+            <input type="text" name="font-preference" id="font-preference" placeholder="Tap fonts above, or describe a vibe"/>
+          </div>
+          <div class="fg">
+            <label for="color-preference">Color direction</label>
+            <input type="text" name="color-preference" id="color-preference" placeholder="Tap colors above, or describe it"/>
+          </div>
+        </div>
+        <span class="fg-hint" style="margin-top:-0.75rem;margin-bottom:1.25rem;">Fills in from your picks in <a href="#fonts">Fonts &amp; Colors</a>. I'll send you options either way.</span>
+      </fieldset>
+
+      <!-- 4. INSPO -->
+      <fieldset class="of-block">
+        <legend class="form-block-title">4 · Inspo</legend>
+        <p class="of-sub">The most helpful: a screenshot of a font you love, and a photo showing where you want it on the item.</p>
+        <div class="fg">
+          <label for="f-inspo-picker">Inspo photos <span class="label-note">(up to 12)</span></label>
+          <label class="upload-drop" for="f-inspo-picker">
+            <span class="upload-drop-icon">＋</span>
+            <span>Tap to add photos. Select as many as you want at once.</span>
+          </label>
+          <input type="file" id="f-inspo-picker" accept="image/*" multiple class="visually-hidden"/>
+          <div class="inspo-thumbs" id="inspo-thumbs"></div>
+        </div>
+        <div class="fg">
+          <label for="f-links">Inspo links</label>
+          <textarea id="f-links" name="inspo-links" placeholder="Paste as many Pinterest, Instagram, or Etsy links as you want, one per line"></textarea>
+        </div>
+        <!-- Netlify allows one file per field, so photos are spread across these (filled by main.js) -->
+        <div style="display:none;" aria-hidden="true">
+          <input type="file" name="inspo-1"/><input type="file" name="inspo-2"/><input type="file" name="inspo-3"/>
+          <input type="file" name="inspo-4"/><input type="file" name="inspo-5"/><input type="file" name="inspo-6"/>
+          <input type="file" name="inspo-7"/><input type="file" name="inspo-8"/><input type="file" name="inspo-9"/>
+          <input type="file" name="inspo-10"/><input type="file" name="inspo-11"/><input type="file" name="inspo-12"/>
+        </div>
+      </fieldset>
+
+      <!-- 5. TIMING -->
+      <fieldset class="of-block">
+        <legend class="form-block-title">5 · Timing</legend>
+        <div class="fg">
+          <label for="f-needby">When do you need it by?</label>
+          <input type="date" id="f-needby" name="need-by"/>
+          <span class="fg-hint">Leave blank if there's no rush. Standard turnaround is <span class="turnaround-val"></span> once I have your item.</span>
+        </div>
+        <div class="timing-callout" id="timing-callout" style="display:none;"></div>
+        <input type="hidden" name="item-to-marisa-by" id="f-item-due"/>
+        <div class="fg" id="handoff-fields">
+          <label>How will you get the item to me?</label>
+          <div class="check-group">
+            <div class="check-pill"><input type="radio" id="ho-drop" name="item-handoff" value="Porch drop-off, Clinton Twp"/><label for="ho-drop">Drop it off (Clinton Twp)</label></div>
+            <div class="check-pill"><input type="radio" id="ho-ship" name="item-handoff" value="Shipping it to Marisa"/><label for="ho-ship">Ship it to you</label></div>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- 6. GETTING IT BACK -->
+      <fieldset class="of-block">
+        <legend class="form-block-title">6 · Getting it back</legend>
+        <div class="fg">
+          <div class="check-group">
+            <div class="check-pill"><input type="radio" id="del-pickup" name="delivery" value="Porch pickup — Clinton Twp, MI" checked/><label for="del-pickup">Porch pickup, Clinton Twp (free)</label></div>
+            <div class="check-pill"><input type="radio" id="del-ship" name="delivery" value="Ship to me"/><label for="del-ship">Ship it to me ($7)</label></div>
+          </div>
+        </div>
+        <div id="delivery-ship-fields" style="display:none;">
+          <div class="fg">
+            <label for="f-addr">Street address</label>
+            <input type="text" id="f-addr" name="ship-address" placeholder="123 Main St"/>
+          </div>
+          <div class="form-row-3">
+            <div class="fg"><label for="f-city">City</label><input type="text" id="f-city" name="ship-city"/></div>
+            <div class="fg"><label for="f-state">State</label><input type="text" id="f-state" name="ship-state" placeholder="MI"/></div>
+            <div class="fg"><label for="f-zip">ZIP</label><input type="text" id="f-zip" name="ship-zip" inputmode="numeric"/></div>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- 7. EXTRAS -->
+      <fieldset class="of-block">
+        <legend class="form-block-title">7 · Anything else?</legend>
+        <div class="fg">
+          <label for="f-notes">Notes</label>
+          <textarea id="f-notes" name="notes" placeholder="Item colors, sizes, a hard deadline, anything I should know"></textarea>
+        </div>
+        <div class="fg">
+          <label class="gift-check-label">
+            <input type="checkbox" id="is-gift" name="is-gift" value="yes"/>
+            <span>🎁 This is a gift</span>
+          </label>
+          <div class="gift-note-wrap" id="gift-note-wrap" style="display:none;">
+            <textarea id="gift-note" name="gift-note" rows="3" placeholder="Gift message to include on a note card (optional)"></textarea>
+          </div>
+        </div>
+        <div class="fg social-permission-block">
+          <label class="social-permission-label">
+            <input type="checkbox" name="social-permission" id="social-permission" value="yes"/>
+            <span>It's okay for @marisastitches to post a photo of my finished order after I've received it.</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <input type="hidden" name="estimate" id="f-estimate"/>
+
+      <div class="of-submit">
+        <button type="submit" class="btn btn-solid" id="order-submit-btn">Send My Order Request →</button>
+        <p class="fg-hint">Nothing is charged now. I'll confirm the final price before I start.</p>
+      </div>
+    </form>
+      </div>
+    </div>
+
+    <!-- Live estimate -->
+    <aside class="estimate win win--dark" id="estimate" aria-live="polite">
+      <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">estimate.calc</span></div>
+      <p class="estimate-label">Your estimate</p>
+      <div class="estimate-lines" id="estimate-lines"></div>
+      <div class="estimate-total-row">
+        <span>Estimated total</span>
+        <strong id="estimate-total">$15</strong>
+      </div>
+      <p class="estimate-fine">A ballpark, not a quote. Final price depends on the details, and I'll always confirm it with you first. Cash App, Venmo, cash, or check.</p>
+    </aside>
+    </div><!-- /order-layout -->
+
+    <div class="form-success" id="form-success" style="display:none;"></div>
+    </div><!-- /order-open-content -->
+  </div>
+</section>
+
+<!-- ── ZEBRA DIVIDER ── -->
+<div class="pattern-divider" aria-hidden="true">
+  <div class="pd-zebra"></div>
+  <div class="pd-cheetah pd-cheetah--narrow"></div>
+  <div class="pd-zebra"></div>
+</div>
+
+<!-- ── TESTIMONIALS TICKER ── -->
+<div class="testimonials-ticker" aria-label="Customer testimonials">
+  <div class="testimonials-ticker-track">
+    <span>" I love u for life 😭😭😭😭 this is so beautiful thank you!!!"</span><b>✦</b>
+    <span>"Marisa Kaye 😭😭😭😭 it's so darn cute! And what a surprise! You really outdid yourself... I can't thank you enough and neither can Baxter!!"</span><b>✦</b>
+    <span>"Are you serious?!?! This is the sweetest thing EVER!!!!!! THANK YOU SO MUCH THIS MADE MY WHOLE WEEK 🥹💗💗"</span><b>✦</b>
+    <span>"thank you for making me smile"</span><b>✦</b>
+    <span>" I love u for life 😭😭😭😭 this is so beautiful thank you!!!"</span><b>✦</b>
+    <span>"Marisa Kaye 😭😭😭😭 it's so darn cute! And what a surprise! You really outdid yourself... I can't thank you enough and neither can Baxter!!"</span><b>✦</b>
+    <span>"Are you serious?!?! This is the sweetest thing EVER!!!!!! THANK YOU SO MUCH THIS MADE MY WHOLE WEEK 🥹💗💗"</span><b>✦</b>
+    <span>"thank you for making me smile"</span><b>✦</b>
+  </div>
+</div>
+
+<!-- ── FAQ ── -->
+<section class="faq-section" id="faq">
+  <div class="section-wrap">
+    <p class="eyebrow">Questions</p>
+    <h2 class="section-h">FAQ</h2>
+    <div class="thin-rule"></div>
+
+    <div class="win win--dark faq-win">
+      <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">faq.txt</span></div>
+      <div class="win-body">
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-q">How do I place an order?</div>
+        <div class="faq-a">Only through the order form on this site.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How do I reach you?</div>
+        <div class="faq-a">Orders: the form. Questions: this FAQ. Anything else: <a href="https://instagram.com/marisastitches" target="_blank" rel="noopener" class="faq-link">DM me on Instagram</a>.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What can you embroider?</div>
+        <div class="faq-a">Almost anything that fits in a hoop: hats, sweatshirts, totes, towels, baby things, napkins.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do you supply the item?</div>
+        <div class="faq-a">You do! Drop it off or ship it to me. I also have canvas pouches, bibs &amp; bath towels for $5 each.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How much does it cost?</div>
+        <div class="faq-a">$15 per spot for text &amp; monograms, $20 for designs. The form shows a live estimate.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How do I pay?</div>
+        <div class="faq-a">Cash App, Venmo, cash, or check, paid in full before pickup or shipping.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do you ship?</div>
+        <div class="faq-a">Yes! $7 flat anywhere in the US, or free porch pickup in Clinton Twp.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What's your return policy?</div>
+        <div class="faq-a">All sales are final. If I make a mistake, I'll fix it, so check your mockup carefully!</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">I don't know what font or color I want.</div>
+        <div class="faq-a">No problem. I have 100+ fonts. Tap your faves in <a href="#fonts" class="faq-link">Fonts &amp; Colors</a> and I'll send options.</div>
+      </div>
+    </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h2><img src="logo-cream.png" alt="marisa stitches" style="height:64px;width:auto;display:block"/></h2>
+      <p>charm, threaded in.</p>
+      <small>Custom machine embroidery based in Clinton Township, MI.<br>Orders through the form on this site. Questions? Check the FAQ or DM me on Instagram.</small>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#fonts">Fonts &amp; Colors</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#order">Order</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#order">Monogram</a></li>
+        <li><a href="#order">Custom Design</a></li>
+        <li><a href="#order">Bulk Orders</a></li>
+        <li><a href="#order">Baby Gifts</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Studio</h4>
+      <ul>
+        <li><a href="#">Clinton Township, MI</a></li>
+        <li><a href="https://instagram.com/marisastitches">@marisastitches</a></li>
+        <li><a href="#order">Start an Order</a></li>
+        <li><a href="#faq">Cash App · Venmo · Cash · Check</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Marisa Stitches Studio · Custom Machine Embroidery · Clinton Township, MI</p>
+    <div class="footer-bottom-links">
+      <a href='/terms'>Terms &amp; Policy</a>
+      <a class="footer-ig" href="https://instagram.com/marisastitches">@marisastitches ↗</a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.9.2/confetti.browser.min.js" async></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" async></script>
+<script src="main.js"></script>
+
+<!-- ── STITCH RAIL ── -->
+<div class="stitch-rail" aria-hidden="true">
+  <div class="stitch-needle-anim">
+    <svg viewBox="0 0 36 44" width="36" height="44" xmlns="http://www.w3.org/2000/svg">
+      <!-- Spool body (thread wound around middle) -->
+      <rect x="6" y="12" width="24" height="20" fill="#1F1D24"/>
+      <!-- Thread stripes on body -->
+      <rect x="6" y="12"   width="24" height="4"   fill="#B8914A"/>
+      <rect x="6" y="17"   width="24" height="3.5" fill="#F4EFE7" opacity="0.85"/>
+      <rect x="6" y="21.5" width="24" height="4"   fill="#B8914A"/>
+      <rect x="6" y="26.5" width="24" height="3"   fill="#F4EFE7" opacity="0.8"/>
+      <rect x="6" y="30"   width="24" height="2"   fill="#B8914A" opacity="0.65"/>
+      <!-- Bottom flange -->
+      <ellipse cx="18" cy="32" rx="15" ry="5.5" fill="#0E4A38"/>
+      <ellipse cx="18" cy="32" rx="4.5" ry="1.8" fill="#B8914A" opacity="0.45"/>
+      <!-- Top flange -->
+      <ellipse cx="18" cy="12" rx="15" ry="5.5" fill="#0E4A38"/>
+      <ellipse cx="18" cy="12" rx="4.5" ry="1.8" fill="#B8914A" opacity="0.45"/>
+      <!-- Thread tail trailing off the top -->
+      <path d="M33 10 C38 7 37 3 33 2 C30 1 29 4 31 6" stroke="#B8914A" stroke-width="1.3" fill="none" stroke-linecap="round" opacity="0.85"/>
+    </svg>
+  </div>
+</div>
+
+<!-- ── STICKY ORDER BUTTON ── -->
+<a href="#order" class="sticky-order-btn" id="sticky-order-btn" aria-label="Start an order">
+  Order →
+</a>
+
+</body>
+</html>
