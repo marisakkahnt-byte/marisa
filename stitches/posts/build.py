@@ -5,7 +5,7 @@ src = open(os.path.join(D, '..', 'pinned', 'build.py')).read()
 head = src.split('# Stitches pin 1')[0]
 ns = {'__file__': os.path.join(D, '..', 'pinned', 'build.py')}; exec(head, ns)
 st, K, H, P, gem, S = ns['st'], ns['K'], ns['H'], ns['P'], ns['gem'], ns['S']
-FUN = '<span class="tag">just for fun ♡ not for sale</span>'
+FUN = ''
 
 A = 'stitches_dec11_stitch-guide'
 st(A, '1', K('a quick guide') + H('needlepoint vs.<br>cross stitch vs.<br>embroidery', 108) + P('they are not the same thing<br>(i will die on this hill) →'),
@@ -22,7 +22,7 @@ st(B, '1', K('my hobby résumé') + H('a serial<br>hobbyist’s<br>work history'
    gem('pear', 'ruby', 90, 880, 150, 12) + gem('heart', 'rose', 120, 110, 1110, -8))
 st(B, '2', '<ol class="ol"><li><b>needlepoint</b><span>where it started. canvases everywhere.</span></li><li><b>hand embroidery</b><span>hoops, floss, a lot of podcasts.</span></li><li><b>quilting</b><span>math, but cozy.</span></li><li><b>machine embroidery</b><span>one brother machine. no going back.</span></li></ol>',
    gem('round', 'dia', 100, 860, 130))
-st(B, '3', K('current position') + H('all of them,<br>at once', 130) + P('the first three are just for me.<br>machine embroidery is the one<br>you can order (when the shop is open).') + FUN.replace('just for fun ♡ not for sale', 'hobby posts are tagged like this'),
+st(B, '3', K('current position') + H('all of them,<br>at once', 130) + P('needlepoint, hoops, quilts,<br>and one very busy brother machine.') + FUN.replace('just for fun ♡ not for sale', 'hobby posts are tagged like this'),
    gem('heart', 'sap', 110, 120, 1120, 10) + gem('emerald', 'em', 100, 860, 160, -8))
 
 C = 'stitches_jan08_needlepoint-tips'

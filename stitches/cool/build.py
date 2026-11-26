@@ -4,7 +4,7 @@ D = os.path.dirname(os.path.abspath(__file__))
 src = open(os.path.join(D, '..', 'pinned', 'build.py')).read().split('# Stitches pin 1')[0]
 ns = {'__file__': os.path.join(D, '..', 'pinned', 'build.py')}; exec(src, ns)
 gem = ns['gem']
-FUN = '<span class="fun">just for fun ♡ not for sale</span>'
+FUN = ''
 CSS = """
 *{box-sizing:border-box}body{margin:0;background:#777}
 .s{width:1080px;height:1350px;position:relative;overflow:hidden;margin-bottom:10px;background:#F4EFE7;color:#2B2B2B;font-family:'DM Sans'}

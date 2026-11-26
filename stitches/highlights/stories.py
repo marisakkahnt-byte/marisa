@@ -101,7 +101,7 @@ CRAFTS = [('05_needlepoint', 'needlepoint', 'pear', 'ruby', 250, 'where it all s
 for fn, word, shape, g, w, kick, line, extra in CRAFTS:
     cover(fn, word, shape, g, w)
     title = {'wips': 'on the hoop', 'by hand': 'by hand'}.get(word, word)
-    st('../crafts/stories/' + fn, '1', K(kick) + H(title) + P(line) + ('' if word == 'wips' else '<p class="tag">just for fun ♡ not for sale</p>'), ''.join(gem(*e) for e in extra))
+    st('../crafts/stories/' + fn, '1', K(kick) + H(title) + P(line) + '', ''.join(gem(*e) for e in extra))
 
 CSS = """
 *{box-sizing:border-box}body{margin:0;background:#777}
