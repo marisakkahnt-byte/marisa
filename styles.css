@@ -714,3 +714,32 @@ html { overflow-x: hidden; }
   .scene .walker { transform: translateX(980px); }
   .scene .flyer, .scene .cloud { transform: none; }
 }
+
+/* ---------- Brand refresh (Nov 2026): Stitches v3 + real I Do logo ---------- */
+.house--stitches {
+  --wall: #F4EFE7; --roof: #0E4A38; --trim: #C49A64; --brand: #1F1D24; --brand-2: #0E4A38; --shutter: #0E4A38; --soft: #FBF9F6; --accent: #C49A64;
+  background: radial-gradient(circle, rgba(14,74,56,.10) 3px, transparent 4px) 0 0 / 30px 30px, #F4EFE7;
+}
+.house--stitches .facade__awning { background: url('brand/zebra-sq.svg') 0 0 / 180px auto, #FBF9F6; }
+.house--stitches .facade__roof { background-color: #0E4A38; }
+.house--stitches .facade__hoop::after { color: #0E4A38; }
+.house--stitches .facade__body { background: #FBF9F6; }
+.house--stitches .display .shutter { background: repeating-linear-gradient(90deg, rgba(0,0,0,.18) 0 1px, transparent 1px 12px), url('brand/cheetah-tile.svg') 0 0 / 120px auto, #C49A64; }
+.house--stitches .flowerbox { background: linear-gradient(#14614b, #0E4A38); }
+.facade__sign--gem { box-shadow: inset 0 0 0 5px #fffdf9, inset 0 0 0 6px #B8914A; padding: .35em 1.1em; }
+.facade__logo { display: block; height: clamp(64px, 11vw, 96px); width: auto; margin: 0 auto; }
+.facade__sign--logo { padding: .45em 1.6em; }
+.facade__logo--ido { height: clamp(70px, 12vw, 104px); }
+img.jgem { height: auto; }
+.jgem--a { width: 40px; } .jgem--b { width: 38px; } .jgem--c { width: 28px; } .jgem--d { width: 26px; }
+.jglint { text-shadow: 0 0 6px #fff, 0 0 2px #B8914A; }
+.facade__script--gem { font: 400 1.6rem "DM Serif Display", var(--display); color: #0E4A38; letter-spacing: -.01em; }
+.house--stitches .facade__tagline em { color: #8C857A; }
+.door-btn--stitches { --door: #0E4A38; }
+.suite__script { color: #0E4A38; }
+#stitches .door__leaf { background: linear-gradient(var(--ink), var(--ink)) 50% 64px / 1px calc(100% - 92px) no-repeat, url('brand/zebra-sq.svg') 0 0 / 160px auto, var(--door); }
+.house--ido { --roof: #2A241F; --trim: #B08D57; --brand: #2A241F; --brand-2: #7E2E2C; --shutter: #F1DCD6; --accent: #F1DCD6;
+  background: repeating-linear-gradient(90deg, #F1DCD6 0 26px, #FBF7F0 26px 52px); }
+.house--ido .facade__body { background: #FBF7F0; }
+.house--ido .facade__tagline, .house--ido .facade__tagline em { color: #2A241F; }
+.house--ido .facade__motto { color: #B08D57; }

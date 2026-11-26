@@ -88,7 +88,7 @@
   }
 
   // Brand colours, taken from marisastitches.com and idobymarisa.com
-  var STITCHES = { wall: '#F4EFE7', trim: '#2B2B2B', roof: '#E86A9A', accent: '#E86A9A', navy: '#2B2B2B', gems: ['#E86A9A', '#2F6FD6', '#1FA35B', '#8E6CD8', '#C8203E', '#E9EDF3'] };
+  var STITCHES = { wall: '#F4EFE7', trim: '#1F1D24', roof: '#0E4A38', accent: '#C49A64', navy: '#1F1D24', gems: ['#F6D4E0', '#2F6FD6', '#0E4A38', '#C49A64', '#B8914A', '#E9EDF3'] };
   var IDO = { wall: '#f3ece2', trim: '#2c2825', roof: '#b7a097', accent: '#a3847b', bell: '#c2a67c' };
   var CLOCK = [140, 214];
 
