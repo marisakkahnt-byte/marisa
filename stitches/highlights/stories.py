@@ -16,6 +16,10 @@ def gem(shape, g, w, x, y, rot=0):
             f'<defs><linearGradient id="g{i}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{a}"/><stop offset=".45" stop-color="{b}"/><stop offset="1" stop-color="{c}"/></linearGradient></defs>'
             f'<path d="{d}" fill="url(#g{i})"/>{lines}<g transform="translate(30 22) scale(.8)" style="filter:drop-shadow(0 0 4px #fff)">{STAR}</g></svg>')
 
+import sys as _s; _s.path.insert(0, '/home/user/marisa/stitches/sparkle')
+from gems import gem as _realgem
+gem = _realgem  # brand standard: real gems
+
 S = []  # (folder, filename, html)
 # ---------------- MARISA STITCHES ----------------
 def st(folder, fn, body, gems='', sticker=False):
@@ -30,7 +34,7 @@ st('01_start-here', '1', K('start here') + H('hi, i’m<br>marisa') + P('a seria
 st('01_start-here', '2', K('what i stitch') + H('if it holds still,<br>i’ll stitch it', 112) +
    '<ul class="ul"><li>names &amp; monograms</li><li>baby gifts</li><li>towels, napkins &amp; pouches</li><li>hats, sweatshirts &amp; totes</li></ul>',
    gem('pear', 'ruby', 90, 860, 260, 12) + gem('round', 'ame', 120, 110, 1520))
-st('01_start-here', '3', K('the studio') + H('one brother machine,<br>no going back', 104) + P('custom embroidery in clinton twp, mi.<br>shipping anywhere in the us.') + P('<b>marisastitches.com</b>'),
+st('01_start-here', '3', K('the studio') + H('one brother machine,<br>no going back', 104) + P('needlepoint, hand + machine embroidery<br>in clinton twp, mi.') + P('<b>the shop’s on a little pause ✦</b>'),
    gem('heart', 'rose', 130, 830, 300, 10) + gem('marq', 'cit', 60, 160, 340, -20), sticker=True)
 
 st('02_how-to-order', '1', K('how to order') + H('all custom.<br>you bring the item,<br>i stitch it.', 112),

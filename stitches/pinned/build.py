@@ -25,7 +25,7 @@ st(A, '2', K('hi, i’m marisa') + H('a serial hobbyist<br>who took it too far',
    gem('pear', 'ruby', 80, 880, 160, 12) + gem('round', 'ame', 100, 120, 1140))
 st(A, '3', K('what i stitch') + H('if it holds still,<br>i’ll stitch it', 104) + '<ul class="ul"><li>names &amp; monograms</li><li>baby gifts</li><li>towels, napkins &amp; pouches</li><li>hats, sweatshirts &amp; totes</li></ul>',
    gem('marq', 'cit', 50, 120, 170, -20) + gem('heart', 'rose', 100, 860, 1130, 10))
-st(A, '4', K('follow along') + H('charm,<br>threaded in.', 120) + P('custom embroidery · clinton twp, mi<br>shipping anywhere in the us') + P('<b>marisastitches.com</b>'),
+st(A, '4', K('follow along') + H('she’s<br>a gem', 150) + P('needlepoint, hand + machine embroidery<br>clinton twp, mi') + P('<b>real gems only ✦</b>'),
    gem('heart', 'rose', 130, 120, 160, -8) + gem('round', 'dia', 110, 850, 1110))
 # Stitches pin 2: how to order
 B = 'stitches_pin2_how-to-order'
