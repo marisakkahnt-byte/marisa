@@ -88,7 +88,7 @@
   }
 
   // Brand colours, taken from marisastitches.com and idobymarisa.com
-  var STITCHES = { wall: '#f1e6cc', trim: '#2f4a3a', roof: '#2f4a3a', accent: '#c9a24a', navy: '#1f2a44', spot: '#bdb7ad' };
+  var STITCHES = { wall: '#F4EFE7', trim: '#1F1D24', roof: '#0E4A38', accent: '#C49A64', navy: '#1F1D24', gems: ['#F6D4E0', '#2F6FD6', '#0E4A38', '#C49A64', '#B8914A', '#E9EDF3'] };
   var IDO = { wall: '#f3ece2', trim: '#2c2825', roof: '#b7a097', accent: '#a3847b', bell: '#c2a67c' };
   var CLOCK = [140, 214];
 
@@ -138,26 +138,30 @@
       '<path d="M' + (x - 12) + ' ' + top + ' L363 206 L' + (x + w + 12) + ' ' + top + ' Z" fill="' + STITCHES.roof + '" class="ink"/>' +
       '<circle cx="363" cy="276" r="25" fill="#fffdf9" class="ink"/>' +
       '<circle cx="363" cy="276" r="19" fill="none" stroke="' + STITCHES.accent + '" stroke-width="3"/>' +
-      '<rect x="384" y="252" width="8" height="10" rx="2" fill="#c39a50" class="hair"/>';
+      '<rect x="384" y="252" width="8" height="10" rx="2" fill="#D9D3C7" class="hair"/>';
     var xs = '';
     for (var gx = -9; gx <= 9; gx += 6) for (var gy = -9; gy <= 9; gy += 6) {
       if (Math.abs(gx) + Math.abs(gy) > 13) continue;
       xs += 'M' + (360 + gx) + ' ' + (273 + gy) + ' l5 5 m0 -5 l-5 5 ';
     }
     s += '<path d="' + xs + '" stroke="' + STITCHES.trim + '" stroke-width="1.6" stroke-linecap="round"/>' + cornice(x, w, top, STITCHES.accent);
-    // leopard spots, like the Marisa Stitches brand
-    var spots = [[284, 336], [446, 352], [300, 410], [442, 418], [362, 392], [286, 486], [448, 486], [362, 470], [292, 548], [446, 552], [362, 540]];
-    spots.forEach(function (p) {
-      s += '<ellipse cx="' + p[0] + '" cy="' + p[1] + '" rx="' + f(rand(5, 8)) + '" ry="' + f(rand(3.5, 5.5)) + '" fill="' + STITCHES.spot + '" transform="rotate(' + f(rand(-30, 30)) + ' ' + p[0] + ' ' + p[1] + ')"/>';
+    // little gems on the walls, like the Marisa Stitches jewel-box brand
+    var gemSpots = [[284, 336], [446, 352], [300, 410], [442, 418], [362, 392], [286, 486], [448, 486], [362, 470], [292, 548], [446, 552], [362, 540]];
+    gemSpots.forEach(function (p, i) {
+      var c = STITCHES.gems[i % STITCHES.gems.length], x0 = p[0], y0 = p[1];
+      s += i % 2 ?
+        '<path d="M' + (x0 - 6) + ' ' + (y0 - 4) + ' h12 l4 4 -10 10 -10 -10 z" style="fill:' + c + '" class="hair"/><path d="M' + (x0 - 10) + ' ' + y0 + ' h20" stroke="#fff" stroke-opacity=".6" stroke-width="1"/>' :
+        '<path d="M' + x0 + ' ' + (y0 + 8) + ' l-8 -8 c-3 -3 -1 -8 3 -8 c2 0 4 1 5 3 c1 -2 3 -3 5 -3 c4 0 6 5 3 8 z" style="fill:' + c + '" class="hair"/>';
+      if (i % 3 === 0) s += '<text class="twinkle" x="' + (x0 + 7) + '" y="' + (y0 - 5) + '" font-size="9" fill="#fff" stroke="#E86A9A" stroke-width=".4" style="animation-delay:' + f(i * .37) + 's">✦</text>';
     });
     [342, 428].forEach(function (y, i) { [318, 408].forEach(function (cx) { s += win(cx, y, 38, 56, { flowers: i === 0 }); }); });
     s += plaque(363, 508, 170, 'marisa stitches', STITCHES.trim, 'plaque-text plaque-text--stitches');
     // shop window with spools of thread
     s += awningRow(280, 92, 556, STITCHES.trim) +
       '<rect x="284" y="572" width="84" height="74" rx="4" fill="#fffaf3" class="ink"/>';
-    [STITCHES.trim, STITCHES.accent, STITCHES.navy, '#f2a7bb'].forEach(function (c, i) {
+    ['#E86A9A', '#2F6FD6', '#1FA35B', '#8E6CD8'].forEach(function (c, i) {
       var sx = 294 + i * 18;
-      s += '<rect x="' + sx + '" y="612" width="14" height="4" fill="#fffdf9" class="hair"/><rect x="' + (sx + 2) + '" y="616" width="10" height="20" fill="' + c + '" class="hair"/><rect x="' + sx + '" y="636" width="14" height="4" fill="#fffdf9" class="hair"/>';
+      s += '<rect x="' + sx + '" y="612" width="14" height="4" fill="#fffdf9" class="hair"/><rect x="' + (sx + 2) + '" y="616" width="10" height="20" style="fill:' + c + '" class="hair"/><rect x="' + sx + '" y="636" width="14" height="4" fill="#fffdf9" class="hair"/>';
     });
     s += '<path d="M292 600 q20 -18 40 0 t36 -4" fill="none" stroke="' + STITCHES.navy + '" stroke-width="1.6" stroke-dasharray="3 3"/>';
     s += archDoor(412, 40, 584, STITCHES.navy);
@@ -446,7 +450,7 @@
       // the maker: sweat set, messy bun, hoop in hand, lamp and a sleepy bulldog
       s += '<g class="lamp-glow"><circle cx="46" cy="72" r="18" fill="#fff1b8" opacity=".75"/></g>' +
         '<path d="M46 136 V72" stroke="' + INK + '" stroke-width="2.2"/><ellipse cx="46" cy="137" rx="9" ry="2.6" fill="#c9a24a"' + L + ' stroke-width="1.4"/>' +
-        '<path d="M35 72 L57 72 L52 56 L40 56 Z" fill="#2f4a3a"' + L + ' stroke-width="1.5"/>' +
+        '<path d="M35 72 L57 72 L52 56 L40 56 Z" fill="#E86A9A"' + L + ' stroke-width="1.5"/>' +
         // sleepy bulldog
         '<ellipse cx="-44" cy="131" rx="16" ry="8" fill="#f7e9d6"' + L + ' stroke-width="1.5"/><path d="M-52 127 q5 -4 10 -1 q-1 5 -6 5 q-4 0 -4 -4 z" fill="#e4b98b"/>' +
         // big square bulldog head with floppy ears, jowls and a little underbite

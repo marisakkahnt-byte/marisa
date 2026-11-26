@@ -1,0 +1,57 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700;800&family=Pinyon+Script&display=swap" rel="stylesheet">
+<style>
+/* Gen Z TikTok text engine: ?v=<id>. TikTok-native white text boxes popping in over a slow-moving brand gradient. */
+*{box-sizing:border-box}html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+body{background:#2A241F;font-family:'Raleway'}
+.bg{position:absolute;inset:-200px;background:radial-gradient(circle at 30% 30%,#7E2E2C,transparent 55%),radial-gradient(circle at 70% 70%,#B08D57,transparent 50%),radial-gradient(circle at 50% 50%,#F1DCD6,#2A241F 80%);animation:drift 14s ease-in-out infinite alternate;filter:saturate(.9)}
+body.light .bg{background:radial-gradient(circle at 30% 30%,#F1DCD6,transparent 60%),radial-gradient(circle at 70% 75%,#D9C08F,transparent 55%),#FBF7F0}
+@keyframes drift{to{transform:translate(120px,-90px) rotate(6deg) scale(1.08)}}
+.top{position:absolute;top:250px;left:70px;right:70px;text-align:center}
+.lines{position:absolute;left:70px;right:70px;top:620px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.box{display:inline-block;background:#fff;color:#111;font:700 64px/1.15 'Raleway';padding:10px 26px;border-radius:16px;text-align:center;max-width:940px;opacity:0;transform:scale(.6);transition:all .18s cubic-bezier(.3,1.6,.6,1)}
+.box.on{opacity:1;transform:scale(1)}
+.box.hd{font-size:52px;background:#111;color:#fff}
+.box.pink{background:#F1DCD6}.box.wine{background:#7E2E2C;color:#fff}
+.mark{position:absolute;right:60px;bottom:260px;font:400 60px 'Pinyon Script';color:#FBF7F0;opacity:.9;text-shadow:0 2px 10px rgba(0,0,0,.3)}
+body.light .mark{color:#2A241F}
+</style></head><body><div class="bg"></div><div class="top" id="top"></div><div class="lines" id="lines"></div><div class="mark">I Do by Marisa</div>
+<script>
+// each scene: {hd: header box (stays), lines:[...] (pop in one by one), d: seconds}
+const V={
+ girlmath:{scenes:[
+  {hd:'girl math: wedding edition 🧮',lines:['a custom ceremony script','divided by 50 years of marriage','= basically free'],d:4.2},
+  {hd:'girl math: wedding edition 🧮',lines:['your friend officiating','= free officiant','(+ $0 in therapy for them after)'],d:4.2},
+  {hd:'girl math: wedding edition 🧮',lines:['coaching for your officiant','= 0 awkward pauses','= priceless honestly'],d:4.2},
+  {hd:'',lines:['the math is mathing 💅','link in bio'],pink:1,d:2.6}]},
+ ick:{light:1,scenes:[
+  {hd:'the ick: ceremony edition 🤢',lines:['officiant says','“dearly beloved”','three times'],d:3.4},
+  {hd:'the ick: ceremony edition 🤢',lines:['vows read off','the notes app','with 4% battery'],d:3.4},
+  {hd:'the ick: ceremony edition 🤢',lines:['a 45-minute ceremony','in july','in the sun'],d:3.4},
+  {hd:'the ick: ceremony edition 🤢',lines:['“so i googled','how to officiate','a wedding”'],d:3.4},
+  {hd:'',lines:['cure the ick ✨','i write it. i coach them. or i marry you myself.'],pink:1,d:3.4}]},
+ delulu:{scenes:[
+  {hd:'delulu is not the solulu 🫠',lines:['“i’ll write my vows','the night before”'],d:3},
+  {hd:'delulu is not the solulu 🫠',lines:['“my best friend','will just wing it”'],d:3},
+  {hd:'delulu is not the solulu 🫠',lines:['“nobody will notice','if the ceremony is 4 minutes”'],d:3.2},
+  {hd:'the solulu:',lines:['a script written from your real story','+ coaching for your bestie','= main character ceremony 💍'],wine:1,d:4}]},
+ pov:{light:1,scenes:[
+  {hd:'',lines:['pov: you asked your best friend','to officiate your wedding'],d:3},
+  {hd:'',lines:['them: “omg yes”'],d:1.8},
+  {hd:'',lines:['them, 3 months later:','“so what do i say”'],d:2.4},
+  {hd:'',lines:['them, the night before:','“is it bad if i just talk about our trip to cancun”'],d:3.4},
+  {hd:'',lines:['me, sliding in with','a full script + coaching session 🧚‍♀️'],pink:1,d:3.2},
+  {hd:'',lines:['send this to your officiant 🫵'],wine:1,d:2.4}]}
+};
+const v=V[new URLSearchParams(location.search).get('v')||'girlmath'];
+if(v.light)document.body.classList.add('light');
+window.TOTAL=v.scenes.reduce((a,s)=>a+s.d,0);
+const TP=document.getElementById('top'),L=document.getElementById('lines');
+let t=0;
+v.scenes.forEach(s=>{setTimeout(()=>{
+  TP.innerHTML=s.hd?`<span class="box hd on">${s.hd}</span>`:'';
+  L.innerHTML='';
+  s.lines.forEach((x,i)=>{const b=document.createElement('span');b.className='box'+(s.pink&&i===0?' pink':'')+(s.wine&&i===s.lines.length-1?' wine':'');b.innerHTML=x;L.appendChild(b);
+    setTimeout(()=>b.classList.add('on'),250+i*Math.min(700,(s.d*1000-900)/s.lines.length))});
+},t*1000);t+=s.d});
+</script></body></html>

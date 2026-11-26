@@ -1,0 +1,88 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Pinyon+Script&family=Raleway:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* I Do by Marisa brand film. ?o=v for vertical (1080x1920), default wide (1920x1080). ~16s. */
+*{box-sizing:border-box;margin:0}
+:root{--cream:#FBF7F0;--ink:#2A241F;--gold:#B08D57;--gold2:#D9C08F;--blush:#F1DCD6;--wine:#7E2E2C}
+html,body{width:100vw;height:100vh;overflow:hidden;background:var(--cream)}
+.stage{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,#fffdf8,#F6EEE2 70%,#efe3d2)}
+.grain{position:absolute;inset:0;opacity:.35;mix-blend-mode:multiply;pointer-events:none}
+.sc{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0}
+.cap{font:600 22px 'Raleway';letter-spacing:.42em;text-transform:uppercase;color:var(--gold)}
+/* scene 1 arch */
+#arch path{fill:none;stroke:var(--gold);stroke-width:2;stroke-dasharray:2600;stroke-dashoffset:2600}
+.s1 .name{position:absolute;text-align:center}
+.s1 .name p{font:400 150px/1 'Pinyon Script';color:var(--ink);opacity:0}
+.s1 .name .cap{margin-top:24px;opacity:0}
+/* scene 2 */
+.s2 p{font:400 200px/1 'Pinyon Script';color:var(--ink);clip-path:inset(0 100% 0 0)}
+/* scene 3 */
+.s3 .w{text-align:center;padding:0 8vw}
+.s3 .w span{display:inline-block;opacity:0;transform:translateY(18px);font:italic 400 84px/1.2 'Cormorant Garamond';color:var(--ink);margin:0 .14em}
+.s3 .w span.g{color:var(--wine)}
+/* scene 4 page */
+.page{width:620px;background:#fffdf9;box-shadow:0 40px 80px rgba(42,36,31,.18);border:1px solid #eadfce;padding:56px 60px;transform:translateY(40px) rotate(-1.5deg);opacity:0}
+.page h3{font:400 64px 'Pinyon Script';text-align:center;color:var(--ink)}
+.page .m{text-align:center;font:600 15px 'Raleway';letter-spacing:.3em;color:var(--gold);margin:6px 0 30px}
+.page .cue{display:block;font:600 14px 'Raleway';letter-spacing:.26em;color:var(--wine);margin:20px 0 8px}
+.page .tx{font:400 28px/1.55 'Cormorant Garamond';color:var(--ink);min-height:1.55em}
+.page .tx::after{content:'|';color:var(--gold);animation:bl .8s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+/* scene 5 */
+.s5 .c{text-align:center}
+.s5 .c p{opacity:0}
+.s5 .big{font:400 118px/1 'Pinyon Script';color:var(--ink)}
+.s5 .url{margin-top:30px}
+.s5 .tag{font:italic 400 40px 'Cormorant Garamond';color:var(--ink);margin-top:20px}
+.v .s2 p{font-size:150px;text-align:center}
+.v .s3 .w span{font-size:76px}
+.v .s1 .name p{font-size:120px}
+.v .s5 .big{font-size:120px}
+.v .page{width:820px}
+.dust{position:absolute;border-radius:50%;background:radial-gradient(circle,#f3e2b8,rgba(217,192,143,0) 70%);pointer-events:none}
+.sc>*{will-change:transform}
+#logo{position:absolute;right:40px;bottom:30px;height:130px;opacity:0}
+.v #logo{right:40px;bottom:50px;height:150px}
+</style></head><body>
+<div class="stage"></div>
+<svg class="grain" width="100%" height="100%"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .4 0 0 0 0 .35 0 0 0 0 .3 0 0 0 .5 0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+<div id="dust"></div><img id="logo" src="logo.png">
+<div class="sc s1" id="s1"><svg id="arch" width="100%" height="100%" style="position:absolute;inset:0"><path id="ap"/></svg><div class="name"><p id="nm">I Do by Marisa</p><div class="cap" id="nc">Ordained Minister · Officiant · Ceremony Writer</div></div></div>
+<div class="sc s2" id="s2"><p id="mar">I marry you.</p></div>
+<div class="sc s3" id="s3"><div class="w" id="w3"></div></div>
+<div class="sc s4" id="s4"><div class="page" id="pg"><h3>Nora &amp; Sam</h3><div class="m">CEREMONY · 18 MIN</div><span class="cue">THEIR STORY</span><p class="tx" id="tx"></p></div></div>
+<div class="sc s5" id="s5"><div class="c"><p class="cap" id="e1">Every ceremony from your real story</p><p class="big" id="e2" style="margin-top:20px">Let’s tell your story</p><p class="tag" id="e3">I marry you, or I write the words<br>for the friend who does.</p><p class="cap url" id="e4">idobymarisa.com</p></div></div>
+<script>
+const V=new URLSearchParams(location.search).get('o')==='v';if(V)document.body.classList.add('v');
+const W=innerWidth,H=innerHeight;
+// arch path centered
+const aw=V?940:1060,ah=V?1300:900,ax=(W-aw)/2,ay=(H-ah)/2+(V?0:20);
+document.getElementById('ap').setAttribute('d',`M${ax} ${ay+ah} L${ax} ${ay+aw/2} A${aw/2} ${aw/2} 0 0 1 ${ax+aw} ${ay+aw/2} L${ax+aw} ${ay+ah}`);
+const words='Or I write the words for the friend who does.'.split(' ');
+document.getElementById('w3').innerHTML=words.map((w,i)=>`<span class="${i>=5?'g':''}">${w}</span>`+(i==4?'<br>':'')).join(' ');
+const A=(el,kf,o)=>el.animate(kf,Object.assign({fill:'forwards',easing:'cubic-bezier(.4,0,.2,1)'},o));
+const $=id=>document.getElementById(id);
+const show=(id,d,dur=600)=>A($(id),[{opacity:0},{opacity:1}],{delay:d,duration:dur});
+const hide=(id,d,dur=600)=>A($(id),[{opacity:1},{opacity:0}],{delay:d,duration:dur});
+window.TOTAL=16.4;
+// gold dust
+for(let i=0;i<38;i++){const d=document.createElement('div');d.className='dust';const z=6+Math.random()*16;d.style.width=d.style.height=z+'px';d.style.left=Math.random()*W+'px';d.style.top=Math.random()*H+'px';document.getElementById('dust').appendChild(d);
+ d.animate([{transform:'translate(0,0)',opacity:0},{opacity:.9,offset:.3},{transform:`translate(${(Math.random()-.5)*160}px,${-80-Math.random()*200}px)`,opacity:0}],{duration:5000+Math.random()*6000,delay:Math.random()*4000,iterations:Infinity});}
+// slow push-in per scene
+['s2','s3','s5'].forEach((id,i)=>{const st=[3700,6500,13000][i];document.getElementById(id).firstElementChild.animate([{transform:(id=='s4'?'translateY(0) rotate(-1.5deg) ':'')+'scale(1)'},{transform:(id=='s4'?'translateY(0) rotate(-1.5deg) ':'')+'scale(1.05)'}],{delay:st,duration:3600,fill:'forwards',easing:'linear',composite:'add'})});
+// scene 1: 0-3.6
+show('s1',0,10);A($('ap'),[{strokeDashoffset:2600},{strokeDashoffset:0}],{delay:200,duration:2200});
+A($('nm'),[{opacity:0,transform:'translateY(14px)'},{opacity:1,transform:'none'}],{delay:900,duration:1100});
+A($('nc'),[{opacity:0},{opacity:1}],{delay:1600,duration:900});A($('nm'),[{opacity:1},{opacity:0}],{delay:3200,duration:500});A($('nc'),[{opacity:1},{opacity:0}],{delay:3200,duration:500});A($('ap'),[{opacity:1},{opacity:.45}],{delay:3200,duration:800});A($('ap'),[{opacity:.45},{opacity:1}],{delay:13000,duration:900});show('logo',3600,900);
+// scene 2: 3.7-6.4
+show('s2',3700,10);A($('mar'),[{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)'}],{delay:3800,duration:1500,easing:'ease-out'});hide('s2',6000,450);
+// scene 3: 6.5-9.6
+show('s3',6500,10);[...$('w3').children].forEach((s,i)=>A(s,[{opacity:0,transform:'translateY(18px)'},{opacity:1,transform:'none'}],{delay:6600+i*170,duration:600}));hide('s3',9200,450);
+// scene 4: 9.7-12.9 typing page
+show('s4',9700,10);A($('pg'),[{opacity:0,transform:'translateY(40px) rotate(-1.5deg)'},{opacity:1,transform:'translateY(0) rotate(-1.5deg)'}],{delay:9750,duration:700});
+const T='Nora and Sam met at bar trivia, on rival teams, when Sam told Nora the answer she got wrong. Neither of them knew what they were in for.';
+let k=0;setTimeout(()=>{const iv=setInterval(()=>{k+=2;$('tx').textContent=T.slice(0,k);if(k>=T.length)clearInterval(iv)},28)},10400);
+hide('s4',12600,450);
+// scene 5: 13.0-16.4
+show('s5',13000,10);['e1','e2','e3','e4'].forEach((e,i)=>A($(e),[{opacity:0,transform:'translateY(12px)'},{opacity:1,transform:'none'}],{delay:13100+i*380,duration:800}));
+</script></body></html>

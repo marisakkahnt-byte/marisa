@@ -1,0 +1,100 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Raleway:wght@600&family=DM+Serif+Display&family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* Text-TikTok engine. ?v=<id> picks a script from VIDEOS below. Brand: ido | stitches */
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
+body.ido{background:#FBF7F0;color:#2A241F}
+body.stitches{background:#F4EFE7;color:#2B2B2B}
+iframe.bg{position:absolute;inset:0;width:1080px;height:1920px;border:0}
+.frame{position:absolute;inset:50px;border:2px solid rgba(176,141,87,.55);z-index:3;pointer-events:none}
+.sc{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 120px;opacity:0;z-index:2}
+.sc.dark{background:#2A241F;color:#FBF7F0}
+.k{margin:0 0 44px}
+.ido .k{font:600 30px 'Raleway';letter-spacing:.34em;text-transform:uppercase;color:#B08D57}
+.ido .dark .k{color:#D9C08F}
+.stitches .k{font:700 30px 'DM Sans';letter-spacing:.34em;text-transform:uppercase;color:#8C857A}
+.m{margin:0}
+.ido .m{font:400 140px/1.04 'Pinyon Script'}
+.ido .m.serif{font:500 84px/1.2 'Cormorant Garamond'}
+.ido .m.q{font:italic 500 88px/1.18 'Cormorant Garamond'}
+.stitches .m{font:400 150px/.9 'DM Serif Display';letter-spacing:-.045em;color:#2B2B2B;text-shadow:0 2px 24px rgba(244,239,231,.9)}
+.s{margin:40px 0 0}
+.ido .s{font:500 54px/1.4 'Cormorant Garamond';opacity:.85}
+.ido .dark .s{color:#E9DCC8}
+.stitches .s{font:400 50px/1.4 'DM Sans';color:#5A554E;text-shadow:0 2px 14px rgba(244,239,231,.9)}
+@keyframes show{0%{opacity:0;transform:translateY(24px)}8%{opacity:1;transform:none}92%{opacity:1}100%{opacity:0}}
+@keyframes last{0%{opacity:0;transform:translateY(24px)}12%{opacity:1;transform:none}100%{opacity:1}}
+</style></head><body>
+<script>
+const VIDEOS={
+ tips:{brand:'ido',scenes:[
+  {k:'officiant notes',m:'Things I’ve learned standing at the front of dozens of weddings',cls:'serif',d:3.4},
+  {k:'no. 01',m:'Print it big.',s:'14-point font, in a binder. Never your phone.',d:2.6},
+  {k:'no. 02',m:'Breathe before you walk.',s:'In for four, out for four.',d:2.6},
+  {k:'no. 03',m:'Pause after every name.',s:'It feels long. It isn’t.',d:2.6},
+  {k:'no. 04',m:'Let yourself cry.',s:'Everyone else is.',d:2.6},
+  {k:'no. 05',m:'Step left for the kiss.',s:'The photographer will love you forever.',d:2.6},
+  {k:'need a coach?',m:'I’ve got you.',s:'@idobymarisa · link in bio',dark:1,d:3}]},
+ tuesday:{brand:'ido',scenes:[
+  {k:'the one vow tip I give every couple',m:'Write about a Tuesday.',d:3.2},
+  {k:'',m:'Not the proposal. Not the big feelings.',cls:'serif',d:2.8},
+  {k:'',m:'A normal, boring Tuesday.',cls:'serif',d:2.4},
+  {k:'',m:'The way they make your coffee. The song they hum doing the dishes.',cls:'serif',d:3.4},
+  {k:'',m:'That’s what makes the whole room cry.',cls:'serif',d:2.8},
+  {k:'stuck on the rest?',m:'The Vow Builder',s:'@idobymarisa · link in bio',dark:1,d:3}]},
+ toast:{brand:'ido',scenes:[
+  {k:'maid of honor? best man?',m:'3 things not to say in your toast',cls:'serif',d:3.2},
+  {k:'no. 01',m:'Anything about an ex.',s:'Ever. Not even as a joke.',d:2.8},
+  {k:'no. 02',m:'Inside jokes the room won’t get.',cls:'serif',s:'If you have to explain it, cut it.',d:3},
+  {k:'no. 03',m:'Minute five.',s:'Keep it under four. Shorter is always better.',d:2.8},
+  {k:'write it in 10 minutes',m:'The Toast Builder',s:'@idobymarisa · link in bio',dark:1,d:3}]},
+ vowline:{brand:'ido',scenes:[
+  {k:'a vow line I’d write for you',m:'Save this one.',d:2.6},
+  {k:'',m:'“I promise to laugh at your jokes, even the third time I hear them.”',cls:'q',d:4.4},
+  {k:'',m:'“And to keep choosing you, especially on the boring days.”',cls:'q',d:4.2},
+  {k:'steal it',m:'Make it yours.',s:'@idobymarisa',dark:1,d:3}]},
+ engaged:{brand:'ido',scenes:[
+  {k:'just engaged?',m:'Your first 3 ceremony decisions',cls:'serif',d:3.2},
+  {k:'no. 01',m:'Who’s marrying you?',s:'An officiant like me, or someone you love.',d:2.8},
+  {k:'no. 02',m:'How long should it be?',s:'Shorter than you think. 15 to 25 minutes is the sweet spot.',d:3.2},
+  {k:'no. 03',m:'Book your officiant early.',s:'3 to 6 months out is ideal.',d:2.8},
+  {k:'either way',m:'I marry you, or I write the words for the friend who does.',cls:'serif',s:'@idobymarisa · link in bio',dark:1,d:3.6}]},
+ friend:{brand:'ido',scenes:[
+  {k:'you asked your best friend to officiate',m:'Here’s what they need',cls:'serif',d:3.2},
+  {k:'no. 01',m:'To get ordained.',s:'Usually online. Check your state’s rules.',d:2.8},
+  {k:'no. 02',m:'A script that sounds like you two.',cls:'serif',s:'Not a template from page one of Google.',d:3.2},
+  {k:'no. 03',m:'Practice. Out loud.',s:'More than once. In front of someone.',d:2.8},
+  {k:'I can help with 2 and 3',m:'Scripts + coaching',s:'@idobymarisa · link in bio',dark:1,d:3}]},
+ whyme:{brand:'ido',scenes:[
+  {k:'what it’s like when I officiate',m:'The Signature Ceremony',d:3},
+  {k:'first',m:'I get to know you two.',s:'How you met. The Tuesdays. The inside jokes.',d:3},
+  {k:'then',m:'I write it from scratch.',s:'Never a template.',d:2.6},
+  {k:'the day of',m:'I’m up there with you.',s:'Calm, on time, and ready for anything.',d:2.8},
+  {k:'after',m:'I sign and send in your license.',cls:'serif',s:'You just go celebrate.',d:2.8},
+  {k:'limited dates each year',m:'Ask about yours',s:'@idobymarisa · link in bio',dark:1,d:3}]},
+ reopen:{brand:'stitches',bg:'sparkle.html?mode=bgonly',scenes:[
+  {k:'',m:'guess who’s<br>back',d:2},
+  {k:'',m:'custom<br>embroidery',s:'names · monograms · designs',d:2.2},
+  {k:'',m:'from $15',s:'per placement',d:2},
+  {k:'',m:'orders<br>are open',s:'💎 link in bio 💎',d:3},
+  {k:'',m:'marisa<br>stitches',s:'@marisastitches',d:2.6}]},
+ hobbyist:{brand:'stitches',bg:'sparkle.html?mode=bgonly',scenes:[
+  {k:'',m:'needlepoint',d:1.8},
+  {k:'',m:'→ hand<br>embroidery',d:1.8},
+  {k:'',m:'→ one brother<br>machine',d:2},
+  {k:'',m:'→ no going<br>back',d:2},
+  {k:'',m:'a serial<br>hobbyist',s:'who took it too far 💎',d:2.6},
+  {k:'',m:'marisa<br>stitches',s:'@marisastitches',d:3}]}
+};
+const V=VIDEOS[new URLSearchParams(location.search).get('v')||'tips'];
+document.body.className=V.brand;
+if(V.bg){const f=document.createElement('iframe');f.className='bg';f.src=V.bg;document.body.appendChild(f);}
+if(V.brand==='ido'){const fr=document.createElement('div');fr.className='frame';document.body.appendChild(fr);}
+let t=0.3;
+V.scenes.forEach((c,i)=>{const last=i===V.scenes.length-1;const el=document.createElement('div');
+ el.className='sc'+(c.dark?' dark':'');
+ el.innerHTML=(c.k?`<p class="k">${c.k}</p>`:'')+`<p class="m ${c.cls||''}">${c.m}</p>`+(c.s?`<p class="s">${c.s}</p>`:'');
+ el.style.animation=`${last?'last':'show'} ${c.d}s ease ${t}s forwards`;t+=c.d;document.body.appendChild(el);});
+window.TOTAL=t+0.6;
+</script>
+</body></html>

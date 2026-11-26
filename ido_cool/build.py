@@ -1,0 +1,80 @@
+"""I Do 'cool girl' editorial formats (1080x1350): magazine cover, in/out list, text thread, notes app. Brand colors + fonts, no botanicals."""
+import os
+D = os.path.dirname(os.path.abspath(__file__))
+CSS = """
+:root{--cream:#FBF7F0;--ink:#2A241F;--gold:#B08D57;--gold2:#D9C08F;--blush:#F1DCD6;--wine:#7E2E2C}
+*{box-sizing:border-box}body{margin:0;background:#777}
+.s{width:1080px;height:1350px;position:relative;overflow:hidden;margin-bottom:10px;font-family:'Cormorant Garamond',serif}
+.cap{font:600 24px 'Raleway';letter-spacing:.32em;text-transform:uppercase}
+.logo{position:absolute;right:56px;bottom:44px;font:400 44px 'Pinyon Script';opacity:.8}
+/* cover */
+.cover{background:var(--wine);color:var(--cream)}
+.cover .mast{position:absolute;top:60px;left:0;right:0;text-align:center;font:italic 400 230px/.8 'Cormorant Garamond';letter-spacing:-.04em}
+.cover .issue{position:absolute;top:300px;left:0;right:0;text-align:center;color:var(--gold2)}
+.cover .lines{position:absolute;left:70px;top:420px;width:600px}
+.cover .lines p{margin:0 0 60px;font:400 54px/1.1 'Cormorant Garamond'}
+.cover .lines b{display:block;font:600 20px 'Raleway';letter-spacing:.3em;text-transform:uppercase;color:var(--gold2);margin-bottom:10px}
+.cover .big{position:absolute;right:60px;top:470px;width:360px;text-align:right;font:italic 400 120px/.9 'Cormorant Garamond'}
+.cover .big small{display:block;font:600 20px 'Raleway';letter-spacing:.3em;font-style:normal;color:var(--gold2);margin-top:24px}
+.cover .bar{position:absolute;left:0;right:0;bottom:0;height:120px;background:var(--cream);color:var(--wine);display:flex;align-items:center;justify-content:center}
+.cover .logo{bottom:150px;color:var(--gold2)}
+/* in/out */
+.io{background:var(--cream);color:var(--ink);padding:90px 80px}
+.io h1{margin:0 0 60px;font:italic 400 140px/.9 'Cormorant Garamond';letter-spacing:-.03em}
+.io .cols{display:grid;grid-template-columns:1fr 1fr;column-gap:50px}
+.io h2{margin:0 0 26px;font:600 26px 'Raleway';letter-spacing:.32em;color:var(--wine);border-bottom:2px solid var(--ink);padding-bottom:14px}
+.io h2.o{color:#9a8f86}
+.io .cols p{margin:0;font:400 46px/1.1 'Cormorant Garamond';padding:24px 0;border-bottom:1px solid #e6ddd0}
+.io .cols p.o{color:#9a8f86;text-decoration:line-through;text-decoration-thickness:2px}
+/* text thread */
+.th{background:var(--blush);color:var(--ink);padding:90px 70px}
+.th .hd{text-align:center;margin-bottom:70px}
+.th .hd b{display:block;font:500 44px 'Cormorant Garamond'}
+.th .hd span{color:#8a776e}
+.b{max-width:760px;padding:26px 40px;border-radius:48px;font:400 48px/1.18 'Cormorant Garamond';margin:0 0 22px;width:fit-content}
+.b.l{background:#fff}.b.r{background:var(--ink);color:var(--cream);margin-left:auto}
+.b.r.w{background:var(--wine)}
+.th .ts{text-align:center;color:#8a776e;margin:30px 0}
+/* reframe */
+.rf{background:var(--ink);color:var(--cream);padding:150px 90px;display:flex;flex-direction:column;justify-content:center}
+.rf .a{font:400 66px/1.15 'Cormorant Garamond';margin:0 0 40px;color:#b9ab9c}
+.rf .a s{text-decoration-color:var(--wine);text-decoration-thickness:5px}
+.rf .b2{font:italic 400 112px/1 'Cormorant Garamond';margin:0 0 70px;color:var(--cream)}
+.rf .b2 em{color:var(--gold2)}
+.rf .c{font:400 40px/1.4 'Cormorant Garamond';color:#d8ccbd;margin:0}
+.rf .logo{color:var(--gold2)}
+/* notes */
+.nt{background:#fffdf8;color:var(--ink);padding:90px 90px}
+.nt .top{display:flex;justify-content:space-between;color:var(--gold);font:600 30px 'Raleway';margin-bottom:60px}
+.nt h1{margin:0 0 18px;font:600 76px/1.05 'Raleway';letter-spacing:-.01em}
+.nt .d{color:#9a8f86;font:400 30px 'Raleway';margin-bottom:70px}
+.nt p{margin:0 0 34px;font:400 50px/1.2 'Cormorant Garamond'}
+.nt p::before{content:'– ';color:var(--gold)}
+"""
+S = []
+S.append(('cover', '<section class="s cover" id="cover"><div class="mast">the vows</div><p class="cap issue">the ceremony issue · 2027</p>'
+ '<div class="lines"><p><b>exclusive</b>why your ceremony should be 20 minutes, not 45</p><p><b>tested</b>the vow tip that makes the whole room cry</p>'
+ '<p><b>pov</b>your best friend just said yes to officiating</p><p><b>also inside</b>things nobody tells you about the first kiss</p></div>'
+ '<div class="big">i marry you.<small>or i write it for<br>the friend who does</small></div><div class="logo">I Do by Marisa</div>'
+ '<div class="bar cap">idobymarisa.com</div></section>'))
+S.append(('inout', '<section class="s io" id="inout"><p class="cap" style="color:var(--gold);margin:0 0 20px">ceremony edition</p><h1>in / out<br>for 2027</h1><div class="cols">'
+ '<h2>IN</h2><h2 class="o">OUT</h2><p>20-minute ceremonies</p><p class="o">45 minutes of readings</p><p>vows about a tuesday</p><p class="o">pinterest vows</p><p>a friend officiating</p><p class="o">officiants winging it</p><p>unplugged ceremonies</p><p class="o">a wall of iphones</p><p>actually crying</p><p class="o">holding it together</p><p>a printed script</p><p class="o">reading off a phone</p>'
+ '</div><div class="logo">I Do by Marisa</div></section>'))
+S.append(('thread', '<section class="s th" id="thread"><div class="hd"><b>bestie 💍</b><span class="cap" style="font-size:18px">imessage</span></div>'
+ '<p class="b l">ok so. will you officiate our wedding??</p><p class="b r">OMG YES</p><p class="b r">wait</p><p class="b r">what do i say</p>'
+ '<p class="b l">idk you’re the officiant 😭</p><p class="ts cap" style="font-size:18px">read 9:41 pm</p>'
+ '<p class="b r w">found someone who writes the whole thing and coaches me. we’re saved</p>'
+ '<div class="logo">I Do by Marisa</div></section>'))
+S.append(('notes', '<section class="s nt" id="notes"><div class="top"><span>‹ Notes</span><span>Done</span></div><h1>things i’d tell every bride</h1>'
+ '<div class="d">from your officiant · dozens of ceremonies in</div>'
+ '<p>eat something before you walk</p><p>look at them, not me</p><p>slow down at the vows. it feels long. it isn’t.</p>'
+ '<p>let yourself cry. everyone else is.</p><p>nobody noticed the thing you think went wrong</p><p>after the kiss, pause before you walk back</p>'
+ '<div class="logo">I Do by Marisa</div></section>'))
+S.append(('reframe1', '<section class="s rf" id="reframe1"><p class="cap" style="color:var(--gold2);margin:0 0 50px">a little reframe</p>'
+ '<p class="a">writing your vows isn’t a <s>writing</s> problem.</p><p class="b2">it’s a <em>pressure</em> problem.</p>'
+ '<p class="c">you already know what to say. you just think it has to be perfect. it doesn’t. it has to be true.</p><div class="logo">I Do by Marisa</div></section>'))
+S.append(('reframe2', '<section class="s rf" id="reframe2"><p class="cap" style="color:var(--gold2);margin:0 0 50px">a little reframe</p>'
+ '<p class="a">your friend isn’t nervous about <s>public speaking</s>.</p><p class="b2">they’re nervous about <em>getting you wrong.</em></p>'
+ '<p class="c">a script written from your real story fixes that. so does one practice run with me.</p><div class="logo">I Do by Marisa</div></section>'))
+fonts = '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Pinyon+Script&family=Raleway:wght@400;600&display=swap" rel="stylesheet">'
+open(os.path.join(D, 'cool.html'), 'w').write('<!doctype html><html><head><meta charset="utf-8">' + fonts + '<style>' + CSS + '</style></head><body>' + ''.join(h for _, h in S) + '</body></html>')

@@ -1,0 +1,36 @@
+"""Film-still editorial posts (1080x1350): subtitle split, bold lowercase headline over photo, wide-caps title card."""
+import os
+D = os.path.dirname(os.path.abspath(__file__)); PH = 'file://' + os.path.join(D, 'stock')
+GRAIN = '<svg class="grain" width="1080" height="1350"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .55 0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>'
+CSS = """
+*{box-sizing:border-box}body{margin:0;background:#777}
+.s{width:1080px;height:1350px;position:relative;overflow:hidden;margin-bottom:10px;background:#2A241F}
+.ph{position:absolute;background-size:cover;filter:sepia(.35) contrast(1.05) brightness(.92)}
+.grain{position:absolute;inset:0;mix-blend-mode:overlay;opacity:.5;pointer-events:none}
+.vig{position:absolute;inset:0;background:radial-gradient(ellipse at center,transparent 55%,rgba(20,14,10,.45))}
+.sub{position:absolute;left:0;right:0;text-align:center;font:500 42px/1.3 'Raleway';color:#F3E9C9;text-shadow:0 2px 6px rgba(0,0,0,.85),0 0 2px #000}
+.mark{position:absolute;right:44px;bottom:38px;font:400 46px 'Pinyon Script';color:#FBF7F0;opacity:.9}
+.hl{position:absolute;left:56px;bottom:150px;right:56px;font:700 128px/.92 'Raleway';letter-spacing:-.045em;color:#FBF7F0;text-transform:lowercase}
+.hs{position:absolute;left:60px;bottom:96px;font:500 30px 'Raleway';color:#FBF7F0;opacity:.95}
+.shade{position:absolute;left:0;right:0;bottom:0;height:60%;background:linear-gradient(transparent,rgba(30,22,16,.7))}
+.tc{background:#3B2A26;color:#FBF7F0}
+.tc .wide{position:absolute;top:70px;left:60px;font:300 104px/1 'Cormorant Garamond';letter-spacing:.06em;text-transform:uppercase}
+.tc .side{position:absolute;left:62px;top:300px;font:400 30px/1.4 'Raleway';color:#D9C08F;width:340px}
+.page{position:absolute;right:70px;top:250px;width:520px;height:900px;background:#FBF7F0;color:#2A241F;border-radius:14px;box-shadow:0 40px 80px rgba(0,0,0,.45);padding:60px 54px;font:400 27px/1.55 'Cormorant Garamond'}
+.page h3{margin:0 0 6px;font:400 54px 'Pinyon Script';text-align:center}
+.page .m{text-align:center;font:600 15px 'Raleway';letter-spacing:.28em;color:#B08D57;margin-bottom:34px}
+.page p{margin:0 0 20px}.page .cue{font:600 15px 'Raleway';letter-spacing:.24em;color:#7E2E2C;display:block;margin:26px 0 8px}
+.tc .mark{color:#D9C08F}
+"""
+S = []
+S.append(f'''<section class="s" id="subtitle"><div class="ph" style="left:0;top:0;width:1080px;height:675px;background-image:url('{PH}/dresses.jpg');background-position:center 40%"></div>
+<div class="ph" style="left:0;top:675px;width:1080px;height:675px;background-image:url('{PH}/wine.jpg');background-position:center 55%"></div>
+<div style="position:absolute;left:0;right:0;top:395px;height:280px;background:linear-gradient(transparent,rgba(20,14,10,.7))"></div><div style="position:absolute;left:0;right:0;top:1000px;height:350px;background:linear-gradient(transparent,rgba(20,14,10,.75))"></div><div style="position:absolute;left:0;right:0;top:673px;height:4px;background:#1c1512"></div><div class="vig"></div>{GRAIN}
+<p class="sub" style="top:500px">Why do we spend a year<br>planning the reception</p>
+<p class="sub" style="top:1090px">and twenty minutes on the part<br>we’ll replay forever?</p><div class="mark">I Do by Marisa</div></section>''')
+S.append(f'''<section class="s" id="whoisit"><div class="ph" style="inset:0;background-image:url('{PH}/wine.jpg');background-position:center 40%"></div><div class="shade"></div><div class="vig"></div>{GRAIN}
+<p class="hl">who’s<br>marrying you?</p><p class="hs">me, or your best friend with words i wrote.</p><div class="mark">I Do by Marisa</div></section>''')
+S.append(f'''<section class="s tc" id="thescript">{GRAIN}<div class="wide">The Script</div><p class="side">a ceremony written from your real story →<br><br><span style="color:#FBF7F0;opacity:.75">for you to hear, or for your friend to read.</span></p>
+<div class="page"><h3>Nora &amp; Sam</h3><div class="m">CEREMONY · 18 MIN</div><span class="cue">WELCOME</span><p>Friends, family, and the three people who flew in from Denver for this: welcome.</p><span class="cue">THEIR STORY</span><p>Nora and Sam met at bar trivia, on rival teams, when Sam told Nora the answer she got wrong. Neither of them knew what they were in for.</p><span class="cue">PAUSE · LOOK UP</span><p>Ask anyone here, and they’ll tell you it was a Tuesday that sealed it: Sam, making coffee the exact way Nora likes it, without being asked.</p><span class="cue">THE VOWS</span><p>Nora, Sam, when you’re ready…</p></div><div class="mark">I Do by Marisa</div></section>''')
+fonts = '<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Pinyon+Script&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">'
+open(os.path.join(D, 'film.html'), 'w').write('<!doctype html><html><head><meta charset="utf-8">' + fonts + '<style>' + CSS + '</style></head><body>' + ''.join(S) + '</body></html>')
