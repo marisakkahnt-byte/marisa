@@ -8,8 +8,8 @@ COVERS = [
     ('gems',        lambda s: brilliant('round', 'diamond', s, seed=11)),
     ('diva',        lambda s: brilliant('pear', 'ruby', s, seed=13)),
     ('packaging',   lambda s: brilliant('marquise', 'amethyst', s, seed=17)),
-    ('extra-citrine', lambda s: brilliant('round', 'citrine', s, seed=19)),
-    ('extra-aqua',  lambda s: brilliant('oval', 'aqua', s, seed=23)),
+    ('kind-words', lambda s: brilliant('round', 'citrine', s, seed=19)),
+    ('shop',        lambda s: emerald_cut('aqua', s, seed=23)),
 ]
 html = ['''<!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;display:flex;flex-wrap:wrap;gap:20px;width:9000px;background:#777}
 .c{position:relative;width:1080px;height:1920px;display:flex;align-items:center;justify-content:center;overflow:hidden;

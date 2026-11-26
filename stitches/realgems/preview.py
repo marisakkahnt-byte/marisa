@@ -1,7 +1,7 @@
 from PIL import Image, ImageDraw, ImageFont
 import sys, glob
 fs = sorted(glob.glob('ST2_*.jpg'))
-order = ['about', 'the-work', 'needlepoint', 'gems', 'diva', 'packaging', 'extra-citrine', 'extra-aqua']
+order = ['about', 'the-work', 'needlepoint', 'gems', 'diva', 'packaging', 'kind-words', 'shop']
 D = 220; W = len(order) * 270 + 40
 im = Image.new('RGB', (W, 330), '#ffffff'); dr = ImageDraw.Draw(im)
 f = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', 20)
