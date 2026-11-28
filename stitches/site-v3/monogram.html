@@ -8,7 +8,7 @@
 <meta name="description" content="Try your monogram: pick your letters, style, thread color and piece, and see it before it's stitched. Save it for when the shop reopens."/>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;700&family=Great+Vibes&family=Nanum+Pen+Script&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;700&family=Nanum+Pen+Script&family=Archivo+Black&family=Oswald:wght@600&family=Great+Vibes&family=Alex+Brush&family=Yellowtail&family=Fjalla+One&family=Kaushan+Script&family=Antonio:wght@600&family=Pacifico&family=Libre+Baskerville:wght@700&family=Dancing+Script:wght@700&family=Cookie&display=swap" rel="stylesheet"/>
 <style>
 :root{--oat:#F4EFE7;--linen:#FBF8F2;--ink:#1F1D24;--em:#0E4A38;--gold:#B8914A;--camel:#C49A64;--blush:#F6D4E0;--line:#E3DACB}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -54,17 +54,17 @@ footer{text-align:center;padding:30px 16px 50px;font-size:13px;color:#7a7580}
 
 <div class="wrap">
   <div>
-    <div class="stage" id="stage" aria-live="polite"><svg id="art" viewBox="0 0 600 600" role="img" aria-label="Monogram preview"></svg><div class="tag" id="tag">preview · not to scale</div></div>
+    <div class="stage" id="stage" aria-live="polite"><svg id="art" viewBox="0 0 600 600" role="img" aria-label="Monogram preview"></svg><div class="tag" id="tag">preview, not to scale</div></div>
   </div>
   <div>
     <div class="panel">
       <div class="grp"><div class="lab">your letters</div>
         <div class="letters"><input id="l1" maxlength="1" value="M" aria-label="first initial"/><input id="l2" maxlength="1" value="K" aria-label="last initial (big middle letter)"/><input id="l3" maxlength="1" value="A" aria-label="middle initial"/></div>
         <div class="hint">Classic monogram order is first · <b>last</b> · middle, with the last initial big in the middle. Leave boxes empty for one or two letters.</div></div>
-      <div class="grp"><div class="lab">style</div><div class="chips" id="styles"></div></div>
-      <div class="grp"><div class="lab">thread</div><div class="chips" id="threads"></div></div>
-      <div class="grp"><div class="lab">stitched on</div><div class="chips" id="items"></div></div>
-      <div class="grp" style="margin-bottom:0"><div class="lab">color</div><div class="chips" id="bases"></div></div>
+      <div class="grp"><div class="lab">layout</div><div class="chips" id="layouts"></div></div>
+      <div class="grp"><div class="lab">font</div><div class="chips" id="fonts"></div><div class="hint">These are the fonts I stitch. The preview is close, but your piece is stitched in the real font.</div></div>
+      <div class="grp"><div class="lab">thread color</div><div class="chips" id="threads"></div><div class="hint">Pick a direction. I match the exact thread shade with you before anything is stitched.</div></div>
+      <div class="grp" style="margin-bottom:0"><div class="lab">stitched on</div><div class="chips" id="items"></div></div>
     </div>
     <form class="save" name="monogram-waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="saveForm">
       <input type="hidden" name="form-name" value="monogram-waitlist"/>
@@ -82,38 +82,38 @@ footer{text-align:center;padding:30px 16px 50px;font-size:13px;color:#7a7580}
 <footer>marisa stitches · machine embroidery, needlepoint + hand embroidery · <a href="https://www.instagram.com/marisastitches/">@marisastitches</a></footer>
 
 <script>
-const STYLES={classic:{n:'classic',f:"'DM Serif Display'",mono:true},script:{n:'script',f:"'Great Vibes'",mono:true},block:{n:'block',f:"'DM Sans'",w:700,mono:true,caps:true},single:{n:'one letter',f:"'DM Serif Display'",single:true}};
-const THREADS={emerald:'#0E4A38',ink:'#1F1D24',cream:'#F4ECDD',blush:'#E8A3BA',hotpink:'#E8508A',gold:'#C9A24E',cobalt:'#2E5FA5',ruby:'#A3203A'};
-const ITEMS={towel:'hand towel',pouch:'pouch',bib:'baby bib',hat:'dad hat'};
-const BASES={white:'#FBFAF7',oat:'#EDE3D2',blush:'#F3D3DC',sage:'#C9D5C2',navy:'#26324A',black:'#1C1B1F'};
-const S={style:'classic',thread:'emerald',item:'towel',base:'white'};
-function chips(id,obj,key,swatch){const el=document.getElementById(id);el.innerHTML='';for(const [k,v] of Object.entries(obj)){const b=document.createElement('button');b.type='button';b.setAttribute('aria-pressed',S[key]===k);
- if(swatch){b.className='sw';b.style.background=v;b.title=k;b.setAttribute('aria-label',k);}else{b.className='chip';b.textContent=typeof v==='string'?v:v.n;}
+// Fonts + colors mirror the real order-form catalog in main.js (FONT_CATALOG, WHEEL_COLORS, NEUTRAL_COLORS).
+const FONTS={'Block':["'Archivo Black'",400],'Block Condensed':["'Oswald'",600],'Bold Cursive':["'Great Vibes'",400],'Bold Cursive Connected':["'Alex Brush'",400],'Brush Script Connected':["'Yellowtail'",400],'Caramel Candy':["'Fjalla One'",400],'Charlotte':["'Kaushan Script'",400],'Cotton Candy':["'Antonio'",600],'Ellie Mae':["'Pacifico'",400],'Georgia Peach':["'Libre Baskerville'",700],'Juniper':["'Dancing Script'",700],'Vanilla Bean':["'Cookie'",400]};
+const SCRIPTY=new Set(['Bold Cursive','Bold Cursive Connected','Brush Script Connected','Charlotte','Ellie Mae','Juniper','Vanilla Bean']);
+const LAYOUTS={mono:'three letters, big middle',even:'initials, same size',single:'one letter'};
+const THREADS={Red:'#cc1f2a',Orange:'#ee7a20',Yellow:'#f0c820','Light Green':'#8cc850',Green:'#2a7a3c',Teal:'#1f8a80','Light Blue':'#8cbce4',Blue:'#2a5cb8',Navy:'#183060',Purple:'#7a40a8',Pink:'#e0508a','Light Pink':'#f4b8c8',Black:'#111111',White:'#ffffff',Cream:'#ece2cc',Gray:'#9a9a9a',Brown:'#7a4a28',Gold:'#c89a3c',Silver:'#c8ccd0'};
+const ITEMS={towel:'bath towel',pouch:'canvas pouch',bib:'baby bib'};
+const S={layout:'mono',font:'Georgia Peach',thread:'Green',item:'towel'};
+function chips(id,obj,key,swatch,font){const el=document.getElementById(id);el.innerHTML='';for(const [k,v] of Object.entries(obj)){const b=document.createElement('button');b.type='button';b.setAttribute('aria-pressed',S[key]===k);
+ if(swatch){b.className='sw';b.style.background=v;b.title=k;b.setAttribute('aria-label',k);}else{b.className='chip';b.textContent=font?k:v;if(font){b.style.fontFamily=v[0];b.style.fontWeight=v[1];b.style.fontSize='16px';}}
  b.onclick=()=>{S[key]=k;render();};el.appendChild(b);}}
 function esc(s){return s.replace(/[^A-Za-z]/g,'');}
-function mono(c){const st=STYLES[S.style];let a=esc(l1.value).toUpperCase(),b=esc(l2.value).toUpperCase(),m=esc(l3.value).toUpperCase();
- const fw=st.w||400, ff=st.f;
- if(st.single){const L=b||a||m||'M';return `<text x="0" y="0" text-anchor="middle" dominant-baseline="central" font-family=${JSON.stringify(ff)} font-size="150" fill="${c}">${L}</text>`;}
+function mono(c){const [ff,fw]=FONTS[S.font];const sc=SCRIPTY.has(S.font);let a=esc(l1.value).toUpperCase(),b=esc(l2.value).toUpperCase(),m=esc(l3.value).toUpperCase();
+ const T=(x,t,fs)=>`<text x="${x}" y="0" text-anchor="middle" dominant-baseline="central" font-family="${ff.replace(/"/g,'')}" font-weight="${fw}" font-size="${fs}" fill="${c}">${t}</text>`;
+ if(S.layout==='single')return T(0,b||a||m||'M',150);
  const letters=[a,b,m].filter(Boolean);
- if(letters.length<3){return `<text x="0" y="0" text-anchor="middle" dominant-baseline="central" font-family=${JSON.stringify(ff)} font-weight="${fw}" font-size="${S.style==='script'?120:100}" fill="${c}" letter-spacing="6">${letters.join('')||'M'}</text>`;}
- const big=S.style==='script'?140:130, sm=S.style==='script'?84:78, gap=S.style==='script'?112:82;
- return `<text x="${-gap}" y="0" text-anchor="middle" dominant-baseline="central" font-family=${JSON.stringify(ff)} font-weight="${fw}" font-size="${sm}" fill="${c}">${a}</text>
- <text x="0" y="0" text-anchor="middle" dominant-baseline="central" font-family=${JSON.stringify(ff)} font-weight="${fw}" font-size="${big}" fill="${c}">${b}</text>
- <text x="${gap}" y="0" text-anchor="middle" dominant-baseline="central" font-family=${JSON.stringify(ff)} font-weight="${fw}" font-size="${sm}" fill="${c}">${m}</text>`;}
+ if(S.layout==='even'||letters.length<3)return `<text x="0" y="0" text-anchor="middle" dominant-baseline="central" font-family="${ff.replace(/"/g,'')}" font-weight="${fw}" font-size="${sc?110:96}" fill="${c}" letter-spacing="${sc?2:8}">${[a,m,b].filter(Boolean).join('')||'M'}</text>`;
+ const big=sc?140:128, sm=sc?84:76, gap=sc?112:88;
+ return T(-gap,a,sm)+T(0,b,big)+T(gap,m,sm);}
 function shade(hex,amt){const n=parseInt(hex.slice(1),16);let r=(n>>16)+amt,g=(n>>8&255)+amt,b=(n&255)+amt;r=Math.max(0,Math.min(255,r));g=Math.max(0,Math.min(255,g));b=Math.max(0,Math.min(255,b));return '#'+((1<<24)+(r<<16)+(g<<8)+b).toString(16).slice(1);}
-function item(base){const d=shade(base,-28);
+function item(){const base=S.item==='pouch'?'#E9DFC9':'#FBFAF7';const d=shade(base,-28);
  if(S.item==='towel')return {svg:`<rect x="110" y="60" width="380" height="480" rx="14" fill="${base}" stroke="${d}" stroke-width="3"/>${[...Array(46)].map((_,i)=>`<line x1="${118+i*8}" y1="64" x2="${118+i*8}" y2="536" stroke="${d}" stroke-opacity=".25"/>`).join('')}<rect x="110" y="440" width="380" height="34" fill="${d}" opacity=".5"/>`,x:300,y:330,s:1};
  if(S.item==='pouch')return {svg:`<rect x="90" y="150" width="420" height="300" rx="26" fill="${base}" stroke="${d}" stroke-width="3"/><rect x="90" y="150" width="420" height="40" rx="20" fill="${d}" opacity=".55"/><rect x="430" y="140" width="26" height="60" rx="8" fill="#C9A24E"/>`,x:300,y:320,s:.9};
  if(S.item==='bib')return {svg:`<path d="M300 120 C420 120 470 210 470 320 C470 440 390 500 300 500 C210 500 130 440 130 320 C130 210 180 120 300 120Z" fill="${base}" stroke="${d}" stroke-width="3"/><path d="M240 120 Q300 200 360 120" fill="var(--linen)" stroke="${d}" stroke-width="3"/>`,x:300,y:340,s:.85};
- return {svg:`<path d="M110 360 C100 190 200 110 300 110 C400 110 500 190 490 360 C420 345 180 345 110 360Z" fill="${base}"/><path d="M300 110 V350 M200 140 C180 210 176 290 182 352 M400 140 C420 210 424 290 418 352" stroke="${d}" stroke-width="2.5" fill="none"/><path d="M110 360 C180 345 420 345 490 360 C510 410 410 450 300 450 C190 450 90 410 110 360Z" fill="${d}"/>`,x:300,y:260,s:.62};}
-function render(){chips('styles',STYLES,'style');chips('threads',THREADS,'thread',true);chips('items',ITEMS,'item');chips('bases',BASES,'base',true);
- const it=item(BASES[S.base]);
+ return {svg:'',x:300,y:300,s:1};}
+function render(){chips('layouts',LAYOUTS,'layout');chips('fonts',FONTS,'font',false,true);chips('threads',THREADS,'thread',true);chips('items',ITEMS,'item');
+ const it=item();
  art.innerHTML=it.svg+`<g transform="translate(${it.x} ${it.y}) scale(${it.s})" style="filter:drop-shadow(0 1px 0 rgba(0,0,0,.25))">${mono(THREADS[S.thread])}</g>`;
  const letters=[l1.value,l2.value,l3.value].map(x=>esc(x).toUpperCase()).join('');
- tag.textContent=`${STYLES[S.style].n} · ${S.thread} thread · ${S.base} ${ITEMS[S.item]}`;
- design.value=`${letters} | ${STYLES[S.style].n} | ${S.thread} thread | ${S.base} ${ITEMS[S.item]}`;
- try{localStorage.setItem('ms-mono',JSON.stringify({...S,l:[l1.value,l2.value,l3.value]}));}catch(e){}}
-try{const v=JSON.parse(localStorage.getItem('ms-mono')||'null');if(v){Object.assign(S,{style:v.style,thread:v.thread,item:v.item,base:v.base});if(v.l){[l1.value,l2.value,l3.value]=v.l;}}}catch(e){}
+ tag.textContent=`${S.font} · ${S.thread.toLowerCase()} thread · ${ITEMS[S.item]} · preview, not to scale`;
+ design.value=`${letters} | ${LAYOUTS[S.layout]} | font: ${S.font} | thread: ${S.thread} | ${ITEMS[S.item]}`;
+ try{localStorage.setItem('ms-mono2',JSON.stringify({...S,l:[l1.value,l2.value,l3.value]}));}catch(e){}}
+try{const v=JSON.parse(localStorage.getItem('ms-mono2')||'null');if(v&&FONTS[v.font]&&THREADS[v.thread]&&ITEMS[v.item]){Object.assign(S,{layout:v.layout||'mono',font:v.font,thread:v.thread,item:v.item});if(v.l){[l1.value,l2.value,l3.value]=v.l;}}}catch(e){}
 for(const el of [l1,l2,l3])el.addEventListener('input',render);
 saveForm.addEventListener('submit',e=>{e.preventDefault();const fd=new FormData(saveForm);fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(fd).toString()}).then(()=>{ok.style.display='block';saveForm.querySelector('button').disabled=true;}).catch(()=>{ok.textContent='hmm, that didn\'t send. try again?';ok.style.display='block';});});
 document.fonts.ready.then(render);render();
