@@ -21,6 +21,14 @@ const pincushion=(x,y,u)=>`<g transform="translate(${x} ${y})">${needle(-14,-30,
 <ellipse rx="46" ry="34" fill="url(#rd${u})" stroke="#9e2233" stroke-width="2"/><path d="M0 -34 V34 M-30 -26 Q-14 0 -30 26 M30 -26 Q14 0 30 26" stroke="#9e2233" stroke-width="2" fill="none"/>
 <path d="M-14 -36 L0 -28 L14 -36 L8 -24 L0 -30 L-8 -24Z" fill="url(#lg${u})" stroke="#3d7a3a"/><g transform="translate(52 40)"><path d="M-30 -30 Q-10 -10 0 -6" stroke="#3d7a3a" stroke-width="2" fill="none"/><path d="M-7 -6 Q0 -12 7 -6 Q8 8 0 14 Q-8 8 -7 -6Z" fill="url(#rd${u})" stroke="#9e2233" stroke-width="1.5"/></g></g>`;
 const thimble=(x,y,u)=>{let d='';for(let r=0;r<4;r++)for(let k=-3;k<=3;k++)d+=`<circle cx="${k*6+(r%2)*3}" cy="${-22+r*9}" r="1.6" fill="#8c939b"/>`;return `<g transform="translate(${x} ${y}) rotate(10)"><path d="M-22 22 L-18 -18 Q0 -38 18 -18 L22 22Z" fill="url(#sv${u})" stroke="#8c939b" stroke-width="2"/>${d}<rect x="-24" y="18" width="48" height="8" rx="3" fill="url(#gd${u})"/></g>`;};
+const machine=(x,y,u)=>`<g transform="translate(${x} ${y})">
+<path d="M0 0 H120 Q132 0 132 12 V40 H110 V22 H28 V86 H0Z" fill="url(#cr${u})" stroke="#bdb2a0" stroke-width="2"/>
+<rect x="-10" y="86" width="160" height="22" rx="5" fill="url(#cr${u})" stroke="#bdb2a0" stroke-width="2"/>
+<rect x="8" y="8" width="44" height="10" rx="3" fill="url(#pk${u})"/><circle cx="118" cy="16" r="6" fill="url(#gd${u})"/>
+<rect x="114" y="40" width="10" height="16" fill="url(#sv${u})" stroke="#8c939b"/><path d="M119 56 V70" stroke="#8c939b" stroke-width="2"/>
+<ellipse cx="119" cy="84" rx="34" ry="10" fill="url(#cr${u})" stroke="url(#wd${u})" stroke-width="5"/>
+<text x="111" y="89" font-family="DM Serif Display" font-size="15" fill="#e8608f">M</text></g>`;
+const bobbin=(x,y,u)=>`<g transform="translate(${x} ${y})"><circle r="17" fill="url(#sv${u})" stroke="#8c939b" stroke-width="2"/><circle r="11" fill="url(#pk${u})"/><circle r="3" fill="#8c939b"/></g>`;
 const emer=(x,y,u,s=1)=>`<g transform="translate(${x} ${y}) rotate(12) scale(${s})"><path d="M-10 -14 L10 -14 L16 -6 L16 8 L10 16 L-10 16 L-16 8 L-16 -6Z" fill="url(#em${u})" stroke="#0f4a37" stroke-width="2"/><path d="M-6 -8 L6 -8 L8 0 L6 8 L-6 8 L-8 0Z" fill="none" stroke="#7fd1b0" stroke-width="1.4"/></g>`;
 const word=(x,y,t,fs,rot=-4)=>`<text x="${x}" y="${y}" font-family="Nanum Pen Script" font-size="${fs}" fill="#f4efe6" stroke="#cfc6b6" stroke-width=".6" transform="rotate(${rot} ${x} ${y})">${t}</text>`;
 const svg=(u,body)=>`<svg viewBox="0 0 360 230" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">${defs(u)}${body}</svg>`;
@@ -31,6 +39,8 @@ const ART={
   ${word(186,40,'embroidery',46,-3)}${word(196,222,'club',58,-4)}`),
  hoarder:u=>svg(u,`${skein(40,98,-14,'pk',u)}${skein(74,92,-2,'em',u)}${skein(108,96,10,'bl',u)}${skein(142,102,20,'gd',u)}${spool(176,60,u,'pl')}${yarn(292,96,u)}${emer(250,40,u,.8)}
   ${word(24,190,'certified',44,-3)}${word(120,226,'thread hoarder',46,-3)}`),
+ machine:u=>svg(u,`${machine(36,52,u)}${bobbin(232,80,u)}${spool(262,100,u,'em')}${thread('M232 98 C236 140 200 150 180 170')}${emer(318,56,u,.8)}
+  ${word(196,44,'i',52,0)}${heartP(218,10,1.05,`url(#rd${u})`,'#9e2233')}${word(24,218,'machine embroidery',46,-3)}`),
  busy:u=>svg(u,`${pincushion(96,112,u)}${thimble(206,96,u)}${spool(244,52,u,'bl')}${thread('M270 120 C300 150 280 180 316 190','#5b8fc9')}${emer(318,56,u,.8)}
   ${word(150,206,'busy hands',52,-4)}`),
 };
@@ -43,7 +53,8 @@ const shirt=(body,shade,rib,art)=>{const u=++K;return `<div style="position:rela
 const items=[['needlepoint','i ♥ needlepoint','emerald · cream + pink thread',['#1d6a52','#0b3a2c','#155a45'],false],
  ['club','embroidery club','oat · ink + color thread',['#EFE6D6','#CFC2AB','#DCCFB8'],true],
  ['hoarder','certified thread hoarder','dusty blue · cream + color thread',['#3f6f8f','#24465e','#335c77'],false],
- ['busy','busy hands','blush · ink + color thread',['#F3D3DC','#D9AAB8','#E7BFCB'],true]];
+ ['busy','busy hands','blush · ink + color thread',['#F3D3DC','#D9AAB8','#E7BFCB'],true],
+ ['machine','i ♥ machine embroidery','espresso · cream + color thread',['#4a3d36','#241c18','#3a2f29'],false]];
 const card=(lab,inner,bg)=>`<div class="c" style="background:${bg}"><div class="st">${inner}</div><div class="lab">${lab}</div></div>`;
 let n=100;
 const sheet=`<!doctype html><html><head>${FONTS}<style>body{margin:0;width:1800px;background:#F2EEE7}.top{text-align:center;padding:52px 0 26px}
