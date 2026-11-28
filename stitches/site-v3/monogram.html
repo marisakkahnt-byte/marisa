@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<meta name="theme-color" content="#F4EFE7"/>
+<title>Monogram Playground · Marisa Stitches</title>
+<meta name="description" content="Try your monogram: pick your letters, style, thread color and piece, and see it before it's stitched. Save it for when the shop reopens."/>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;700&family=Great+Vibes&family=Nanum+Pen+Script&display=swap" rel="stylesheet"/>
+<style>
+:root{--oat:#F4EFE7;--linen:#FBF8F2;--ink:#1F1D24;--em:#0E4A38;--gold:#B8914A;--camel:#C49A64;--blush:#F6D4E0;--line:#E3DACB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--oat);color:var(--ink);font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+header{display:flex;justify-content:space-between;align-items:center;padding:18px clamp(16px,4vw,48px)}
+header a.home{font:400 26px/1 'DM Serif Display';text-decoration:none}
+header a.back{font:700 12px 'DM Sans';letter-spacing:.2em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid currentColor}
+.hero{text-align:center;padding:24px 16px 10px}
+.hero .k{font:700 12px 'DM Sans';letter-spacing:.32em;color:var(--em);text-transform:uppercase}
+.hero h1{font:400 clamp(44px,8vw,86px)/1 'DM Serif Display';margin-top:10px}
+.hero .hand{font:400 clamp(24px,4vw,34px) 'Nanum Pen Script';color:var(--em);margin-top:6px}
+.wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;max-width:1160px;margin:22px auto 40px;padding:0 clamp(16px,3vw,32px)}
+@media (max-width:860px){.wrap{grid-template-columns:1fr}}
+.stage{background:var(--linen);border-radius:22px;box-shadow:0 18px 40px rgba(31,29,36,.08);aspect-ratio:1/1;display:grid;place-items:center;position:relative;overflow:hidden}
+.stage svg{width:88%;height:88%}
+.stage .tag{position:absolute;left:18px;bottom:16px;font:700 11px 'DM Sans';letter-spacing:.24em;text-transform:uppercase;color:#8a8590}
+.panel{background:#fff;border-radius:22px;padding:22px;box-shadow:0 18px 40px rgba(31,29,36,.06)}
+.grp{margin-bottom:20px}
+.lab{font:700 11px 'DM Sans';letter-spacing:.24em;text-transform:uppercase;color:#6a6570;margin-bottom:10px}
+.letters{display:flex;gap:10px}
+.letters input{width:100%;min-width:0;height:60px;text-align:center;font:400 30px 'DM Serif Display';border:1.5px solid var(--line);border-radius:14px;background:var(--linen);text-transform:uppercase}
+.letters input:focus{outline:none;border-color:var(--em)}
+.hint{font-size:12.5px;color:#7a7580;margin-top:8px;line-height:1.45}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--line);background:var(--linen);border-radius:999px;padding:9px 14px;font:500 14px 'DM Sans';cursor:pointer}
+.chip[aria-pressed=true]{border-color:var(--ink);background:var(--ink);color:#fff}
+.sw{width:34px;height:34px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1.5px var(--line);cursor:pointer}
+.sw[aria-pressed=true]{box-shadow:0 0 0 2.5px var(--ink)}
+.save{background:var(--em);color:#fff;border-radius:22px;padding:22px;margin-top:18px}
+.save h2{font:400 30px/1.05 'DM Serif Display'}
+.save p{font-size:14px;line-height:1.5;margin:8px 0 14px;opacity:.9}
+.save input{width:100%;height:46px;border-radius:12px;border:0;padding:0 14px;font:400 15px 'DM Sans';margin-bottom:10px}
+.save button{width:100%;height:50px;border-radius:999px;border:0;background:var(--blush);color:var(--ink);font:700 13px 'DM Sans';letter-spacing:.18em;text-transform:uppercase;cursor:pointer}
+.save .ok{display:none;font:400 30px 'Nanum Pen Script';margin-top:10px}
+.hp{position:absolute;left:-9999px}
+footer{text-align:center;padding:30px 16px 50px;font-size:13px;color:#7a7580}
+</style>
+</head>
+<body>
+<header><a class="home" href="/">marisa stitches</a><a class="back" href="/">back to the studio</a></header>
+<section class="hero"><div class="k">monogram playground</div><h1>try your monogram</h1><div class="hand">play around. save your favorite for when the shop reopens ✦</div></section>
+
+<div class="wrap">
+  <div>
+    <div class="stage" id="stage" aria-live="polite"><svg id="art" viewBox="0 0 600 600" role="img" aria-label="Monogram preview"></svg><div class="tag" id="tag">preview · not to scale</div></div>
+  </div>
+  <div>
+    <div class="panel">
+      <div class="grp"><div class="lab">your letters</div>
+        <div class="letters"><input id="l1" maxlength="1" value="M" aria-label="first initial"/><input id="l2" maxlength="1" value="K" aria-label="last initial (big middle letter)"/><input id="l3" maxlength="1" value="A" aria-label="middle initial"/></div>
+        <div class="hint">Classic monogram order is first · <b>last</b> · middle, with the last initial big in the middle. Leave boxes empty for one or two letters.</div></div>
+      <div class="grp"><div class="lab">style</div><div class="chips" id="styles"></div></div>
+      <div class="grp"><div class="lab">thread</div><div class="chips" id="threads"></div></div>
+      <div class="grp"><div class="lab">stitched on</div><div class="chips" id="items"></div></div>
+      <div class="grp" style="margin-bottom:0"><div class="lab">color</div><div class="chips" id="bases"></div></div>
+    </div>
+    <form class="save" name="monogram-waitlist" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="saveForm">
+      <input type="hidden" name="form-name" value="monogram-waitlist"/>
+      <p class="hp"><label>Don't fill this out: <input name="bot-field"/></label></p>
+      <input type="hidden" name="design" id="design"/>
+      <h2>save my monogram</h2>
+      <p>The shop is paused right now. Leave your email and I'll send you your design when it reopens. No spam, just stitches.</p>
+      <input name="name" placeholder="first name" autocomplete="given-name"/>
+      <input name="email" type="email" placeholder="email" required autocomplete="email"/>
+      <button type="submit">save it ✦</button>
+      <div class="ok" id="ok">saved! talk soon ✦</div>
+    </form>
+  </div>
+</div>
+<footer>marisa stitches · machine embroidery, needlepoint + hand embroidery · <a href="https://www.instagram.com/marisastitches/">@marisastitches</a></footer>
+
+<script>
+const STYLES={classic:{n:'classic',f:"'DM Serif Display'",mono:true},script:{n:'script',f:"'Great Vibes'",mono:true},block:{n:'block',f:"'DM Sans'",w:700,mono:true,caps:true},single:{n:'one letter',f:"'DM Serif Display'",single:true}};
+const THREADS={emerald:'#0E4A38',ink:'#1F1D24',cream:'#F4ECDD',blush:'#E8A3BA',hotpink:'#E8508A',gold:'#C9A24E',cobalt:'#2E5FA5',ruby:'#A3203A'};
+const ITEMS={towel:'hand towel',pouch:'pouch',bib:'baby bib',hat:'dad hat'};
+const BASES={white:'#FBFAF7',oat:'#EDE3D2',blush:'#F3D3DC',sage:'#C9D5C2',navy:'#26324A',black:'#1C1B1F'};
+const S={style:'classic',thread:'emerald',item:'towel',base:'white'};
+function chips(id,obj,key,swatch){const el=document.getElementById(id);el.innerHTML='';for(const [k,v] of Object.entries(obj)){const b=document.createElement('button');b.type='button';b.setAttribute('aria-pressed',S[key]===k);
+ if(swatch){b.className='sw';b.style.background=v;b.title=k;b.setAttribute('aria-label',k);}else{b.className='chip';b.textContent=typeof v==='string'?v:v.n;}
+ b.onclick=()=>{S[key]=k;render();};el.appendChild(b);}}
+function esc(s){return s.replace(/[^A-Za-z]/g,'');}
+function mono(c){const st=STYLES[S.style];let a=esc(l1.value).toUpperCase(),b=esc(l2.value).toUpperCase(),m=esc(l3.value).toUpperCase();
+ const fw=st.w||400, ff=st.f;
+ if(st.single){const L=b||a||m||'M';return `<text x="0" y="0" text-anchor="middle" dominant-baseline="central" font-family=${JSON.stringify(ff)} font-size="150" fill="${c}">${L}</text>`;}
+ const letters=[a,b,m].filter(Boolean);
+ if(letters.length<3){return `<text x="0" y="0" text-anchor="middle" dominant-baseline="central" font-family=${JSON.stringify(ff)} font-weight="${fw}" font-size="${S.style==='script'?120:100}" fill="${c}" letter-spacing="6">${letters.join('')||'M'}</text>`;}
+ const big=S.style==='script'?140:130, sm=S.style==='script'?84:78, gap=S.style==='script'?112:82;
+ return `<text x="${-gap}" y="0" text-anchor="middle" dominant-baseline="central" font-family=${JSON.stringify(ff)} font-weight="${fw}" font-size="${sm}" fill="${c}">${a}</text>
+ <text x="0" y="0" text-anchor="middle" dominant-baseline="central" font-family=${JSON.stringify(ff)} font-weight="${fw}" font-size="${big}" fill="${c}">${b}</text>
+ <text x="${gap}" y="0" text-anchor="middle" dominant-baseline="central" font-family=${JSON.stringify(ff)} font-weight="${fw}" font-size="${sm}" fill="${c}">${m}</text>`;}
+function shade(hex,amt){const n=parseInt(hex.slice(1),16);let r=(n>>16)+amt,g=(n>>8&255)+amt,b=(n&255)+amt;r=Math.max(0,Math.min(255,r));g=Math.max(0,Math.min(255,g));b=Math.max(0,Math.min(255,b));return '#'+((1<<24)+(r<<16)+(g<<8)+b).toString(16).slice(1);}
+function item(base){const d=shade(base,-28);
+ if(S.item==='towel')return {svg:`<rect x="110" y="60" width="380" height="480" rx="14" fill="${base}" stroke="${d}" stroke-width="3"/>${[...Array(46)].map((_,i)=>`<line x1="${118+i*8}" y1="64" x2="${118+i*8}" y2="536" stroke="${d}" stroke-opacity=".25"/>`).join('')}<rect x="110" y="440" width="380" height="34" fill="${d}" opacity=".5"/>`,x:300,y:330,s:1};
+ if(S.item==='pouch')return {svg:`<rect x="90" y="150" width="420" height="300" rx="26" fill="${base}" stroke="${d}" stroke-width="3"/><rect x="90" y="150" width="420" height="40" rx="20" fill="${d}" opacity=".55"/><rect x="430" y="140" width="26" height="60" rx="8" fill="#C9A24E"/>`,x:300,y:320,s:.9};
+ if(S.item==='bib')return {svg:`<path d="M300 120 C420 120 470 210 470 320 C470 440 390 500 300 500 C210 500 130 440 130 320 C130 210 180 120 300 120Z" fill="${base}" stroke="${d}" stroke-width="3"/><path d="M240 120 Q300 200 360 120" fill="var(--linen)" stroke="${d}" stroke-width="3"/>`,x:300,y:340,s:.85};
+ return {svg:`<path d="M110 360 C100 190 200 110 300 110 C400 110 500 190 490 360 C420 345 180 345 110 360Z" fill="${base}"/><path d="M300 110 V350 M200 140 C180 210 176 290 182 352 M400 140 C420 210 424 290 418 352" stroke="${d}" stroke-width="2.5" fill="none"/><path d="M110 360 C180 345 420 345 490 360 C510 410 410 450 300 450 C190 450 90 410 110 360Z" fill="${d}"/>`,x:300,y:260,s:.62};}
+function render(){chips('styles',STYLES,'style');chips('threads',THREADS,'thread',true);chips('items',ITEMS,'item');chips('bases',BASES,'base',true);
+ const it=item(BASES[S.base]);
+ art.innerHTML=it.svg+`<g transform="translate(${it.x} ${it.y}) scale(${it.s})" style="filter:drop-shadow(0 1px 0 rgba(0,0,0,.25))">${mono(THREADS[S.thread])}</g>`;
+ const letters=[l1.value,l2.value,l3.value].map(x=>esc(x).toUpperCase()).join('');
+ tag.textContent=`${STYLES[S.style].n} · ${S.thread} thread · ${S.base} ${ITEMS[S.item]}`;
+ design.value=`${letters} | ${STYLES[S.style].n} | ${S.thread} thread | ${S.base} ${ITEMS[S.item]}`;
+ try{localStorage.setItem('ms-mono',JSON.stringify({...S,l:[l1.value,l2.value,l3.value]}));}catch(e){}}
+try{const v=JSON.parse(localStorage.getItem('ms-mono')||'null');if(v){Object.assign(S,{style:v.style,thread:v.thread,item:v.item,base:v.base});if(v.l){[l1.value,l2.value,l3.value]=v.l;}}}catch(e){}
+for(const el of [l1,l2,l3])el.addEventListener('input',render);
+saveForm.addEventListener('submit',e=>{e.preventDefault();const fd=new FormData(saveForm);fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(fd).toString()}).then(()=>{ok.style.display='block';saveForm.querySelector('button').disabled=true;}).catch(()=>{ok.textContent='hmm, that didn\'t send. try again?';ok.style.display='block';});});
+document.fonts.ready.then(render);render();
+</script>
+</body>
+</html>
