@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)} body{margin:0} [hidden]{display:none!important}</style>
+<title>Surviving 30 Years of Hannah</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Cinzel:wght@700;900&family=Karla:wght@400;600;800&family=Caveat:wght@600&display=swap">
+<style>
+/* Layout: one torch-lit column on a dusk-ocean-to-jungle ground. Tribe-buff pattern bands, carved-wood challenge cards, a row of four torches that light as she wins. */
+:root {
+  --night: #0c1511;
+  --dusk: #1d3b48;
+  --wood: #3a2412;
+  --wood-2: #5a3818;
+  --stone: #1b2620;
+  --sand: #ecd7a8;
+  --bone: #f7eedb;
+  --ember: #ff6a13;
+  --ember-2: #ffb43c;
+  --teal: #1e8c8c;      /* Luna tribe */
+  --muted: #a8b5a0;
+  --good: #8ad991;
+  --bad: #ff6b5b;
+  --display: "Bowlby One", "Impact", "Arial Black", sans-serif;
+  --carved: "Cinzel", "Trajan Pro", Georgia, serif;
+  --body: "Karla", system-ui, -apple-system, sans-serif;
+  --hand: "Caveat", "Segoe Print", cursive;
+  --buff: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='16' viewBox='0 0 48 16'%3E%3Crect width='48' height='16' fill='%23111'/%3E%3Cpath d='M0 16 8 0 16 16Z' fill='%23ff6a13'/%3E%3Cpath d='M16 16 24 0 32 16Z' fill='%231e8c8c'/%3E%3Cpath d='M32 16 40 0 48 16Z' fill='%23ffb43c'/%3E%3Ccircle cx='8' cy='11' r='1.6' fill='%23111'/%3E%3Ccircle cx='24' cy='11' r='1.6' fill='%23111'/%3E%3Ccircle cx='40' cy='11' r='1.6' fill='%23111'/%3E%3C/svg%3E");
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { background: var(--night); color: var(--sand); }
+body {
+  font-family: var(--body); font-size: 17px; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 96px;
+  background:
+    radial-gradient(ellipse 70% 30% at 50% 0%, rgba(255,106,19,.28), transparent 70%),
+    linear-gradient(180deg, var(--dusk) 0, #142a2a 220px, var(--night) 520px);
+  min-height: 100%;
+}
+main { max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; gap: 22px; }
+h1, h2 { margin: 0; text-wrap: balance; line-height: 1.05; font-weight: 400; }
+h2 { font-family: var(--carved); font-weight: 900; font-size: clamp(1.45rem, 5.4vw, 1.9rem); color: var(--bone); letter-spacing: .02em; }
+p { margin: 0; }
+.eyebrow { text-transform: uppercase; letter-spacing: .18em; font-size: .76rem; font-weight: 800; color: var(--ember-2); }
+.hand { font-family: var(--hand); font-size: 1.6rem; color: var(--ember-2); line-height: 1.2; }
+.host { border-left: 3px solid var(--ember); padding-left: 12px; font-style: italic; color: var(--bone); }
+.host b { font-style: normal; color: var(--ember-2); letter-spacing: .1em; font-size: .78rem; text-transform: uppercase; display: block; }
+.buff { height: 14px; background: var(--buff) repeat-x; background-size: auto 100%; border-radius: 2px; }
+
+/* Logo */
+.logo { display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; }
+.medallion { width: min(260px, 70vw); height: auto; filter: drop-shadow(0 10px 30px rgba(255,106,19,.35)); }
+.wordmark { font-family: var(--display); font-size: clamp(2.4rem, 12vw, 4.2rem); letter-spacing: .04em; color: var(--bone);
+  background: linear-gradient(180deg, #fff6df 0%, #ffcf7a 45%, #e0741d 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 3px 0 #2a1406); }
+.wordmark { line-height: .95; text-wrap: balance; }
+.surviving { font-family: var(--carved); font-weight: 900; letter-spacing: .35em; font-size: clamp(.9rem, 3.6vw, 1.1rem); color: var(--ember-2); text-transform: uppercase; }
+.sticker { position: fixed; z-index: 6; left: 50%; top: calc(env(safe-area-inset-top, 0px) + 16%); pointer-events: none; text-align: center; max-width: 88vw;
+  background: var(--bone); color: #1a0d03; font-family: var(--display); font-size: clamp(1.4rem, 6.5vw, 2.1rem); line-height: 1.05; padding: 12px 22px 14px;
+  border-radius: 16px; border: 4px solid #1a0d03; box-shadow: 6px 6px 0 var(--ember); --r: -5deg; animation: pop 1.9s ease forwards; }
+.sticker small { display: block; font-family: var(--body); font-weight: 800; font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; color: #9a4410; margin-bottom: 4px; }
+@keyframes pop {
+  0% { transform: translateX(-50%) rotate(var(--r)) scale(.3); opacity: 0; }
+  12% { transform: translateX(-50%) rotate(var(--r)) scale(1.1); opacity: 1; }
+  20%, 82% { transform: translateX(-50%) rotate(var(--r)) scale(1); opacity: 1; }
+  100% { transform: translateX(-50%) rotate(var(--r)) scale(.95); opacity: 0; } }
+.vote { position: relative; }
+.stamp { position: absolute; right: -12px; bottom: -12px; transform: rotate(-10deg); font-family: var(--body); font-weight: 800; font-size: .72rem; letter-spacing: .14em;
+  color: #c8261a; border: 2px solid #c8261a; background: #f3e6c6; padding: 2px 7px; border-radius: 3px; }
+.tally { font-weight: 700; color: var(--bone); text-align: center; min-height: 1.5em; }
+.hintrow { display: flex; justify-content: center; }
+.season { font-family: var(--carved); font-weight: 700; letter-spacing: .22em; font-size: .85rem; color: var(--sand); text-transform: uppercase; }
+
+/* Torch tracker */
+.tracker { display: flex; justify-content: space-between; align-items: flex-end; gap: 8px; padding: 10px 14px 8px;
+  background: rgba(0,0,0,.28); border-radius: 12px; border: 1px solid rgba(236,215,168,.14); }
+.tracker .t { display: flex; flex-direction: column; align-items: center; gap: 2px; flex: 1; min-width: 0; }
+.tracker svg { width: 30px; height: 52px; }
+.tracker span { font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 800; text-align: center; }
+.tracker .lit span { color: var(--ember-2); }
+.flame { transform-origin: 50% 100%; transition: opacity .4s; }
+.out .flame { opacity: 0; }
+.lit .flame { animation: flicker 1.1s ease-in-out infinite alternate; }
+@keyframes flicker { 0% { transform: scale(1,1) rotate(-2deg); } 50% { transform: scale(.93,1.07) rotate(2deg);} 100% { transform: scale(1.05,.95) rotate(-1deg);} }
+
+/* Carved-wood card */
+.card { position: relative; border-radius: 6px; padding: 0 0 22px; display: flex; flex-direction: column; gap: 16px; overflow: hidden;
+  background:
+    repeating-linear-gradient(92deg, rgba(0,0,0,.0) 0 22px, rgba(0,0,0,.08) 22px 24px),
+    linear-gradient(180deg, #2a3a2e, #18241c);
+  border: 2px solid #4a3218; box-shadow: 0 0 0 4px #24180c, 0 14px 30px rgba(0,0,0,.45); }
+.card > :not(.buff) { margin-inline: 22px; }
+.card > .buff { margin-bottom: 4px; }
+.center { text-align: center; align-items: center; }
+
+button { font: inherit; font-weight: 800; cursor: pointer; border: 0; border-radius: 4px; padding: 13px 24px;
+  background: linear-gradient(180deg, var(--ember-2), var(--ember)); color: #2a1104; letter-spacing: .08em; text-transform: uppercase; font-size: .9rem;
+  box-shadow: 0 3px 0 #8a3406; transition: transform .08s; }
+button:active { transform: translateY(2px); box-shadow: 0 1px 0 #8a3406; }
+button:focus-visible, input:focus-visible { outline: 3px solid var(--bone); outline-offset: 2px; }
+button.ghost { background: transparent; color: var(--sand); border: 1px solid rgba(236,215,168,.35); box-shadow: none; text-transform: none; letter-spacing: 0; font-weight: 600; }
+button:disabled { opacity: .5; cursor: default; }
+
+.options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 460px) { .options { grid-template-columns: 1fr; } }
+.options button { background: rgba(0,0,0,.35); color: var(--sand); border: 1px solid #4a3a24; box-shadow: none; text-align: left; text-transform: none; letter-spacing: 0; font-weight: 600; font-size: 1rem; }
+.options button:hover { border-color: var(--ember-2); }
+.options button.wrong { border-color: var(--bad); color: var(--bad); }
+.options button.right { border-color: var(--good); color: var(--good); }
+.progress { font-size: .85rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.q { font-weight: 700; font-size: 1.15rem; color: var(--bone); }
+.msg { min-height: 1.5em; font-weight: 700; }
+.msg.good { color: var(--good); } .msg.bad { color: var(--bad); }
+
+/* Scramble */
+.list { display: flex; flex-direction: column; gap: 18px; }
+.scr { display: flex; flex-direction: column; gap: 6px; }
+.letters { display: flex; gap: 5px; flex-wrap: wrap; }
+.letters i { font-style: normal; width: 30px; height: 36px; display: grid; place-items: center; font-family: var(--display); font-size: 1.1rem;
+  background: linear-gradient(160deg, #c49455, #85592b); color: #2a1606; border-radius: 4px; box-shadow: inset 0 -3px 0 rgba(0,0,0,.25); }
+.scr .hint { font-size: .88rem; color: var(--muted); }
+input[type=text] { font: inherit; width: 100%; padding: 10px 14px; border-radius: 4px; border: 1px solid #4a3a24;
+  background: rgba(0,0,0,.4); color: var(--bone); text-transform: uppercase; letter-spacing: .12em; }
+input.ok { border-color: var(--good); color: var(--good); }
+
+/* Slide puzzle */
+.board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; width: min(100%, 320px); aspect-ratio: 1; max-width: 100%; margin: 0 auto;
+  background: #120c06; padding: 8px; border-radius: 6px; border: 6px solid #6b4520; box-shadow: inset 0 0 0 2px #2a1806; }
+.tile { display: grid; place-items: center; font-family: var(--display); font-size: clamp(1.8rem, 9vw, 2.6rem); padding: 0;
+  background: linear-gradient(160deg, #c49455, #7d5428); color: #2a1606; border-radius: 4px; box-shadow: inset 0 -4px 0 rgba(0,0,0,.3); letter-spacing: 0; }
+.tile.blank { background: transparent; box-shadow: none; cursor: default; }
+.tile.home { color: var(--bone); text-shadow: 0 2px 0 #2a1606; }
+
+/* Idol hunt */
+.beach { display: grid; grid-template-columns: repeat(6, 1fr); gap: 5px; width: min(100%, 380px); margin: 0 auto; }
+.sand { aspect-ratio: 1; border-radius: 4px; padding: 0; background: radial-gradient(circle at 35% 30%, #f0d398, #cfa962); box-shadow: inset 0 -3px 0 rgba(0,0,0,.15); color: #2a1606; display: grid; place-items: center; font-size: .62rem; letter-spacing: .04em; }
+.sand.dug { cursor: default; }
+.sand.hot { background: var(--bad); } .sand.warm { background: var(--ember-2); } .sand.cold { background: #79a9bb; }
+.sand.idol { background: var(--good); font-size: 1.5rem; }
+
+/* Tribal */
+.urn { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+.vote { background: #f3e6c6; color: #23160a; padding: 14px 22px; border-radius: 2px; font-family: var(--hand); font-size: 2.1rem; min-width: 220px; text-align: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,.5); animation: unfold .5s ease-out both; }
+.vote:nth-child(odd) { transform: rotate(-2deg); } .vote:nth-child(even) { transform: rotate(2deg); }
+@keyframes unfold { from { opacity: 0; transform: translateY(-14px) scaleY(.3); } }
+.final { font-family: var(--carved); font-weight: 900; font-size: clamp(1.5rem, 6vw, 2.1rem); color: var(--ember-2); text-align: center; text-wrap: balance; }
+.won-idol { font-size: 4rem; line-height: 1; filter: drop-shadow(0 0 18px rgba(255,180,60,.6)); }
+
+footer { text-align: center; }
+#music { position: fixed; z-index: 5; right: max(14px, calc(env(safe-area-inset-right, 0px) + 14px)); bottom: calc(env(safe-area-inset-bottom, 0px) + 14px);
+  border-radius: 999px; padding: 10px 16px; font-size: .78rem; background: rgba(12,21,17,.9); color: var(--ember-2); border: 1px solid var(--ember); box-shadow: 0 4px 14px rgba(0,0,0,.5); }
+canvas#confetti { position: fixed; inset: 0; pointer-events: none; width: 100%; height: 100%; z-index: 4; }
+@media (prefers-reduced-motion: reduce) { .lit .flame, .vote { animation: none; } .sticker { animation-duration: 2.4s; } }
+</style>
+</head>
+<body>
+
+<main id="app" aria-live="polite"></main>
+<button id="music" aria-pressed="false">♪ Drums: off</button>
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<script>
+/* =====================================================================
+   PERSONALIZE HERE
+   ===================================================================== */
+const CONFIG = {
+  name: "Hannah",                 // her name
+  nick: "Goose",                  // what the host calls her
+  from: "Marisa",                 // who it's from
+  dogs: ["LUNA", "COMET"],        // her dogs (CAPS, letters only)
+  scramble: [
+    ["IMMUNITY", "Wear it and you're safe tonight"],
+    ["BLINDSIDE", "Nobody saw it coming"],
+    ["TRIBAL COUNCIL", "Where the votes get read"],
+  ],
+  personalQ: null, // e.g. { q: "Where did we meet?", options: ["Bio class","A bar","Soccer","The DMV"], answer: 0 }
+  // Votes read at Tribal. Every one of them is for her, and none of them count.
+  votes: ["Goose", "Hannah 🎂", "Goose 🎉", "Goose 🐾 (Luna)", "Goose 🐾 (Comet)"],
+};
+/* ===================================================================== */
+
+const cap = s => s.charAt(0) + s.slice(1).toLowerCase();
+const [D1, D2] = CONFIG.dogs.map(cap);
+const G = CONFIG.nick, NUM = ["Zero","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten"];
+const LINES = {
+  good: ["Dig deep!", "Big moment!", "Here we go!", `${G} is doing it!`, "That's how you play!", "Worth playing for?"],
+  bad: ["Got nothin' for ya.", "Ooh. That's gonna sting.", "Not gonna happen.", "Dig deeper!"],
+};
+const pick = a => a[Math.floor(Math.random() * a.length)];
+function sticker(text, label = "The host") {
+  document.querySelectorAll(".sticker").forEach(n => n.remove());
+  const s = document.createElement("div"); s.className = "sticker"; s.setAttribute("role", "status");
+  s.style.setProperty("--r", (Math.random() * 10 - 5).toFixed(1) + "deg");
+  s.innerHTML = `<small>${label}</small>${text}`; document.body.append(s);
+  setTimeout(() => s.remove(), 2000);
+}
+
+const TRIVIA = [
+  { q: "Who won the very first season, set in Borneo?", options: ["Rudy Boesch", "Richard Hatch", "Kelly Wiglesworth", "Sue Hawk"], answer: 1 },
+  { q: "How many days did a classic season last?", options: ["30", "42", "39", "26"], answer: 2 },
+  { q: "Who was the first castaway ever to win twice?", options: ["Tony Vlachos", "Parvati Shallow", "Sandra Diaz-Twine", "Boston Rob"], answer: 2 },
+  { q: "Which season introduced the hidden immunity idol?", options: ["Guatemala", "Palau", "Panama", "Pearl Islands"], answer: 0 },
+  { q: "A castaway asks the host for a hint. What does he say?", options: ["Dig deep!", "Got nothin' for ya", "Worth playing for?", "Come on in!"], answer: 1 },
+  { q: "What does the host say as he snuffs your torch?", options: ["Bring it in, guys", "The tribe has spoken", "Worth playing for?", "Come on in, guys"], answer: 1 },
+  ...(CONFIG.personalQ ? [CONFIG.personalQ] : []),
+  { q: "Final question. Who are the best dogs on any island?", options: [D1, D2, `Trick question: ${D1} AND ${D2}`, "Some other dog"], answer: 2 },
+];
+const SCRAMBLE = [...CONFIG.dogs.map(d => [d, "A furry member of your alliance"]), ...CONFIG.scramble];
+
+const STEPS = ["intro", "trivia", "scramble", "slide", "hunt", "tribal"];
+const TORCHES = ["Quiz", "Scramble", "Puzzle", "Idol"];
+
+/* ---------- state ---------- */
+let S = { step: 0, wins: 0 };
+try { const s = JSON.parse(localStorage.getItem("hannah30") || "null"); if (s && typeof s.step === "number") S = s; } catch (e) {}
+const save = () => { try { localStorage.setItem("hannah30", JSON.stringify(S)); } catch (e) {} };
+const app = document.getElementById("app");
+const el = html => { const t = document.createElement("template"); t.innerHTML = html.trim(); return t.content.firstChild; };
+
+const torchSVG = (cls = "") => `<svg class="${cls}" viewBox="0 0 30 52" aria-hidden="true">
+  <g class="flame"><path d="M15 2c5 7 9 11 7 18-1 4-4 6-7 6s-6-2-7-6c-1-6 3-9 4-13 1 3 2 4 3 4 0-4-1-6 0-9z" fill="#ff6a13"/>
+  <path d="M15 12c3 4 4 6 3 10 0 2-2 3-3 3s-3-1-3-3c0-3 1-5 2-7 0 1 1 2 1 2 0-2 0-3 0-5z" fill="#ffd27a"/></g>
+  <path d="M8 26h14l-2 6h-10z" fill="#8a5a2b"/><rect x="12" y="32" width="6" height="20" rx="2" fill="#6b4320"/></svg>`;
+
+function header() {
+  const small = S.step > 0;
+  return `<header class="logo">
+    ${small ? "" : medallion()}
+    <div class="surviving">Surviving</div>
+    <div class="wordmark" style="${small ? "font-size:clamp(1.8rem,8vw,2.4rem)" : ""}">30 Years of Hannah</div>
+    <div class="season">Outwit · Outplay · Out-Goose</div>
+  </header>
+  ${S.step > 0 ? `<div class="tracker" aria-label="${S.wins} of 4 torches lit">${TORCHES.map((t, i) =>
+      `<div class="t ${i < S.wins ? "lit" : "out"}">${torchSVG()}<span>${t}</span></div>`).join("")}</div>` : ""}`;
+}
+
+function medallion() {
+  return `<svg class="medallion" viewBox="0 0 260 260" role="img" aria-label="Surviving 30 Years of Hannah emblem">
+    <defs>
+      <path id="ring" d="M130 130 m-98 0 a98 98 0 1 1 196 0 a98 98 0 1 1 -196 0"/>
+      <radialGradient id="stone" cx="40%" cy="35%"><stop offset="0" stop-color="#5a4a36"/><stop offset="1" stop-color="#20170e"/></radialGradient>
+      <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff3d0"/><stop offset=".5" stop-color="#ffbe55"/><stop offset="1" stop-color="#c2560f"/></linearGradient>
+    </defs>
+    <circle cx="130" cy="130" r="126" fill="#120b05"/>
+    <circle cx="130" cy="130" r="120" fill="url(#stone)" stroke="url(#gold)" stroke-width="5"/>
+    <text font-family="Cinzel, Georgia, serif" font-weight="900" font-size="15" letter-spacing="5" fill="#ffcf7a">
+      <textPath href="#ring" textLength="600">OUTWIT · OUTPLAY · OUT-GOOSE · SEASON 30 ·</textPath></text>
+    <circle cx="130" cy="130" r="78" fill="#0f1a14" stroke="#ffbe55" stroke-width="2"/>
+    <g class="lit"><g class="flame" style="transform-origin:130px 112px">
+      <path d="M130 52c14 18 24 30 19 46-3 10-10 16-19 16s-16-6-19-16c-5-15 7-23 10-33 3 7 5 10 9 10 0-10-3-15 0-23z" fill="#ff6a13"/>
+      <path d="M130 78c7 10 12 16 10 25-1 6-5 9-10 9s-9-3-10-9c-1-8 4-12 6-17 1 4 3 5 4 5 0-5-1-9 0-13z" fill="#ffd27a"/></g></g>
+    <text x="130" y="186" text-anchor="middle" font-family="'Bowlby One', Impact, sans-serif" font-size="62" fill="url(#gold)" stroke="#2a1406" stroke-width="2">30</text>
+  </svg>`;
+}
+
+function render() {
+  app.innerHTML = header();
+  ({ intro, trivia, scramble, slide, hunt, tribal })[STEPS[S.step]]();
+  if (S.step > 0) {
+    app.append(el(`<footer><button class="ghost" id="reset">Start over</button></footer>`));
+    app.querySelector("#reset").onclick = () => { S = { step: 0, wins: 0 }; save(); Music.mode("camp"); render(); };
+  }
+}
+function advance(win) {
+  if (win) S.wins = Math.min(S.wins + 1, 4);
+  S.step++; save(); render(); window.scrollTo({ top: 0, behavior: "smooth" });
+  if (STEPS[S.step] === "tribal") Music.mode("tribal");
+}
+function card(eyebrow, title, body) {
+  const c = el(`<section class="card"><div class="buff"></div><p class="eyebrow">${eyebrow}</p><h2>${title}</h2>${body}</section>`);
+  app.append(c); return c;
+}
+function winPanel(c, line, next = "Light your torch") {
+  Music.sting(); sticker(pick(["Big moment!", `${G} wins!`, "That's how you play!", "Dig deep… and done!"]));
+  c.append(el(`<div class="center" style="display:flex;flex-direction:column;gap:12px">
+    <p class="hand">${line}</p><button id="next">${next}</button></div>`));
+  const b = c.querySelector("#next"); b.onclick = () => advance(true); b.focus({ preventScroll: true });
+}
+
+/* ---------- 0. intro ---------- */
+function intro() {
+  const c = card("Day 1 · Season 30", `Come on in, ${G}!`, `
+    <p class="host"><b>The host</b>Thirty years ago, a baby Goose hatched on this island. Thirty years later, the rest of us are still surviving her. Welcome to the most important season yet.</p>
+    <p>That idol in your hands stays wrapped. To earn the right to open it, you have to win four challenges. Each win lights a torch. Light all four and you go to Tribal Council.</p>
+    <p>Your tribe: <strong>${D1}</strong> and <strong>${D2}</strong>. They believe in you. Mostly because you have the treats.</p>
+    <p class="host"><b>The host</b>Wanna know what you're playing for?</p>
+    <div class="center" style="display:flex;justify-content:center"><button id="go">Worth playing for? Let's go</button></div>`);
+  c.querySelector("#go").onclick = () => { Music.start(); sticker("Survivors ready? GO!"); advance(false); };
+}
+
+/* ---------- 1. trivia ---------- */
+function trivia() {
+  let i = 0;
+  const c = card("Reward Challenge", "The Superfan Gauntlet", `
+    <p class="host"><b>The host</b>First challenge. How well do you know the game? Survivors ready? Go!</p>
+    <p class="progress"></p><p class="q"></p><div class="options"></div><p class="msg"></p>`);
+  const show = () => {
+    const t = TRIVIA[i], o = c.querySelector(".options"), m = c.querySelector(".msg");
+    c.querySelector(".progress").textContent = `Question ${i + 1} of ${TRIVIA.length}`;
+    c.querySelector(".q").textContent = t.q; m.textContent = ""; m.className = "msg"; o.innerHTML = "";
+    t.options.forEach((txt, k) => {
+      const b = el(`<button></button>`); b.textContent = txt;
+      b.onclick = () => {
+        if (k === t.answer) {
+          b.classList.add("right"); m.textContent = "Correct!"; m.className = "msg good"; Music.hit(); if (Math.random() < .5) sticker(pick(LINES.good));
+          o.querySelectorAll("button").forEach(x => x.disabled = true);
+          setTimeout(() => { i++; if (i < TRIVIA.length) show(); else { [".options", ".q", ".progress", ".msg"].forEach(s => c.querySelector(s).remove()); winPanel(c, `${G} wins reward!`); } }, 700);
+        } else { b.classList.add("wrong"); b.disabled = true; m.textContent = "Ooh. That's wrong. Try again."; m.className = "msg bad"; sticker(pick(LINES.bad)); }
+      };
+      o.append(b);
+    });
+  };
+  show();
+}
+
+/* ---------- 2. scramble ---------- */
+function shuffleWord(w) {
+  const a = w.replace(/\s/g, "").split(""); let out = a.join("");
+  for (let n = 0; n < 20 && out === w.replace(/\s/g, ""); n++) { for (let k = a.length - 1; k > 0; k--) { const j = Math.floor(Math.random() * (k + 1)); [a[k], a[j]] = [a[j], a[k]]; } out = a.join(""); }
+  return out;
+}
+function scramble() {
+  const c = card("Immunity Challenge", "Word Scramble", `
+    <p class="host"><b>The host</b>Unscramble every word. Get them all and the torch is yours.</p><div class="list"></div>
+    <div class="hintrow"><button class="ghost hint-btn">Ask the host for a hint</button></div>`);
+  let asks = 0;
+  c.querySelector(".hint-btn").onclick = () => {
+    asks++;
+    if (asks === 1) return sticker("Got nothin' for ya.");
+    sticker("Fine. Just this once.");
+    c.querySelectorAll(".scr .hint").forEach(h => h.hidden = false);
+    c.querySelector(".hintrow").hidden = true;
+  };
+  const list = c.querySelector(".list"); let solved = 0;
+  SCRAMBLE.forEach(([w, hint], idx) => {
+    const r = el(`<div class="scr"><div class="letters">${shuffleWord(w).split("").map(ch => `<i>${ch}</i>`).join("")}</div><div class="hint" hidden>${hint}</div>
+      <input type="text" id="scr${idx}" autocomplete="off" spellcheck="false" aria-label="Word ${idx + 1} answer"></div>`);
+    const inp = r.querySelector("input");
+    inp.oninput = () => {
+      if (inp.value.toUpperCase().replace(/\s/g, "") === w.replace(/\s/g, "")) {
+        inp.value = w; inp.classList.add("ok"); inp.disabled = true; solved++; Music.hit(); if (solved < SCRAMBLE.length) sticker(pick(LINES.good));
+        if (solved === SCRAMBLE.length) c.querySelector(".hintrow").remove(), winPanel(c, "Every word unscrambled!");
+      }
+    };
+    list.append(r);
+  });
+}
+
+/* ---------- 3. slide puzzle ---------- */
+function slide() {
+  const WORD = "BIRTHDAY".split("");
+  const c = card("Immunity Challenge", "The Final Puzzle", `
+    <p class="host"><b>The host</b>It always comes down to a puzzle. Slide the tiles until they spell <strong>BIRTHDAY</strong>, gap in the bottom-right corner. Tiles in the right spot turn white.</p>
+    <div class="board" aria-label="Slide puzzle"></div><p class="progress moves" style="text-align:center">Moves: 0</p>
+    <div class="hintrow" style="gap:10px;flex-wrap:wrap"><button class="ghost" id="shuf">Reshuffle</button><button class="ghost hint-btn">Ask for a hint</button></div>
+    <p class="progress" style="text-align:center">Stuck? Ask for a hint twice and the host will solve it for you.</p>`);
+  const board = c.querySelector(".board"); let tiles, moves = 0, done = false, hist = [], asks = 0;
+  const nb = i => [i - 3, i + 3, i % 3 ? i - 1 : -1, i % 3 < 2 ? i + 1 : -1].filter(n => n >= 0 && n < 9);
+  const solved = () => tiles.slice(0, 8).every((t, k) => t === k);
+  const mix = () => {
+    do {
+      tiles = [0, 1, 2, 3, 4, 5, 6, 7, null]; hist = []; let gap = 8, prev = -1;
+      for (let k = 0; k < 12; k++) { const opts = nb(gap).filter(n => n !== prev); const n = opts[Math.floor(Math.random() * opts.length)]; [tiles[gap], tiles[n]] = [tiles[n], tiles[gap]]; hist.push(gap); prev = gap; gap = n; }
+    } while (solved());
+    moves = 0; draw();
+  };
+  const draw = (flash = -1) => {
+    board.innerHTML = "";
+    tiles.forEach((t, i) => {
+      const b = el(`<button class="tile ${t === null ? "blank" : ""} ${t === i ? "home" : ""}" ${t === null ? 'tabindex="-1" aria-label="Gap"' : ""}>${t === null ? "" : WORD[t]}</button>`);
+      if (i === flash) b.style.outline = "3px solid var(--good)";
+      if (t !== null) b.onclick = () => move(i);
+      board.append(b);
+    });
+    c.querySelector(".moves").textContent = `Moves: ${moves}`;
+  };
+  const move = (i, fromHint = false) => {
+    if (done) return; const g = tiles.indexOf(null);
+    if (!nb(i).includes(g)) return;
+    [tiles[g], tiles[i]] = [tiles[i], tiles[g]]; moves++;
+    if (fromHint) hist.pop(); else hist.push(g);
+    draw(fromHint ? g : -1); Music.tick();
+    if (solved()) { done = true; c.querySelector(".hintrow").remove(); winPanel(c, `Solved in ${moves} moves. ${G} wins immunity!`); }
+  };
+  c.querySelector(".hint-btn").onclick = () => {
+    asks++;
+    if (asks === 1) return sticker("Got nothin' for ya.");
+    if (asks > 2) return;
+    sticker("Fine. Just this once.");
+    c.querySelectorAll(".hintrow button").forEach(b => b.disabled = true);
+    const solveStep = () => { if (done || !hist.length) return; move(hist[hist.length - 1], true); setTimeout(solveStep, 350); };
+    setTimeout(solveStep, 600);
+  };
+  c.querySelector("#shuf").onclick = () => { asks = 0; mix(); };
+  mix();
+}
+
+/* ---------- 4. idol hunt ---------- */
+function hunt() {
+  const N = 6, MAX = 10;
+  const c = card("Back at camp", `${D1} buried an idol`, `
+    <p class="host"><b>The host</b>There's a hidden immunity idol on this beach. ${D1} dug the hole. ${D2} is pretending not to know where.</p>
+    <p>Dig a square and the sand tells you how close you are: <strong style="color:var(--bad)">hot</strong>, <strong style="color:var(--ember-2)">warm</strong> or <strong style="color:#79a9bb">cold</strong>. You get ${MAX} digs.</p>
+    <div class="beach"></div><p class="msg" style="text-align:center"></p>`);
+  const beach = c.querySelector(".beach"), msg = c.querySelector(".msg");
+  let idol, digs, over;
+  const bury = () => {
+    idol = Math.floor(Math.random() * N * N); digs = 0; over = false; beach.innerHTML = "";
+    msg.textContent = `Digs left: ${MAX}`; msg.className = "msg";
+    for (let i = 0; i < N * N; i++) {
+      const b = el(`<button class="sand" aria-label="Dig row ${Math.floor(i / N) + 1}, column ${i % N + 1}"></button>`);
+      b.onclick = () => dig(i, b); beach.append(b);
+    }
+  };
+  const dig = (i, b) => {
+    if (over || b.classList.contains("dug")) return;
+    digs++; b.classList.add("dug"); Music.tick();
+    if (i === idol) { over = true; b.classList.add("idol"); b.textContent = "🗿"; msg.textContent = ""; winPanel(c, `You found the idol! ${D2} is very proud of you.`, "Light the last torch"); return; }
+    const d = Math.max(Math.abs(i % N - idol % N), Math.abs(Math.floor(i / N) - Math.floor(idol / N)));
+    const kind = d === 1 ? "hot" : d === 2 ? "warm" : "cold";
+    b.classList.add(kind); b.textContent = kind.toUpperCase();
+    if (kind === "hot") sticker("You're on it!", D2 + " says");
+    if (digs >= MAX) { over = true; sticker("Got nothin' for ya."); msg.textContent = `Out of digs. ${D1} re-buried it somewhere else.`; msg.className = "msg bad"; setTimeout(bury, 2000); }
+    else msg.textContent = `Digs left: ${MAX - digs}`;
+  };
+  bury();
+}
+
+/* ---------- 5. tribal ---------- */
+function tribal() {
+  const V = CONFIG.votes;
+  const c = card("Night 39 · Tribal Council", "Grab a torch, get fire", `
+    <p class="host"><b>The host</b>${G}, all four torches are lit. Grab a torch, dip it in and get fire. This is part of the ritual of Tribal Council, because in this game, fire represents your life.</p>
+    <div class="stage" style="display:flex;flex-direction:column;gap:14px;align-items:center"></div>
+    <div class="urn"></div><p class="tally"></p>
+    <div style="display:flex;justify-content:center"><button id="act">Get fire</button></div>`);
+  const stage = c.querySelector(".stage"), urn = c.querySelector(".urn"), tally = c.querySelector(".tally"), btn = c.querySelector("#act");
+  const say = t => stage.append(el(`<p class="host" style="align-self:stretch"><b>The host</b>${t}</p>`));
+  let phase = 0, k = 0;
+  btn.onclick = () => {
+    Music.boom();
+    if (phase === 0) {
+      say("It is time to vote. The tribe has already cast theirs. I'll go tally the votes."); btn.textContent = "Wait for the host"; phase = 1;
+    } else if (phase === 1) {
+      say("If anybody has a hidden immunity idol and you want to play it, now would be the time to do so.");
+      btn.textContent = "Stand up and play your idol"; phase = 2;
+    } else if (phase === 2) {
+      sticker("This IS a hidden immunity idol!");
+      say(`This is a hidden immunity idol. Any votes cast for ${G} will not count. I'll read the votes.`);
+      btn.textContent = "Read the first vote"; phase = 3;
+    } else if (k < V.length) {
+      urn.append(el(`<div class="vote">${V[k]}<span class="stamp">DOES NOT COUNT</span></div>`)); k++;
+      tally.textContent = `${NUM[k] || k} vote${k > 1 ? "s" : ""} ${G}. Does not count.`;
+      btn.textContent = k < V.length ? "Next vote" : "Final word";
+    } else {
+      btn.parentElement.remove(); Music.mode("win"); Music.sting(); sticker("Unbelievable!");
+      tally.textContent = `${NUM[V.length] || V.length} votes ${G}. Not a single one counts.`;
+      c.append(el(`<div style="display:flex;flex-direction:column;gap:14px;align-items:center;text-align:center">
+        <div class="won-idol" aria-hidden="true">🗿</div>
+        <p class="final">${G}, you have survived 30 years. Your torch stays lit.</p>
+        <p class="host" style="text-align:left"><b>The host</b>For once, the tribe has spoken in your favor. Happy birthday, ${CONFIG.name}.</p>
+        <p style="font-size:1.15rem;color:var(--bone)"><strong>You may now unwrap your idol.</strong></p>
+        <p class="hand">Love, ${CONFIG.from}</p></div>`));
+      confetti();
+    }
+  };
+}
+
+/* ---------- music: original tribal drums, synthesized live ---------- */
+const Music = (() => {
+  let ctx, master, on = false, timer, step = 0, next = 0, current = "camp";
+  const btn = document.getElementById("music");
+  const PAT = {
+    camp:   { bpm: 116, low: "x..x..x.x...x.x.", high: "..x..x....x..xxx", shk: "x.x.x.x.x.x.x.x.", mar: [62,0,65,0,67,0,69,0, 72,0,69,67,0,65,0,0] },
+    tribal: { bpm: 72,  low: "x.......x..x....", high: "....x.......x...", shk: "................", mar: [50,0,0,0,0,0,0,0, 53,0,0,0,0,0,0,0] },
+    win:    { bpm: 132, low: "x.x.x..xx.x.x..x", high: "..x.x.x...xxx.xx", shk: "xxxxxxxxxxxxxxxx", mar: [69,72,74,0,72,69,67,0, 69,72,74,77,74,72,69,0] },
+  };
+  let noise;
+  const init = () => {
+    if (ctx) return;
+    ctx = new (window.AudioContext || window.webkitAudioContext)();
+    master = ctx.createGain(); master.gain.value = .55;
+    const comp = ctx.createDynamicsCompressor(); master.connect(comp); comp.connect(ctx.destination);
+    noise = ctx.createBuffer(1, ctx.sampleRate * .5, ctx.sampleRate);
+    const d = noise.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+  };
+  const drum = (t, f0, f1, dur, vol) => {
+    const o = ctx.createOscillator(), g = ctx.createGain();
+    o.frequency.setValueAtTime(f0, t); o.frequency.exponentialRampToValueAtTime(f1, t + dur);
+    g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(.001, t + dur);
+    o.connect(g); g.connect(master); o.start(t); o.stop(t + dur + .02);
+  };
+  const shaker = (t, vol) => {
+    const s = ctx.createBufferSource(), f = ctx.createBiquadFilter(), g = ctx.createGain();
+    s.buffer = noise; f.type = "bandpass"; f.frequency.value = 7000; f.Q.value = 1.2;
+    g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(.001, t + .07);
+    s.connect(f); f.connect(g); g.connect(master); s.start(t); s.stop(t + .08);
+  };
+  const marimba = (t, midi, vol = .22) => {
+    const f = 440 * Math.pow(2, (midi - 69) / 12);
+    [[1, vol, .5], [4, vol * .25, .12]].forEach(([m, v, d]) => {
+      const o = ctx.createOscillator(), g = ctx.createGain(); o.type = "sine"; o.frequency.value = f * m;
+      g.gain.setValueAtTime(v, t); g.gain.exponentialRampToValueAtTime(.001, t + d);
+      o.connect(g); g.connect(master); o.start(t); o.stop(t + d + .02);
+    });
+  };
+  const loop = () => {
+    const p = PAT[current], sp = 60 / p.bpm / 4;
+    while (next < ctx.currentTime + .15) {
+      const s = step % 16;
+      if (p.low[s] === "x") drum(next, 140, 48, .45, 1);
+      if (p.high[s] === "x") drum(next, 300, 160, .18, .5);
+      if (p.shk[s] === "x") shaker(next, s % 4 === 0 ? .25 : .12);
+      if (p.mar[s]) marimba(next, p.mar[s] + (Math.floor(step / 16) % 4 === 3 ? -2 : 0));
+      next += sp; step++;
+    }
+  };
+  const set = v => { on = v; btn.textContent = on ? "♪ Drums: on" : "♪ Drums: off"; btn.setAttribute("aria-pressed", on); };
+  const start = () => {
+    init(); ctx.resume(); if (on) return;
+    next = ctx.currentTime + .05; step = 0; timer = setInterval(loop, 40); set(true);
+  };
+  const stop = () => { clearInterval(timer); set(false); };
+  btn.onclick = () => on ? stop() : start();
+  const ok = () => ctx && on;
+  return {
+    start, mode: m => { current = m; },
+    hit: () => ok() && drum(ctx.currentTime, 320, 180, .15, .6),
+    tick: () => ok() && drum(ctx.currentTime, 600, 400, .05, .25),
+    boom: () => ok() && (drum(ctx.currentTime, 90, 35, 1.4, 1.2), shaker(ctx.currentTime, .2)),
+    sting: () => {
+      if (!ok()) return; const t = ctx.currentTime;
+      for (let k = 0; k < 10; k++) drum(t + k * (.09 - k * .005), 260, 150, .12, .35 + k * .05);
+      drum(t + .7, 120, 40, 1.2, 1.3); [62, 69, 74].forEach((n, k) => marimba(t + .7 + k * .08, n, .3));
+    },
+  };
+})();
+
+/* ---------- confetti ---------- */
+function confetti() {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const cv = document.getElementById("confetti"), x = cv.getContext("2d"), dpr = devicePixelRatio || 1;
+  cv.width = innerWidth * dpr; cv.height = innerHeight * dpr; x.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const cols = ["#ff6a13", "#ffb43c", "#1e8c8c", "#f7eedb", "#8ad991"];
+  const P = Array.from({ length: 170 }, () => ({ x: Math.random() * innerWidth, y: -20 - Math.random() * innerHeight, r: 4 + Math.random() * 5, vy: 2 + Math.random() * 3, vx: -1 + Math.random() * 2, a: Math.random() * 6, c: cols[Math.floor(Math.random() * cols.length)] }));
+  let t = 0;
+  (function f() {
+    x.clearRect(0, 0, innerWidth, innerHeight);
+    P.forEach(p => { p.y += p.vy; p.x += p.vx + Math.sin(t / 20 + p.a); p.a += .1; x.save(); x.translate(p.x, p.y); x.rotate(p.a); x.fillStyle = p.c; x.fillRect(-p.r / 2, -p.r / 2, p.r, p.r * 1.6); x.restore(); });
+    if (++t < 450) requestAnimationFrame(f); else x.clearRect(0, 0, innerWidth, innerHeight);
+  })();
+}
+
+render();
+</script>
+</body>
+</html>
